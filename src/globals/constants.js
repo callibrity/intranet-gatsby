@@ -1,4 +1,4 @@
-export const googleClientId = "1084859424709-tk8745k1d0bnqfvlmsoa0j3uo5bkm9un.apps.googleusercontent.com";
+export const googleClientId = "1084859424709-tk8745k1d0bnqfvlmsoa0j3uo5bkm9un.apps.googleusercontent.com"
 
 export const mockNewsResponse = {data: [
   {
@@ -13,7 +13,7 @@ export const mockNewsResponse = {data: [
     date: "May 5",
     event: "Alex, Alex, and Alec thought everyone should change their names to Ale*"
   }
-]};
+]}
 
 export const mockEmployeeResponse =
 {data: [
@@ -83,7 +83,7 @@ export const mockEmployeeResponse =
     "bio": "Aubrey graduated from NKU with a BS in Computer Science and a BA in Applied Mathematics. She is passionate about promoting the growth of women in STEM careers. Aubrey enjoys volunteering, playing board games, and spending time with her family.",
     "photo": "https://www.callibrity.com/hs-fs/hubfs/Callibrity_December2018%20Theme/Images/aubrey-f.jpg?width=900&height=900&name=aubrey-f.jpg"
   }
-]};
+]}
 
 export const quickLinks = [
   {
@@ -114,14 +114,14 @@ export const quickLinks = [
     title: "Google Docs",
     url: "https://drive.google.com/drive/folders/0B28qaCwNRg44SU9CcDJ6OWc5Wlk?usp=sharing"
   }
-];
+]
 
-export const apiInitialMessage = "Loading";
+export const apiInitialMessage = "Loading"
 
-export const apiErrorMessage = "API request failed";
+export const apiErrorMessage = "API request failed"
 
 export const calendarStrings = {
   baseStr: "https://calendar.google.com/calendar/b/2/embed?showTz=0&showCalendars=1&showPrint=0&showTitle=0",
   companyHolidays: "Y2FsbGlicml0eS5jb21fMGY5aXJjMDFrOGowZ3A5ZG9xbTRvZGpvcm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ",
   lunchAndLearn: "Y2FsbGlicml0eS5jb21fYnM0b3U4NDB0dnVva2w2N2JhMG50MjZycGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
-};
+}

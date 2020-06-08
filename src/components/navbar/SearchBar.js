@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
-import { FaSearch } from "react-icons/fa";
-import styled from "styled-components";
-import { standardInput } from "../../globals/styles";
-import { UserContext } from "../../globals/UserContext";
+import React, { useState, useContext } from "react"
+import { FaSearch } from "react-icons/fa"
+import styled from "styled-components"
+import { standardInput } from "../../globals/styles"
+import { UserContext } from "../../globals/UserContext"
 
 export default function SearchBar() {
-  const [text, setText] = useState("");
-  const { username } = useContext(UserContext);
+  const [text, setText] = useState("")
+  const { username } = useContext(UserContext)
 
   return (
     <Container username={username} >
@@ -17,11 +17,11 @@ export default function SearchBar() {
         alt="search bar"
         value={text}
         onChange={(e) => {
-          setText(e.target.value);
+          setText(e.target.value)
         }}
       />
     </Container>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -30,14 +30,14 @@ const Container = styled.div`
   align-items: center;
   width: 40%;
   justify-content: left;
-`;
+`
 
 const IconContainer = styled.div`
   color: lightgray;
-`;
+`
 
 const Search = styled.input`
   width: 100%;
   border: none;
   outline: none;
-`;
+`

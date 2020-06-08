@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Navbar siteTitle={data.site.siteMetadata.title} />
-        {children}
+      {children}
     </>
   )
 }

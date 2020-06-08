@@ -1,7 +1,7 @@
 // Package dependencies
-import React from "react";
-import styled from "styled-components";
-import {whiteContainer} from "../../globals/styles";
+import React from "react"
+import styled from "styled-components"
+import {whiteContainer} from "../../globals/styles"
 
 // Component
 export default function Section({ label, color, children }) {
@@ -12,7 +12,7 @@ export default function Section({ label, color, children }) {
       </GroupHeader>
       {children}
     </Container>
-  );
+  )
 }
 
 // Styling
@@ -20,7 +20,7 @@ const Container = styled.section`
   ${whiteContainer}
   display: inline-block;
   margin: 20px 0;
-`;
+`
 
 const GroupHeader = styled.div`
   display: flex;
@@ -32,4 +32,4 @@ const GroupHeader = styled.div`
   @media (max-width: 1000px) {
     font-size: 20px;
   };
-`;
+`

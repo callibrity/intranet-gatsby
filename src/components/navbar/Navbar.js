@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import NavLinks from "./NavLinks";
-import SearchBar from "./SearchBar";
-import { Link } from "gatsby";
+import React from "react"
+import styled from "styled-components"
+import NavLinks from "./NavLinks"
+import SearchBar from "./SearchBar"
+import { Link } from "gatsby"
 
 export default function Navbar() {
   return (
@@ -13,7 +13,7 @@ export default function Navbar() {
       <SearchBar />
       <NavLinks />
     </Container>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -24,8 +24,8 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
+`
 
 const Logo = styled.img`
   width: 132px;
-`;
+`

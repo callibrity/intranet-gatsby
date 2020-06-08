@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import {calendarStrings} from "../../globals/constants";
-const {baseStr, companyHolidays, lunchAndLearn} = calendarStrings;
+import React from "react"
+import styled from "styled-components"
+import {calendarStrings} from "../../globals/constants"
+const {baseStr, companyHolidays, lunchAndLearn} = calendarStrings
 
 export default function Calendar() {
-  const url = [companyHolidays, lunchAndLearn].reduce((acc, value) => `${acc}&src=${value}`, baseStr);
+  const url = [companyHolidays, lunchAndLearn].reduce((acc, value) => `${acc}&src=${value}`, baseStr)
   return (
     <Container>
       <iframe 
@@ -16,9 +16,9 @@ export default function Calendar() {
         scrolling="no" 
       />
     </Container>
-  );
+  )
 }
 
 const Container = styled.div`
   height: 600px;
-`;
+`
