@@ -1,19 +1,24 @@
-import React, {useContext} from "react"
+import React from "react"
 import styled from "styled-components"
+import Section from "home/Section"
+import Calendar from "home/Calendar"
+import News from "home/News"
 
-import { UserContext } from "globals/UserContext" 
-
-const HomePage = () => {
-  const { username } = useContext(UserContext)
+export default function Homepage() {
   return (
-    <Container>{username}</Container>
+    <Container>
+      <Section label="News" color='green'>
+        <News />
+      </Section>
+      <Section label="Calendar" color='orange'>
+        <Calendar />
+      </Section>
+    </Container>
   )
 }
 
-const Container = styled.a`
+const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin: 50px;
-    background-color: ${props => props.theme.blue};
 `
-export default HomePage

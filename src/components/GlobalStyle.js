@@ -18,7 +18,7 @@ export default createGlobalStyle`
 
   a {
     border-radius: 5px;
-    color: red;
+    color: white;
     text-decoration: none;
     padding: 5px;
     cursor: pointer;

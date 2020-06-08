@@ -5,6 +5,7 @@ module.exports = {
     author: "@gatsbyjs",
   },
   plugins: [
+    "gatsby-image",
     {
       resolve: "gatsby-alias-imports",
       options: {
