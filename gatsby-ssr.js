@@ -1,3 +1,3 @@
-//import provider from './src/components/provider';
+import GlobalProvider from "components/GlobalProvider"
 
-//export const wrapRootElement = provider;
+export const wrapRootElement = GlobalProvider

@@ -5,7 +5,15 @@ module.exports = {
     author: "@gatsbyjs",
   },
   plugins: [
-    "gatsby-alias-imports",
+    {
+      resolve: "gatsby-alias-imports",
+      options: {
+        aliases: {
+          home: "src/components/home",
+          navbar: "src/components/navbar",
+        }
+      }
+    },
     {
       resolve: "gatsby-plugin-styled-components",
     },
