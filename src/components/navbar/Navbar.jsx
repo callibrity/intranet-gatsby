@@ -10,12 +10,12 @@ export default function Navbar() {
 
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "callibrity-logo.webp" }) {
+      file(relativePath: { eq: "callibrity-logo.png" }) {
         childImageSharp {
           # Specify the image processing specifications right in the query.
           # Makes it trivial to update as your page's design changes.
-          fluid(maxWidth: 700, quality: 100) {
-            ...GatsbyImageSharpFluid
+          fixed(width: 132) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -25,7 +25,7 @@ export default function Navbar() {
   return (
     <Container>
       <Link to="/">
-        <Logo fluid={data.file.childImageSharp.fluid} alt="Callibrity Logo" />
+        <Img fixed={data.file.childImageSharp.fixed} alt="Callibrity Logo" />
       </Link>
       <SearchBar />
       <NavLinks />
@@ -41,8 +41,4 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center; 
-`
-
-const Logo = styled(Img)`
-  width: 132px;
 `
