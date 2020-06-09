@@ -15,6 +15,8 @@ module.exports = {
         aliases: {
           home: "src/components/home",
           navbar: "src/components/navbar",
+          people: "src/components/people",
+          portfolio: "src/components/portfolio"
         }
       }
     },
