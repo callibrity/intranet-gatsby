@@ -4,26 +4,12 @@ import styled from "styled-components"
 import InfoItem from "./InfoItem"
 import { whiteContainer } from "@styles"
 import { ProfileContext } from "@contexts"
-
-const infoList = [
-  {
-    label: "NAME",
-    data: "name"
-  },
-  {
-    label: "ROLE",
-    data: "role"
-  },
-  {
-    label: "OFFICE",
-    data: "office"
-  }
-]
+import { profileSummaryList } from "@constants"
 
 export default function Summary(){
   const {employee, setEmployee} = useContext(ProfileContext)
 
-  const info = infoList.map(({label, data}) => 
+  const info = profileSummaryList.map(({label, data}) => 
     <InfoItem
       key={label} 
       label={label} 

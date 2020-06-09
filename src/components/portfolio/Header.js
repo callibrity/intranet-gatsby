@@ -4,6 +4,7 @@ import styled from "styled-components"
 import API from "@api"
 import { standardButton } from "@styles"
 import { UserContext, ProfileContext } from "@contexts"
+import { employeesAPINameString } from "@constants"
 
 export default function Header(){
   const { userEmail } = useContext(UserContext)
@@ -14,7 +15,7 @@ export default function Header(){
   }
   
   function handleSaveClick(){
-    API.put(`/employees?name=${employee.name}`, employee)
+    API.put(`${employeesAPINameString}${employee.name}`, employee)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
     

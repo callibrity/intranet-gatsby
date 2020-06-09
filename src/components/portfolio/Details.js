@@ -4,39 +4,13 @@ import InfoItem from "./InfoItem"
 
 import { whiteContainer } from "@styles"
 import { ProfileContext } from "@contexts"
-
-const infoList = [
-  {
-    label: "NAME",
-    data: "name"
-  },
-  {
-    label: "ROLE",
-    data: "role"
-  },
-  {
-    label: "OFFICE",
-    data: "office"
-  },
-  {
-    label: "EMAIL",
-    data: "email"
-  },
-  {
-    label: "SKILLS",
-    data: "skills"
-  },
-  {
-    label: "INTERESTS",
-    data: "interests"
-  }
-]
+import { profileDetailsList } from "@constants"
 
 export default function Details(){
 
   const {employee, setEmployee} = useContext(ProfileContext)
 
-  const info = infoList.map(({label, data}) => 
+  const info = profileDetailsList.map(({label, data}) => 
     <InfoItem 
       key={label} 
       label={label} 

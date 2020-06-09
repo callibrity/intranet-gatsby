@@ -6,7 +6,7 @@ import API from "@api"
 import Summary from "@portfolio/Summary"
 import Details from "@portfolio/Details"
 import Header from "@portfolio/Header"
-import { apiInitialMessage, apiErrorMessage } from "@constants"
+import { apiInitialMessage, apiErrorMessage, employeesAPINameString } from "@constants"
 import { ProfileContext } from "@contexts"
 
 function reducer(state, action) {
@@ -30,7 +30,7 @@ export default function PortfolioPage() {
   const profileInfo = { employee, setEmployee, editMode, setEditMode }
 
   useEffect(() => {
-    API.get(`/employees?name=${name}`)
+    API.get(`${employeesAPINameString}${name}`)
       .then((res) => {
         setEmployee({ type: "initial", load: res.data[0] })
       })

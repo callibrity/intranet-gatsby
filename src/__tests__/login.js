@@ -2,18 +2,10 @@ import React from "react"
 import "@testing-library/jest-dom"
 import "@testing-library/react/dont-cleanup-after-each"
 import { render, fireEvent } from "@testing-library/react"
+
 import {Provider} from "@components/GlobalProvider"
 import Login from "@pages/login"
-
-function queryElements(app){
-  return {
-    callibrityLogo: () => app.queryByAltText(/callibrity logo/i),
-    signInButton: () => app.queryByText(/sign in/i),
-    signOutButton: () => app.queryByText(/sign out/i),
-    navbarUsername: () => app.queryByText(/testName/i),
-    pageLinks: () => app.queryByText(/wiki/i),
-  }
-}
+import { queryElements } from "@testConstants"
 
 describe("Login and navbar functionality", () => {
   const app = render(<Provider><Login /></Provider>)

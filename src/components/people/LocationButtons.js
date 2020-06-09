@@ -2,25 +2,11 @@ import React from "react"
 import styled from "styled-components"
 
 import { standardButton } from "@styles"
-
-const buttonList = [
-  {
-    label: "CINCINNATI",
-    value: "Cincinnati"
-  },
-  {
-    label: "COLUMBUS",
-    value: "Columbus"
-  },
-  {
-    label: "ALL",
-    value: ""
-  }
-]
+import { peopleLocationButtonList } from "@constants"
 
 export default function LocationButtons({location, setLocation}){
 
-  const list = buttonList.map(({label, value}) => 
+  const list = peopleLocationButtonList.map(({label, value}) => 
     <ButtonFilter key={label} value={value} location={location} onClick={() => setLocation(value)}>
       {label}
     </ButtonFilter>

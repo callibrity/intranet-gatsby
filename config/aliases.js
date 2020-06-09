@@ -9,6 +9,7 @@ module.exports = {
   "@images": "src/images",
   "@pages": "src/pages",
   "@constants": "src/globals/constants",
+  "@testConstants": "src/globals/testConstants",
   "@useAPI": "src/hooks/useAPI",
   "@api": "src/globals/api",
   "@contexts": "src/globals/contexts",

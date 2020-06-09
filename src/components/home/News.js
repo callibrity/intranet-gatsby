@@ -1,6 +1,7 @@
 import React from "react"
 
 import useAPI from "@useAPI"
+import {newsAPIString} from "@constants"
 
 export function createNewsList(text) {
   const typeCheck = typeof text === "string"
@@ -16,7 +17,7 @@ export function createNewsList(text) {
 }
 
 export default function News() {
-  const news = useAPI("/news")
+  const news = useAPI(newsAPIString)
   const newsList = createNewsList(news)
   return (
     <>
