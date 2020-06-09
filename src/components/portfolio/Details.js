@@ -1,8 +1,9 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import InfoItem from "./InfoItem"
-import { whiteContainer } from "globals/styles"
-import { ProfileContext } from "globals/UserContext"
+
+import { whiteContainer } from "@styles"
+import { ProfileContext } from "@contexts"
 
 const infoList = [
   {

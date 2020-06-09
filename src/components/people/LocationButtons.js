@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { standardButton } from "globals/styles"
+
+import { standardButton } from "@styles"
 
 const buttonList = [
   {

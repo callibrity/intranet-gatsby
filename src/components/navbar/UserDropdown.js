@@ -1,8 +1,9 @@
 import React, { useContext } from "react"
-import { UserContext } from "globals/UserContext"
+import {Dropdown} from "react-bootstrap"
+
+import { UserContext } from "@contexts"
 import Logout from "./Logout"
 import NavDropdown from "./NavDropdown"
-import {Dropdown} from "react-bootstrap"
 
 export default function UserDropdown() {
   const { username } = useContext(UserContext)

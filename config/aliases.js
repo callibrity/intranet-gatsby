@@ -1,0 +1,16 @@
+module.exports = {
+  "@home": "src/components/home",
+  "@navbar": "src/components/navbar",
+  "@people": "src/components/people",
+  "@portfolio": "src/components/portfolio",
+  "@components": "src/components",
+  "@globals": "src/globals",
+  "@hooks": "src/hooks",
+  "@images": "src/images",
+  "@pages": "src/pages",
+  "@constants": "src/globals/constants",
+  "@useAPI": "src/hooks/useAPI",
+  "@api": "src/globals/api",
+  "@contexts": "src/globals/contexts",
+  "@styles": "src/globals/styles",
+}

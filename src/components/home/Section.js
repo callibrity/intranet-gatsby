@@ -1,7 +1,8 @@
 // Package dependencies
 import React from "react"
 import styled from "styled-components"
-import {whiteContainer} from "globals/styles"
+
+import {whiteContainer} from "@styles"
 
 // Component
 export default function Section({ label, color, children }) {

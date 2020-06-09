@@ -1,10 +1,11 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { navigate } from "gatsby"
-import { UserContext } from "globals/UserContext"
 import { useGoogleLogin } from "react-google-login"
-import { googleClientId } from "globals/constants" 
-import { flexCenter, standardButton } from "globals/styles"
+
+import { UserContext } from "@contexts"
+import { googleClientId } from "@constants" 
+import { flexCenter, standardButton } from "@styles"
 
 export default function Login() {
   const { setUsername, setUserEmail } = useContext(UserContext)

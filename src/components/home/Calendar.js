@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import {calendarStrings} from "globals/constants"
+
+import {calendarStrings} from "@constants"
+
 const {baseStr, companyHolidays, lunchAndLearn} = calendarStrings
 
 export default function Calendar() {

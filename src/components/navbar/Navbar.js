@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
+
 import NavLinks from "./NavLinks"
 import SearchBar from "./SearchBar"
-import { Link, useStaticQuery } from "gatsby"
-import { graphql } from "gatsby"
-import Img from "gatsby-image"
 
 export default function Navbar() {
 
@@ -12,8 +12,6 @@ export default function Navbar() {
     query {
       file(relativePath: { eq: "callibrity-logo.png" }) {
         childImageSharp {
-          # Specify the image processing specifications right in the query.
-          # Makes it trivial to update as your page's design changes.
           fixed(width: 132) {
             ...GatsbyImageSharpFixed
           }
@@ -24,7 +22,7 @@ export default function Navbar() {
 
   return (
     <Container>
-      <Link to="/">
+      <Link to='/'>
         <Img fixed={data.file.childImageSharp.fixed} alt="Callibrity Logo" />
       </Link>
       <SearchBar />

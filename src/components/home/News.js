@@ -1,5 +1,6 @@
 import React from "react"
-import useAPI from "hooks/useAPI"
+
+import useAPI from "@useAPI"
 
 export function createNewsList(text) {
   const typeCheck = typeof text === "string"

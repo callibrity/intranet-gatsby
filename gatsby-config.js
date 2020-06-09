@@ -1,3 +1,5 @@
+const aliases = require("./config/aliases")
+
 module.exports = {
   siteMetadata: {
     title: "Callibrity Intranet",
@@ -12,12 +14,7 @@ module.exports = {
     {
       resolve: "gatsby-alias-imports",
       options: {
-        aliases: {
-          home: "src/components/home",
-          navbar: "src/components/navbar",
-          people: "src/components/people",
-          portfolio: "src/components/portfolio"
-        }
+        aliases
       }
     },
     {

@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import useAPI from "hooks/useAPI"
-import PersonTile from "people/PersonTile"
-import LocationButtons from "people/LocationButtons"
-import PeopleSearch from "people/PeopleSearch"
+
+import useAPI from "@useAPI"
+import PersonTile from "@people/PersonTile"
+import LocationButtons from "@people/LocationButtons"
+import PeopleSearch from "@people/PeopleSearch"
 
 export default function People() {
   const [location, setLocation] = useState("Cincinnati")
