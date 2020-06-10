@@ -1,10 +1,10 @@
 import React from "react"
 
-export default function Page({ title, content}) {
+export default function Page({ pageContext: {title, content}}) {
   return (
     <div>
       <div>{title}</div>
-      <div>{content}</div>
+      <div dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   )
 }

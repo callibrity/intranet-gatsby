@@ -68,4 +68,8 @@ yarn-error.log
 # Local history
 .history
 
+# Git files
 .git
+
+# Visual Studio Code files
+.vscode

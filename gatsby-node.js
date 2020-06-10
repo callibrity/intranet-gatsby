@@ -3,57 +3,65 @@ const { createFilePath } = require("gatsby-source-filesystem")
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
-  return graphql(`
-    {
-      allWordpressPage {
-        edges {
-          node {
-            id
-            slug
-            status
+  return (
+    graphql(`
+      {
+        allWordpressPost {
+          edges {
+            node {
+              id
+              slug
+              title
+              content
+            }
           }
         }
       }
-    }
-  `)
-    .then(result => {
-      result.data.allWordpressPage.edges.forEach(({ node: page }) => {
-        createPage({
-          path: `/wiki/${page.slug}/`,
-          component: path.resolve("./src/templates/page.js"),
-          context: {
-            id: page.id,
-          },
+    `)
+      .then(({data: {allWordpressPost: {edges}}}) => {
+        edges.forEach(({node: {id, slug, title, content}}) => {
+          createPage({
+            path: `/wiki/${slug}/`,
+            component: path.resolve("./src/templates/post.js"),
+            context: {
+              id,
+              slug,
+              title,
+              content
+            }
+          })
         })
       })
-    })
-    .then(() => {
-      return graphql(`
-    {
-      allWordpressPost {
-        edges {
-          node {
-            id
-            slug
-            status
+      .then(() => 
+        graphql(`
+        {
+          allWordpressPage {
+            edges {
+              node {
+                id
+                slug
+                title
+                content
+              }
+            }
           }
         }
-      }
-    }
-  `)
-    })
-    .then(result => {
-      result.data.allWordpressPost.edges.forEach(({ node: post }) => {
-        // Create the Gatsby page for this WordPress post
-        createPage({
-          path: `/wiki/${post.slug}/`,
-          component: path.resolve("./src/templates/post.js"),
-          context: {
-            id: post.id,
-          },
+      `))
+      .then(({data: {allWordpressPage: {edges}}}) => {
+        edges.forEach(({node: {id, slug, title, content}}) => {
+          createPage({
+            path: `/wiki/${slug}/`,
+            component: path.resolve("./src/templates/page.js"),
+            context: {
+              id,
+              slug,
+              title,
+              content
+            }
+          })
         })
       })
-    })
+  )
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
