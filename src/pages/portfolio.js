@@ -2,12 +2,12 @@ import React, { useReducer, useEffect, useState } from "react"
 import { parse } from "query-string"
 import styled from "styled-components"
 
-import API from "@api"
+import API from "@globals/api"
 import Summary from "@portfolio/Summary"
 import Details from "@portfolio/Details"
 import Header from "@portfolio/Header"
-import { apiInitialMessage, apiErrorMessage, employeesAPINameString } from "@constants"
-import { ProfileContext } from "@contexts"
+import { apiInitialMessage, apiErrorMessage, employeesAPINameString } from "@globals/constants"
+import { ProfileContext } from "@globals/contexts"
 
 function reducer(state, action) {
   const { type, load } = action

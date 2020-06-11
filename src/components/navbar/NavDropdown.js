@@ -2,7 +2,7 @@ import React from "react"
 import {Dropdown} from "react-bootstrap"
 import styled from "styled-components"
 
-import { linkStyle } from "@styles"
+import { linkStyle } from "@globals/styles"
 
 export default function UserDropdown({label, children}) {
   const {Toggle, Menu} = Dropdown

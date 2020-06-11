@@ -2,7 +2,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import {whiteContainer} from "@styles"
+import {whiteContainer} from "@globals/styles"
 
 // Component
 export default function Section({ label, color, children }) {

@@ -1,10 +1,10 @@
 import React, {useContext} from "react"
 import styled from "styled-components"
 
-import API from "@api"
-import { standardButton } from "@styles"
-import { UserContext, ProfileContext } from "@contexts"
-import { employeesAPINameString } from "@constants"
+import API from "@globals/api"
+import { standardButton } from "@globals/styles"
+import { UserContext, ProfileContext } from "@globals/contexts"
+import { employeesAPINameString } from "@globals/constants"
 
 export default function Header(){
   const { userEmail } = useContext(UserContext)

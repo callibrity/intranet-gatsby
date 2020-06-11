@@ -2,9 +2,9 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import InfoItem from "./InfoItem"
 
-import { whiteContainer } from "@styles"
-import { ProfileContext } from "@contexts"
-import { profileDetailsList } from "@constants"
+import { whiteContainer } from "@globals/styles"
+import { ProfileContext } from "@globals/contexts"
+import { profileDetailsList } from "@globals/constants"
 
 export default function Details(){
 

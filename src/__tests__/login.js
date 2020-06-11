@@ -5,7 +5,7 @@ import { render, fireEvent } from "@testing-library/react"
 
 import {Provider} from "@components/GlobalProvider"
 import Login from "@pages/login"
-import { queryElements } from "@testConstants"
+import { queryElements } from "@globals/testConstants"
 
 describe("Login and navbar functionality", () => {
   const app = render(<Provider><Login /></Provider>)

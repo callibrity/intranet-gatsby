@@ -5,7 +5,7 @@ import {
   mockNewsResponse, 
   mockPeopleResponse, 
   mockProfileResponse 
-} from "@testConstants"
+} from "@globals/testConstants"
 
 export default function useAPI(apiString){
   if(apiString === newsAPIString){

@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 
-import { ProfileContext } from "@contexts"
+import { ProfileContext } from "@globals/contexts"
 
 export default function InfoItem({label, data, info}){
   const {editMode, setEmployee} = useContext(ProfileContext)

@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 
-import useAPI from "@useAPI"
+import useAPI from "@hooks/useAPI"
 import PersonTile from "@people/PersonTile"
 import LocationButtons from "@people/LocationButtons"
 import PeopleSearch from "@people/PeopleSearch"
-import { employeesAPIOfficeString } from "@constants"
+import { employeesAPIOfficeString } from "@globals/constants"
 
 export default function People() {
   const [location, setLocation] = useState("Cincinnati")
