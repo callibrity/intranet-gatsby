@@ -7,22 +7,54 @@ module.exports = {
     author: "Callibrity",
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-styled-components",
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
-    {
-      resolve: "gatsby-alias-imports",
-      options: {
-        aliases
-      }
-    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "markdown-pages",
+        path: `${__dirname}/src/markdown-pages`,
+      },
+    },
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-styled-components",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 1519,
+              backgroundColor: "transparent"
+            },
+          },
+        ],
+      }
+    },
+    {
+      resolve: "gatsby-source-pg",
+      options: {
+        connectionString: "postgres://xsuzfsll:sSa6qY83tfbIeykZ4Np1mROIohahR9w0@salt.db.elephantsql.com:5432/xsuzfsll",
+        schema: "public",
+        refetchInterval: 60
+      }
+    },
+    {
+      resolve: "gatsby-alias-imports",
+      options: {
+        aliases
+      }
     },
     {
       resolve: "gatsby-plugin-manifest",
@@ -34,17 +66,6 @@ module.exports = {
         theme_color: "#663399",
         display: "minimal-ui",
         icon: "src/images/callibrity-crescent.webp", // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: "gatsby-source-wordpress",
-      options: {
-        baseUrl: "wpdemo.gatsbycentral.com",
-        protocol: "https",
-        hostingWPCOM: false,
-        useACF: false,
-        auth: {},
-        verboseOutput: false,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

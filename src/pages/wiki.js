@@ -7,38 +7,21 @@ import { useStaticQuery, graphql } from "gatsby"
 export default function Wiki() {
   const data = useStaticQuery(graphql`
   query {
-    allWordpressPost {
-      edges {
-        node {
-          slug
-          title
-        }
-      }
-    }
-    allWordpressPage {
-      edges {
-        node {
-          slug
-          title
-        }
+    postgres {
+      allWikisList {
+        slug
+        title
       }
     }
   }
 `)
 
-  const pageList = data.allWordpressPage.edges.map(({node: {title, slug}}) => 
+  const pageList = data.postgres.allWikisList.map(({title, slug}) => 
     <StyledLink to={`/wiki/${slug}`} key={title}>{title}</StyledLink>
   )
 
-  const postsList = data.allWordpressPost.edges.map(({node: {title, slug}}) => 
-    <StyledLink to={`/wiki/${slug}`} key={title}>{title}</StyledLink>
-  )
   return (
     <Container>
-      <Section>
-        <Label>Posts</Label>
-        <ListContainer>{postsList}</ListContainer>
-      </Section>
       <Section>
         <Label>Pages</Label>
         <ListContainer>{pageList}</ListContainer>

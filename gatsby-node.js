@@ -1,78 +1,31 @@
 const path = require("path")
-const { createFilePath } = require("gatsby-source-filesystem")
 
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
-  return (
-    graphql(`
-      {
-        allWordpressPost {
-          edges {
-            node {
-              id
-              slug
-              title
-              content
-            }
-          }
+
+  const result = await graphql(`
+    {
+      postgres {
+        allWikisList {
+          slug
         }
       }
-    `)
-      .then(({data: {allWordpressPost: {edges}}}) => {
-        edges.forEach(({node: {id, slug, title, content}}) => {
-          createPage({
-            path: `/wiki/${slug}/`,
-            component: path.resolve("./src/templates/post.js"),
-            context: {
-              id,
-              slug,
-              title,
-              content
-            }
-          })
-        })
-      })
-      .then(() => 
-        graphql(`
-        {
-          allWordpressPage {
-            edges {
-              node {
-                id
-                slug
-                title
-                content
-              }
-            }
-          }
-        }
-      `))
-      .then(({data: {allWordpressPage: {edges}}}) => {
-        edges.forEach(({node: {id, slug, title, content}}) => {
-          createPage({
-            path: `/wiki/${slug}/`,
-            component: path.resolve("./src/templates/page.js"),
-            context: {
-              id,
-              slug,
-              title,
-              content
-            }
-          })
-        })
-      })
-  )
-}
+    }
+  `)
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === "MarkdownRemark") {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: "slug",
-      node,
-      value,
-    })
+  if (result.errors) {
+    reporter.panicOnBuild("Error while running GraphQL query.")
+    return
   }
+
+  result.data.postgres.allWikisList.forEach( (post) => {
+    const { slug } = post
+    createPage({
+      path: `/wiki/${slug}`,
+      component: path.resolve("./src/templates/blogTemplate.js"),
+      context: {
+        slug
+      },
+    })
+  })
 }
