@@ -3,6 +3,7 @@ import styled from "styled-components"
 import InfoItem from "./InfoItem"
 import { whiteContainer } from "globals/styles"
 import { ProfileContext } from "globals/UserContext"
+import ProfilePic from "./ProfilePic";
 
 const infoList = [
   {
@@ -35,7 +36,7 @@ export default function Summary(){
   return(
     <Container>
       <Title>PROFESSIONAL DETAILS</Title>
-      <Image src={employee.photo} />
+      <ProfilePic/>
       <InfoContainer>
         {info}
       </InfoContainer>

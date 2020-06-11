@@ -16,9 +16,9 @@ export default function People() {
       })
       .map(({ photo, name, role }) => (
         <PersonTile 
-          key={name} 
-          name={name} 
-          role={role} 
+          key={name}
+          name={name}
+          role={role}
           photo={photo}
         />
       ))

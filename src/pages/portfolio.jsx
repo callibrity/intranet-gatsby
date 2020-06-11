@@ -27,6 +27,7 @@ export default function PortfolioPage() {
   const { name } = parse(window.location.search)
 
   const profileInfo = { employee, setEmployee, editMode, setEditMode }
+  console.log(profileInfo);
 
   useEffect(() => {
     API.get(`/employees?name=${name}`)
