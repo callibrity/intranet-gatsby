@@ -12,6 +12,10 @@ jobs:
     - name: Git checkout
       uses: actions/checkout@v2
 
+    - uses: jzweifel/gatsby-cli-github-action@master
+      with:
+        gatsby-arg: build
+
     - name: Cache node modules
       uses: actions/cache@v2
       with:
@@ -26,6 +30,7 @@ jobs:
         node-version: '12.x'
 
     - name: Install, build, and test
+      
       run: |
         npm ci
         gatbsy build --if-present
