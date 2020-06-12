@@ -25,7 +25,6 @@ module.exports = {
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
     "react/jsx-uses-react": 1,
     "react/prop-types": 0,
-    "jest/expect-expect": "error",
     "jest/valid-expect": "error",
     "jest/no-disabled-tests": "error",
     "jest/no-focused-tests": "error",

@@ -1,41 +1,16 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import InfoItem from "./InfoItem"
-import { whiteContainer } from "globals/styles"
-import { ProfileContext } from "globals/UserContext"
 
-const infoList = [
-  {
-    label: "NAME",
-    data: "name"
-  },
-  {
-    label: "ROLE",
-    data: "role"
-  },
-  {
-    label: "OFFICE",
-    data: "office"
-  },
-  {
-    label: "EMAIL",
-    data: "email"
-  },
-  {
-    label: "SKILLS",
-    data: "skills"
-  },
-  {
-    label: "INTERESTS",
-    data: "interests"
-  }
-]
+import { whiteContainer } from "@globals/styles"
+import { ProfileContext } from "@globals/contexts"
+import { profileDetailsList } from "@globals/constants"
 
 export default function Details(){
 
   const {employee, setEmployee} = useContext(ProfileContext)
 
-  const info = infoList.map(({label, data}) => 
+  const info = profileDetailsList.map(({label, data}) => 
     <InfoItem 
       key={label} 
       label={label} 

@@ -1,14 +1,15 @@
 import React, { useState, useContext } from "react"
 import { FaSearch } from "react-icons/fa"
 import styled from "styled-components"
-import { standardInput } from "globals/styles"
-import { UserContext } from "globals/UserContext"
+
+import { standardInput } from "@globals/styles"
+import { UserContext } from "@globals/contexts"
 
 export default function SearchBar() {
   const [text, setText] = useState("")
   const { username } = useContext(UserContext)
 
-  return (
+  return !username ? null : (
     <Container username={username} >
       <IconContainer>
         <FaSearch />
@@ -26,7 +27,7 @@ export default function SearchBar() {
 
 const Container = styled.div`
   ${standardInput}
-  display: ${({username}) => username ? "flex" : "none"};  
+  display: flex;  
   align-items: center;
   width: 40%;
   justify-content: left;

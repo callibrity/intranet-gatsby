@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import { ThemeProvider } from "styled-components"
-
-import GlobalStyle from "components/GlobalStyle"
-import { UserContext } from "globals/UserContext" 
-import theme from "globals/theme" 
-import Navbar from "navbar/Navbar"
 import "bootstrap/dist/css/bootstrap.min.css"
-import Login from "pages/login"
 
-const Provider = function({children}) {
+import GlobalStyle from "./GlobalStyle"
+import { UserContext } from "@globals/contexts" 
+import theme from "@globals/theme" 
+import Navbar from "@navbar/Navbar"
+import Login from "@pages/login"
+
+export const Provider = function({children}) {
   const [username, setUsername] = useState(null)
   const [userEmail, setUserEmail] = useState(null)
 

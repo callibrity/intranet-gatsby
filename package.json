@@ -35,9 +35,16 @@
     "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.9.0",
+    "@testing-library/react": "^10.2.1",
+    "babel-jest": "^26.0.1",
+    "babel-preset-gatsby": "^0.4.9",
     "eslint-config-react-app": "^5.2.1",
     "eslint-plugin-jest": "^23.13.2",
-    "prettier": "2.0.5"
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "prettier": "2.0.5",
+    "react-test-renderer": "^16.13.1"
   },
   "keywords": [
     "gatsby"
@@ -50,7 +57,7 @@
     "start": "gatsby develop --port 3000",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

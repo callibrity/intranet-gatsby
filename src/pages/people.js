@@ -1,13 +1,15 @@
 import React, { useState } from "react"
-import useAPI from "hooks/useAPI"
-import PersonTile from "people/PersonTile"
-import LocationButtons from "people/LocationButtons"
-import PeopleSearch from "people/PeopleSearch"
+
+import useAPI from "@hooks/useAPI"
+import PersonTile from "@people/PersonTile"
+import LocationButtons from "@people/LocationButtons"
+import PeopleSearch from "@people/PeopleSearch"
+import { employeesAPIOfficeString } from "@globals/constants"
 
 export default function People() {
   const [location, setLocation] = useState("Cincinnati")
   const [name, setName] = useState("")
-  const employees = useAPI(`/employees?office=${location}`)
+  const employees = useAPI(`${employeesAPIOfficeString}${location}`)
 
   const employeeList = typeof employees === "string" ? employees
     :employees

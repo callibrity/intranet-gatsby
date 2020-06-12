@@ -1,29 +1,15 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import InfoItem from "./InfoItem"
+import ProfilePic from "./ProfilePic";
 import { whiteContainer } from "globals/styles"
 import { ProfileContext } from "globals/UserContext"
-import ProfilePic from "./ProfilePic";
-
-const infoList = [
-  {
-    label: "NAME",
-    data: "name"
-  },
-  {
-    label: "ROLE",
-    data: "role"
-  },
-  {
-    label: "OFFICE",
-    data: "office"
-  }
-]
+import { profileSummaryList } from "@globals/constants"
 
 export default function Summary(){
   const {employee, setEmployee} = useContext(ProfileContext)
 
-  const info = infoList.map(({label, data}) => 
+  const info = profileSummaryList.map(({label, data}) => 
     <InfoItem
       key={label} 
       label={label} 

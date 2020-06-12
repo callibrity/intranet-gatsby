@@ -1,12 +1,13 @@
 import React, { useReducer, useEffect, useState } from "react"
-import API from "globals/api"
 import { parse } from "query-string"
 import styled from "styled-components"
-import Summary from "portfolio/Summary"
-import Details from "portfolio/Details"
-import Header from "portfolio/Header"
-import { apiInitialMessage, apiErrorMessage } from "globals/constants"
-import { ProfileContext } from "globals/UserContext"
+
+import API from "@globals/api"
+import Summary from "@portfolio/Summary"
+import Details from "@portfolio/Details"
+import Header from "@portfolio/Header"
+import { apiInitialMessage, apiErrorMessage, employeesAPINameString } from "@globals/constants"
+import { ProfileContext } from "@globals/contexts"
 
 function reducer(state, action) {
   const { type, load } = action
@@ -29,7 +30,7 @@ export default function PortfolioPage() {
   const profileInfo = { employee, setEmployee, editMode, setEditMode }
 
   useEffect(() => {
-    API.get(`/employees?name=${name}`)
+    API.get(`${employeesAPINameString}${name}`)
       .then((res) => {
         setEmployee({ type: "initial", load: res.data[0] })
       })

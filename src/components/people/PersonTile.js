@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+
 import "./PersonTile.css"
 
 export default function PersonTile({ name, role, photo }) {
