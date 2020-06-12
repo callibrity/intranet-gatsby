@@ -2,10 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import { standardButton } from "globals/styles"
 
-export default function ReusableButton(props){
+export default function ReusableButton({onClick, text}){
 
   return(
-    <Button onClick={props.onClick}>{props.text}</Button>
+    <Button onClick={onClick}>{text}</Button>
   )
 }
 
