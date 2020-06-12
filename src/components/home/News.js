@@ -1,7 +1,7 @@
 import React from "react"
 
-import useAPI from "@useAPI"
-import {newsAPIString} from "@constants"
+import useAPI from "@hooks/useAPI"
+import {newsAPIString} from "@globals/constants"
 
 export function createNewsList(text) {
   const typeCheck = typeof text === "string"

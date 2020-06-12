@@ -3,9 +3,9 @@ import styled from "styled-components"
 import { navigate } from "gatsby"
 import { useGoogleLogin } from "react-google-login"
 
-import { UserContext } from "@contexts"
-import { googleClientId } from "@constants" 
-import { flexCenter, standardButton } from "@styles"
+import { UserContext } from "@globals/contexts"
+import { googleClientId } from "@globals/constants" 
+import { flexCenter, standardButton } from "@globals/styles"
 
 export default function Login() {
   const { setUsername, setUserEmail } = useContext(UserContext)

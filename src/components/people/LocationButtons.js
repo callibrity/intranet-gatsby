@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import { standardButton } from "@styles"
-import { peopleLocationButtonList } from "@constants"
+import { standardButton } from "@globals/styles"
+import { peopleLocationButtonList } from "@globals/constants"
 
 export default function LocationButtons({location, setLocation}){
 

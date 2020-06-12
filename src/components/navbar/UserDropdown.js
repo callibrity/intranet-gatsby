@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import {Dropdown} from "react-bootstrap"
 
-import { UserContext } from "@contexts"
+import { UserContext } from "@globals/contexts"
 import Logout from "./Logout"
 import NavDropdown from "./NavDropdown"
 

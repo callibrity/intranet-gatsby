@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react"
-import API from "@api"
+import API from "@globals/api"
 
-import {apiInitialMessage, apiErrorMessage} from "@constants"
+import {apiInitialMessage, apiErrorMessage} from "@globals/constants"
 
 export default function useAPI(apiString){
   const [apiResult, setApiResult] = useState(apiInitialMessage)

@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import GlobalStyle from "./GlobalStyle"
-import { UserContext } from "@contexts" 
+import { UserContext } from "@globals/contexts" 
 import theme from "@globals/theme" 
 import Navbar from "@navbar/Navbar"
 import Login from "@pages/login"
