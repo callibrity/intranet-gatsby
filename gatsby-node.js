@@ -6,7 +6,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     {
       postgres {
-        allWikisList {
+        allWikitestsList {
           slug
         }
       }
@@ -18,7 +18,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
-  result.data.postgres.allWikisList.forEach( (post) => {
+  result.data.postgres.allWikitestsList.forEach( (post) => {
     const { slug } = post
     createPage({
       path: `/wiki/${slug}`,

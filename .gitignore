@@ -65,6 +65,9 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
+# secrets used during development
+.env.development
+
 # Local history
 .history
 

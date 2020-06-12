@@ -8,7 +8,7 @@ export default function Wiki() {
   const data = useStaticQuery(graphql`
   query {
     postgres {
-      allWikisList {
+      allWikitestsList {
         slug
         title
       }
@@ -16,7 +16,7 @@ export default function Wiki() {
   }
 `)
 
-  const pageList = data.postgres.allWikisList.map(({title, slug}) => 
+  const pageList = data.postgres.allWikitestsList.map(({title, slug}) => 
     <StyledLink to={`/wiki/${slug}`} key={title}>{title}</StyledLink>
   )
 

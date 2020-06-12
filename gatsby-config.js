@@ -1,4 +1,7 @@
 const aliases = require("./config/aliases")
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+})
 
 module.exports = {
   siteMetadata: {
@@ -45,11 +48,13 @@ module.exports = {
     {
       resolve: "gatsby-source-pg",
       options: {
-        connectionString: "postgres://xsuzfsll:sSa6qY83tfbIeykZ4Np1mROIohahR9w0@salt.db.elephantsql.com:5432/xsuzfsll",
+        connectionString: process.env.CONNECTION_STRING,
         schema: "public",
         refetchInterval: 60
       }
     },
+
+    
     {
       resolve: "gatsby-alias-imports",
       options: {
