@@ -68,13 +68,5 @@ yarn-error.log
 # Local history
 .history
 
-<<<<<<< HEAD
-# Git files
-.git
-
-# Visual Studio Code files
-.vscode
-=======
 .git
 /.vscode/*
->>>>>>> 5fcc204cad8d3d01c1b14e12300774fd9879b3e9
