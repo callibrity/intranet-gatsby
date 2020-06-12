@@ -1,8 +1,7 @@
 import React, {useContext} from "react"
 import styled from "styled-components"
-
+import ReusableButton from "../reusable/ReusableButton";
 import API from "@globals/api"
-import { standardButton } from "@globals/styles"
 import { UserContext, ProfileContext } from "@globals/contexts"
 import { employeesAPINameString } from "@globals/constants"
 
@@ -26,8 +25,8 @@ export default function Header(){
     if(employee.callibrity_email === userEmail){
       return(
         <>
-          <Button onClick={handleEditClick}>{editMode ? "Cancel Editing" : "Edit Profile"}</Button>
-          {editMode && <Button onClick={handleSaveClick}>Save Profile</Button>}
+          <ReusableButton onClick={handleEditClick} text={editMode ? "Cancel Editing" : "Edit Profile"}/>
+          {editMode && <ReusableButton onClick={handleSaveClick} text={"Save Profile"}/>}
         </>
       )
     } else return null
@@ -45,11 +44,4 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 20px 0;
-`
-
-const Button = styled.div`
-  ${standardButton};
-  font-size: 16px;
-  padding: 3px 5px;
-  margin-right: 20px;
 `
