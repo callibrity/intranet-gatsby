@@ -50,7 +50,7 @@ module.exports = {
       options: {
         connectionString: process.env.CONNECTION_STRING,
         schema: "public",
-        refetchInterval: 60
+        refetchInterval: 60000
       }
     },
 
