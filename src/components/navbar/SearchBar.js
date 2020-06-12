@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react"
 import { FaSearch } from "react-icons/fa"
 import styled from "styled-components"
 
-import { standardInput } from "@styles"
-import { UserContext } from "@contexts"
+import { standardInput } from "@globals/styles"
+import { UserContext } from "@globals/contexts"
 
 export default function SearchBar() {
   const [text, setText] = useState("")

@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import {calendarStrings} from "@constants"
+import {calendarStrings} from "@globals/constants"
 
 const {baseStr, companyHolidays, lunchAndLearn} = calendarStrings
 

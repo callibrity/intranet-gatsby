@@ -1,4 +1,4 @@
-const { mockLoginResponse } = require("@testConstants")
+const { mockLoginResponse } = require("@globals/testConstants")
 const reactGoogleLogin = jest.requireActual("react-google-login")
 
 module.exports = {

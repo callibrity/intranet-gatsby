@@ -1,6 +1,6 @@
 const React = require("react")
 const gatsby = jest.requireActual("gatsby")
-const { mockGraphQLImage } = require("@testConstants")
+const { mockGraphQLImage } = require("@globals/testConstants")
 
 module.exports = {
   ...gatsby,

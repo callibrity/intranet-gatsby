@@ -4,8 +4,8 @@ import styled from "styled-components"
 
 import QuickLinks from "./QuickLinks"
 import UserDropdown from "./UserDropdown"
-import { UserContext } from "@contexts"
-import { linkStyle } from "@styles"
+import { UserContext } from "@globals/contexts"
+import { linkStyle } from "@globals/styles"
 
 export default function NavLinks() {
   const { username } = useContext(UserContext)

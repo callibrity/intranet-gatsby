@@ -1,10 +1,10 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
-
 import InfoItem from "./InfoItem"
-import { whiteContainer } from "@styles"
-import { ProfileContext } from "@contexts"
-import { profileSummaryList } from "@constants"
+import ProfilePic from "./ProfilePic";
+import { whiteContainer } from "globals/styles"
+import { ProfileContext } from "@globals/contexts"
+import { profileSummaryList } from "@globals/constants"
 
 export default function Summary(){
   const {employee, setEmployee} = useContext(ProfileContext)
@@ -22,7 +22,7 @@ export default function Summary(){
   return(
     <Container>
       <Title>PROFESSIONAL DETAILS</Title>
-      <Image src={employee.photo} />
+      <ProfilePic/>
       <InfoContainer>
         {info}
       </InfoContainer>
