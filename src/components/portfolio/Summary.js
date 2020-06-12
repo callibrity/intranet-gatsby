@@ -3,7 +3,7 @@ import styled from "styled-components"
 import InfoItem from "./InfoItem"
 import ProfilePic from "./ProfilePic";
 import { whiteContainer } from "globals/styles"
-import { ProfileContext } from "globals/UserContext"
+import { ProfileContext } from "@globals/contexts"
 import { profileSummaryList } from "@globals/constants"
 
 export default function Summary(){

@@ -1,7 +1,7 @@
 import React, { useContext, useState, Fragment } from "react"
 import styled from "styled-components"
 import EditImageModal from "./EditImageModal"
-import { ProfileContext } from "globals/UserContext"
+import { ProfileContext } from "@globals/contexts"
 
 export default function ProfilePic() {
   const { employee, editMode } = useContext(ProfileContext)

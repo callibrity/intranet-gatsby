@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { ProfileContext } from "globals/UserContext"
+import { ProfileContext } from "@globals/contexts"
 import ReusableModal from "./../reusable/ReusableModal"
 import ReusableButton from "./../reusable/ReusableButton"
 import InfoItem from "./InfoItem"
