@@ -1,11 +1,16 @@
 import React from "react"
-import styled from "styled-components"
+import { Router } from "@reach/router"
 
+import WikiHome from "@wiki/WikiHome"
+import WikiPage from "@wiki/WikiPage"
 
 export default function Wiki() {
 
   
   return (
-    <div></div>
+    <Router basepath="/wiki">
+      <WikiPage path="/page" />
+      <WikiHome path="/" />
+    </Router>
   )
 }
