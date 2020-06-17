@@ -8,10 +8,9 @@ import { queryElements } from "@globals/testConstants"
 
 describe("The home page", () => {
   const app = render(<Index />)
-  const {newsSection, calendarSection} = queryElements(app)
+  const {calendarSection} = queryElements(app)
 
   it("should show the news and calendar section", () => {
-    expect(newsSection()).toBeInTheDocument()
     expect(calendarSection()).toBeInTheDocument()
   })
 })
