@@ -101,3 +101,113 @@ export const profileSummaryList = [
     data: "office"
   }
 ]
+
+export const mockWikiPages = [
+  {
+    title: "Trustaff Website",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Current Project"
+  },
+  {
+    title: "CrossRoads App",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Current Project"
+  },
+  {
+    title: "CrossRoads App",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Current Project"
+  },
+  {
+    title: "Trustaff Website",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Current Project"
+  },
+  {
+    title: "CrossRoads App",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Current Project"
+  },
+  {
+    title: "CrossRoads App",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Current Project"
+  },
+  {
+    title: "Trustaff Website",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Past Project"
+  },
+  {
+    title: "CrossRoads App",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Past Project"
+  },
+  {
+    title: "CrossRoads App",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Past Project"
+  },
+  {
+    title: "Trustaff Website",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Past Project"
+  },
+  {
+    title: "CrossRoads App",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Past Project"
+  },
+  {
+    title: "CrossRoads App",
+    tags: ["Gatsby", "React", "JavaScript", "CSS"],
+    people: ["Dennis", "Corbin", "Alec", "Allen"],
+    category: "Past Project"
+  },
+  {
+    title: "JavaScript",
+    category: "Learning Resource"
+  },
+  {
+    title: "React",
+    category: "Learning Resource"
+  },
+  {
+    title: "JavaScript",
+    category: "Learning Resource"
+  },
+  {
+    title: "React",
+    category: "Learning Resource"
+  },
+]
+
+export const wikiHomeLinks = [
+  {
+    label: "Create a page",
+    link: "/wiki/create"
+  },
+  {
+    label: "Current Projects",
+    link: "/wiki?category=current-projects"
+  },
+  {
+    label: "Past Projects",
+    link: "/wiki?category=past-projects"
+  },
+  {
+    label: "Learning Resources",
+    link: "/wiki?category=learning-resources"
+  }
+]
