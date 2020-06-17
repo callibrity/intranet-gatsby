@@ -11,7 +11,6 @@ export default function People() {
   const [name, setName] = useState("")
   const employees = useAPI(`${employeesAPIOfficeString}${location}`)
 
-  console.log(employees);
   const employeeList = typeof employees === "string" ? employees
     :employees
       .filter((person) => {
