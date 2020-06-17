@@ -41,8 +41,6 @@ export const calendarStrings = {
   lunchAndLearn: "Y2FsbGlicml0eS5jb21fYnM0b3U4NDB0dnVva2w2N2JhMG50MjZycGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
 }
 
-export const newsAPIString = "/news"
-
 export const employeesAPINameString = "/employees?name="
 
 export const employeesAPIOfficeString = "/employees?office="
