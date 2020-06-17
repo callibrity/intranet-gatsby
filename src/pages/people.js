@@ -17,9 +17,9 @@ export default function People() {
         return person.name.toLowerCase().includes(name.toLowerCase())
       })
       .sort((personA, personB) => {
-        const a = personA.name.toLowerCase();
-        const b = personB.name.toLowerCase();
-        return (a < b) ? -1 : (a > b) ? 1 : 0;
+        const a = personA.name.toLowerCase()
+        const b = personB.name.toLowerCase()
+        return (a < b) ? -1 : (a > b) ? 1 : 0 
       })
       .map(({ photo, name, role }) => (
         <PersonTile 
