@@ -3,7 +3,7 @@ import styled from "styled-components"
 import ReusableButton from "../reusable/ReusableButton";
 import API from "@globals/api"
 import { UserContext, ProfileContext } from "@globals/contexts"
-import { employeesAPINameString } from "@globals/constants"
+import { employeesAPIString } from "@globals/constants"
 
 export default function Header(){
   const { userEmail } = useContext(UserContext)
@@ -14,7 +14,7 @@ export default function Header(){
   }
   
   function handleSaveClick(){
-    API.put(`${employeesAPINameString}${employee.name}`, employee)
+    API.put(`${employeesAPIString}`, employee)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
     
