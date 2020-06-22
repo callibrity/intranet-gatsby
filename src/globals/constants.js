@@ -43,6 +43,8 @@ export const calendarStrings = {
 
 export const employeesAPINameString = "/employees?name="
 
+export const employeesAPIString = "/employees"
+
 export const employeesAPIOfficeString = "/employees?office="
 
 export const peopleLocationButtonList = [
