@@ -213,3 +213,20 @@ export const wikiHomeLinks = [
     link: "/wiki?category=learning-resources"
   }
 ]
+
+export const EmployeeTimeTracking = {
+  "billable": {
+    "currentHours": 550,
+    "currentTarget": 500,
+    "totalTarget": 1800
+  },
+  "training": {
+    "currentHours": 18,
+    "totalHours": 46
+  },
+  "pto": {
+    "hoursUsed": 20,
+    "hoursRemaining": 60,
+    "hoursNotAccrued": 40
+  }
+}
