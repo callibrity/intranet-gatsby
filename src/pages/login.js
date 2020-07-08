@@ -38,6 +38,6 @@ const Welcome = styled.h2`
   margin-bottom: 30px;
 `
 
-const SignIn = styled.div`
+const SignIn = styled.button`
   ${standardButton}
 `
