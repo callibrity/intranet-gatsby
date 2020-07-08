@@ -2,7 +2,7 @@ import React from "react"
 import { mount } from "enzyme"
 import { googleClientId } from "@globals/constants" 
 import { UserContext } from "@globals/contexts"
-import Login from "@pages/Login"
+import Login from "@pages/login"
 
 const mockSetUsername = jest.fn()
 const mockSetUserEmail = jest.fn()
