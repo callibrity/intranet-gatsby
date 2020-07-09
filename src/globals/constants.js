@@ -220,40 +220,15 @@ export const wikiHomeLinks = [
 ]
 
 export const EmployeeTimeTracking = {
-  data: [
-    {
-      title: "Target Hours",
-      hours: [
-        {
-          label: "Current Hours",
-          amount: 550,
-        },
-        {
-          label: "Current Target",
-          amount: 500,
-        },
-        {
-          label: "Total Target",
-          amount: 1800,
-        },
-      ],
-    },
-    {
-      title: "Growth Time",
-      hours: [
-        {
-          label: "Hours Used",
-          amount: 18,
-        },
-        {
-          label: "Hours Remaining",
-          amount: 28,
-        },
-        {
-          label: "Total Growth",
-          amount: 46,
-        },
-      ],
-    },
-  ],
+  employeeId: "12345",
+  billable: {
+    currentHours: 550,
+    currentTarget: 500,
+    totalTarget: 1800,
+  },
+  growth: {
+    hoursUsed: 18,
+    hoursRemaining: 28,
+    totalGrowth: 46,
+  },
 }

@@ -4,25 +4,39 @@ import Section from "@home/Section"
 
 import { EmployeeTimeTracking } from "@globals/constants"
 
-const Hours = ({ title, hours }) => (
-  <Section color="green" label={title} className="TimeTracker-Hours">
-    {hours.map(({ label, amount }, index) => (
-      <div key={index} className="TimeTracker-Hours-details">
-        <span>{label}</span>
-        <span>{amount}</span>
-      </div>
-    ))}
-  </Section>
+export const LineItem = ({ label, value }) => (
+  <div className="TimeTracker-Hours-details">
+    <span>{label}:</span>
+    <span>{value}</span>
+  </div>
 )
 
-const TimeTracker = () => {
-  const { data } = EmployeeTimeTracking
+export const BillableHours = ({ currentHours, currentTarget, totalTarget }) => {
+  return (
+    <Section color="green" label="Target Hours" className="TimeTracker-Hours">
+      <LineItem label="Current Hours" value={currentHours} />
+      <LineItem label="Current Target" value={currentTarget} />
+      <LineItem label="Total Target" value={totalTarget} />
+    </Section>
+  )
+}
 
+export const GrowthHours = ({ hoursUsed, hoursRemaining, totalGrowth }) => {
+  return (
+    <Section color="green" label="Growth Time" className="TimeTracker-Hours">
+      <LineItem label="Hours Used" value={hoursUsed} />
+      <LineItem label="Hours Remaining" value={hoursRemaining} />
+      <LineItem label="Total Growth" value={totalGrowth} />
+    </Section>
+  )
+}
+
+const TimeTracker = () => {
+  const { billable, growth } = EmployeeTimeTracking
   return (
     <Container>
-      {data.map(({ title, hours }, index) => (
-        <Hours key={index} title={title} hours={hours} />
-      ))}
+      <BillableHours {...billable} />
+      <GrowthHours {...growth} />
     </Container>
   )
 }
