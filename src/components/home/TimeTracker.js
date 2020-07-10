@@ -1,54 +1,61 @@
 import React from "react"
 import styled from "styled-components"
+import Section from "@home/Section"
 
-import {EmployeeTimeTracking} from "@globals/constants"
+import { EmployeeTimeTracking } from "@globals/constants"
 
+export const LineItem = ({ label, value }) => (
+  <div className="TimeTracker-Hours-details">
+    <span>{label}:</span>
+    <span>{value}</span>
+  </div>
+)
 
-export default function TimeTracker() {
-  const {billable, training, pto} = EmployeeTimeTracking
-  const remainingTraining = training.totalHours - training.currentHours
+export const BillableHours = ({ currentHours, currentTarget, totalTarget }) => {
+  return (
+    <Section color="green" label="Target Hours" className="TimeTracker-Hours">
+      <LineItem label="Current Hours" value={currentHours} />
+      <LineItem label="Current Target" value={currentTarget} />
+      <LineItem label="Total Target" value={totalTarget} />
+    </Section>
+  )
+}
 
+export const GrowthHours = ({ hoursUsed, hoursRemaining, totalGrowth }) => {
+  return (
+    <Section color="green" label="Growth Time" className="TimeTracker-Hours">
+      <LineItem label="Hours Used" value={hoursUsed} />
+      <LineItem label="Hours Remaining" value={hoursRemaining} />
+      <LineItem label="Total Growth" value={totalGrowth} />
+    </Section>
+  )
+}
+
+const TimeTracker = () => {
+  const { billable, growth } = EmployeeTimeTracking
   return (
     <Container>
-      <table>
-        <tr>
-          <th colSpan="2">Target Hours</th>
-          <th colSpan="2">Growth Time</th>
-          <th colSpan="2">PTO</th>
-        </tr>
-        <tr>
-          <td>Current Hours: </td>
-          <td>{billable.currentHours}</td>
-          <td>Hours Used: </td>
-          <td>{training.currentHours}</td>
-          <td>Hours Used: </td>
-          <td>{pto.hoursUsed}</td>
-        </tr>
-        <tr>
-          <td>Target Hours: </td>
-          <td>{billable.currentTarget}</td>
-          <td>Hours Remaining: </td>
-          <td>{remainingTraining}</td>
-          <td>Hours Remaining: </td>
-          <td>{pto.hoursRemaining}</td>
-        </tr>
-        <tr>
-          <td>Total Target: </td>
-          <td>{billable.totalTarget}</td>
-          <td>Total Growth: </td>
-          <td>{training.totalHours}</td>
-          <td>Hours not yet accrued: </td>
-          <td>{pto.hoursNotAccrued}</td>
-        </tr>
-      </table>
+      <BillableHours {...billable} />
+      <GrowthHours {...growth} />
     </Container>
   )
 }
 
+export default TimeTracker
+
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
-  table {
-    width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .TimeTracker-Hours {
+    margin: 8px;
+    width: 500px;
+    min-width: 300px;
+
+    .TimeTracker-Hours-details {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 `
