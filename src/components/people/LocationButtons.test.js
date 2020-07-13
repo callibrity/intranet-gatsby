@@ -25,7 +25,7 @@ describe('LocationButtons', () => {
     });
 
     it('Should set Cincinnati blue', () => {
-        const wrapper = mount(<ThemeProvider theme={theme}><LocationButtons location={'Cincinnati'} /></ThemeProvider>);
+        const wrapper = mount(<LocationButtons location={'Cincinnati'} />);
         const buttons = wrapper.find(ButtonFilter);
 
         expect(buttons.at(0)).toHaveStyleRule('background-color', blue);
@@ -33,7 +33,7 @@ describe('LocationButtons', () => {
     });
 
     it('Should set Columbus blue', () => {
-        const wrapper = mount(<ThemeProvider theme={theme}><LocationButtons location={'Columbus'} /></ThemeProvider>);
+        const wrapper = mount(<LocationButtons location={'Columbus'} />);
         const buttons = wrapper.find(ButtonFilter);
 
         expect(buttons.at(0)).toHaveStyleRule('background-color', darkerBlue);

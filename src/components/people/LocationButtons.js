@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-
+import { blue, darkerBlue } from '@globals/theme';
 import { standardButton } from "@globals/styles"
 import { peopleLocationButtonList } from "@globals/constants"
 
@@ -31,7 +31,7 @@ const Container = styled.div`
 
 export const ButtonFilter = styled.div`
   ${standardButton};
-  background-color: ${({location, value, theme : {blue, darkerBlue}}) => location === value ? blue : darkerBlue};
+  background-color: ${({location, value }) => location === value ? blue : darkerBlue};
   font-size: 16px;
   padding: 3px 5px;
   margin-right: 20px;
