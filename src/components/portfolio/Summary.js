@@ -1,28 +1,28 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
-import InfoItem from "./InfoItem"
-import ProfilePic from "./ProfilePic";
 import { whiteContainer } from "globals/styles"
 import { ProfileContext } from "@globals/contexts"
 import { profileSummaryList } from "@globals/constants"
+import ProfilePic from "./ProfilePic"
+import InfoItem from "./InfoItem"
 
-export default function Summary(){
-  const {employee, setEmployee} = useContext(ProfileContext)
+export default function Summary() {
+  const { employee, setEmployee } = useContext(ProfileContext)
 
-  const info = profileSummaryList.map(({label, data}) => 
+  const info = profileSummaryList.map(({ label, data }) => (
     <InfoItem
-      key={label} 
-      label={label} 
+      key={label}
+      label={label}
       data={data}
       info={employee[data]}
       setEmployee={setEmployee}
     />
-  )
+  ))
 
-  return(
+  return (
     <Container>
       <Title>PROFESSIONAL DETAILS</Title>
-      <ProfilePic/>
+      <ProfilePic />
       <InfoContainer>
         {info}
       </InfoContainer>
@@ -41,10 +41,6 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 20px;
   padding: 10px 0;
-`
-
-const Image = styled.img`
-  width: 100%;
 `
 
 const InfoContainer = styled.div`

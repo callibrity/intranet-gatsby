@@ -1,6 +1,6 @@
 import React from "react"
 import { mount } from "enzyme"
-import { googleClientId } from "@globals/constants" 
+import { googleClientId } from "@globals/constants"
 import { UserContext } from "@globals/contexts"
 import Login from "@pages/login"
 
@@ -13,48 +13,47 @@ const mockSignIn = jest.fn()
 const contextProps = {
   value: {
     setUsername: mockSetUsername,
-    setUserEmail: mockSetUserEmail
-  }
-} 
+    setUserEmail: mockSetUserEmail,
+  },
+}
 
 jest.mock("gatsby", () => ({
   ...jest.requireActual("gatsby"),
-  navigate: val => mockNavigate(val)
+  navigate: (val) => mockNavigate(val),
 }))
 
 jest.mock("react-google-login", () => ({
   ...jest.requireActual("react-google-login"),
-  useGoogleLogin: val => mockUseGoogleLogin(val)
+  useGoogleLogin: (val) => mockUseGoogleLogin(val),
 }))
 
 mockUseGoogleLogin.mockReturnValue({ signIn: mockSignIn })
 
 describe("Login component", () => {
-
   beforeEach(() => { jest.clearAllMocks() })
 
   it("should render", () => {
-    const wrapper = mount(<UserContext.Provider { ...contextProps }><Login /></UserContext.Provider>)
+    const wrapper = mount(<UserContext.Provider {...contextProps}><Login /></UserContext.Provider>)
 
     expect(wrapper.exists()).toEqual(true)
   })
 
   it("should setUsername, setUserEmail, navigate on google login success", () => {
-    const wrapper = mount(<UserContext.Provider { ...contextProps }><Login /></UserContext.Provider>)
+    const wrapper = mount(<UserContext.Provider {...contextProps}><Login /></UserContext.Provider>)
 
     expect(wrapper.exists()).toEqual(true)
     expect(mockUseGoogleLogin).toHaveBeenCalledTimes(1)
     expect(mockUseGoogleLogin).toHaveBeenCalledWith({
       clientId: googleClientId,
       onSuccess: expect.any(Function),
-      isSignedIn: true
+      isSignedIn: true,
     })
 
     mockUseGoogleLogin.mock.calls[0][0].onSuccess({
       profileObj: {
         name: "nameHere",
-        email: "emailHere"
-      }
+        email: "emailHere",
+      },
     })
 
     expect(mockSetUsername).toHaveBeenCalledTimes(1)
@@ -66,9 +65,9 @@ describe("Login component", () => {
   })
 
   it("should signIn onClick", () => {
-    const wrapper = mount(<UserContext.Provider { ...contextProps }><Login /></UserContext.Provider>)
+    const wrapper = mount(<UserContext.Provider {...contextProps}><Login /></UserContext.Provider>)
     const signInButton = wrapper.find("button")
-    
+
     signInButton.simulate("click")
 
     expect(mockSignIn).toHaveBeenCalledTimes(1)

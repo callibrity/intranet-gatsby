@@ -1,7 +1,7 @@
-import React, { useContext, useState, Fragment } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
-import EditImageModal from "./EditImageModal"
 import { ProfileContext } from "@globals/contexts"
+import EditImageModal from "./EditImageModal"
 
 export default function ProfilePic() {
   const { employee, editMode } = useContext(ProfileContext)
@@ -17,14 +17,14 @@ export default function ProfilePic() {
 
   function getImage() {
     if (!editMode) return <Image onClick={onImageClick} src={employee.photo} />
-    else return <ImageEditMode onClick={onImageClick} src={employee.photo} />
+    return <ImageEditMode onClick={onImageClick} src={employee.photo} />
   }
 
   return (
-    <Fragment>
+    <>
       <EditImageModal Show={showModal} onClose={closeModal} />
       {getImage()}
-    </Fragment>
+    </>
   )
 }
 

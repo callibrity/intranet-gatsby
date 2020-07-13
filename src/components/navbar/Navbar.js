@@ -7,7 +7,6 @@ import NavLinks from "./NavLinks"
 import SearchBar from "./SearchBar"
 
 export default function Navbar() {
-
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "callibrity-logo.png" }) {
@@ -22,7 +21,7 @@ export default function Navbar() {
 
   return (
     <Container>
-      <Link to='/'>
+      <Link to="/">
         <Img fixed={data.file.childImageSharp.fixed} alt="Callibrity Logo" />
       </Link>
       <SearchBar />

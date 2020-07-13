@@ -1,16 +1,15 @@
 import React from "react"
 import styled from "styled-components"
-import {Link} from "gatsby"
-
-import {wikiHomeLinks} from "@globals/constants"
-import {whiteContainer} from "@globals/styles"
+import { Link } from "gatsby"
+import { wikiHomeLinks } from "@globals/constants"
+import { whiteContainer } from "@globals/styles"
 
 export default function Header() {
-  const linkList = wikiHomeLinks.map(({label, link}) => (
+  const linkList = wikiHomeLinks.map(({ label, link }) => (
     <StyledLink to={link} key={label}>{label}</StyledLink>
   ))
 
-  return(
+  return (
     <Container>
       <WelcomeContainer>
         <Message>Welcome to WikiCallibrity</Message>
@@ -38,7 +37,7 @@ const WelcomeContainer = styled.div`
 
 const Message = styled.div`
   font-size: 16px;
-  color: ${props => props.theme.blue}
+  color: ${(props) => props.theme.blue}
 `
 
 const Description = styled.div`

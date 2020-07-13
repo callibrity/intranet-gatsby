@@ -2,8 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 export default function PageList() {
-
-  return(
+  return (
     <Container>
       TBD
     </Container>

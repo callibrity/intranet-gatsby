@@ -1,4 +1,5 @@
 const React = require("react")
+
 const gatsby = jest.requireActual("gatsby")
 const { mockGraphQLImage } = require("@globals/testConstants")
 
@@ -17,11 +18,10 @@ module.exports = {
       replace,
       to,
       ...rest
-    }) =>
-      React.createElement("a", {
-        ...rest,
-        href: to,
-      })
+    }) => React.createElement("a", {
+      ...rest,
+      href: to,
+    }),
   ),
   StaticQuery: jest.fn(),
   navigate: jest.fn(),

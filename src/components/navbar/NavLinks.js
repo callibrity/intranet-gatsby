@@ -1,11 +1,10 @@
-import React, {useContext} from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-
-import QuickLinks from "./QuickLinks"
-import UserDropdown from "./UserDropdown"
 import { UserContext } from "@globals/contexts"
 import { linkStyle } from "@globals/styles"
+import QuickLinks from "./QuickLinks"
+import UserDropdown from "./UserDropdown"
 
 export default function NavLinks() {
   const { username } = useContext(UserContext)
@@ -29,4 +28,3 @@ const Container = styled.div`
 const StyledLink = styled(Link)`
     ${linkStyle}
 `
- 

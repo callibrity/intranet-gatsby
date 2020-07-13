@@ -1,13 +1,12 @@
 import React from "react"
 import styled from "styled-components"
-
 import { mockWikiPages } from "@globals/constants"
 import Header from "./Header"
 import SearchBar from "./SearchBar"
 import PageList from "./PageList"
 
 export default function WikiHome() {
-  return(
+  return (
     <Container>
       <InnerContainer>
         <Header />

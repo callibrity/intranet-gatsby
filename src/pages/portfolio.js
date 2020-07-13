@@ -1,7 +1,6 @@
 import React, { useReducer, useEffect, useState } from "react"
 import { parse } from "query-string"
 import styled from "styled-components"
-
 import API from "@globals/api"
 import Summary from "@portfolio/Summary"
 import Details from "@portfolio/Details"
@@ -27,7 +26,9 @@ export default function PortfolioPage() {
   const [employee, setEmployee] = useReducer(reducer, apiInitialMessage)
   const { name } = parse(window.location.search)
 
-  const profileInfo = { employee, setEmployee, editMode, setEditMode }
+  const profileInfo = {
+    employee, setEmployee, editMode, setEditMode,
+  }
 
   useEffect(() => {
     API.get(`${employeesAPINameString}${name}`)
@@ -43,7 +44,7 @@ export default function PortfolioPage() {
     <ProfileContext.Provider value={profileInfo}>
       <Container>
         <InnerContainer>
-          <Header/>
+          <Header />
           <LowerContainer>
             <div>
               <Summary />

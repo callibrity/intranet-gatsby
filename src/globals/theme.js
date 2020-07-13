@@ -11,7 +11,6 @@ export const tan = "#f9f1d2"
 export const darkerBlue = "#1d2542"
 export const darkerGreen = "21282f"
 
-
 const theme = {
   lightOrange,
   orange,
@@ -25,25 +24,25 @@ const theme = {
   tan,
   darkerBlue,
   darkerGreen,
-  "orangeGradient": [
+  orangeGradient: [
     lightOrange,
     orange,
     "#f6721e",
-    darkOrange
+    darkOrange,
   ],
-  "blueGradient": [
+  blueGradient: [
     lightBlue,
     "#26d0d7",
     blue,
     "#028ef6",
     "#0e67eb",
-    darkBlue
+    darkBlue,
   ],
-  "greenGradient": [
+  greenGradient: [
     "#97db24",
     green,
     "#009a00",
-    darkGreen
+    darkGreen,
   ],
 }
 

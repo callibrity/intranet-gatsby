@@ -1,15 +1,15 @@
 import React from "react"
 import styled from "styled-components"
 import { FaChevronDown, FaSearch } from "react-icons/fa"
-
-import {whiteContainer} from "@globals/styles"
+import { whiteContainer } from "@globals/styles"
 
 export default function SearchBar() {
-
-  return(
+  return (
     <Container>
       <CategoryDropdown>
-        All <FaChevronDown />
+        All
+        {" "}
+        <FaChevronDown />
       </CategoryDropdown>
       <SearchButton>
         <FaSearch />
@@ -32,7 +32,7 @@ const CategoryDropdown = styled.div`
 `
 
 const SearchButton = styled.div`
-  background-color: ${props => props.theme.orange};
+  background-color: ${(props) => props.theme.orange};
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react"
 import { FaSearch } from "react-icons/fa"
 import styled from "styled-components"
-
 import { standardInput } from "@globals/styles"
 import { UserContext } from "@globals/contexts"
 
@@ -10,7 +9,7 @@ export default function SearchBar() {
   const { username } = useContext(UserContext)
 
   return !username ? null : (
-    <Container username={username} >
+    <Container username={username}>
       <IconContainer>
         <FaSearch />
       </IconContainer>
@@ -23,7 +22,7 @@ export default function SearchBar() {
       />
     </Container>
   )
-} 
+}
 
 const Container = styled.div`
   ${standardInput}

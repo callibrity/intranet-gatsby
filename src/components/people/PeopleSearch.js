@@ -1,20 +1,30 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
-import { FaSearch } from "react-icons/fa" 
+import { FaSearch } from "react-icons/fa"
 
-export default function PeopleSearch({name, setName}){
-  return(
+export default function PeopleSearch({ name, setName }) {
+  return (
     <OuterContainer>
       <Container>
         <StyledFaSearch />
-        <Search 
+        <Search
           type="search"
-          value={name} 
-          onChange={(e) => setName(e.target.value)} 
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </Container>
     </OuterContainer>
   )
+}
+
+PeopleSearch.defaultProps = {
+  name: "",
+}
+
+PeopleSearch.propTypes = {
+  name: PropTypes.string,
+  setName: PropTypes.func.isRequired,
 }
 
 const OuterContainer = styled.div`
@@ -34,7 +44,7 @@ const Container = styled.div`
 
   :focus {
     outline: none;
-    box-shadow: inset 0 1px 0 rgba(0,0,0,0.1), 0 0 0 2px ${({theme: {blue}}) => blue};
+    box-shadow: inset 0 1px 0 rgba(0,0,0,0.1), 0 0 0 2px ${({ theme: { blue } }) => blue};
   }
 `
 

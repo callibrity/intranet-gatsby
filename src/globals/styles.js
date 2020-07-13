@@ -1,4 +1,4 @@
-import {blue, darkerBlue} from "./theme.js"
+import { blue, darkerBlue } from "./theme.js"
 
 export const whiteContainer = `
   background-color: white;
@@ -41,11 +41,10 @@ export const standardInput = `
   padding: 5px;
 `
 
-export const linkStyle =  `
+export const linkStyle = `
   padding: 8px;
   
   :hover {
     color: #dae0e5;
   }
 `
-

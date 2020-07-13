@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
 import "./PersonTile.css"
@@ -16,4 +17,16 @@ export default function PersonTile({ name, role, photo }) {
       </div>
     </Link>
   )
+}
+
+PersonTile.defaultProps = {
+  name: "",
+  role: "",
+  photo: "",
+}
+
+PersonTile.propTypes = {
+  name: PropTypes.string,
+  role: PropTypes.string,
+  photo: PropTypes.string,
 }
