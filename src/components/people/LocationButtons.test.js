@@ -3,8 +3,6 @@ import { shallow, mount } from 'enzyme';
 import LocationButtons, { ButtonFilter } from '@components/people/LocationButtons';
 import { peopleLocationButtonList } from "@globals/constants";
 import { blue, darkerBlue } from '@globals/theme';
-import { ThemeProvider } from "styled-components"
-import theme from '@globals/theme';
 import 'jest-styled-components';
 
 describe('LocationButtons', () => {
