@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
-import { whiteContainer } from "globals/styles"
+import { whiteContainer } from "@globals/styles"
 import { ProfileContext } from "@globals/contexts"
 import { profileSummaryList } from "@globals/constants"
 import ProfilePic from "./ProfilePic"

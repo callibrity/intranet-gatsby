@@ -15,7 +15,9 @@ export default function Header() {
 
   function handleSaveClick() {
     API.put(`${employeesAPIString}`, employee)
+      // eslint-disable-next-line no-console
       .then((res) => console.log(res))
+      // eslint-disable-next-line no-console
       .catch((err) => console.log(err))
 
     setEditMode(false)

@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { standardButton } from "globals/styles"
+import { standardButton } from "@globals/styles"
 
 export default function ReusableButton({ onClick, text }) {
   return (

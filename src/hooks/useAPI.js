@@ -11,6 +11,7 @@ export default function useAPI(apiString) {
       .then((res) => {
         setApiResult(res.data)
       })
+      // eslint-disable-next-line no-unused-vars
       .catch((err) => {
         setApiResult(apiErrorMessage)
       })

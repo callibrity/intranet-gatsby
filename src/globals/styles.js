@@ -1,4 +1,4 @@
-import { blue, darkerBlue } from "./theme.js"
+import { blue, darkerBlue } from "./theme"
 
 export const whiteContainer = `
   background-color: white;

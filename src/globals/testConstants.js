@@ -104,6 +104,16 @@ const testName = "testName"
 
 export const mockLoginResponse = { profileObj: { name: testName, email: "test" } }
 
+export const newsAPIString = {}
+
+export const employeesAPINameString = {}
+
+export const employeesAPIOfficeString = {}
+
+export const mockPeopleResponse = {}
+
+export const mockProfileResponse = {}
+
 export function queryElements(app) {
   return {
     callibrityLogo: () => app.queryByAltText(/callibrity logo/i),

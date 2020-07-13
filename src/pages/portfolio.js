@@ -19,6 +19,8 @@ function reducer(state, action) {
       ...load,
     }
   }
+
+  return { ...state }
 }
 
 export default function PortfolioPage() {
@@ -35,6 +37,7 @@ export default function PortfolioPage() {
       .then((res) => {
         setEmployee({ type: "initial", load: res.data[0] })
       })
+      // eslint-disable-next-line no-unused-vars
       .catch((err) => {
         setEmployee(apiErrorMessage)
       })

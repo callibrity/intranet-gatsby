@@ -1,6 +1,6 @@
 import React from "react"
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Router } from "@reach/router"
-
 import WikiHome from "@wiki/WikiHome"
 import WikiPage from "@wiki/WikiPage"
 

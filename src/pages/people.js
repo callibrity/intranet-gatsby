@@ -16,12 +16,15 @@ export default function People() {
       .sort((personA, personB) => {
         const a = personA.name.toLowerCase()
         const b = personB.name.toLowerCase()
-        return (a < b) ? -1 : (a > b) ? 1 : 0
+
+        if (a < b) return -1
+        if (a > b) return 1
+        return 0
       })
-      .map(({ photo, name, role }) => (
+      .map(({ photo, name: empName, role }) => (
         <PersonTile
-          key={name}
-          name={name}
+          key={empName}
+          name={empName}
           role={role}
           photo={photo}
         />
