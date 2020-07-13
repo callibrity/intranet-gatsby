@@ -5,7 +5,6 @@ import { peopleLocationButtonList } from "@globals/constants";
 import { blue, darkerBlue } from '@globals/theme';
 import { ThemeProvider } from "styled-components"
 import theme from '@globals/theme';
-
 import 'jest-styled-components';
 
 describe('LocationButtons', () => {
@@ -28,7 +27,7 @@ describe('LocationButtons', () => {
     it('Should set Cincinnati blue', () => {
         const wrapper = mount(<ThemeProvider theme={theme}><LocationButtons location={'Cincinnati'} /></ThemeProvider>);
         const buttons = wrapper.find(ButtonFilter);
-        
+
         expect(buttons.at(0)).toHaveStyleRule('background-color', blue);
         expect(buttons.at(1)).toHaveStyleRule('background-color', darkerBlue);
     });
