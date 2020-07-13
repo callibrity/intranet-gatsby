@@ -1,8 +1,8 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Section from "@home/Section"
 
-import { EmployeeTimeTracking } from "@globals/constants"
+import API from "@globals/api"
 
 export const LineItem = ({ label, value }) => (
   <div className="TimeTracker-Hours-details">
@@ -32,11 +32,33 @@ export const GrowthHours = ({ hoursUsed, hoursRemaining, totalGrowth }) => {
 }
 
 const TimeTracker = () => {
-  const { billable, growth } = EmployeeTimeTracking
+  const initialState = {
+    billable: {
+      currentHours: 0,
+      currentTarget: 0,
+      totalTarget: 0,
+    },
+    growth: {
+      hoursUsed: 0,
+      hoursRemaining: 0,
+      totalGrowth: 0,
+    },
+  }
+
+  const [data, setData] = useState(initialState)
+
+  useEffect(() => {
+    API.get("http://localhost:5000/Employee/")
+      .then(res => {
+        setData(res.data)
+      })
+      .catch(ex => console.log(ex))
+  }, [])
+
   return (
     <Container>
-      <BillableHours {...billable} />
-      <GrowthHours {...growth} />
+      <BillableHours {...data.billable} />
+      <GrowthHours {...data.growth} />
     </Container>
   )
 }
