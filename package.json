@@ -25,11 +25,13 @@
     "install": "^0.13.0",
     "npm": "^6.14.5",
     "prop-types": "^15.7.2",
+    "query-string": "^6.13.1",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.12.0",
     "react-google-login": "^5.1.20",
     "react-helmet": "^6.0.0",
+    "react-icons": "^3.10.0",
     "react-markdown": "^4.3.1",
     "react-modal": "^3.11.2",
     "styled-components": "^5.1.1",
@@ -43,12 +45,16 @@
     "babel-preset-gatsby": "^0.4.9",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "eslint-config-react-app": "^5.2.1",
-    "eslint-plugin-jest": "^23.13.2",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "jest-styled-components": "^7.0.2",
-    "prettier": "2.0.5",
     "react-test-renderer": "^16.13.1"
   },
   "keywords": [
@@ -58,12 +64,12 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "gatsby develop --port 3000",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.js*"
   },
   "repository": {
     "type": "git",

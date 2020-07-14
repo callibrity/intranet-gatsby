@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "jsx": "react",
     "paths": {
       "@home/*": [
         "src/components/home/*"
