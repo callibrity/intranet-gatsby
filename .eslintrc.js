@@ -19,7 +19,6 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', '**/*.test.jsx', './config/setupTests.js'] }],
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'linebreak-style': 0,
     'react/jsx-props-no-spreading': 0,
   },
@@ -28,18 +27,21 @@ module.exports = {
       version: 'detect',
     },
     'import/resolver': {
-      alias: [
-        ['@home', './src/components/home'],
-        ['@navbar', './src/components/navbar'],
-        ['@people', './src/components/people'],
-        ['@portfolio', './src/components/portfolio'],
-        ['@wiki', './src/components/wiki'],
-        ['@components', './src/components'],
-        ['@globals', './src/globals'],
-        ['@hooks', './src/hooks'],
-        ['@images', './src/images'],
-        ['@pages', './src/pages'],
-      ],
+      alias: {
+        map: [
+          ['@home', './src/components/home'],
+          ['@navbar', './src/components/navbar'],
+          ['@people', './src/components/people'],
+          ['@portfolio', './src/components/portfolio'],
+          ['@wiki', './src/components/wiki'],
+          ['@components', './src/components'],
+          ['@globals', './src/globals'],
+          ['@hooks', './src/hooks'],
+          ['@images', './src/images'],
+          ['@pages', './src/pages'],
+        ],
+        extensions: ['.js', '.jsx'],
+      },
     },
   },
 };
