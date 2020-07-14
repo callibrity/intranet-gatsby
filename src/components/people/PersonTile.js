@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 import "./PersonTile.css"
 
-export default function PersonTile({ name, role, photo }) {
+const PersonTile = ({ name, role, photo }) => {
   return (
     <Link to={`/portfolio?name=${name}`}>
       <div className="card tile">
@@ -17,3 +17,5 @@ export default function PersonTile({ name, role, photo }) {
     </Link>
   )
 }
+
+export default PersonTile;
