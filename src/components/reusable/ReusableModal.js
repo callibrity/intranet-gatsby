@@ -1,7 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Modal from "react-bootstrap/Modal"
-import "bootstrap/dist/css/bootstrap.min.css"
+import React from 'react';
+import PropTypes from 'prop-types';
+import Modal from 'react-bootstrap/Modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function ReusableModal({
   Show, handleClose, Header, Body, Footer,
@@ -14,13 +14,13 @@ export default function ReusableModal({
       <Modal.Body>{Body}</Modal.Body>
       <Modal.Footer>{Footer}</Modal.Footer>
     </Modal>
-  )
+  );
 }
 
 ReusableModal.defaultProps = {
-  Header: "",
-  Footer: "",
-}
+  Header: '',
+  Footer: '',
+};
 
 ReusableModal.propTypes = {
   Show: PropTypes.bool.isRequired,
@@ -36,4 +36,4 @@ ReusableModal.propTypes = {
     PropTypes.element,
     PropTypes.string,
   ]),
-}
+};

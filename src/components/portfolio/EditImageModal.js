@@ -1,13 +1,13 @@
-import React, { useContext } from "react"
-import PropTypes from "prop-types"
-import { ProfileContext } from "@globals/contexts"
-import ReusableModal from "../reusable/ReusableModal"
-import ReusableButton from "../reusable/ReusableButton"
-import InfoItem from "./InfoItem"
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import { ProfileContext } from '@globals/contexts';
+import ReusableModal from '../reusable/ReusableModal';
+import ReusableButton from '../reusable/ReusableButton';
+import InfoItem from './InfoItem';
 
 export default function EditImageModal(props) {
-  const { employee, setEmployee } = useContext(ProfileContext)
-  const { onClose, Show } = props
+  const { employee, setEmployee } = useContext(ProfileContext);
+  const { onClose, Show } = props;
 
   function getModalBody() {
     return (
@@ -18,7 +18,7 @@ export default function EditImageModal(props) {
         info={employee.photo}
         setEmployee={setEmployee}
       />
-    )
+    );
   }
 
   function getModalFooter() {
@@ -26,7 +26,7 @@ export default function EditImageModal(props) {
       <div>
         <ReusableButton onClick={onClose} text="Close" />
       </div>
-    )
+    );
   }
 
   return (
@@ -37,10 +37,10 @@ export default function EditImageModal(props) {
       Body={getModalBody()}
       Footer={getModalFooter()}
     />
-  )
+  );
 }
 
 EditImageModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   Show: PropTypes.bool.isRequired,
-}
+};

@@ -1,35 +1,35 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import { standardButton } from "@globals/styles"
-import { peopleLocationButtonList } from "@globals/constants"
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { standardButton } from '@globals/styles';
+import { peopleLocationButtonList } from '@globals/constants';
 
 export default function LocationButtons({ location, setLocation }) {
   const list = peopleLocationButtonList.map(({ label, value }) => (
     <ButtonFilter key={label} value={value} location={location} onClick={() => setLocation(value)}>
       {label}
     </ButtonFilter>
-  ))
+  ));
 
   return (
     <Container>
       {list}
     </Container>
 
-  )
+  );
 }
 
 LocationButtons.propTypes = {
   location: PropTypes.string.isRequired,
   setLocation: PropTypes.func.isRequired,
-}
+};
 
 const Container = styled.div`
   margin-top: 20px;
   display: flex;
   margin-bottom: 20px;
   padding-left: 10px;
-`
+`;
 
 const ButtonFilter = styled.div`
   ${standardButton};
@@ -37,4 +37,4 @@ const ButtonFilter = styled.div`
   font-size: 16px;
   padding: 3px 5px;
   margin-right: 20px;
-`
+`;

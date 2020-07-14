@@ -1,10 +1,10 @@
-import React from "react"
-import { Dropdown } from "react-bootstrap"
-import { quickLinks } from "@globals/constants"
-import NavDropdown from "./NavDropdown"
+import React from 'react';
+import { Dropdown } from 'react-bootstrap';
+import { quickLinks } from '@globals/constants';
+import NavDropdown from './NavDropdown';
 
 export default function QuickLinks() {
-  const { Item } = Dropdown
+  const { Item } = Dropdown;
   return (
     <NavDropdown label="Quick Links">
       {quickLinks.map(({ title, url }) => (
@@ -13,5 +13,5 @@ export default function QuickLinks() {
         </Item>
       ))}
     </NavDropdown>
-  )
+  );
 }

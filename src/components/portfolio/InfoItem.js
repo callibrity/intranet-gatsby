@@ -1,19 +1,19 @@
-import React, { useContext } from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import { ProfileContext } from "@globals/contexts"
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { ProfileContext } from '@globals/contexts';
 
 export default function InfoItem({ label, data, info }) {
-  const { editMode, setEmployee } = useContext(ProfileContext)
+  const { editMode, setEmployee } = useContext(ProfileContext);
 
-  const text = typeof info === "string" || info === undefined ? info
-    : info.reduce((str, ele) => `${str}, ${ele}`)
+  const text = typeof info === 'string' || info === undefined ? info
+    : info.reduce((str, ele) => `${str}, ${ele}`);
 
   function handleChange(e) {
-    const { value, name } = e.target
-    const load = {}
-    load[name] = value
-    setEmployee({ type: "update", load })
+    const { value, name } = e.target;
+    const load = {};
+    load[name] = value;
+    setEmployee({ type: 'update', load });
   }
 
   return (
@@ -26,14 +26,14 @@ export default function InfoItem({ label, data, info }) {
         onChange={handleChange}
       />
     </Container>
-  )
+  );
 }
 
 InfoItem.defaultProps = {
-  label: "",
-  data: "",
-  info: "",
-}
+  label: '',
+  data: '',
+  info: '',
+};
 
 InfoItem.propTypes = {
   label: PropTypes.string,
@@ -42,17 +42,17 @@ InfoItem.propTypes = {
     PropTypes.string,
   ]),
   info: PropTypes.string,
-}
+};
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 5px;
-`
+`;
 
 const Label = styled.div`
   font-weight: 700;
-`
+`;
 
 const Data = styled.input`
   word-wrap: break-word;
@@ -60,4 +60,4 @@ const Data = styled.input`
   border: 0px solid;
   background-color: white;
   color: black;
-`
+`;

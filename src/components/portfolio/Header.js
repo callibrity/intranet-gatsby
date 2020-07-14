@@ -1,16 +1,16 @@
-import React, { useContext } from "react"
-import styled from "styled-components"
-import API from "@globals/api"
-import { UserContext, ProfileContext } from "@globals/contexts"
-import { employeesAPIString } from "@globals/constants"
-import ReusableButton from "../reusable/ReusableButton"
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import API from '@globals/api';
+import { UserContext, ProfileContext } from '@globals/contexts';
+import { employeesAPIString } from '@globals/constants';
+import ReusableButton from '../reusable/ReusableButton';
 
 export default function Header() {
-  const { userEmail } = useContext(UserContext)
-  const { employee, editMode, setEditMode } = useContext(ProfileContext)
+  const { userEmail } = useContext(UserContext);
+  const { employee, editMode, setEditMode } = useContext(ProfileContext);
 
   function handleEditClick() {
-    setEditMode(!editMode)
+    setEditMode(!editMode);
   }
 
   function handleSaveClick() {
@@ -18,27 +18,27 @@ export default function Header() {
       // eslint-disable-next-line no-console
       .then((res) => console.log(res))
       // eslint-disable-next-line no-console
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
 
-    setEditMode(false)
+    setEditMode(false);
   }
 
   function editButtons() {
     if (employee.callibrity_email === userEmail) {
       return (
         <>
-          <ReusableButton onClick={handleEditClick} text={editMode ? "Cancel Editing" : "Edit Profile"} />
+          <ReusableButton onClick={handleEditClick} text={editMode ? 'Cancel Editing' : 'Edit Profile'} />
           {editMode && <ReusableButton onClick={handleSaveClick} text="Save Profile" />}
         </>
-      )
-    } return null
+      );
+    } return null;
   }
 
   return (
     <Container>
       {editButtons()}
     </Container>
-  )
+  );
 }
 
 const Container = styled.div`
@@ -46,4 +46,4 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 20px 0;
-`
+`;

@@ -1,7 +1,7 @@
-const React = require("react")
+const React = require('react');
 
-const gatsby = jest.requireActual("gatsby")
-const { mockGraphQLImage } = require("@globals/testConstants")
+const gatsby = jest.requireActual('gatsby');
+const { mockGraphQLImage } = require('@globals/testConstants');
 
 module.exports = {
   ...gatsby,
@@ -18,7 +18,7 @@ module.exports = {
       replace,
       to,
       ...rest
-    }) => React.createElement("a", {
+    }) => React.createElement('a', {
       ...rest,
       href: to,
     }),
@@ -26,4 +26,4 @@ module.exports = {
   StaticQuery: jest.fn(),
   navigate: jest.fn(),
   useStaticQuery: () => mockGraphQLImage,
-}
+};

@@ -1,8 +1,8 @@
 // Package dependencies
-import React from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import { whiteContainer } from "@globals/styles"
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { whiteContainer } from '@globals/styles';
 
 // Component
 export default function Section({
@@ -15,14 +15,14 @@ export default function Section({
       </GroupHeader>
       {children}
     </Container>
-  )
+  );
 }
 
 Section.defaultProps = {
-  className: "",
-  color: "",
-  label: "",
-}
+  className: '',
+  color: '',
+  label: '',
+};
 
 Section.propTypes = {
   children: PropTypes.oneOfType([
@@ -32,14 +32,14 @@ Section.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
   label: PropTypes.string,
-}
+};
 
 // Styling
 const Container = styled.section`
   ${whiteContainer}
   display: inline-block;
   margin: 20px 0;
-`
+`;
 
 const GroupHeader = styled.div`
   display: flex;
@@ -51,4 +51,4 @@ const GroupHeader = styled.div`
   @media (max-width: 1000px) {
     font-size: 20px;
   }
-`
+`;

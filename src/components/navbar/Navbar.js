@@ -1,10 +1,10 @@
-import React from "react"
-import styled from "styled-components"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react';
+import styled from 'styled-components';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
-import NavLinks from "./NavLinks"
-import SearchBar from "./SearchBar"
+import NavLinks from './NavLinks';
+import SearchBar from './SearchBar';
 
 export default function Navbar() {
   const data = useStaticQuery(graphql`
@@ -17,7 +17,7 @@ export default function Navbar() {
         }
       }
     }
-  `)
+  `);
 
   return (
     <Container>
@@ -27,7 +27,7 @@ export default function Navbar() {
       <SearchBar />
       <NavLinks />
     </Container>
-  )
+  );
 }
 
 const Container = styled.div`
@@ -38,4 +38,4 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center; 
-`
+`;

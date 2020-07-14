@@ -1,13 +1,13 @@
-import React, { useContext } from "react"
-import styled from "styled-components"
-import { whiteContainer } from "@globals/styles"
-import { ProfileContext } from "@globals/contexts"
-import { profileSummaryList } from "@globals/constants"
-import ProfilePic from "./ProfilePic"
-import InfoItem from "./InfoItem"
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { whiteContainer } from '@globals/styles';
+import { ProfileContext } from '@globals/contexts';
+import { profileSummaryList } from '@globals/constants';
+import ProfilePic from './ProfilePic';
+import InfoItem from './InfoItem';
 
 export default function Summary() {
-  const { employee, setEmployee } = useContext(ProfileContext)
+  const { employee, setEmployee } = useContext(ProfileContext);
 
   const info = profileSummaryList.map(({ label, data }) => (
     <InfoItem
@@ -17,7 +17,7 @@ export default function Summary() {
       info={employee[data]}
       setEmployee={setEmployee}
     />
-  ))
+  ));
 
   return (
     <Container>
@@ -27,13 +27,13 @@ export default function Summary() {
         {info}
       </InfoContainer>
     </Container>
-  )
+  );
 }
 
 const Container = styled.div`
   ${whiteContainer};
   padding: 0;
-`
+`;
 
 const Title = styled.div`
   width: 100%;
@@ -41,11 +41,11 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 20px;
   padding: 10px 0;
-`
+`;
 
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
   justify-content: center;
-`
+`;

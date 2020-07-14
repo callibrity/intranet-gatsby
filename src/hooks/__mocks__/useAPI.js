@@ -5,17 +5,17 @@ import {
   mockNewsResponse,
   mockPeopleResponse,
   mockProfileResponse,
-} from "@globals/testConstants"
+} from '@globals/testConstants';
 
 export default function useAPI(apiString) {
   if (apiString === newsAPIString) {
-    return mockNewsResponse
+    return mockNewsResponse;
   }
   if (apiString.contains(employeesAPIOfficeString)) {
-    return mockPeopleResponse
+    return mockPeopleResponse;
   }
   if (apiString.contains(employeesAPINameString)) {
-    return mockProfileResponse
+    return mockProfileResponse;
   }
-  return null
+  return null;
 }

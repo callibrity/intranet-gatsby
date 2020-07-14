@@ -1,12 +1,12 @@
-import React, { useContext } from "react"
-import styled from "styled-components"
-import { whiteContainer } from "@globals/styles"
-import { ProfileContext } from "@globals/contexts"
-import { profileDetailsList } from "@globals/constants"
-import InfoItem from "./InfoItem"
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { whiteContainer } from '@globals/styles';
+import { ProfileContext } from '@globals/contexts';
+import { profileDetailsList } from '@globals/constants';
+import InfoItem from './InfoItem';
 
 export default function Details() {
-  const { employee, setEmployee } = useContext(ProfileContext)
+  const { employee, setEmployee } = useContext(ProfileContext);
 
   const info = profileDetailsList.map(({ label, data }) => (
     <InfoItem
@@ -16,7 +16,7 @@ export default function Details() {
       info={employee[data]}
       setEmployee={setEmployee}
     />
-  ))
+  ));
 
   return (
     <Container>
@@ -34,7 +34,7 @@ export default function Details() {
         </BioContainer>
       </LastSection>
     </Container>
-  )
+  );
 }
 
 const Container = styled.div`
@@ -42,7 +42,7 @@ const Container = styled.div`
   padding: 0;
   background-color: inherit;
   overflow: hidden;
-`
+`;
 
 const Title = styled.div`
   width: 100%;
@@ -50,23 +50,23 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 20px;
   padding: 10px 0;;
-`
+`;
 
 const InfoContainer = styled.div`
   padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-`
+`;
 
 const Section = styled.div`
   background-color: white;
   margin-bottom: 3px;
-`
+`;
 
 const LastSection = styled.div`
   background-color: white;
-`
+`;
 
 const BioContainer = styled.div`
   padding: 20px;
-`
+`;
