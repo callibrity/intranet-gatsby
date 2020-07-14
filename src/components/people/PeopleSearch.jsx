@@ -3,20 +3,18 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 
-export default function PeopleSearch({ name, setName }) {
-  return (
-    <OuterContainer>
-      <Container>
-        <StyledFaSearch />
-        <Search
-          type="search"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </Container>
-    </OuterContainer>
-  );
-}
+const PeopleSearch = ({ name, setName }) => (
+  <OuterContainer>
+    <Container>
+      <StyledFaSearch />
+      <Search
+        type="search"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+    </Container>
+  </OuterContainer>
+);
 
 PeopleSearch.defaultProps = {
   name: '',
@@ -26,6 +24,7 @@ PeopleSearch.propTypes = {
   name: PropTypes.string,
   setName: PropTypes.func.isRequired,
 };
+export default PeopleSearch;
 
 const OuterContainer = styled.div`
   padding-left: 10px;
@@ -48,11 +47,11 @@ const Container = styled.div`
   }
 `;
 
-const StyledFaSearch = styled(FaSearch)`
+export const StyledFaSearch = styled(FaSearch)`
   color: lightgray;
 `;
 
-const Search = styled.input`
+export const Search = styled.input`
   border: none;
   outline: none;
 `;

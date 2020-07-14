@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { blue, darkerBlue } from '@globals/theme';
 import { standardButton } from '@globals/styles';
 import { peopleLocationButtonList } from '@globals/constants';
 
-export default function LocationButtons({ location, setLocation }) {
+const LocationButtons = ({ location, setLocation }) => {
   const list = peopleLocationButtonList.map(({ label, value }) => (
     <ButtonFilter key={label} value={value} location={location} onClick={() => setLocation(value)}>
       {label}
@@ -15,9 +16,10 @@ export default function LocationButtons({ location, setLocation }) {
     <Container>
       {list}
     </Container>
-
   );
-}
+};
+
+export default LocationButtons;
 
 LocationButtons.propTypes = {
   location: PropTypes.string.isRequired,
@@ -33,7 +35,7 @@ const Container = styled.div`
 
 const ButtonFilter = styled.div`
   ${standardButton};
-  background-color: ${({ location, value, theme: { blue, darkerBlue } }) => (location === value ? blue : darkerBlue)};
+  background-color: ${({ location, value }) => (location === value ? blue : darkerBlue)};
   font-size: 16px;
   padding: 3px 5px;
   margin-right: 20px;
