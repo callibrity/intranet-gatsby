@@ -16,12 +16,12 @@ describe('TimeTracker component', () => {
   });
 
   it('should render Billable Hours', () => {
-    const props = {
+    const billable = {
       currentHours: 1,
       currentTarget: 2,
       totalTarget: 3,
     };
-    const wrapper = shallow(<BillableHours {...props} />);
+    const wrapper = shallow(<BillableHours billable={billable} />);
     const lineItems = wrapper.find(LineItem);
 
     expect(wrapper.find(Section).prop('label')).toEqual('Target Hours');
@@ -34,12 +34,12 @@ describe('TimeTracker component', () => {
   });
 
   it('should render Growth Hours', () => {
-    const props = {
+    const growth = {
       hoursUsed: 1,
       hoursRemaining: 2,
       totalGrowth: 3,
     };
-    const wrapper = shallow(<GrowthHours {...props} />);
+    const wrapper = shallow(<GrowthHours growth={growth} />);
     const lineItems = wrapper.find(LineItem);
 
     expect(wrapper.find(Section).prop('label')).toEqual('Growth Time');
@@ -52,11 +52,7 @@ describe('TimeTracker component', () => {
   });
 
   it('should render LineItem', () => {
-    const props = {
-      label: 'label',
-      value: 1,
-    };
-    const wrapper = shallow(<LineItem {...props} />);
+    const wrapper = shallow(<LineItem label="label" value={1} />);
     const spans = wrapper.find('span');
 
     expect(spans.at(0).text()).toEqual('label:');

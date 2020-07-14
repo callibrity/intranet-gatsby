@@ -11,10 +11,8 @@ const mockUseGoogleLogin = jest.fn();
 const mockSignIn = jest.fn();
 
 const contextProps = {
-  value: {
-    setUsername: mockSetUsername,
-    setUserEmail: mockSetUserEmail,
-  },
+  setUsername: mockSetUsername,
+  setUserEmail: mockSetUserEmail,
 };
 
 jest.mock('gatsby', () => ({
@@ -33,13 +31,13 @@ describe('Login component', () => {
   beforeEach(() => { jest.clearAllMocks(); });
 
   it('should render', () => {
-    const wrapper = mount(<UserContext.Provider {...contextProps}><Login /></UserContext.Provider>);
+    const wrapper = mount(<UserContext.Provider value={contextProps}><Login /></UserContext.Provider>);
 
     expect(wrapper.exists()).toEqual(true);
   });
 
   it('should setUsername, setUserEmail, navigate on google login success', () => {
-    const wrapper = mount(<UserContext.Provider {...contextProps}><Login /></UserContext.Provider>);
+    const wrapper = mount(<UserContext.Provider value={contextProps}><Login /></UserContext.Provider>);
 
     expect(wrapper.exists()).toEqual(true);
     expect(mockUseGoogleLogin).toHaveBeenCalledTimes(1);
@@ -65,7 +63,7 @@ describe('Login component', () => {
   });
 
   it('should signIn onClick', () => {
-    const wrapper = mount(<UserContext.Provider {...contextProps}><Login /></UserContext.Provider>);
+    const wrapper = mount(<UserContext.Provider value={contextProps}><Login /></UserContext.Provider>);
     const signInButton = wrapper.find('button');
 
     signInButton.simulate('click');

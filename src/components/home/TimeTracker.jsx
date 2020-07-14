@@ -14,28 +14,36 @@ export const LineItem = ({ label, value }) => (
   </div>
 );
 
-export const BillableHours = ({ currentHours, currentTarget, totalTarget }) => (
-  <Section color="green" label="Target Hours" className="TimeTracker-Hours">
-    <LineItem label="Current Hours" value={currentHours} />
-    <LineItem label="Current Target" value={currentTarget} />
-    <LineItem label="Total Target" value={totalTarget} />
-  </Section>
-);
+export const BillableHours = ({ billable }) => {
+  const { currentHours, currentTarget, totalTarget } = billable;
 
-export const GrowthHours = ({ hoursUsed, hoursRemaining, totalGrowth }) => (
-  <Section color="green" label="Growth Time" className="TimeTracker-Hours">
-    <LineItem label="Hours Used" value={hoursUsed} />
-    <LineItem label="Hours Remaining" value={hoursRemaining} />
-    <LineItem label="Total Growth" value={totalGrowth} />
-  </Section>
-);
+  return (
+    <Section color="green" label="Target Hours" className="TimeTracker-Hours">
+      <LineItem label="Current Hours" value={currentHours} />
+      <LineItem label="Current Target" value={currentTarget} />
+      <LineItem label="Total Target" value={totalTarget} />
+    </Section>
+  );
+};
+
+export const GrowthHours = ({ growth }) => {
+  const { hoursUsed, hoursRemaining, totalGrowth } = growth;
+
+  return (
+    <Section color="green" label="Growth Time" className="TimeTracker-Hours">
+      <LineItem label="Hours Used" value={hoursUsed} />
+      <LineItem label="Hours Remaining" value={hoursRemaining} />
+      <LineItem label="Total Growth" value={totalGrowth} />
+    </Section>
+  );
+};
 
 const TimeTracker = () => {
   const { billable, growth } = EmployeeTimeTracking;
   return (
     <Container>
-      <BillableHours {...billable} />
-      <GrowthHours {...growth} />
+      <BillableHours billable={billable} />
+      <GrowthHours growth={growth} />
     </Container>
   );
 };
@@ -46,27 +54,35 @@ LineItem.propTypes = {
 };
 
 BillableHours.defaultProps = {
-  currentHours: 0,
-  currentTarget: 0,
-  totalTarget: 0,
+  billable: {
+    currentHours: 0,
+    currentTarget: 0,
+    totalTarget: 0,
+  },
 };
 
 BillableHours.propTypes = {
-  currentHours: PropTypes.number,
-  currentTarget: PropTypes.number,
-  totalTarget: PropTypes.number,
+  billable: PropTypes.shape({
+    currentHours: PropTypes.number,
+    currentTarget: PropTypes.number,
+    totalTarget: PropTypes.number,
+  }),
 };
 
 GrowthHours.defaultProps = {
-  hoursUsed: 0,
-  hoursRemaining: 0,
-  totalGrowth: 0,
+  growth: {
+    hoursUsed: 0,
+    hoursRemaining: 0,
+    totalGrowth: 0,
+  },
 };
 
 GrowthHours.propTypes = {
-  hoursUsed: PropTypes.number,
-  hoursRemaining: PropTypes.number,
-  totalGrowth: PropTypes.number,
+  growth: PropTypes.shape({
+    hoursUsed: PropTypes.number,
+    hoursRemaining: PropTypes.number,
+    totalGrowth: PropTypes.number,
+  }),
 };
 
 export default TimeTracker;

@@ -20,7 +20,7 @@ module.exports = {
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', '**/*.test.jsx', './config/setupTests.js'] }],
     'linebreak-style': 0,
-    'react/jsx-props-no-spreading': 0,
+    'max-len': 0,
   },
   settings: {
     react: {
