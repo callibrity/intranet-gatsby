@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { FaSearch } from "react-icons/fa" 
 
-export default function PeopleSearch({name, setName}){
+const PeopleSearch = ({name, setName}) => {
   return(
     <OuterContainer>
       <Container>
@@ -16,6 +16,8 @@ export default function PeopleSearch({name, setName}){
     </OuterContainer>
   )
 }
+
+export default PeopleSearch;
 
 const OuterContainer = styled.div`
   padding-left: 10px;
@@ -38,11 +40,11 @@ const Container = styled.div`
   }
 `
 
-const StyledFaSearch = styled(FaSearch)`
+export const StyledFaSearch = styled(FaSearch)`
   color: lightgray;
 `
 
-const Search = styled.input`
+export const Search = styled.input`
   border: none;
   outline: none;
 `
