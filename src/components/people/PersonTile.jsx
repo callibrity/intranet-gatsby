@@ -4,20 +4,18 @@ import { Link } from 'gatsby';
 
 import './PersonTile.css';
 
-export default function PersonTile({ name, role, photo }) {
-  return (
-    <Link to={`/portfolio?name=${name}`}>
-      <div className="card tile">
-        <img className="card-img-top" src={photo} alt={name} />
-        <div className="card-text tile-overlay">
-          <span className="tile-overlay-name">{name}</span>
-          <br />
-          <span>{role}</span>
-        </div>
+const PersonTile = ({ name, role, photo }) => (
+  <Link to={`/portfolio?name=${name}`}>
+    <div className="card tile">
+      <img className="card-img-top" src={photo} alt={name} />
+      <div className="card-text tile-overlay">
+        <span className="tile-overlay-name">{name}</span>
+        <br />
+        <span>{role}</span>
       </div>
-    </Link>
-  );
-}
+    </div>
+  </Link>
+);
 
 PersonTile.defaultProps = {
   name: '',
@@ -30,3 +28,5 @@ PersonTile.propTypes = {
   role: PropTypes.string,
   photo: PropTypes.string,
 };
+
+export default PersonTile;
