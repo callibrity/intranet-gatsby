@@ -1,17 +1,18 @@
-import {useState, useEffect} from "react"
-import API from "@globals/api"
+import { useState, useEffect } from "react"
+import { axiosInstance } from "@components/api/api"
 
-import {apiInitialMessage, apiErrorMessage} from "@globals/constants"
+import { apiInitialMessage, apiErrorMessage } from "@globals/constants"
 
-export default function useAPI(apiString){
+export default function useAPI(apiString) {
   const [apiResult, setApiResult] = useState(apiInitialMessage)
 
   useEffect(() => {
-    API.get(apiString) 
-      .then((res) => {
+    axiosInstance
+      .get(apiString)
+      .then(res => {
         setApiResult(res.data)
       })
-      .catch((err) => {
+      .catch(err => {
         setApiResult(apiErrorMessage)
       })
   }, [apiString])

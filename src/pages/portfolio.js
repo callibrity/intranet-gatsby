@@ -2,11 +2,15 @@ import React, { useReducer, useEffect, useState } from "react"
 import { parse } from "query-string"
 import styled from "styled-components"
 
-import API from "@globals/api"
+import { axiosInstance } from "@components/api/api"
 import Summary from "@portfolio/Summary"
 import Details from "@portfolio/Details"
 import Header from "@portfolio/Header"
-import { apiInitialMessage, apiErrorMessage, employeesAPINameString } from "@globals/constants"
+import {
+  apiInitialMessage,
+  apiErrorMessage,
+  employeesAPINameString,
+} from "@globals/constants"
 import { ProfileContext } from "@globals/contexts"
 
 function reducer(state, action) {
@@ -30,11 +34,12 @@ export default function PortfolioPage() {
   const profileInfo = { employee, setEmployee, editMode, setEditMode }
 
   useEffect(() => {
-    API.get(`${employeesAPINameString}${name}`)
-      .then((res) => {
+    axiosInstance
+      .get(`${employeesAPINameString}${name}`)
+      .then(res => {
         setEmployee({ type: "initial", load: res.data[0] })
       })
-      .catch((err) => {
+      .catch(err => {
         setEmployee(apiErrorMessage)
       })
   }, [name, editMode])
@@ -43,7 +48,7 @@ export default function PortfolioPage() {
     <ProfileContext.Provider value={profileInfo}>
       <Container>
         <InnerContainer>
-          <Header/>
+          <Header />
           <LowerContainer>
             <div>
               <Summary />

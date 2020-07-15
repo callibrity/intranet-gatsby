@@ -6,7 +6,7 @@ import { useGoogleLogin } from "react-google-login"
 import { UserContext } from "@globals/contexts"
 import { googleClientId } from "@globals/constants"
 import { flexCenter, standardButton } from "@globals/styles"
-import { setJwt } from "@globals/api"
+import { setJwt } from "@components/api/api"
 
 export default function Login() {
   const { setUsername, setUserEmail } = useContext(UserContext)

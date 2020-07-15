@@ -5,7 +5,7 @@ import { useGoogleLogout } from "react-google-login"
 
 import { googleClientId } from "@globals/constants"
 import { UserContext } from "@globals/contexts"
-import { removeJwt } from "@globals/api"
+import { removeJwt } from "@components/api/api"
 
 export default function Logout() {
   const { setUsername, setUserEmail } = useContext(UserContext)

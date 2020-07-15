@@ -8,15 +8,17 @@ export const setJwt = token => {
   if (process.env.NODE_ENV === "development") {
     console.log(token)
   }
-  axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
 }
 
 export const removeJwt = () => {
-  axiosInstance.defaults.headers.common["Authorization"] = ""
+  axios.defaults.headers.common["Authorization"] = ""
 }
 
-const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-})
+export const setBasePath = () => {
+  axios.defaults.baseURL = process.env.REACT_APP_API_URL
+}
 
-export default axiosInstance
+export const axiosInstance = axios.create({
+  baseURL: baseURL,
+})
