@@ -1,21 +1,21 @@
-import { useState, useEffect } from "react"
-import { axiosInstance } from "@components/api/api"
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import { apiInitialMessage, apiErrorMessage } from "@globals/constants"
+import { apiInitialMessage, apiErrorMessage } from '@globals/constants';
 
 export default function useAPI(apiString) {
-  const [apiResult, setApiResult] = useState(apiInitialMessage)
+  const [apiResult, setApiResult] = useState(apiInitialMessage);
 
   useEffect(() => {
-    axiosInstance
-      .get(apiString)
-      .then(res => {
-        setApiResult(res.data)
+    axios.get(apiString)
+      .then((res) => {
+        setApiResult(res.data);
       })
-      .catch(err => {
-        setApiResult(apiErrorMessage)
-      })
-  }, [apiString])
+      // eslint-disable-next-line no-unused-vars
+      .catch((err) => {
+        setApiResult(apiErrorMessage);
+      });
+  }, [apiString]);
 
-  return apiResult
+  return apiResult;
 }

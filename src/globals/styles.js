@@ -1,17 +1,17 @@
-import {blue, darkerBlue} from "./theme.js"
+import { blue, darkerBlue } from './theme';
 
 export const whiteContainer = `
   background-color: white;
   border-bottom: 1px solid rgba(0,0,0,0.4);
   padding: 10px;
   border-radius: 5px;
-`
+`;
 
 export const flexCenter = `
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const standardButton = `
   border: 1px solid black;
@@ -30,7 +30,7 @@ export const standardButton = `
   :hover{
     background-color: ${blue};
   }
-`
+`;
 
 export const standardInput = `
   background-color: white;
@@ -39,13 +39,12 @@ export const standardInput = `
   border-color: #bbbbbb #cfcfcf #e0e0e0 #cfcfcf;
   border-radius: 3px;
   padding: 5px;
-`
+`;
 
-export const linkStyle =  `
+export const linkStyle = `
   padding: 8px;
   
   :hover {
     color: #dae0e5;
   }
-`
-
+`;

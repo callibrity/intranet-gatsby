@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "jsx": "react",
     "paths": {
       "@home/*": [
         "src/components/home/*"
@@ -31,6 +32,9 @@
       ],
       "@pages/*": [
         "src/pages/*"
+      ],
+      "@api/*": [
+        "src/api/*"
       ]
     }
   }
