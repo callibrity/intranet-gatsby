@@ -3,7 +3,7 @@ import { Dropdown } from 'react-bootstrap';
 import { quickLinks } from '@globals/constants';
 import NavDropdown from './NavDropdown';
 
-export default function QuickLinks() {
+const QuickLinks = () => {
   const { Item } = Dropdown;
   return (
     <NavDropdown label="Quick Links">
@@ -15,3 +15,5 @@ export default function QuickLinks() {
     </NavDropdown>
   );
 }
+
+export default QuickLinks;

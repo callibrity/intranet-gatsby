@@ -4,7 +4,7 @@ import { Dropdown } from 'react-bootstrap';
 import styled from 'styled-components';
 import { linkStyle } from '@globals/styles';
 
-export default function UserDropdown({ label, children }) {
+const NavDropdown = ({ label, children }) => {
   const { Toggle, Menu } = Dropdown;
   return (
     <StyledDropdown>
@@ -16,7 +16,9 @@ export default function UserDropdown({ label, children }) {
   );
 }
 
-UserDropdown.propTypes = {
+export default NavDropdown;
+
+NavDropdown.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.element,
@@ -24,6 +26,6 @@ UserDropdown.propTypes = {
   label: PropTypes.string.isRequired,
 };
 
-const StyledDropdown = styled(Dropdown)`
+export const StyledDropdown = styled(Dropdown)`
   ${linkStyle}
 `;
