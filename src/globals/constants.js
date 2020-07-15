@@ -217,17 +217,3 @@ export const wikiHomeLinks = [
     link: '/wiki?category=learning-resources',
   },
 ];
-
-export const EmployeeTimeTracking = {
-  employeeId: '12345',
-  billable: {
-    currentHours: 550,
-    currentTarget: 500,
-    totalTarget: 1800,
-  },
-  growth: {
-    hoursUsed: 18,
-    hoursRemaining: 28,
-    totalGrowth: 46,
-  },
-};

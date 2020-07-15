@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import API from '@globals/api';
+import axios from 'axios';
 
 import { apiInitialMessage, apiErrorMessage } from '@globals/constants';
 
@@ -7,7 +7,7 @@ export default function useAPI(apiString) {
   const [apiResult, setApiResult] = useState(apiInitialMessage);
 
   useEffect(() => {
-    API.get(apiString)
+    axios.get(apiString)
       .then((res) => {
         setApiResult(res.data);
       })

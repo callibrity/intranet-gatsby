@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Section from '@home/Section';
-import { EmployeeTimeTracking } from '@globals/constants';
+import { getEmployeeMetrics } from '@api/serviceCalls';
 
 export const LineItem = ({ label, value }) => (
   <div className="TimeTracker-Hours-details">
@@ -39,49 +39,68 @@ export const GrowthHours = ({ growth }) => {
 };
 
 const TimeTracker = () => {
-  const { billable, growth } = EmployeeTimeTracking;
+  const initialState = {
+    billable: {
+      currentHours: 'Loading...',
+      currentTarget: 'Loading...',
+      totalTarget: 'Loading...',
+    },
+    growth: {
+      hoursUsed: 'Loading...',
+      hoursRemaining: 'Loading...',
+      totalGrowth: 'Loading...',
+    },
+  };
+
+  const [data, setData] = useState(initialState);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    getEmployeeMetrics(setData, console.log);
+  }, []);
+
   return (
     <Container>
-      <BillableHours billable={billable} />
-      <GrowthHours growth={growth} />
+      <BillableHours billable={data.billable} />
+      <GrowthHours growth={data.growth} />
     </Container>
   );
 };
 
 LineItem.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 BillableHours.defaultProps = {
   billable: {
-    currentHours: 0,
-    currentTarget: 0,
-    totalTarget: 0,
+    currentHours: 'Loading...',
+    currentTarget: 'Loading...',
+    totalTarget: 'Loading...',
   },
 };
 
 BillableHours.propTypes = {
   billable: PropTypes.shape({
-    currentHours: PropTypes.number,
-    currentTarget: PropTypes.number,
-    totalTarget: PropTypes.number,
+    currentHours: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    currentTarget: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    totalTarget: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   }),
 };
 
 GrowthHours.defaultProps = {
   growth: {
-    hoursUsed: 0,
-    hoursRemaining: 0,
-    totalGrowth: 0,
+    hoursUsed: 'Loading...',
+    hoursRemaining: 'Loading...',
+    totalGrowth: 'Loading...',
   },
 };
 
 GrowthHours.propTypes = {
   growth: PropTypes.shape({
-    hoursUsed: PropTypes.number,
-    hoursRemaining: PropTypes.number,
-    totalGrowth: PropTypes.number,
+    hoursUsed: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    hoursRemaining: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    totalGrowth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   }),
 };
 

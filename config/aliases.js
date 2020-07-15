@@ -9,4 +9,5 @@ module.exports = {
   '@hooks': 'src/hooks/',
   '@images': 'src/images/',
   '@pages': 'src/pages/',
+  '@api': 'src/api/',
 };

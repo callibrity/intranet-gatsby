@@ -6,6 +6,7 @@ import Login from '@pages/login';
 
 const mockSetUsername = jest.fn();
 const mockSetUserEmail = jest.fn();
+const mockSetJwt = jest.fn();
 const mockNavigate = jest.fn();
 const mockUseGoogleLogin = jest.fn();
 const mockSignIn = jest.fn();
@@ -14,7 +15,9 @@ const contextProps = {
   setUsername: mockSetUsername,
   setUserEmail: mockSetUserEmail,
 };
-
+jest.mock('@api/api', () => ({
+  setJwt: (val) => mockSetJwt(val),
+}));
 jest.mock('gatsby', () => ({
   ...jest.requireActual('gatsby'),
   navigate: (val) => mockNavigate(val),
@@ -36,7 +39,7 @@ describe('Login component', () => {
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it('should setUsername, setUserEmail, navigate on google login success', () => {
+  it('should setUsername, setUserEmail, setJwt, navigate on google login success', () => {
     const wrapper = mount(<UserContext.Provider value={contextProps}><Login /></UserContext.Provider>);
 
     expect(wrapper.exists()).toEqual(true);
@@ -52,12 +55,15 @@ describe('Login component', () => {
         name: 'nameHere',
         email: 'emailHere',
       },
+      tokenId: 'asdf',
     });
 
     expect(mockSetUsername).toHaveBeenCalledTimes(1);
     expect(mockSetUsername).toHaveBeenCalledWith('nameHere');
     expect(mockSetUserEmail).toHaveBeenCalledTimes(1);
     expect(mockSetUserEmail).toHaveBeenCalledWith('emailHere');
+    expect(mockSetJwt).toHaveBeenCalledTimes(1);
+    expect(mockSetJwt).toHaveBeenCalledWith('asdf');
     expect(mockNavigate).toHaveBeenCalledTimes(1);
     expect(mockNavigate).toHaveBeenCalledWith('/');
   });

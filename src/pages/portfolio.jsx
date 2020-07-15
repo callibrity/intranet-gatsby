@@ -1,12 +1,16 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import { parse } from 'query-string';
 import styled from 'styled-components';
-import API from '@globals/api';
 import Summary from '@portfolio/Summary';
 import Details from '@portfolio/Details';
 import Header from '@portfolio/Header';
-import { apiInitialMessage, apiErrorMessage, employeesAPINameString } from '@globals/constants';
+import {
+  apiInitialMessage,
+  apiErrorMessage,
+  employeesAPINameString,
+} from '@globals/constants';
 import { ProfileContext } from '@globals/contexts';
+import axios from 'axios';
 
 function reducer(state, action) {
   const { type, load } = action;
@@ -29,11 +33,14 @@ export default function PortfolioPage() {
   const { name } = parse(window.location.search);
 
   const profileInfo = {
-    employee, setEmployee, editMode, setEditMode,
+    employee,
+    setEmployee,
+    editMode,
+    setEditMode,
   };
 
   useEffect(() => {
-    API.get(`${employeesAPINameString}${name}`)
+    axios.get(`${employeesAPINameString}${name}`)
       .then((res) => {
         setEmployee({ type: 'initial', load: res.data[0] });
       })
