@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import API from '@globals/api';
+import axios from 'axios';
 import { UserContext, ProfileContext } from '@globals/contexts';
 import { employeesAPIString } from '@globals/constants';
 import ReusableButton from '../reusable/ReusableButton';
@@ -14,7 +14,7 @@ export default function Header() {
   }
 
   function handleSaveClick() {
-    API.put(`${employeesAPIString}`, employee)
+    axios.put(`${employeesAPIString}`, employee)
       // eslint-disable-next-line no-console
       .then((res) => console.log(res))
       // eslint-disable-next-line no-console
