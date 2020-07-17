@@ -1,22 +1,57 @@
 import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import { Dropdown } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { UserContext } from '@globals/contexts';
 import { linkStyle } from '@globals/styles';
-import QuickLinks from './QuickLinks';
-import UserDropdown from './UserDropdown';
+import { quickLinks } from '@globals/constants';
+import Logout from './Logout';
 
-export default function NavLinks() {
+const { Toggle, Menu, Item } = Dropdown;
+
+export const UserDropdown = ({ username }) => (
+  <StyledDropdown>
+    <Toggle as="a">{username}</Toggle>
+    <Menu>
+      <Item>
+        <Logout />
+      </Item>
+    </Menu>
+  </StyledDropdown>
+);
+
+export const QuickLinks = () => (
+  <StyledDropdown>
+    <Toggle as="a">Quick Links</Toggle>
+    <Menu>
+      {quickLinks.map(({ title, url }) => (
+        <Item key={title} href={url}>
+          {title}
+        </Item>
+      ))}
+    </Menu>
+  </StyledDropdown>
+);
+
+const NavLinks = () => {
   const { username } = useContext(UserContext);
+  // const { Toggle, Menu, Item } = Dropdown;
   return !username ? null : (
     <Container username={username}>
       <StyledLink to="/wiki">Wiki</StyledLink>
       <StyledLink to="/people">People</StyledLink>
       <QuickLinks />
-      <UserDropdown />
+      <UserDropdown username={username} />
     </Container>
   );
-}
+};
+
+UserDropdown.propTypes = {
+  username: PropTypes.string.isRequired,
+};
+
+export default NavLinks;
 
 const Container = styled.div`
   display: flex;  
@@ -25,6 +60,10 @@ const Container = styled.div`
   color: white;
 `;
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
     ${linkStyle}
+`;
+
+const StyledDropdown = styled(Dropdown)`
+  ${linkStyle}
 `;
