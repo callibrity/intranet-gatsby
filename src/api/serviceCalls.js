@@ -4,7 +4,7 @@ import { getEmployeeResource } from '@api/endpoints';
 // eslint-disable-next-line
 export const getEmployeeMetrics = async (onSucess, onError) => {
   await axios
-    .get(getEmployeeResource)
+    .get(`${getEmployeeResource}/hours`)
     .then((res) => {
       onSucess(res.data);
     })
