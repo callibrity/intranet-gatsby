@@ -36,7 +36,6 @@ export const QuickLinks = () => (
 
 const NavLinks = () => {
   const { username } = useContext(UserContext);
-  // const { Toggle, Menu, Item } = Dropdown;
   return !username ? null : (
     <Container username={username}>
       <StyledLink to="/wiki">Wiki</StyledLink>
