@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown } from 'react-bootstrap';
 import styled from 'styled-components';
-import { linkStyle } from '@globals/styles';
+import { linkStyle } from '@globals/styles'; 
 
 const { Toggle, Menu } = Dropdown;
 

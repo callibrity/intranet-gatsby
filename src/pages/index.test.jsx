@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TimeTracker from '@home/TimeTracker';
+import TimeTracker from '@home/TimeTracker';  
 import Calendar from '@home/Calendar';
 import Home from '.';
 

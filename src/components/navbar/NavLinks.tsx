@@ -7,7 +7,7 @@ import QuickLinks from './QuickLinks';
 import UserDropdown from './UserDropdown';
 
 export default function NavLinks() {
-  const { username } = useContext(UserContext);
+  const { username } = useContext(UserContext);  
   return !username ? null : (
     <Container>
       <StyledLink to="/wiki">Wiki</StyledLink>

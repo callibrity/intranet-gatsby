@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Section from '@home/Section';
-import { getEmployeeMetrics } from '@api/serviceCalls';
+import { getEmployeeMetrics } from '@api/serviceCalls'; 
 
 export const LineItem = ({ label, value }) => (
   <div className="TimeTracker-Hours-details">

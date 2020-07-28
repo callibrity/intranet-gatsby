@@ -31,6 +31,9 @@
     "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
     "@testing-library/jest-dom": "^5.9.0",
     "@testing-library/react": "^10.2.1",
     "@types/enzyme": "^3.10.5",
@@ -57,7 +60,9 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "jest-styled-components": "^7.0.2",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.9.7"
   },
   "keywords": [
     "gatsby"
