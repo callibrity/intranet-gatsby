@@ -23,6 +23,7 @@ export default function SearchBar() {
     </Container>
   );
 }
+// EventTarget & HTMLInputElement
 
 const Container = styled.div`
   ${standardInput}

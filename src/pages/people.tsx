@@ -6,8 +6,8 @@ import PeopleSearch from '@people/PeopleSearch';
 import { employeesAPIOfficeString } from '@globals/constants';
 
 export default function People() {
-  const [location, setLocation] = useState('Cincinnati');
-  const [name, setName] = useState('');
+  const [location, setLocation] = useState<string>('Cincinnati');
+  const [name, setName] = useState<string>('');
   const employees = useAPI(`${employeesAPIOfficeString}${location}`);
 
   const employeeList = typeof employees === 'string' ? employees

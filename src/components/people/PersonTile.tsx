@@ -1,10 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import './PersonTile.css';
 
-const PersonTile = ({ name, role, photo }) => (
+interface personProps {
+  name: string,
+  role: string,
+  photo: string,
+}
+
+const PersonTile = ({ name='', role='', photo='' }: personProps) => (
   <Link to={`/portfolio?name=${name}`}>
     <div className="card tile">
       <img className="card-img-top" src={photo} alt={name} />
@@ -17,16 +22,7 @@ const PersonTile = ({ name, role, photo }) => (
   </Link>
 );
 
-PersonTile.defaultProps = {
-  name: '',
-  role: '',
-  photo: '',
-};
 
-PersonTile.propTypes = {
-  name: PropTypes.string,
-  role: PropTypes.string,
-  photo: PropTypes.string,
-};
 
 export default PersonTile;
+

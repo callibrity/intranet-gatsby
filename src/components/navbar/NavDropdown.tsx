@@ -1,12 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Dropdown } from 'react-bootstrap';
 import styled from 'styled-components';
 import { linkStyle } from '@globals/styles'; 
 
 const { Toggle, Menu } = Dropdown;
 
-export default function UserDropdown({ label, children }) {
+interface propInterface {
+  label: string,
+  children: React.ReactNode[] | React.ReactElement,
+}
+
+export default function UserDropdown({ label, children }: propInterface) {
   return (
     <StyledDropdown>
       <Toggle as="a">{label}</Toggle>
@@ -17,13 +21,7 @@ export default function UserDropdown({ label, children }) {
   );
 }
 
-UserDropdown.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.element,
-  ]).isRequired,
-  label: PropTypes.string.isRequired,
-};
+
 
 const StyledDropdown = styled(Dropdown)`
   ${linkStyle}

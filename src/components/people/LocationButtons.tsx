@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { blue, darkerBlue } from '@globals/theme';
 import { standardButton } from '@globals/styles';
 import { peopleLocationButtonList } from '@globals/constants'; 
 
-const LocationButtons = ({ location, setLocation }) => {  
+interface propInterface {
+  location: string,
+  setLocation: Dispatch<SetStateAction<string>>,
+}
+
+const LocationButtons = ({ location, setLocation }: propInterface) => {  
   const list = peopleLocationButtonList.map(({ label, value }) => (
     <ButtonFilter key={label} value={value} location={location} onClick={() => setLocation(value)}>
       {label}
@@ -24,6 +29,7 @@ export default LocationButtons;
 LocationButtons.propTypes = {
   location: PropTypes.string.isRequired,
   setLocation: PropTypes.func.isRequired,
+
 };
 
 const Container = styled.div`
