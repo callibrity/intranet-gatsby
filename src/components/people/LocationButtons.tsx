@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import test from '@globals/'
 import { blue, darkerBlue } from '@globals/theme';
 import { standardButton } from '@globals/styles';
 import { peopleLocationButtonList } from '@globals/constants'; 
