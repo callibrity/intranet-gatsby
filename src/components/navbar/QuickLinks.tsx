@@ -6,7 +6,7 @@ import NavDropdown from './NavDropdown';
 export default function QuickLinks() {
   const { Item } = Dropdown;
   return (
-    <NavDropdown label={4}>
+    <NavDropdown label={"Quick Links"}>
       {quickLinks.map(({ title, url }) => (
         <Item key={title} href={url}>
           {title}

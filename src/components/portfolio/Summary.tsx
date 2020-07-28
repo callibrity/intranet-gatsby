@@ -7,7 +7,7 @@ import ProfilePic from './ProfilePic';
 import InfoItem from './InfoItem';
 
 export default function Summary() {
-  const { employee, setEmployee } = useContext(ProfileContext);
+  const { employee } = useContext(ProfileContext);
 
   const info = profileSummaryList.map(({ label, data }) => (
     <InfoItem
@@ -15,7 +15,6 @@ export default function Summary() {
       label={label}
       data={data}
       info={employee[data]}
-      setEmployee={setEmployee}
     />
   ));
 

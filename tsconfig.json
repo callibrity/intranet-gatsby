@@ -2,9 +2,9 @@
   "compilerOptions": {
       "outDir": "./dist/",
       "module": "commonjs",
-      "target": "ES2019",
+      "target": "ESNext",
       "jsx": "react",
-      "lib": ["ES2019"],
+      "lib": ["dom", "ESNext", "es5", "es6", "ES2020"],
       "sourceMap": true,
       "esModuleInterop": true,
       "diagnostics": true,

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, ChangeEvent } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import styled from 'styled-components';
 import { standardInput } from '@globals/styles';
@@ -16,9 +16,7 @@ export default function SearchBar() {
       <Search
         alt="search bar"
         value={text}
-        onChange={(e) => {
-          setText(e.target.value);
-        }}
+        onChange={(e) => setText(e.target.value)}
       />
     </Container>
   );

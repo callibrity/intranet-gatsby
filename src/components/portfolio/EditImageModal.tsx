@@ -6,7 +6,7 @@ import ReusableButton from '../reusable/ReusableButton';
 import InfoItem from './InfoItem';
 
 export default function EditImageModal(props) {
-  const { employee, setEmployee } = useContext(ProfileContext);
+  const { employee } = useContext(ProfileContext);
   const { onClose, Show } = props;
 
   function getModalBody() {
@@ -16,7 +16,6 @@ export default function EditImageModal(props) {
         label="Photo"
         data="photo"
         info={employee.photo}
-        setEmployee={setEmployee}
       />
     );
   }

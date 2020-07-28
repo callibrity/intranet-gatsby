@@ -47,6 +47,7 @@ describe('Login component', () => {
     expect(mockUseGoogleLogin).toHaveBeenCalledWith({
       clientId: googleClientId,
       onSuccess: expect.any(Function),
+      onFailure: expect.any(Function),
       isSignedIn: true,
     });
 
