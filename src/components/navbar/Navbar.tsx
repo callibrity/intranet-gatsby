@@ -6,7 +6,7 @@ import Img from 'gatsby-image';
 import NavLinks from './NavLinks';
 import SearchBar from './SearchBar';
 
-export default function Navbar() {
+export default function Navbar() { 
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "callibrity-logo.png" }) {

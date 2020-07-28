@@ -24,7 +24,7 @@ jest.mock('gatsby', () => ({
 }));
 
 jest.mock('react-google-login', () => ({
-  ...jest.requireActual('react-google-login'),
+  ...jest.requireActual('react-google-login'), 
   useGoogleLogin: (val) => mockUseGoogleLogin(val),
 }));
 

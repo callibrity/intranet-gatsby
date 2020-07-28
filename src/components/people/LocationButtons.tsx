@@ -5,7 +5,7 @@ import { blue, darkerBlue } from '@globals/theme';
 import { standardButton } from '@globals/styles';
 import { peopleLocationButtonList } from '@globals/constants';
 
-const LocationButtons = ({ location, setLocation }) => {
+const LocationButtons = ({ location, setLocation }) => {  
   const list = peopleLocationButtonList.map(({ label, value }) => (
     <ButtonFilter key={label} value={value} location={location} onClick={() => setLocation(value)}>
       {label}

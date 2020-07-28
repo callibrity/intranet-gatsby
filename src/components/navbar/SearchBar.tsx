@@ -9,7 +9,7 @@ export default function SearchBar() {
   const { username } = useContext(UserContext);
 
   return !username ? null : (
-    <Container username={username}>
+    <Container>
       <IconContainer>
         <FaSearch />
       </IconContainer>

@@ -9,7 +9,7 @@ import UserDropdown from './UserDropdown';
 export default function NavLinks() {
   const { username } = useContext(UserContext);
   return !username ? null : (
-    <Container username={username}>
+    <Container>
       <StyledLink to="/wiki">Wiki</StyledLink>
       <StyledLink to="/people">People</StyledLink>
       <QuickLinks />

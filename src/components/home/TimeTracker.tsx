@@ -15,7 +15,7 @@ export const LineItem = ({ label, value }) => (
 );
 
 export const BillableHours = ({ billable }) => {
-  const { currentHours, currentTarget, totalTarget } = billable;
+  const { currentHours, currentTarget, totalTarget } = billable; 
 
   return (
     <Section color="green" label="Target Hours" className="TimeTracker-Hours">
