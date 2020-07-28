@@ -1,4 +1,4 @@
-const {jestAliases} = require('./config/aliasLists');
+const jestAliases = require('./config/jestAliases');
 
 module.exports = {
   transform: {
