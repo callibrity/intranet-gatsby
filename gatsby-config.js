@@ -10,6 +10,9 @@ module.exports = {
     author: 'Callibrity',
   },
   plugins: [
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -17,36 +20,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 1519,
-              backgroundColor: 'transparent',
-            },
-          },
-        ],
-      },
-    },
-    {
-      resolve: 'gatsby-source-pg',
-      options: {
-        connectionString: process.env.CONNECTION_STRING,
-        schema: 'public',
-        refetchInterval: 60000,
-      },
-    },
-
     {
       resolve: 'gatsby-alias-imports',
       options: {
