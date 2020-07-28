@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+      "outDir": "./dist/",
+      "sourceMap": false,
+      "noImplicitAny": false,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "allowJs": true,
+      "module": "commonjs",
+      "target": "ES2019",
+      "jsx": "react",
+      "lib": ["ES2019"]
+  },
+  "include": [
+      "./src/**/*"
+  ],
+  "typeRoots": ["node_modules/@types"],
+}

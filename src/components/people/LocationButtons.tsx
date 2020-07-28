@@ -33,7 +33,7 @@ const Container = styled.div`
   padding-left: 10px;
 `;
 
-export const ButtonFilter = styled.div`
+export const ButtonFilter = styled.div<any>`
   ${standardButton};
   background-color: ${({ location, value }) => (location === value ? blue : darkerBlue)};
   font-size: 16px;
