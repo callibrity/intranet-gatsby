@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
       "outDir": "./dist/",
-      "sourceMap": false,
-      "noImplicitAny": false,
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
-      "allowJs": true,
       "module": "commonjs",
       "target": "ES2019",
       "jsx": "react",
       "lib": ["ES2019"],
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "diagnostics": true,
       "baseUrl": ".",
       "paths": {
         "@home/*": [
@@ -45,7 +43,19 @@
         "@api/*": [
           "src/api/*"
         ]
-      }
+      },
+
+      // "strictness settings
+      "noImplicitAny": false, 
+      "allowJs": true,
+      "strictNullChecks": false,
+      "strictFunctionTypes": false,
+      "noImplicitReturns": false,
+      "strictBindCallApply": false,
+      "strictPropertyInitialization": false,
+      "noImplicitThis": false,
+      "alwaysStrict": false,
+      "allowSyntheticDefaultImports": true,
   },
   "include": [
       "./src/**/*"
