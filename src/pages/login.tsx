@@ -18,7 +18,7 @@ export default function Login() {
   const { signIn } = useGoogleLogin({
     clientId: googleClientId,
     onSuccess: (obj) => { onSuccess(obj); },
-    isSignedIn: true,
+    isSignedIn: true
   });
 
   return (
