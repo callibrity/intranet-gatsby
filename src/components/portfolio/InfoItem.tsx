@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ProfileContext } from '@globals/contexts';
 
-export default function InfoItem({ label, data, info }) {
-  const { editMode, setEmployee } = useContext(ProfileContext);
+interface propTypes {
+  label: string,
+  info: never,
+  data: string | any[]
+}
 
+export default function InfoItem({ label = '', data = '', info = '' } : propTypes) {
+  const { editMode, setEmployee } = useContext(ProfileContext);
   const text = typeof info === 'string' || info === undefined ? info
     : info.reduce((str, ele) => `${str}, ${ele}`);
 
@@ -28,21 +33,6 @@ export default function InfoItem({ label, data, info }) {
     </Container>
   );
 }
-
-InfoItem.defaultProps = {
-  label: '',
-  data: '',
-  info: '',
-};
-
-InfoItem.propTypes = {
-  label: PropTypes.string,
-  data: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.object),
-    PropTypes.string,
-  ]),
-  info: PropTypes.string,
-};
 
 const Container = styled.div`
   display: grid;

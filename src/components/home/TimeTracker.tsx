@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Section from '@home/Section';
 import { getEmployeeMetrics } from '@api/serviceCalls'; 
 
-export const LineItem = ({ label, value }) => (
+const loadStr = 'Loading...';
+
+export const LineItem = ({ label, value } : {label: string, value: string | number}) => (
   <div className="TimeTracker-Hours-details">
     <span>
       {label}
@@ -14,9 +15,15 @@ export const LineItem = ({ label, value }) => (
   </div>
 );
 
-export const BillableHours = ({ billable }) => {
-  const { currentHours, currentTarget, totalTarget } = billable; 
+interface billableHoursPropTypes {
+  billable: {
+    currentHours: string | number,
+    currentTarget: string | number,
+    totalTarget: string | number
+  }
+}
 
+export const BillableHours = ({ billable: { currentHours = loadStr, currentTarget = loadStr, totalTarget = loadStr}  } : billableHoursPropTypes ) => {
   return (
     <Section color="green" label="Target Hours" className="TimeTracker-Hours">
       <LineItem label="Current Hours" value={currentHours} />
@@ -26,9 +33,15 @@ export const BillableHours = ({ billable }) => {
   );
 };
 
-export const GrowthHours = ({ growth }) => {
-  const { hoursUsed, hoursRemaining, totalGrowth } = growth;
+interface growthHoursPropTypes {
+  growth: {
+    hoursUsed: string | number,
+    hoursRemaining: string | number,
+    totalGrowth: string | number
+  }
+}
 
+export const GrowthHours = ({ growth: { hoursUsed = loadStr, hoursRemaining = loadStr, totalGrowth = loadStr }  } : growthHoursPropTypes ) => {
   return (
     <Section color="green" label="Growth Time" className="TimeTracker-Hours">
       <LineItem label="Hours Used" value={hoursUsed} />
@@ -65,43 +78,6 @@ const TimeTracker = () => {
       <GrowthHours growth={data.growth} />
     </Container>
   );
-};
-
-LineItem.propTypes = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-};
-
-BillableHours.defaultProps = {
-  billable: {
-    currentHours: 'Loading...',
-    currentTarget: 'Loading...',
-    totalTarget: 'Loading...',
-  },
-};
-
-BillableHours.propTypes = {
-  billable: PropTypes.shape({
-    currentHours: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    currentTarget: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    totalTarget: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  }),
-};
-
-GrowthHours.defaultProps = {
-  growth: {
-    hoursUsed: 'Loading...',
-    hoursRemaining: 'Loading...',
-    totalGrowth: 'Loading...',
-  },
-};
-
-GrowthHours.propTypes = {
-  growth: PropTypes.shape({
-    hoursUsed: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    hoursRemaining: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    totalGrowth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  }),
 };
 
 export default TimeTracker;

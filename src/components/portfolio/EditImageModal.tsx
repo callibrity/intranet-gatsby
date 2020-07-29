@@ -5,9 +5,8 @@ import ReusableModal from '../reusable/ReusableModal';
 import ReusableButton from '../reusable/ReusableButton';
 import InfoItem from './InfoItem';
 
-export default function EditImageModal(props) {
+export default function EditImageModal( {onClose, Show} : {onClose: string, Show: boolean} ) {
   const { employee } = useContext(ProfileContext);
-  const { onClose, Show } = props;
 
   function getModalBody() {
     return (

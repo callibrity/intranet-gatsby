@@ -46,7 +46,7 @@
       },
 
       // "strictness settings
-      "noImplicitAny": false, 
+      "noImplicitAny": true, 
       "allowJs": true,
       "strictNullChecks": false,
       "strictFunctionTypes": false,

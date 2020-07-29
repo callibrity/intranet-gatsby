@@ -12,7 +12,9 @@ import {
 import { ProfileContext } from '@globals/contexts';
 import axios from 'axios';
 
-function reducer(state, action) {
+type stateType = {name: string, email: string} | string;
+
+function reducer(state: stateType, action: {type: string, load: stateType }) : stateType {
   const { type, load } = action;
   if (type === 'initial') {
     return load;
@@ -28,8 +30,8 @@ function reducer(state, action) {
 }
 
 export default function PortfolioPage() {
-  const [editMode, setEditMode] = useState(false);
-  const [employee, setEmployee] = useReducer(reducer, apiInitialMessage);
+  const [editMode, setEditMode] = useState<boolean>(false);
+  const [employee, setEmployee] = useReducer<stateType>(reducer, apiInitialMessage);
   const { name } = parse(window.location.search);
 
   const profileInfo = {

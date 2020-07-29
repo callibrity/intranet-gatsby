@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 
-const PeopleSearch = ({ name, setName }) => (
+const PeopleSearch = ({ name = '', setName } : {name: string, setName: Dispatch<SetStateAction<string>> }) => (
   <OuterContainer>
     <Container>
       <StyledFaSearch />
@@ -15,10 +15,6 @@ const PeopleSearch = ({ name, setName }) => (
     </Container>
   </OuterContainer>
 );
-
-PeopleSearch.defaultProps = {
-  name: '',
-};
 
 PeopleSearch.propTypes = {
   name: PropTypes.string,
