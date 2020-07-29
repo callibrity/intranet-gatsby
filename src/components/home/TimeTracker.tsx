@@ -23,7 +23,14 @@ interface billableHoursPropTypes {
   }
 }
 
-export const BillableHours = ({ billable: { currentHours = loadStr, currentTarget = loadStr, totalTarget = loadStr}  } : billableHoursPropTypes ) => {
+const billableDefault = {
+  currentHours: loadStr,
+  currentTarget: loadStr,
+  totalTarget: loadStr
+}
+
+export const BillableHours = ({ billable = billableDefault  } : billableHoursPropTypes ) => {
+  const {currentHours, currentTarget, totalTarget} = billable;
   return (
     <Section color="green" label="Target Hours" className="TimeTracker-Hours">
       <LineItem label="Current Hours" value={currentHours} />
@@ -41,7 +48,14 @@ interface growthHoursPropTypes {
   }
 }
 
-export const GrowthHours = ({ growth: { hoursUsed = loadStr, hoursRemaining = loadStr, totalGrowth = loadStr }  } : growthHoursPropTypes ) => {
+const growthDefault = {
+  hoursUsed: loadStr,
+  hoursRemaining: loadStr,
+  totalGrowth: loadStr
+}
+
+export const GrowthHours = ({ growth = growthDefault  } : growthHoursPropTypes ) => {
+  const {hoursUsed, hoursRemaining, totalGrowth } = growth;
   return (
     <Section color="green" label="Growth Time" className="TimeTracker-Hours">
       <LineItem label="Hours Used" value={hoursUsed} />
