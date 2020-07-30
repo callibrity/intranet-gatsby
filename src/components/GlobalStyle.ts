@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export default createGlobalStyle`
   ${normalize}
@@ -9,13 +11,16 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
     min-height: 100vh;
     position: relative;
     font-size: 20px;
     background-color: #EEECEF;
   }
-
+  .btn-flat {
+    background-color: purple;
+    color: white;
+  }
   a {
     border-radius: 5px;
     color: white;

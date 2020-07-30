@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { UserContext } from '@globals/contexts';
-import theme from '@globals/theme';
-import Navbar from '@navbar/Navbar';
+import Navbar from './navbar/Navbar';
 import Login from '@pages/login';
 import GlobalStyle from './GlobalStyle';
 
@@ -20,11 +18,9 @@ return (
       username, setUsername, userEmail, setUserEmail,
     }}
     >
-      <ThemeProvider theme={theme}>
+      <GlobalStyle />
         <Navbar />
-        <GlobalStyle />
         {component}
-      </ThemeProvider>
     </UserContext.Provider>
   );
 };
