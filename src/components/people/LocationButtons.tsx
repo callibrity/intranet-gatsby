@@ -5,12 +5,12 @@ import { blue, darkerBlue } from '@globals/theme';
 import { standardButton } from '@globals/styles';
 import { peopleLocationButtonList } from '@globals/constants'; 
 
-interface propInterface {
+interface LocationButtonsPropTypes {
   location: string,
   setLocation: Dispatch<SetStateAction<string>>,
 }
 
-const LocationButtons = ({ location, setLocation }: propInterface) => {  
+const LocationButtons = ({ location, setLocation }: LocationButtonsPropTypes) => {  
   const list = peopleLocationButtonList.map(({ label, value }) => (
     <ButtonFilter key={label} value={value} location={location} onClick={() => setLocation(value)}>
       {label}

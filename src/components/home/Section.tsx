@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { whiteContainer } from '@globals/styles';
 import { reactChildren } from '@globals/types';
 
-interface propTypes {
+interface SectionPropTypes {
   label: string,
   color: string,
   className: string,
@@ -12,7 +12,7 @@ interface propTypes {
 }
 
 // Component
-export default function Section({label = '', color = '', className = '', children} : propTypes) {
+export default function Section({label = '', color = '', className = '', children} : SectionPropTypes) {
   return (
     <Container className={className}>
       <GroupHeader color={color}>

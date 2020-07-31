@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ProfileContext } from '@globals/contexts';
 
-interface propTypes {
+interface InfoItemPropTypes {
   label: string,
   info: never,
   data: string | any[]
 }
 
-export default function InfoItem({ label = '', data = '', info = '' } : propTypes) {
+export default function InfoItem({ label = '', data = '', info = '' } : InfoItemPropTypes) {
   const { editMode, setEmployee } = useContext(ProfileContext);
   const text = typeof info === 'string' || info === undefined ? info
     : info.reduce((str, ele) => `${str}, ${ele}`);

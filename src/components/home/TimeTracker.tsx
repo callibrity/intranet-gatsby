@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Section from '@home/Section';
+import Card from 'react-bootstrap/Card';
 import { getEmployeeMetrics } from '@api/serviceCalls'; 
 
 const loadStr = 'Loading...';
@@ -15,7 +16,7 @@ export const LineItem = ({ label, value } : {label: string, value: string | numb
   </div>
 );
 
-interface billableHoursPropTypes {
+interface BillableHoursPropTypes {
   billable: {
     currentHours: string | number,
     currentTarget: string | number,
@@ -29,14 +30,17 @@ const billableDefault = {
   totalTarget: loadStr
 }
 
-export const BillableHours = ({ billable = billableDefault  } : billableHoursPropTypes ) => {
+export const BillableHours = ({ billable = billableDefault  } : BillableHoursPropTypes ) => {
   const {currentHours, currentTarget, totalTarget} = billable;
   return (
-    <Section color="green" label="Target Hours" className="TimeTracker-Hours">
+  <Card style={{ width: '28rem' }} className="TimeTracker-Hours"> 
+    <Card.Body>
+      <Card.Title style={{fontSize: "2.2rem"}}>Billable Hours</Card.Title>
       <LineItem label="Current Hours" value={currentHours} />
       <LineItem label="Current Target" value={currentTarget} />
       <LineItem label="Total Target" value={totalTarget} />
-    </Section>
+    </Card.Body>
+  </Card>
   );
 };
 
@@ -57,11 +61,14 @@ const growthDefault = {
 export const GrowthHours = ({ growth = growthDefault  } : growthHoursPropTypes ) => {
   const {hoursUsed, hoursRemaining, totalGrowth } = growth;
   return (
-    <Section color="green" label="Growth Time" className="TimeTracker-Hours">
+    <Card style={{ width: '28rem' }} className="TimeTracker-Hours"> 
+    <Card.Body>
+      <Card.Title style={{fontSize: "2.2rem"}}>Growth Time</Card.Title>
       <LineItem label="Hours Used" value={hoursUsed} />
       <LineItem label="Hours Remaining" value={hoursRemaining} />
       <LineItem label="Total Growth" value={totalGrowth} />
-    </Section>
+    </Card.Body>
+    </Card>
   );
 };
 

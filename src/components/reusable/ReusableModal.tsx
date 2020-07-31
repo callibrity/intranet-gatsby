@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { reactChildren } from '@globals/types';
 
-interface propTypes {
+interface ReusableModalPropTypes {
   Show: boolean,
   handleClose: never, 
   Header: string, 
@@ -12,7 +12,7 @@ interface propTypes {
   Footer: string | reactChildren
 }
 
-export default function ReusableModal({ Show, handleClose, Header = '', Body, Footer = '' } : propTypes) {
+export default function ReusableModal({ Show, handleClose, Header = '', Body, Footer = '' } : ReusableModalPropTypes) {
   return (
     <Modal show={Show} onHide={handleClose}>
       <Modal.Header closeButton>

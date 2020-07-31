@@ -3,13 +3,13 @@ import { Link } from 'gatsby';
 
 import './PersonTile.css';
 
-interface personProps {
+interface PersonTilePropTypes {
   name: string,
   role: string,
   photo: string,
 }
 
-const PersonTile = ({ name='', role='', photo='' }: personProps) => (
+const PersonTile = ({ name='', role='', photo='' }: PersonTilePropTypes) => (
   <Link to={`/portfolio?name=${name}`}>
     <div className="card tile">
       <img className="card-img-top" src={photo} alt={name} />

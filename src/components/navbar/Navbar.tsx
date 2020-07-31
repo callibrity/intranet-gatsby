@@ -28,7 +28,7 @@ export default function navBar() {
   return (
     <Navbar variant="dark">
       <Row style={{ width: '100%' }}>
-        <Col md={7} sm={6} xs={3}>
+        <Col md={7} sm={6} xs={3} className='align-self-center pt-2'>
           <Nav>
             <Link to="/">
               <Img fixed={data.file.childImageSharp.fixed} alt="Callibrity Logo" />
