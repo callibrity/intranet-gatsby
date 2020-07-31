@@ -1,7 +1,5 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
-import styled from 'styled-components';
-import { linkStyle } from '@globals/styles'; 
 
 const { Toggle, Menu } = Dropdown;
 
@@ -12,17 +10,13 @@ interface propInterface {
 
 export default function UserDropdown({ label, children }: propInterface) {
   return (
-    <StyledDropdown>
+    <Dropdown>
       <Toggle as="a">{label}</Toggle>
       <Menu>
         {children}
       </Menu>
-    </StyledDropdown>
+    </Dropdown>
   );
 }
 
 
-
-const StyledDropdown = styled(Dropdown)`
-  ${linkStyle}
-`;

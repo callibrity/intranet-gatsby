@@ -31,7 +31,8 @@ export const darkGreen = '#25582c';
 export const white = '#ebfaf9';
 export const tan = '#f9f1d2';
 export const darkerBlue = '#1d2542';
-export const darkerGreen = '21282f';
+export const darkerGreen = '#21282f';
+export const surface = '#F0F0F0';
 
 const theme = {
   lightOrange,

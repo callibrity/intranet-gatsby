@@ -1,7 +1,8 @@
 import React, { useState, useContext, ChangeEvent } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { MdSearch } from 'react-icons/md';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 import styled from 'styled-components';
-import { standardInput } from '@globals/styles';
 import { UserContext } from '@globals/contexts';
 
 export default function SearchBar() {
@@ -9,34 +10,16 @@ export default function SearchBar() {
   const { username } = useContext(UserContext);
 
   return !username ? null : (
-    <Container>
-      <IconContainer>
-        <FaSearch />
-      </IconContainer>
-      <Search
+  <InputGroup >
+      <FormControl aria-label="General Site Search"
         alt="search bar"
         value={text}
+        placeholder="Search..."
         onChange={(e) => setText(e.target.value)}
       />
-    </Container>
+    <InputGroup.Append>
+      <InputGroup.Text><MdSearch/></InputGroup.Text>
+    </InputGroup.Append>
+  </InputGroup>
   );
 }
-// EventTarget & HTMLInputElement
-
-const Container = styled.div`
-  ${standardInput}
-  display: flex;  
-  align-items: center;
-  width: 40%;
-  justify-content: left;
-`;
-
-const IconContainer = styled.div`
-  color: lightgray;
-`;
-
-const Search = styled.input`
-  width: 100%;
-  border: none;
-  outline: none;
-`;
