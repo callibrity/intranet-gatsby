@@ -6,7 +6,7 @@ export default createGlobalStyle`
   body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
     font-size: 18px;
-    background-color: '#F0F0F0';
+    background-color: '#ECECEC';
   }
   .btn-flat {
     background-color: purple;
@@ -18,53 +18,3 @@ export default createGlobalStyle`
   }
 
 `;
-
-export const lightOrange = '#ffc000';
-export const orange = '#f6921e';
-export const darkOrange = '#d65b1e';
-export const lightBlue = '#b1e0ca';
-export const blue = '#00adee';
-export const darkBlue = '#104185';
-export const green = '#37B34a';
-export const darkGreen = '#25582c';
-export const white = '#ebfaf9';
-export const tan = '#f9f1d2';
-export const darkerBlue = '#1d2542';
-export const darkerGreen = '#21282f';
-export const surface = '#F0F0F0';
-
-let theme = {
-  lightOrange,
-  orange,
-  darkOrange,
-  lightBlue,
-  blue,
-  darkBlue,
-  green,
-  darkGreen,
-  white,
-  tan,
-  darkerBlue,
-  darkerGreen,
-  surface,
-  orangeGradient: [
-    lightOrange,
-    orange,
-    '#f6721e',
-    darkOrange,
-  ],
-  blueGradient: [
-    lightBlue,
-    '#26d0d7',
-    blue,
-    '#028ef6',
-    '#0e67eb',
-    darkBlue,
-  ],
-  greenGradient: [
-    '#97db24',
-    green,
-    '#009a00',
-    darkGreen,
-  ],
-};

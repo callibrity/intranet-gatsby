@@ -33,7 +33,7 @@ const billableDefault = {
 export const BillableHours = ({ billable = billableDefault  } : BillableHoursPropTypes ) => {
   const {currentHours, currentTarget, totalTarget} = billable;
   return (
-  <Card style={{ width: '28rem' }} className="TimeTracker-Hours"> 
+  <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm"> 
     <Card.Body>
       <Card.Title style={{fontSize: "2.2rem"}}>Billable Hours</Card.Title>
       <LineItem label="Current Hours" value={currentHours} />
@@ -61,7 +61,7 @@ const growthDefault = {
 export const GrowthHours = ({ growth = growthDefault  } : growthHoursPropTypes ) => {
   const {hoursUsed, hoursRemaining, totalGrowth } = growth;
   return (
-    <Card style={{ width: '28rem' }} className="TimeTracker-Hours"> 
+    <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm"> 
     <Card.Body>
       <Card.Title style={{fontSize: "2.2rem"}}>Growth Time</Card.Title>
       <LineItem label="Hours Used" value={hoursUsed} />

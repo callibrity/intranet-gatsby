@@ -1,5 +1,6 @@
 import React from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, NavItem, NavLink } from 'react-bootstrap';
+
 
 const { Toggle, Menu } = Dropdown;
 
@@ -10,11 +11,11 @@ interface NavDropdownPropTypes {
 
 export default function UserDropdown({ label, children }: NavDropdownPropTypes) {
   return (
-    <Dropdown>
-      <Toggle as="a">{label}</Toggle>
-      <Menu>
+    <Dropdown as={NavItem} style={{marginLeft: '20px'}}>
+      <Toggle as={NavLink}>{label}</Toggle>
+      <Dropdown.Menu>
         {children}
-      </Menu>
+      </Dropdown.Menu>
     </Dropdown>
   );
 }

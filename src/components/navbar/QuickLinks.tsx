@@ -8,7 +8,6 @@ export default function QuickLinks() {
   const { Item } = Dropdown;
   return (
     <NavDropdown label={"Quick Links"}>
-      <MdLink></MdLink>
       {quickLinks.map(({ title, url }) => (
         <Item key={title} href={url}>
           {title}

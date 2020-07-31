@@ -16,6 +16,7 @@ export default function SearchBar() {
         value={text}
         placeholder="Search..."
         onChange={(e) => setText(e.target.value)}
+        style={{height: '100%'}}
       />
     <InputGroup.Append>
       <InputGroup.Text><MdSearch/></InputGroup.Text>
@@ -23,3 +24,7 @@ export default function SearchBar() {
   </InputGroup>
   );
 }
+
+const IconButton = styled(InputGroup.Append)`
+  
+`
