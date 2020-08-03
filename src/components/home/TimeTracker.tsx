@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Section from '@home/Section';
 import Card from 'react-bootstrap/Card';
-import { getEmployeeMetrics } from '@api/serviceCalls'; 
+import { getEmployeeMetrics } from '@api/serviceCalls';
 
 const loadStr = 'Loading...';
 
@@ -27,24 +26,25 @@ interface BillableHoursPropTypes {
 const billableDefault = {
   currentHours: loadStr,
   currentTarget: loadStr,
-  totalTarget: loadStr
-}
+  totalTarget: loadStr,
+};
 
-export const BillableHours = ({ billable = billableDefault  } : BillableHoursPropTypes ) => {
-  const {currentHours, currentTarget, totalTarget} = billable;
+export const BillableHours = ({ billable = billableDefault } : BillableHoursPropTypes) => {
+  const { currentHours, currentTarget, totalTarget } = billable;
   return (
-  <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm"> 
-    <Card.Body>
-      <Card.Title style={{fontSize: "2.2rem"}}>Billable Hours</Card.Title>
-      <LineItem label="Current Hours" value={currentHours} />
-      <LineItem label="Current Target" value={currentTarget} />
-      <LineItem label="Total Target" value={totalTarget} />
-    </Card.Body>
-  </Card>
+
+    <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm">
+      <Card.Body >
+        <Card.Title style={{ fontSize: '2.2rem' }}>Billable Hours</Card.Title>
+        <LineItem label="Current Hours" value={currentHours} />
+        <LineItem label="Current Target" value={currentTarget} />
+        <LineItem label="Total Target" value={totalTarget} />
+      </Card.Body>
+    </Card>
   );
 };
 
-interface growthHoursPropTypes {
+interface GrowthHoursPropTypes {
   growth: {
     hoursUsed: string | number,
     hoursRemaining: string | number,
@@ -55,19 +55,19 @@ interface growthHoursPropTypes {
 const growthDefault = {
   hoursUsed: loadStr,
   hoursRemaining: loadStr,
-  totalGrowth: loadStr
-}
+  totalGrowth: loadStr,
+};
 
-export const GrowthHours = ({ growth = growthDefault  } : growthHoursPropTypes ) => {
-  const {hoursUsed, hoursRemaining, totalGrowth } = growth;
+export const GrowthHours = ({ growth = growthDefault } : GrowthHoursPropTypes) => {
+  const { hoursUsed, hoursRemaining, totalGrowth } = growth;
   return (
-    <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm"> 
-    <Card.Body>
-      <Card.Title style={{fontSize: "2.2rem"}}>Growth Time</Card.Title>
-      <LineItem label="Hours Used" value={hoursUsed} />
-      <LineItem label="Hours Remaining" value={hoursRemaining} />
-      <LineItem label="Total Growth" value={totalGrowth} />
-    </Card.Body>
+    <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm">
+      <Card.Body>
+        <Card.Title style={{ fontSize: '2.2rem' }}>Growth Time</Card.Title>
+        <LineItem label="Hours Used" value={hoursUsed} />
+        <LineItem label="Hours Remaining" value={hoursRemaining} />
+        <LineItem label="Total Growth" value={totalGrowth} />
+      </Card.Body>
     </Card>
   );
 };
