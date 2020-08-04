@@ -31,7 +31,7 @@ describe('LocationButtons', () => {
   });
 
   it('Should set Columbus blue', () => {
-    const wrapper = mount(<LocationButtons location="Columbus" />);
+    const wrapper = mount(<LocationButtons location="Columbus" />); 
     const buttons = wrapper.find(ButtonFilter);
 
     expect(buttons.at(0)).toHaveStyleRule('background-color', darkerBlue);

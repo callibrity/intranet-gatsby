@@ -24,7 +24,6 @@ describe('TimeTracker component', () => {
     const wrapper = shallow(<BillableHours billable={billable} />);
     const lineItems = wrapper.find(LineItem);
 
-    expect(wrapper.find(Section).prop('label')).toEqual('Target Hours');
     expect(lineItems.at(0).prop('label')).toEqual('Current Hours');
     expect(lineItems.at(0).prop('value')).toEqual(1);
     expect(lineItems.at(1).prop('label')).toEqual('Current Target');
@@ -42,7 +41,6 @@ describe('TimeTracker component', () => {
     const wrapper = shallow(<GrowthHours growth={growth} />);
     const lineItems = wrapper.find(LineItem);
 
-    expect(wrapper.find(Section).prop('label')).toEqual('Growth Time');
     expect(lineItems.at(0).prop('label')).toEqual('Hours Used');
     expect(lineItems.at(0).prop('value')).toEqual(1);
     expect(lineItems.at(1).prop('label')).toEqual('Hours Remaining');

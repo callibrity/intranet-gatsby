@@ -1,3 +1,25 @@
+import "styled-components";
+
+declare module "styled-components" {
+  export interface DefaultThemePropTyps {
+    lightOrange: string,
+    orange: string,
+    darkOrange: string,
+    lightBlue: string,
+    blue: string,
+    darkBlue: string,
+    green: string,
+    darkGreen: string,
+    white: string,
+    tan: string,
+    darkerBlue: string,
+    darkerGreen: string
+    orangeGradient: string[],
+    blueGradient: string[],
+    greenGradient: string[]
+  }
+}
+
 export const lightOrange = '#ffc000';
 export const orange = '#f6921e';
 export const darkOrange = '#d65b1e';
@@ -9,7 +31,8 @@ export const darkGreen = '#25582c';
 export const white = '#ebfaf9';
 export const tan = '#f9f1d2';
 export const darkerBlue = '#1d2542';
-export const darkerGreen = '21282f';
+export const darkerGreen = '#21282f';
+export const surface = '#F0F0F0';
 
 const theme = {
   lightOrange,

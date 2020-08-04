@@ -6,7 +6,7 @@ import { profileDetailsList } from '@globals/constants';
 import InfoItem from './InfoItem';
 
 export default function Details() {
-  const { employee, setEmployee } = useContext(ProfileContext);
+  const { employee } = useContext(ProfileContext);
 
   const info = profileDetailsList.map(({ label, data }) => (
     <InfoItem
@@ -14,7 +14,6 @@ export default function Details() {
       label={label}
       data={data}
       info={employee[data]}
-      setEmployee={setEmployee}
     />
   ));
 

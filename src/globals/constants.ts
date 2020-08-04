@@ -30,6 +30,11 @@ export const quickLinks = [
     url:
       'https://drive.google.com/drive/folders/0B28qaCwNRg44SU9CcDJ6OWc5Wlk?usp=sharing',
   },
+  {
+    title: 'Callibrity Wiki',
+    url:
+      'https://drive.google.com/drive/folders/0B28qaCwNRg44SU9CcDJ6OWc5Wlk?usp=sharing',
+  },
 ];
 
 export const apiInitialMessage = 'Loading';

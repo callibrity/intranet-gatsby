@@ -1,0 +1,64 @@
+{
+  "compilerOptions": {
+      "outDir": "./dist/",
+      "module": "commonjs",
+      "target": "ESNext",
+      "jsx": "react",
+      "lib": ["dom", "ESNext", "es5", "es6", "ES2020"],
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "diagnostics": true,
+      "baseUrl": ".",
+      "paths": {
+        "@home/*": [
+          "src/components/home/*"
+        ],
+        "@navbar/*": [
+          "src/components/navbar/*"
+        ],
+        "@people/*": [
+          "src/components/people/*"
+        ],
+        "@portfolio/*": [
+          "src/components/portfolio/*"
+        ],
+        "@wiki/*": [
+          "src/components/wiki/*"
+        ],
+        "@components/*": [
+          "src/components/*"
+        ],
+        "@globals/*": [
+          "./src/globals/*"
+        ],
+        "@hooks/*": [
+          "src/hooks/*"
+        ],
+        "@images/*": [
+          "src/images/*"
+        ],
+        "@pages/*": [
+          "src/pages/*"
+        ],
+        "@api/*": [
+          "src/api/*"
+        ]
+      },
+
+      // "strictness settings
+      "noImplicitAny": true, 
+      "allowJs": true,
+      "strictNullChecks": false,
+      "strictFunctionTypes": false,
+      "noImplicitReturns": false,
+      "strictBindCallApply": false,
+      "strictPropertyInitialization": false,
+      "noImplicitThis": false,
+      "alwaysStrict": false,
+      "allowSyntheticDefaultImports": true,
+  },
+  "include": [
+      "./src/**/*"
+  ],
+  "typeRoots": ["node_modules/@types"]
+}

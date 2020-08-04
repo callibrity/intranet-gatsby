@@ -24,7 +24,7 @@ jest.mock('gatsby', () => ({
 }));
 
 jest.mock('react-google-login', () => ({
-  ...jest.requireActual('react-google-login'),
+  ...jest.requireActual('react-google-login'), 
   useGoogleLogin: (val) => mockUseGoogleLogin(val),
 }));
 
@@ -47,6 +47,7 @@ describe('Login component', () => {
     expect(mockUseGoogleLogin).toHaveBeenCalledWith({
       clientId: googleClientId,
       onSuccess: expect.any(Function),
+      onFailure: expect.any(Function),
       isSignedIn: true,
     });
 

@@ -3,8 +3,8 @@ import axios from 'axios';
 
 import { apiInitialMessage, apiErrorMessage } from '@globals/constants';
 
-export default function useAPI(apiString) {
-  const [apiResult, setApiResult] = useState(apiInitialMessage);
+export default function useAPI(apiString: string) : string | {photo: string; name: string, role: string}[] {
+  const [apiResult, setApiResult] = useState<string>(apiInitialMessage);
 
   useEffect(() => {
     axios.get(apiString)

@@ -8,9 +8,6 @@ export default function Homepage() {
   return (
     <Container>
       <TimeTracker />
-      <Section label="Calendar" color="orange">
-        <Calendar />
-      </Section>
     </Container>
   );
 }

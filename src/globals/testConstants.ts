@@ -114,7 +114,7 @@ export const mockPeopleResponse = {};
 
 export const mockProfileResponse = {};
 
-export function queryElements(app) {
+export function queryElements(app: never) {
   return {
     callibrityLogo: () => app.queryByAltText(/callibrity logo/i),
     signInButton: () => app.queryByText(/sign in/i),

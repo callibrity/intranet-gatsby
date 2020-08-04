@@ -2,7 +2,7 @@ const jestAliases = require('./config/jestAliases');
 
 module.exports = {
   transform: {
-    '^.+\\.jsx?$': '<rootDir>/jest-preprocess.js',
+    '\\.[j|t]sx?$': '<rootDir>/jest-preprocess.js',
   },
   moduleNameMapper: {
     ...jestAliases,

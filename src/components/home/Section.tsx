@@ -1,13 +1,18 @@
 // Package dependencies
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { whiteContainer } from '@globals/styles';
+import { reactChildren } from '@globals/types';
+
+interface SectionPropTypes {
+  label: string,
+  color: string,
+  className: string,
+  children: reactChildren
+}
 
 // Component
-export default function Section({
-  label, color, children, className,
-}) {
+export default function Section({label = '', color = '', className = '', children} : SectionPropTypes) {
   return (
     <Container className={className}>
       <GroupHeader color={color}>
@@ -17,22 +22,6 @@ export default function Section({
     </Container>
   );
 }
-
-Section.defaultProps = {
-  className: '',
-  color: '',
-  label: '',
-};
-
-Section.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.element,
-  ]).isRequired,
-  className: PropTypes.string,
-  color: PropTypes.string,
-  label: PropTypes.string,
-};
 
 // Styling
 const Container = styled.section`
