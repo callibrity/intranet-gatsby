@@ -3,7 +3,6 @@ module.exports = {
   '@navbar': 'src/components/navbar/',
   '@people': 'src/components/people/',
   '@portfolio': 'src/components/portfolio/',
-  '@wiki': 'src/components/wiki/',
   '@components': 'src/components/',
   '@globals': 'src/globals/',
   '@hooks': 'src/hooks/',

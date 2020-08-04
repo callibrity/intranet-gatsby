@@ -15,9 +15,6 @@
       "@portfolio/*": [
         "src/components/portfolio/*"
       ],
-      "@wiki/*": [
-        "src/components/wiki/*"
-      ],
       "@components/*": [
         "src/components/*"
       ],

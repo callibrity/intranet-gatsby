@@ -1,20 +1,3 @@
-export const mockNewsResponse = {
-  data: [
-    {
-      date: 'May 3',
-      event: 'Alex, Alex, and Alec became acquainted',
-    },
-    {
-      date: 'May 4',
-      event: 'Alex, Alex, and Alec confused everyone with their names',
-    },
-    {
-      date: 'May 5',
-      event: 'Alex, Alex, and Alec thought everyone should change their names to Ale*',
-    },
-  ],
-};
-
 export const mockEmployeeResponse = {
   data: [
     {
@@ -104,8 +87,6 @@ const testName = 'testName';
 
 export const mockLoginResponse = { profileObj: { name: testName, email: 'test' } };
 
-export const newsAPIString = {};
-
 export const employeesAPINameString = {};
 
 export const employeesAPIOfficeString = {};
@@ -120,8 +101,5 @@ export function queryElements(app: never) {
     signInButton: () => app.queryByText(/sign in/i),
     signOutButton: () => app.queryByText(/sign out/i),
     navbarUsername: () => app.queryByText(testName),
-    pageLinks: () => app.queryByText(/wiki/i),
-    newsSection: () => app.queryByText(/news/i),
-    calendarSection: () => app.queryByText(/calendar/i),
   };
 }
