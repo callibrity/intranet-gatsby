@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Card from 'react-bootstrap/Card';
 import { getEmployeeMetrics } from '@api/serviceCalls';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
+
+const renderTooltip = (props, dbUpdate) => (
+  <Tooltip id="tooltip" {...props}>
+    {dbUpdate && dbUpdate.timeLastUpdated}
+  </Tooltip>
+);
 
 const loadStr = 'Loading...';
 
@@ -29,17 +36,25 @@ const billableDefault = {
   totalTarget: loadStr,
 };
 
-export const BillableHours = ({ billable = billableDefault } : BillableHoursPropTypes) => {
+export const BillableHours = ({ billable = billableDefault, dbUpdate } : BillableHoursPropTypes) => {
   const { currentHours, currentTarget, totalTarget } = billable;
   return (
 
-    <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm">
-      <Card.Body >
-        <Card.Title style={{ fontSize: '2.2rem' }}>Billable Hours</Card.Title>
-        <LineItem label="Current Hours" value={currentHours} />
-        <LineItem label="Current Target" value={currentTarget} />
-        <LineItem label="Total Target" value={totalTarget} />
-      </Card.Body>
+    <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm" id="tooltip">
+        <Card.Body >
+          <OverlayTrigger
+            placement="bottom"
+            delay={{ show: 250, hide: 400 }}
+            overlay={ props => renderTooltip(props, dbUpdate) }
+          >
+            <div>
+              <Card.Title style={{ fontSize: '2.2rem' }}>Billable Hours</Card.Title>
+              <LineItem label="Current Hours" value={currentHours} />
+              <LineItem label="Current Target" value={currentTarget} />
+              <LineItem label="Total Target" value={totalTarget} />
+            </div>
+          </OverlayTrigger>
+        </Card.Body>
     </Card>
   );
 };
@@ -58,15 +73,23 @@ const growthDefault = {
   totalGrowth: loadStr,
 };
 
-export const GrowthHours = ({ growth = growthDefault } : GrowthHoursPropTypes) => {
+export const GrowthHours = ({ growth = growthDefault, dbUpdate } : GrowthHoursPropTypes) => {
   const { hoursUsed, hoursRemaining, totalGrowth } = growth;
   return (
     <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm">
       <Card.Body>
-        <Card.Title style={{ fontSize: '2.2rem' }}>Growth Time</Card.Title>
-        <LineItem label="Hours Used" value={hoursUsed} />
-        <LineItem label="Hours Remaining" value={hoursRemaining} />
-        <LineItem label="Total Growth" value={totalGrowth} />
+        <OverlayTrigger
+          placement="bottom"
+          delay={{ show: 250, hide: 400 }}
+          overlay={ props => renderTooltip(props, dbUpdate) }
+        >
+          <div>
+            <Card.Title style={{ fontSize: '2.2rem' }}>Growth Time</Card.Title>
+            <LineItem label="Hours Used" value={hoursUsed} />
+            <LineItem label="Hours Remaining" value={hoursRemaining} />
+            <LineItem label="Total Growth" value={totalGrowth} />
+          </div>
+        </OverlayTrigger>
       </Card.Body>
     </Card>
   );
@@ -84,6 +107,9 @@ const TimeTracker = () => {
       hoursRemaining: 'Loading...',
       totalGrowth: 'Loading...',
     },
+    dbUpdate: {
+      timeLastUpdated: 'Loading...',
+    }
   };
 
   const [data, setData] = useState(initialState);
@@ -95,8 +121,8 @@ const TimeTracker = () => {
 
   return (
     <Container>
-      <BillableHours billable={data.billable} />
-      <GrowthHours growth={data.growth} />
+      <BillableHours billable={data.billable} dbUpdate={data.dbUpdate} />
+      <GrowthHours growth={data.growth} dbUpdate={data.dbUpdate} />
     </Container>
   );
 };
