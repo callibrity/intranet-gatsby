@@ -4,9 +4,9 @@ import Card from 'react-bootstrap/Card';
 import { getEmployeeMetrics } from '@api/serviceCalls';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 
-const renderTooltip = (props, dbUpdate) => (
+const renderTooltip = (props, updatedAt) => (
   <Tooltip id="tooltip" {...props}>
-    {dbUpdate && dbUpdate.timeLastUpdated}
+    {updatedAt}
   </Tooltip>
 );
 
@@ -36,7 +36,7 @@ const billableDefault = {
   totalTarget: loadStr,
 };
 
-export const BillableHours = ({ billable = billableDefault, dbUpdate } : BillableHoursPropTypes) => {
+export const BillableHours = ({ billable = billableDefault, updatedAt } : BillableHoursPropTypes) => {
   const { currentHours, currentTarget, totalTarget } = billable;
   return (
 
@@ -45,7 +45,7 @@ export const BillableHours = ({ billable = billableDefault, dbUpdate } : Billabl
           <OverlayTrigger
             placement="bottom"
             delay={{ show: 250, hide: 400 }}
-            overlay={ props => renderTooltip(props, dbUpdate) }
+            overlay={ props => renderTooltip(props, updatedAt) }
           >
             <div>
               <Card.Title style={{ fontSize: '2.2rem' }}>Billable Hours</Card.Title>
@@ -73,7 +73,7 @@ const growthDefault = {
   totalGrowth: loadStr,
 };
 
-export const GrowthHours = ({ growth = growthDefault, dbUpdate } : GrowthHoursPropTypes) => {
+export const GrowthHours = ({ growth = growthDefault, updatedAt } : GrowthHoursPropTypes) => {
   const { hoursUsed, hoursRemaining, totalGrowth } = growth;
   return (
     <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm">
@@ -81,7 +81,7 @@ export const GrowthHours = ({ growth = growthDefault, dbUpdate } : GrowthHoursPr
         <OverlayTrigger
           placement="bottom"
           delay={{ show: 250, hide: 400 }}
-          overlay={ props => renderTooltip(props, dbUpdate) }
+          overlay={ props => renderTooltip(props, updatedAt) }
         >
           <div>
             <Card.Title style={{ fontSize: '2.2rem' }}>Growth Time</Card.Title>
@@ -107,9 +107,6 @@ const TimeTracker = () => {
       hoursRemaining: 'Loading...',
       totalGrowth: 'Loading...',
     },
-    dbUpdate: {
-      timeLastUpdated: 'Loading...',
-    }
   };
 
   const [data, setData] = useState(initialState);
@@ -121,8 +118,8 @@ const TimeTracker = () => {
 
   return (
     <Container>
-      <BillableHours billable={data.billable} dbUpdate={data.dbUpdate} />
-      <GrowthHours growth={data.growth} dbUpdate={data.dbUpdate} />
+      <BillableHours billable={data.billable} updatedAt={data.updatedAt} />
+      <GrowthHours growth={data.growth} updatedAt={data.updatedAt} />
     </Container>
   );
 };
