@@ -8,11 +8,12 @@ import { flexCenter, standardButton } from '@globals/styles';
 import { setJwt } from '@api/api';
 
 export default function Login() {
-  const { setUsername, setUserEmail } = useContext(UserContext);
+  const { setUsername, setUserEmail, setUserRole } = useContext(UserContext);
   const onSuccess = (obj) => {
     setJwt(obj.tokenId);
     setUsername(obj.profileObj.name);
     setUserEmail(obj.profileObj.email);
+    setUserRole('Account Manager');
     navigate('/');
   };
   const { signIn } = useGoogleLogin({

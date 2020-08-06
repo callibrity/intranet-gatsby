@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Card from 'react-bootstrap/Card';
 import { getEmployeeMetrics } from '@api/serviceCalls';
-import { Tooltip, OverlayTrigger } from 'react-bootstrap';
+import { Tooltip, OverlayTrigger, Container } from 'react-bootstrap';
+import EmployeeSearch from './EmployeeSearch';
 
 const renderTooltip = (props, updatedAt) => (
   <Tooltip id="tooltip" {...props}>
@@ -41,20 +42,20 @@ export const BillableHours = ({ billable = billableDefault, updatedAt } : Billab
   return (
 
     <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm" id="tooltip">
-        <Card.Body >
-          <OverlayTrigger
-            placement="bottom"
-            delay={{ show: 250, hide: 400 }}
-            overlay={ props => renderTooltip(props, updatedAt) }
-          >
-            <div>
-              <Card.Title style={{ fontSize: '2.2rem' }}>Billable Hours</Card.Title>
-              <LineItem label="Current Hours" value={currentHours} />
-              <LineItem label="Current Target" value={currentTarget} />
-              <LineItem label="Total Target" value={totalTarget} />
-            </div>
-          </OverlayTrigger>
-        </Card.Body>
+      <Card.Body>
+        <OverlayTrigger
+          placement="bottom"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => renderTooltip(props, updatedAt)}
+        >
+          <div>
+            <Card.Title style={{ fontSize: '2.2rem' }}>Billable Hours</Card.Title>
+            <LineItem label="Current Hours" value={currentHours} />
+            <LineItem label="Current Target" value={currentTarget} />
+            <LineItem label="Total Target" value={totalTarget} />
+          </div>
+        </OverlayTrigger>
+      </Card.Body>
     </Card>
   );
 };
@@ -81,7 +82,7 @@ export const GrowthHours = ({ growth = growthDefault, updatedAt } : GrowthHoursP
         <OverlayTrigger
           placement="bottom"
           delay={{ show: 250, hide: 400 }}
-          overlay={ props => renderTooltip(props, updatedAt) }
+          overlay={(props) => renderTooltip(props, updatedAt)}
         >
           <div>
             <Card.Title style={{ fontSize: '2.2rem' }}>Growth Time</Card.Title>
@@ -117,16 +118,21 @@ const TimeTracker = () => {
   }, []);
 
   return (
-    <Container>
-      <BillableHours billable={data.billable} updatedAt={data.updatedAt} />
-      <GrowthHours growth={data.growth} updatedAt={data.updatedAt} />
-    </Container>
+    <>
+      <Container style={{ backgroundColor: 'red' }}>
+        <EmployeeSearch />
+      </Container>
+      <CustomContainer>
+        <BillableHours billable={data.billable} updatedAt={data.updatedAt} />
+        <GrowthHours growth={data.growth} updatedAt={data.updatedAt} />
+      </CustomContainer>
+    </>
   );
 };
 
 export default TimeTracker;
 
-const Container = styled.div`
+const CustomContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

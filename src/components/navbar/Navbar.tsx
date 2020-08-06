@@ -24,8 +24,15 @@ export default function navBar() {
   `);
   const { username } = useContext(UserContext);
 
-  return (
-    // eslint-disable-next-line react/jsx-filename-extension
+  return !username ? (
+    <Navbar variant="dark" className="shadow">
+      <Navbar.Brand className="pl-md-5 mt-2" style={{alignSelf: 'center'}}>
+        <Link to="/">
+          <Img fixed={data.file.childImageSharp.fixed} alt="Callibrity Logo" />
+        </Link>
+      </Navbar.Brand>
+    </Navbar>
+  ) : (
     <Navbar variant="dark" className="shadow">
       <Navbar.Brand className="pl-md-5 mt-2">
         <Link to="/">
@@ -33,7 +40,7 @@ export default function navBar() {
         </Link>
       </Navbar.Brand>
       <Nav className="ml-auto pr-md-5">
-        <SearchBar style={{marginRight: '10px'}}/>
+        <SearchBar style={{ marginRight: '10px' }} />
         <QuickLinks />
         <UserDropdown />
       </Nav>

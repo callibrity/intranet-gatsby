@@ -4,7 +4,7 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  extends: ['airbnb', 'airbnb/hooks', "plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended"],
+  extends: ['airbnb', 'airbnb/hooks', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -21,6 +21,7 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', '**/*.test.jsx', './config/setupTests.js'] }],
     'linebreak-style': 0,
     'max-len': 0,
+    'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
   },
   settings: {
     react: {
