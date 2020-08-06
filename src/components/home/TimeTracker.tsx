@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import Card from 'react-bootstrap/Card';
 import { getEmployeeMetrics } from '@api/serviceCalls';
 import { Tooltip, OverlayTrigger, Container } from 'react-bootstrap';
+import { UserContext } from '@globals/contexts';
 import EmployeeSearch from './EmployeeSearch';
+import DebugComponent from '../reusable/DebugComponent';
 
 const renderTooltip = (props, updatedAt) => (
   <Tooltip id="tooltip" {...props}>
@@ -41,7 +43,7 @@ export const BillableHours = ({ billable = billableDefault, updatedAt } : Billab
   const { currentHours, currentTarget, totalTarget } = billable;
   return (
 
-    <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm" id="tooltip">
+    <Card className="TimeTracker-Hours shadow-sm" id="tooltip">
       <Card.Body>
         <OverlayTrigger
           placement="bottom"
@@ -77,7 +79,7 @@ const growthDefault = {
 export const GrowthHours = ({ growth = growthDefault, updatedAt } : GrowthHoursPropTypes) => {
   const { hoursUsed, hoursRemaining, totalGrowth } = growth;
   return (
-    <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm">
+    <Card className="TimeTracker-Hours shadow-sm">
       <Card.Body>
         <OverlayTrigger
           placement="bottom"
@@ -97,6 +99,8 @@ export const GrowthHours = ({ growth = growthDefault, updatedAt } : GrowthHoursP
 };
 
 const TimeTracker = () => {
+  const { userRole } = useContext(UserContext);
+  console.log(userRole, 'is the userRole from Context');
   const initialState = {
     billable: {
       currentHours: 'Loading...',
@@ -109,38 +113,143 @@ const TimeTracker = () => {
       totalGrowth: 'Loading...',
     },
   };
+  const dummyReturnData = [
+    {
+      employeeName: 'Collin Johnson',
+      employeeId: '99999',
+      billable: {
+        currentHours: 7,
+        currentTarget: 9,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: -1,
+        totalGrowth: 3,
+      },
+    },
+    {
+      employeeName: 'Jordan Otrembiak',
+      employeeId: '12345',
+      billable: {
+        currentHours: 23,
+        currentTarget: 12,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: 10,
+        totalGrowth: 3,
+      },
+    },
+    {
+      employeeName: 'Allen Hully',
+      employeeId: '12346',
+      billable: {
+        currentHours: 7,
+        currentTarget: 9,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: -1,
+        totalGrowth: 3,
+      },
+    },
+    {
+      employeeName: 'Arielle Ferre',
+      employeeId: '12347',
+      billable: {
+        currentHours: 7,
+        currentTarget: 9,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: -1,
+        totalGrowth: 3,
+      },
+    },
+    {
+      employeeName: 'Conner Manson',
+      employeeId: '12348',
+      billable: {
+        currentHours: 7,
+        currentTarget: 9,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: -1,
+        totalGrowth: 3,
+      },
+    },
+    {
+      employeeName: 'Alex Morelli',
+      employeeId: '12349',
+      billable: {
+        currentHours: 7,
+        currentTarget: 9,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: -1,
+        totalGrowth: 3,
+      },
+    },
+  ];
 
   const [data, setData] = useState(initialState);
+  const setDataHandler = (ReturnedByApiCall) => {
+    setData(ReturnedByApiCall);
+  };
 
   useEffect(() => {
     // eslint-disable-next-line no-console
-    getEmployeeMetrics(setData, console.log);
+
+    getEmployeeMetrics(setDataHandler, console.log);
   }, []);
 
-  return (
+  return userRole === 'Account Manager' ? (
     <>
-      <Container style={{ backgroundColor: 'red' }}>
+      <Container style={{ backgroundColor: 'red', marginBottom: 16 }}>
         <EmployeeSearch />
       </Container>
-      <CustomContainer>
-        <BillableHours billable={data.billable} updatedAt={data.updatedAt} />
-        <GrowthHours growth={data.growth} updatedAt={data.updatedAt} />
-      </CustomContainer>
+      {
+  dummyReturnData.map((employeeObject) => (
+    <CustomContainer key={employeeObject.employeeId} style={{marginBottom: 10}}>
+      <Card style={{ width: '10rem' }}><Card.Body><p>{employeeObject.employeeName}</p></Card.Body></Card>
+      <BillableHours billable={employeeObject.billable} updatedAt={employeeObject.updatedAt} />
+      <GrowthHours growth={employeeObject.growth} updatedAt={employeeObject.updatedAt} />
+    </CustomContainer>
+  ))
+    }
+      <DebugComponent dataobject={data} header="employeeObject Returned" />
     </>
-  );
+  )
+    : (
+      <>
+
+        <CustomContainer>
+          <BillableHours billable={data.billable} updatedAt={data.updatedAt} />
+          <GrowthHours growth={data.growth} updatedAt={data.updatedAt} />
+        </CustomContainer>
+        <DebugComponent dataobject={data} header="Data Returned" />
+      </>
+    );
 };
 
 export default TimeTracker;
 
 const CustomContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flexDirection: row;
+  justify-content: space-around;
   flex-wrap: wrap;
 
   .TimeTracker-Hours {
-    margin: 8px;
-    width: 500px;
-    min-width: 300px;
+    width: 26rem;
 
     .TimeTracker-Hours-details {
       display: flex;
