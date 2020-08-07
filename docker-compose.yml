@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  intranet-gatsby:
+    container_name: intranet-gatsby-compose
+    image: intranet-gatsby-compose
+    build:
+      context: .
+      dockerfile: ./local.Dockerfile
+    environment:
+      - NODE_ENV=development
+      - GATSBY_WEBPACK_PUBLICPATH=/
+    ports:
+      - "8000:8000"
+    volumes:
+      - node-modules:/app/node_modules
+      - .:/app
+
+  nginx:
+    container_name: intranet-nginx-compose
+    image: nginx:1.19-alpine
+    ports:
+      - "3000:80"
+    volumes:
+      - ./config/nginx/local.nginx.conf:/etc/nginx/nginx.conf
+
+volumes:
+  node-modules:
