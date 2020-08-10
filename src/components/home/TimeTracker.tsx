@@ -208,6 +208,7 @@ const TimeTracker = () => {
     // eslint-disable-next-line no-console
 
     getEmployeeMetrics(setDataHandler, console.log);
+    console.log('userRole context in timetracker component is ', userRole);
   }, []);
 
   return userRole === 'Account Manager' ? (
@@ -229,7 +230,6 @@ const TimeTracker = () => {
   )
     : (
       <>
-
         <CustomContainer>
           <BillableHours billable={data.billable} updatedAt={data.updatedAt} />
           <GrowthHours growth={data.growth} updatedAt={data.updatedAt} />

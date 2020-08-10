@@ -10,25 +10,24 @@ import { getEmployeeDetails } from '@api/serviceCalls';
 import { setJwt } from '@api/api';
 
 export default function Login() {
-  const { setUsername, setUserEmail, setUserRole, userName } = useContext(UserContext);
+  const { setUsername, setUserEmail, setUserRole, userRole } = useContext(UserContext);
+  const [signedIn, setSignedIn] = useState(false);
   const [employeeDetail, setEmployeeDetails] = useState(null);
-  const onSuccess = (obj) => {
-    setJwt(obj.tokenId);
-    setUsername(obj.profileObj.name);
-    setUserEmail(obj.profileObj.email);
-    navigate('/');
-  };
-  useEffect(() => {
-    getEmployeeDetails(setEmployeeDetails, console.log);
-  }, []);
-
   const { signIn } = useGoogleLogin({
     clientId: googleClientId,
     onSuccess: (obj) => { onSuccess(obj); },
     onFailure: () => console.log("sign in failed"),
     isSignedIn: true
   });
-
+  const onSuccess = (obj) => {
+    setJwt(obj.tokenId);
+    setUsername(obj.profileObj.name);
+    setUserEmail(obj.profileObj.email);
+    setSignedIn(true);
+    getEmployeeDetails(setUserRole, console.log);
+    navigate('/');
+  };
+  useEffect(() => {console.log('userContext role is ', userRole)}, [userRole])
   return (
     <Container>
       <Welcome>Welcome to Callibrity!</Welcome>

@@ -2,11 +2,11 @@ import axios from 'axios';
 import { getEmployeeResource } from '@api/endpoints';
 
 // eslint-disable-next-line
-export const getEmployeeMetrics = async (onSucess, onError) => {
+export const getEmployeeMetrics = async (onSuccess, onError) => {
   await axios
     .get(`${getEmployeeResource}/hours`)
     .then((res) => {
-      onSucess(res.data);
+      onSuccess(res.data);
     })
     .catch((err) => {
       onError(err.message);
@@ -21,7 +21,8 @@ export const getEmployeeDetails = async (onSuccess, onError) => {
       },
     })
     .then((res) => {
-      onSuccess(res.data);
+      console.log(JSON.stringify(res.data, null, 2), ' response data from successful get employee api call')
+      onSuccess(res.data.role);
     })
     .catch((err) => {
       onError(err.message);
