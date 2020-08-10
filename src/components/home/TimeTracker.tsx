@@ -100,7 +100,6 @@ export const GrowthHours = ({ growth = growthDefault, updatedAt } : GrowthHoursP
 
 const TimeTracker = () => {
   const { userRole } = useContext(UserContext);
-  console.log(userRole, 'is the userRole from Context');
   const initialState = {
     billable: {
       currentHours: 'Loading...',
