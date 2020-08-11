@@ -23,11 +23,9 @@ export default function Login() {
     setJwt(obj.tokenId);
     setUsername(obj.profileObj.name);
     setUserEmail(obj.profileObj.email);
-    setSignedIn(true);
     getEmployeeDetails(setUserRole, console.log);
     navigate('/');
   };
-  useEffect(() => {console.log('userContext role is ', userRole)}, [userRole])
   return (
     <Container>
       <Welcome>Welcome to Callibrity!</Welcome>

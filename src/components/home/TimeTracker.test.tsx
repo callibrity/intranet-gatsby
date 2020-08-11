@@ -1,18 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TimeTracker, {
-  LineItem,
-  BillableHours,
-  GrowthHours,
-} from '@home/TimeTracker';
+import TimeTracker from '@home/TimeTracker';
+import BillableHoursCard from './BillableHoursCard';
+import GrowthHoursCard from './GrowthHoursCard';
+import LineItem from './BillableHoursCard';
 import Section from '@home/Section';
 
 describe('TimeTracker component', () => {
   it('should render TimeTracker', () => {
     const wrapper = shallow(<TimeTracker />);
 
-    expect(wrapper.find(BillableHours).exists()).toEqual(true);
-    expect(wrapper.find(GrowthHours).exists()).toEqual(true);
+    expect(wrapper.find(BillableHoursCard).exists()).toEqual(true);
+    expect(wrapper.find(GrowthHoursCard).exists()).toEqual(true);
   });
 
   it('should render Billable Hours', () => {
@@ -21,7 +20,7 @@ describe('TimeTracker component', () => {
       currentTarget: 2,
       totalTarget: 3,
     };
-    const wrapper = shallow(<BillableHours billable={billable} />);
+    const wrapper = shallow(<BillableHoursCard billable={billable} />);
     const lineItems = wrapper.find(LineItem);
 
     expect(lineItems.at(0).prop('label')).toEqual('Current Hours');
@@ -38,7 +37,7 @@ describe('TimeTracker component', () => {
       hoursRemaining: 2,
       totalGrowth: 3,
     };
-    const wrapper = shallow(<GrowthHours growth={growth} />);
+    const wrapper = shallow(<GrowthHoursCard growth={growth} />);
     const lineItems = wrapper.find(LineItem);
 
     expect(lineItems.at(0).prop('label')).toEqual('Hours Used');
@@ -58,8 +57,8 @@ describe('TimeTracker component', () => {
   });
 
   it('should not break with invalid data', () => {
-    const growthHours = shallow(<GrowthHours />);
-    const billableHours = shallow(<BillableHours />);
+    const growthHours = shallow(<GrowthHoursCard />);
+    const billableHours = shallow(<BillableHoursCard />);
     const lineItem = shallow(<LineItem />);
 
     expect(growthHours.exists()).toEqual(true);
