@@ -118,13 +118,13 @@ const TimeTracker = () => {
 
   return userRole === 'Account Manager' ? (
     <>
-      <Container style={{ backgroundColor: 'red', marginBottom: 16 }}>
+      <Container style={{ marginBottom: 16 }}>
         <EmployeeSearch />
       </Container>
       {
   dummyReturnData.map((employeeObject) => (
     <CustomContainer key={employeeObject.employeeId} style={{marginBottom: 10}}>
-      <Card style={{ width: '10rem' }}><Card.Body><p>{employeeObject.employeeName}</p></Card.Body></Card>
+      <Card className={'mx-2 shadow-sm'}style={{ width: '14rem' }}><Card.Body style={{alignSelf: 'center', justifyContent:'center'}}><h5 >{employeeObject.employeeName}</h5></Card.Body></Card>
       <BillableHoursCard billable={employeeObject.billable} updatedAt={employeeObject.updatedAt} />
       <GrowthHoursCard growth={employeeObject.growth} updatedAt={employeeObject.updatedAt} />
     </CustomContainer>
