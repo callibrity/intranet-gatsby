@@ -6,97 +6,8 @@ import { Tooltip, OverlayTrigger, Container } from 'react-bootstrap';
 import { UserContext } from '@globals/contexts';
 import EmployeeSearch from './EmployeeSearch';
 import DebugComponent from '../reusable/DebugComponent';
-
-const renderTooltip = (props, updatedAt) => (
-  <Tooltip id="tooltip" {...props}>
-    {updatedAt}
-  </Tooltip>
-);
-
-const loadStr = 'Loading...';
-
-export const LineItem = ({ label, value } : {label: string, value: string | number}) => (
-  <div className="TimeTracker-Hours-details">
-    <span>
-      {label}
-      :
-    </span>
-    <span>{value}</span>
-  </div>
-);
-
-interface BillableHoursPropTypes {
-  billable: {
-    currentHours: string | number,
-    currentTarget: string | number,
-    totalTarget: string | number
-  }
-}
-
-const billableDefault = {
-  currentHours: loadStr,
-  currentTarget: loadStr,
-  totalTarget: loadStr,
-};
-
-export const BillableHours = ({ billable = billableDefault, updatedAt } : BillableHoursPropTypes) => {
-  const { currentHours, currentTarget, totalTarget } = billable;
-  return (
-
-    <Card className="TimeTracker-Hours shadow-sm" id="tooltip">
-      <Card.Body>
-        <OverlayTrigger
-          placement="bottom"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => renderTooltip(props, updatedAt)}
-        >
-          <div>
-            <Card.Title style={{ fontSize: '2.2rem' }}>Billable Hours</Card.Title>
-            <LineItem label="Current Hours" value={currentHours} />
-            <LineItem label="Current Target" value={currentTarget} />
-            <LineItem label="Total Target" value={totalTarget} />
-          </div>
-        </OverlayTrigger>
-      </Card.Body>
-    </Card>
-  );
-};
-
-interface GrowthHoursPropTypes {
-  growth: {
-    hoursUsed: string | number,
-    hoursRemaining: string | number,
-    totalGrowth: string | number
-  }
-}
-
-const growthDefault = {
-  hoursUsed: loadStr,
-  hoursRemaining: loadStr,
-  totalGrowth: loadStr,
-};
-
-export const GrowthHours = ({ growth = growthDefault, updatedAt } : GrowthHoursPropTypes) => {
-  const { hoursUsed, hoursRemaining, totalGrowth } = growth;
-  return (
-    <Card className="TimeTracker-Hours shadow-sm">
-      <Card.Body>
-        <OverlayTrigger
-          placement="bottom"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => renderTooltip(props, updatedAt)}
-        >
-          <div>
-            <Card.Title style={{ fontSize: '2.2rem' }}>Growth Time</Card.Title>
-            <LineItem label="Hours Used" value={hoursUsed} />
-            <LineItem label="Hours Remaining" value={hoursRemaining} />
-            <LineItem label="Total Growth" value={totalGrowth} />
-          </div>
-        </OverlayTrigger>
-      </Card.Body>
-    </Card>
-  );
-};
+import GrowthHoursCard from './GrowthHoursCard';
+import BillableHoursCard from './BillableHoursCard';
 
 const TimeTracker = () => {
   const { userRole } = useContext(UserContext);
@@ -200,15 +111,9 @@ const TimeTracker = () => {
   ];
 
   const [data, setData] = useState(initialState);
-  const setDataHandler = (ReturnedByApiCall) => {
-    setData(ReturnedByApiCall);
-  };
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-
-    getEmployeeMetrics(setDataHandler, console.log);
-    console.log('userRole context in timetracker component is ', userRole);
+    getEmployeeMetrics(setData, console.log);
   }, []);
 
   return userRole === 'Account Manager' ? (
@@ -220,21 +125,19 @@ const TimeTracker = () => {
   dummyReturnData.map((employeeObject) => (
     <CustomContainer key={employeeObject.employeeId} style={{marginBottom: 10}}>
       <Card style={{ width: '10rem' }}><Card.Body><p>{employeeObject.employeeName}</p></Card.Body></Card>
-      <BillableHours billable={employeeObject.billable} updatedAt={employeeObject.updatedAt} />
-      <GrowthHours growth={employeeObject.growth} updatedAt={employeeObject.updatedAt} />
+      <BillableHoursCard billable={employeeObject.billable} updatedAt={employeeObject.updatedAt} />
+      <GrowthHoursCard growth={employeeObject.growth} updatedAt={employeeObject.updatedAt} />
     </CustomContainer>
   ))
     }
-      <DebugComponent dataobject={data} header="employeeObject Returned" />
     </>
   )
     : (
       <>
         <CustomContainer>
-          <BillableHours billable={data.billable} updatedAt={data.updatedAt} />
-          <GrowthHours growth={data.growth} updatedAt={data.updatedAt} />
+          <BillableHoursCard billable={data.billable} updatedAt={data.updatedAt} />
+          <GrowthHoursCard growth={data.growth} updatedAt={data.updatedAt} />
         </CustomContainer>
-        <DebugComponent dataobject={data} header="Data Returned" />
       </>
     );
 };
@@ -244,7 +147,7 @@ export default TimeTracker;
 const CustomContainer = styled.div`
   display: flex;
   flexDirection: row;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 
   .TimeTracker-Hours {
