@@ -1,10 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import TimeTracker from '@home/TimeTracker';
-import BillableHoursCard from './BillableHoursCard';
-import GrowthHoursCard from './GrowthHoursCard';
-import LineItem from './BillableHoursCard';
 import Section from '@home/Section';
+import BillableHoursCard, { LineItem } from './BillableHoursCard';
+import GrowthHoursCard from './GrowthHoursCard';
 
 describe('TimeTracker component', () => {
   it('should render TimeTracker', () => {
