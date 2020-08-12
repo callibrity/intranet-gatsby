@@ -6,7 +6,7 @@ services:
     image: intranet-gatsby-compose
     build:
       context: .
-      dockerfile: ./local.Dockerfile
+      dockerfile: ./Dockerfile.local
     environment:
       - NODE_ENV=development
       - GATSBY_WEBPACK_PUBLICPATH=/

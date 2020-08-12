@@ -45,8 +45,6 @@ typings/
 # Optional eslint cache
 .eslintcache
 
-# Firebase cache
-.firebase
 
 # Optional REPL history
 .node_repl_history
