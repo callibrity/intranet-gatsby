@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import styled from 'styled-components';
 import Card from 'react-bootstrap/Card';
@@ -11,10 +12,7 @@ const renderTooltip = (props, updatedAt) => (
 
 export const LineItem = ({ label, value } : {label: string, value: string | number}) => (
   <div className="TimeTracker-Hours-details">
-    <span>
-      {label}
-      :
-    </span>
+    <span>{label}:</span>
     <span>{value}</span>
   </div>
 );
