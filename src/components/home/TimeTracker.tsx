@@ -10,7 +10,6 @@ import GrowthHoursCard from './GrowthHoursCard';
 import BillableHoursCard from './BillableHoursCard';
 
 const TimeTracker = () => {
-  console.log()
   const { userRole } = useContext(UserContext);
   const initialState = {
     billable: {
