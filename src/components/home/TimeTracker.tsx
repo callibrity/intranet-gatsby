@@ -1,101 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import Card from 'react-bootstrap/Card';
 import { getEmployeeMetrics } from '@api/serviceCalls';
-import { Tooltip, OverlayTrigger } from 'react-bootstrap';
-
-const renderTooltip = (props, updatedAt) => (
-  <Tooltip id="tooltip" {...props}>
-    {updatedAt}
-  </Tooltip>
-);
-
-const loadStr = 'Loading...';
-
-export const LineItem = ({ label, value } : {label: string, value: string | number}) => (
-  <div className="TimeTracker-Hours-details">
-    <span>
-      {label}
-      :
-    </span>
-    <span>{value}</span>
-  </div>
-);
-
-interface BillableHoursPropTypes {
-  billable: {
-    currentHours: string | number,
-    currentTarget: string | number,
-    totalTarget: string | number
-  }
-}
-
-const billableDefault = {
-  currentHours: loadStr,
-  currentTarget: loadStr,
-  totalTarget: loadStr,
-};
-
-export const BillableHours = ({ billable = billableDefault, updatedAt } : BillableHoursPropTypes) => {
-  const { currentHours, currentTarget, totalTarget } = billable;
-  return (
-
-    <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm" id="tooltip">
-        <Card.Body >
-          <OverlayTrigger
-            placement="bottom"
-            delay={{ show: 250, hide: 400 }}
-            overlay={ props => renderTooltip(props, updatedAt) }
-          >
-            <div>
-              <Card.Title style={{ fontSize: '2.2rem' }}>Billable Hours</Card.Title>
-              <LineItem label="Current Hours" value={currentHours} />
-              <LineItem label="Current Target" value={currentTarget} />
-              <LineItem label="Total Target" value={totalTarget} />
-            </div>
-          </OverlayTrigger>
-        </Card.Body>
-    </Card>
-  );
-};
-
-interface GrowthHoursPropTypes {
-  growth: {
-    hoursUsed: string | number,
-    hoursRemaining: string | number,
-    totalGrowth: string | number
-  }
-}
-
-const growthDefault = {
-  hoursUsed: loadStr,
-  hoursRemaining: loadStr,
-  totalGrowth: loadStr,
-};
-
-export const GrowthHours = ({ growth = growthDefault, updatedAt } : GrowthHoursPropTypes) => {
-  const { hoursUsed, hoursRemaining, totalGrowth } = growth;
-  return (
-    <Card style={{ width: '28rem' }} className="TimeTracker-Hours shadow-sm">
-      <Card.Body>
-        <OverlayTrigger
-          placement="bottom"
-          delay={{ show: 250, hide: 400 }}
-          overlay={ props => renderTooltip(props, updatedAt) }
-        >
-          <div>
-            <Card.Title style={{ fontSize: '2.2rem' }}>Growth Time</Card.Title>
-            <LineItem label="Hours Used" value={hoursUsed} />
-            <LineItem label="Hours Remaining" value={hoursRemaining} />
-            <LineItem label="Total Growth" value={totalGrowth} />
-          </div>
-        </OverlayTrigger>
-      </Card.Body>
-    </Card>
-  );
-};
+import { Tooltip, OverlayTrigger, Container } from 'react-bootstrap';
+import { UserContext } from '@globals/contexts';
+import EmployeeSearch from './EmployeeSearch';
+import DebugComponent from '../reusable/DebugComponent';
+import GrowthHoursCard from './GrowthHoursCard';
+import BillableHoursCard from './BillableHoursCard';
 
 const TimeTracker = () => {
+  const { userRole } = useContext(UserContext);
   const initialState = {
     billable: {
       currentHours: 'Loading...',
@@ -108,33 +23,135 @@ const TimeTracker = () => {
       totalGrowth: 'Loading...',
     },
   };
+  const dummyReturnData = [
+    {
+      employeeName: 'Collin Johnson',
+      employeeId: '99999',
+      billable: {
+        currentHours: 7,
+        currentTarget: 9,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: -1,
+        totalGrowth: 3,
+      },
+    },
+    {
+      employeeName: 'Jordan Otrembiak',
+      employeeId: '12345',
+      billable: {
+        currentHours: 23,
+        currentTarget: 12,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: 10,
+        totalGrowth: 3,
+      },
+    },
+    {
+      employeeName: 'Allen Hully',
+      employeeId: '12346',
+      billable: {
+        currentHours: 7,
+        currentTarget: 9,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: -1,
+        totalGrowth: 3,
+      },
+    },
+    {
+      employeeName: 'Arielle Ferre',
+      employeeId: '12347',
+      billable: {
+        currentHours: 7,
+        currentTarget: 9,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: -1,
+        totalGrowth: 3,
+      },
+    },
+    {
+      employeeName: 'Conner Manson',
+      employeeId: '12348',
+      billable: {
+        currentHours: 7,
+        currentTarget: 9,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: -1,
+        totalGrowth: 3,
+      },
+    },
+    {
+      employeeName: 'Alex Morelli',
+      employeeId: '12349',
+      billable: {
+        currentHours: 7,
+        currentTarget: 9,
+        totalTarget: 50,
+      },
+      growth: {
+        hoursUsed: 4,
+        hoursRemaining: -1,
+        totalGrowth: 3,
+      },
+    },
+  ];
 
   const [data, setData] = useState(initialState);
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
     getEmployeeMetrics(setData, console.log);
   }, []);
 
-  return (
-    <Container>
-      <BillableHours billable={data.billable} updatedAt={data.updatedAt} />
-      <GrowthHours growth={data.growth} updatedAt={data.updatedAt} />
-    </Container>
-  );
+  return userRole === 'Account Manager' ? (
+    <>
+      <Container style={{ marginBottom: 16 }}>
+        <EmployeeSearch />
+      </Container>
+      {
+  dummyReturnData.map((employeeObject) => (
+    <CustomContainer  key={employeeObject.employeeId} style={{marginBottom: 10}}>
+      <Card className={'mx-2 shadow-sm'}style={{ width: '14rem' }}><Card.Body style={{alignSelf: 'center', justifyContent:'center'}}><h5 >{employeeObject.employeeName}</h5></Card.Body></Card>
+      <BillableHoursCard billable={employeeObject.billable} updatedAt={employeeObject.updatedAt} />
+      <GrowthHoursCard growth={employeeObject.growth} updatedAt={employeeObject.updatedAt} />
+    </CustomContainer>
+  ))
+    }
+    </>
+  )
+    : (
+      <>
+        <CustomContainer id="custom-container-developer-context">
+          <BillableHoursCard billable={data.billable} updatedAt={data.updatedAt} />
+          <GrowthHoursCard growth={data.growth} updatedAt={data.updatedAt} />
+        </CustomContainer>
+      </>
+    );
 };
 
 export default TimeTracker;
 
-const Container = styled.div`
+const CustomContainer = styled.div`
   display: flex;
+  flexDirection: row;
   justify-content: center;
   flex-wrap: wrap;
 
   .TimeTracker-Hours {
-    margin: 8px;
-    width: 500px;
-    min-width: 300px;
+    width: 26rem;
 
     .TimeTracker-Hours-details {
       display: flex;
