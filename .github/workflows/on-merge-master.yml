@@ -11,7 +11,7 @@ env:
   CPU: 2000m
   CONTAINER_REGISTRY: intranet-app
   SERVICE_NAME: intranet-app
-  WORKING_DIRECTORY: ./Dockerfile.staging
+  WORKING_DIRECTORY: ./
   PORT: 80
 
 jobs:
