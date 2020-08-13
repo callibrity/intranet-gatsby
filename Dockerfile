@@ -9,8 +9,9 @@ RUN npm run build
 
 FROM nginx:1.19-alpine
 COPY --from=build /app/public /usr/share/nginx/html
-COPY ["/config/nginx/staging.nginx.conf", "/etc/nginx/nginx.conf"]
+COPY ["/config/nginx/default.conf.template", "/etc/nginx/templates/default.conf.template"]
+COPY ["/config/nginx/nginx.conf", "/etc/nginx/nginx.conf"]
 
 EXPOSE 80
 
-CMD ["nginx"]
+CMD ["nginx", "-g", "daemon off;"]
