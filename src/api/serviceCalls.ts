@@ -21,7 +21,6 @@ export const getEmployeeDetails = async (onSuccess, onError) => {
       },
     })
     .then((res) => {
-      console.log(JSON.stringify(res.data, null, 2), ' response data from successful get employee api call')
       onSuccess(res.data.role);
     })
     .catch((err) => {
