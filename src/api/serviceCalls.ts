@@ -30,7 +30,7 @@ export const getEmployeeDetails = async (onSuccess, onError) => {
 
 export const getAllEmployeeMetrics = async (onSuccess, onError) => {
   await axios
-    .get('/api/employee', {
+    .get('/api/employee/hours/all', {
       headers: {
         Authorization: `${axios.defaults.headers.common.Authorization}`,
       },
