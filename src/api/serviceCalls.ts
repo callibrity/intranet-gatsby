@@ -27,3 +27,18 @@ export const getEmployeeDetails = async (onSuccess, onError) => {
       onError(err.message);
     });
 };
+
+export const getAllEmployeeMetrics = async (onSuccess, onError) => {
+  await axios
+    .get('/api/employee', {
+      headers: {
+        Authorization: `${axios.defaults.headers.common.Authorization}`,
+      },
+    })
+    .then((res) => {
+      onSuccess(res.data);
+    })
+    .catch((err) => {
+      onError(err.message);
+    });
+};
