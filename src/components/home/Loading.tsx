@@ -4,51 +4,14 @@ import { Container, Image, Row, Col, Spinner } from 'react-bootstrap';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 
-const loading = () => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     file(relativePath: { eq: "callibrity-logo.png" }) {
-  //       childImageSharp {
-  //         fixed(width: 132) {
-  //           ...GatsbyImageSharpFixed
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-
-  return (
-    <Container style={{alignSelf: 'center'}}>
-      <Row className="justify-content-md-center">
-        <Col xs={12} sm={4} md={4}>
-          Loading...
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Col xs={12} sm={4} md={4}>
-          {/* <CustomContainer> */}
-            {/* <Img fixed={data.file.childImageSharp.fixed} alt="Callibrity Logo" /> */}
-            <Spinner animation="border" role="status" />
-          {/* </CustomContainer> */}
+const loading = () => (
+    <Container>
+      <Row className="justify-content-center align-items-center" style={{minHeight: '100%'}}>
+        <Col xs={12} sm={4} md={4} className="justify-content-center">
+          <Spinner animation="border" role="status" style={{ height: '200px', width: '200px', alignSelf: 'center' }} />
         </Col>
       </Row>
     </Container>
-  );
-  // return <h1>Loading...</h1>;
-}
+);
 
 export default loading;
-
-const CustomContainer = styled.div`
-  animation: rotation 2s infinite linear;
-
-  @keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
-  }
-  transform-origin: center center;
-`;
