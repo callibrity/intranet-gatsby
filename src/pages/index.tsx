@@ -9,7 +9,7 @@ export default function Homepage() {
 
   return (
     <Container>
-      {!userRole 
+      {userRole 
         ?  <TimeTracker /> : <Loading />}
     </Container>
   );
