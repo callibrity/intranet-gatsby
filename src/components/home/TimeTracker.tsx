@@ -23,30 +23,33 @@ const TimeTracker = () => {
       totalGrowth: 'Loading...',
     },
   };
+  const [searchString, setSearchString] = React.useState('');
+  const [loading, setLoading] = React.useState(true);
+  const [data, setData] = React.useState(initialState);
 
-
-  const [data, setData] = useState(initialState);
-
-  const logstuff = (input) => { console.log(JSON.stringify(input, null, 2))  }
-
+  const setDataHandler = (output) => {
+    setData(output);
+    setLoading(false);
+  };
   useEffect(() => {
-    userRole === 'Account Manager' && getAllEmployeeMetrics(setData, console.log);
-    userRole === 'Developer' && getEmployeeMetrics(setData, console.log);
+    userRole === 'Account Manager' && getAllEmployeeMetrics(setDataHandler, console.log);
+    userRole === 'Developer' && getEmployeeMetrics(setDataHandler, console.log);
   }, []);
 
   return userRole === 'Account Manager' ? (
     <>
       <Container style={{ marginBottom: 16 }}>
-        <EmployeeSearch />
+        <EmployeeSearch text={searchString} setText={setSearchString} />
       </Container>
       {
-  data.length > 0 ? data.map((employeeObject) => (
-    <CustomContainer  key={employeeObject.employeeId} style={{marginBottom: 10}}>
-      <Card className={'mx-2 shadow-sm'}style={{ width: '14rem' }}><Card.Body style={{alignSelf: 'center', justifyContent:'center'}}><h5 >{employeeObject.employeeName}</h5></Card.Body></Card>
-      <BillableHoursCard billable={employeeObject.billable} updatedAt={employeeObject.updatedAt} />
-      <GrowthHoursCard growth={employeeObject.growth} updatedAt={employeeObject.updatedAt} />
-    </CustomContainer>
-  )) : <h1>no data</h1>
+  (!loading && searchString.length > 1)
+    && data.filter((developer) => developer.employeeName.toLowerCase().includes(searchString.toLowerCase())).map((developerObject) => (
+      <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
+        <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}><Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}><h5>{developerObject.employeeName}</h5></Card.Body></Card>
+        <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
+        <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
+      </CustomContainer>
+    ))
     }
     </>
   )
