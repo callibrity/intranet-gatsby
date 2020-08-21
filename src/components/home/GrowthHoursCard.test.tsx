@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import GrowthHoursCard, { LineItem } from './GrowthHoursCard';
+import GrowthHoursCard from './GrowthHoursCard';
+import LineItem from './LineItem';
 
 describe('GrowthHoursCard component', () => {
   it('should render GrowthHoursCard', () => {

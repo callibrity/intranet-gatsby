@@ -1,18 +1,15 @@
-/* eslint-disable no-console */
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
 import { useGoogleLogin, GoogleLoginResponse } from 'react-google-login';
 import { UserContext } from '@globals/contexts';
 import { googleClientId } from '@globals/constants';
-import { flexCenter, standardButton } from '@globals/styles';
+import { Button } from 'react-bootstrap';
 import { getEmployeeDetails } from '@api/serviceCalls';
 import { setJwt } from '@api/api';
 
 export default function Login() {
-  const { setUsername, setUserEmail, setUserRole, userRole } = useContext(UserContext);
-  const [signedIn, setSignedIn] = useState(false);
-  const [employeeDetail, setEmployeeDetails] = useState(null);
+  const { setUsername, setUserEmail, setUserRole } = useContext(UserContext);
   const { signIn } = useGoogleLogin({
     clientId: googleClientId,
     onSuccess: ({tokenId, profileObj: {name, email}} : GoogleLoginResponse) => { 
@@ -29,13 +26,15 @@ export default function Login() {
   return (
     <Container>
       <Welcome>Welcome to Callibrity!</Welcome>
-      <SignIn onClick={signIn}>Sign In</SignIn>
+      <Button size="lg" onClick={signIn}>Sign In</Button>
     </Container>
   );
 }
 
 const Container = styled.div`
-  ${flexCenter}
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   text-align: center;
   flex-direction: column;
@@ -43,8 +42,4 @@ const Container = styled.div`
 
 const Welcome = styled.h2`
   margin-bottom: 30px;
-`;
-
-const SignIn = styled.button`
-  ${standardButton}
 `;

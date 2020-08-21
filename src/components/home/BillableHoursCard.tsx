@@ -1,57 +1,31 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import styled from 'styled-components';
 import Card from 'react-bootstrap/Card';
-import { Tooltip, OverlayTrigger, Container } from 'react-bootstrap';
-import { OverlayInjectedProps } from 'react-bootstrap/Overlay';
+import { OverlayTrigger } from 'react-bootstrap';
+import LineItem from './LineItem';
+import RenderTooltip from './RenderTooltip';
+import { BillableTypes } from '@globals/types';
+import { billableDefault } from '@globals/constants';
 
-const renderTooltip = (props: OverlayInjectedProps, updatedAt: string) => (
-  <Tooltip id="tooltip" {...props}>
-    {updatedAt}
-  </Tooltip>
-);
-export const LineItem = ({ label, value } : {label: string, value: string | number}) => (
-  <div className="TimeTracker-Hours-details">
-    <span>{label}:</span>
-    <span>{value}</span>
-  </div>
-);
+const { Body, Title } = Card;
 
-interface BillableHoursPropTypes {
-  billable: {
-    currentHours: string | number,
-    currentTarget: string | number,
-    totalTarget: string | number
-  },
-  updatedAt: string
-}
-
-const billableDefault = {
-  currentHours: 'Loading...',
-  currentTarget: 'Loading...',
-  totalTarget: 'Loading...',
-};
-
-export const BillableHoursCard = ({ billable = billableDefault, updatedAt } : BillableHoursPropTypes) => {
-
+export const BillableHoursCard = ({ billable = billableDefault, updatedAt } : BillableTypes) => {
   const { currentHours, currentTarget, totalTarget } = billable;
   return (
-
     <Card className="TimeTracker-Hours shadow-sm mx-2" id="tooltip">
-      <Card.Body>
+      <Body>
         <OverlayTrigger
           placement="bottom"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => renderTooltip(props, updatedAt)}
+          overlay={(props) => RenderTooltip(props, updatedAt)}
         >
           <div>
-            <Card.Title style={{ fontSize: '2.2rem' }}>Billable Hours</Card.Title>
+            <Title style={{ fontSize: '2.2rem' }}>Billable Hours</Title>
             <LineItem label="Current Hours" value={currentHours} />
             <LineItem label="Current Target" value={currentTarget} />
             <LineItem label="Total Target" value={totalTarget} />
           </div>
         </OverlayTrigger>
-      </Card.Body>
+      </Body>
     </Card>
   );
 };

@@ -1,21 +1,21 @@
 import React from 'react';
 import { Dropdown, NavItem, NavLink } from 'react-bootstrap';
-
+import { reactChildren } from '@globals/types';
 
 const { Toggle, Menu } = Dropdown;
 
-interface NavDropdownPropTypes {
+interface PropTypes {
   label: string,
-  children: React.ReactNode[] | React.ReactElement,
+  children: reactChildren,
 }
 
-export default function UserDropdown({ label, children }: NavDropdownPropTypes) {
+export default function UserDropdown({ label, children }: PropTypes) {
   return (
-    <Dropdown as={NavItem} style={{marginLeft: '20px'}}>
+    <Dropdown style={{marginLeft: '20px'}}>
       <Toggle as={NavLink}>{label}</Toggle>
-      <Dropdown.Menu>
+      <Menu>
         {children}
-      </Dropdown.Menu>
+      </Menu>
     </Dropdown>
   );
 }

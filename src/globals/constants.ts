@@ -1,3 +1,4 @@
+import { BillableTypes, GrowthTypes } from './types';
 export const googleClientId = '1084859424709-tk8745k1d0bnqfvlmsoa0j3uo5bkm9un.apps.googleusercontent.com';
 
 export const quickLinks : {title: string, url: string}[] = [
@@ -37,69 +38,101 @@ export const quickLinks : {title: string, url: string}[] = [
   },
 ];
 
-export const apiInitialMessage = 'Loading';
-
-export const apiErrorMessage = 'API request failed';
-
-export const employeesAPINameString = '/employees?name=';
-
-export const employeesAPIString = '/employees';
-
-export const employeesAPIOfficeString = '/employees?office=';
-
-export const peopleLocationButtonList : {label: string, value: string}[] = [
+export const dummyEmployeeData : ({ employeeName: string, employeeId: string, updatedAt?: string } & BillableTypes & GrowthTypes)[] = [
   {
-    label: 'CINCINNATI',
-    value: 'Cincinnati',
+    employeeName: 'Collin Johnson',
+    employeeId: '99999',
+    billable: {
+      currentHours: 7,
+      currentTarget: 9,
+      totalTarget: 50,
+    },
+    growth: {
+      hoursUsed: 4,
+      hoursRemaining: -1,
+      totalGrowth: 3,
+    },
   },
   {
-    label: 'COLUMBUS',
-    value: 'Columbus',
+    employeeName: 'Jordan Otrembiak',
+    employeeId: '12345',
+    billable: {
+      currentHours: 23,
+      currentTarget: 12,
+      totalTarget: 50,
+    },
+    growth: {
+      hoursUsed: 4,
+      hoursRemaining: 10,
+      totalGrowth: 3,
+    },
   },
   {
-    label: 'ALL',
-    value: '',
+    employeeName: 'Allen Hully',
+    employeeId: '12346',
+    billable: {
+      currentHours: 7,
+      currentTarget: 9,
+      totalTarget: 50,
+    },
+    growth: {
+      hoursUsed: 4,
+      hoursRemaining: -1,
+      totalGrowth: 3,
+    },
+  },
+  {
+    employeeName: 'Arielle Ferre',
+    employeeId: '12347',
+    billable: {
+      currentHours: 7,
+      currentTarget: 9,
+      totalTarget: 50,
+    },
+    growth: {
+      hoursUsed: 4,
+      hoursRemaining: -1,
+      totalGrowth: 3,
+    },
+  },
+  {
+    employeeName: 'Conner Manson',
+    employeeId: '12348',
+    billable: {
+      currentHours: 7,
+      currentTarget: 9,
+      totalTarget: 50,
+    },
+    growth: {
+      hoursUsed: 4,
+      hoursRemaining: -1,
+      totalGrowth: 3,
+    },
+  },
+  {
+    employeeName: 'Alex Morelli',
+    employeeId: '12349',
+    billable: {
+      currentHours: 7,
+      currentTarget: 9,
+      totalTarget: 50,
+    },
+    growth: {
+      hoursUsed: 4,
+      hoursRemaining: -1,
+      totalGrowth: 3,
+    },
   },
 ];
 
-export const profileDetailsList : {label: string, data: string}[] = [
-  {
-    label: 'NAME',
-    data: 'name',
-  },
-  {
-    label: 'ROLE',
-    data: 'role',
-  },
-  {
-    label: 'OFFICE',
-    data: 'office',
-  },
-  {
-    label: 'EMAIL',
-    data: 'email',
-  },
-  {
-    label: 'SKILLS',
-    data: 'skills',
-  },
-  {
-    label: 'INTERESTS',
-    data: 'interests',
-  },
-];
+export const billableDefault = {
+  currentHours: 'Loading...',
+  currentTarget: 'Loading...',
+  totalTarget: 'Loading...',
+};
 
-export const profileSummaryList : {label: string, data: string}[] = [
-  {
-    label: 'NAME',
-    data: 'name',
-  },
-  {
-    label: 'ROLE',
-    data: 'role',
-  },
-  {
-    label: 'OFFICE',
-    data: 'office',
-  },
-];
+export const growthDefault = {
+  hoursUsed: 'Loading...',
+  hoursRemaining: 'Loading...',
+  totalGrowth: 'Loading...',
+}
