@@ -4,7 +4,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import { MdSearch } from 'react-icons/md';
 
 const EmployeeSearch = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState<string>('');
   return (
     <InputGroup>
       <FormControl

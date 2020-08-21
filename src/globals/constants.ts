@@ -1,6 +1,6 @@
 export const googleClientId = '1084859424709-tk8745k1d0bnqfvlmsoa0j3uo5bkm9un.apps.googleusercontent.com';
 
-export const quickLinks = [
+export const quickLinks : {title: string, url: string}[] = [
   {
     title: 'Paylocity',
     url: 'https://login.paylocity.com/',
@@ -47,7 +47,7 @@ export const employeesAPIString = '/employees';
 
 export const employeesAPIOfficeString = '/employees?office=';
 
-export const peopleLocationButtonList = [
+export const peopleLocationButtonList : {label: string, value: string}[] = [
   {
     label: 'CINCINNATI',
     value: 'Cincinnati',
@@ -62,7 +62,7 @@ export const peopleLocationButtonList = [
   },
 ];
 
-export const profileDetailsList = [
+export const profileDetailsList : {label: string, data: string}[] = [
   {
     label: 'NAME',
     data: 'name',
@@ -89,7 +89,7 @@ export const profileDetailsList = [
   },
 ];
 
-export const profileSummaryList = [
+export const profileSummaryList : {label: string, data: string}[] = [
   {
     label: 'NAME',
     data: 'name',

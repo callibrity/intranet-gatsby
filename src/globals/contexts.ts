@@ -1,5 +1,15 @@
-import { createContext } from 'react';
+import { createContext, Dispatch, SetStateAction } from 'react';
+import { setStateFunction } from '@globals/types';
 
-export const UserContext = createContext(null);
+interface UserContextInterface {
+  username: string, 
+  setUsername: setStateFunction<string>, 
+  userEmail: string, 
+  setUserEmail: setStateFunction<string>, 
+  userRole: string, 
+  setUserRole: setStateFunction<string>
+};
+
+export const UserContext = createContext<UserContextInterface>(null);
 
 export const ProfileContext = createContext(null);

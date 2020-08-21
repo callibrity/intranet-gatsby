@@ -8,9 +8,9 @@ import GlobalStyle from './GlobalStyle';
 type htmlNodeType = React.ReactNode[] | React.ReactElement;
 
 export const Provider = ({ children }: {children: htmlNodeType}) => {
-  const [username, setUsername] = useState(null);
-  const [userEmail, setUserEmail] = useState(null);
-  const [userRole, setUserRole] = useState(null);
+  const [username, setUsername] = useState<string>(null);
+  const [userEmail, setUserEmail] = useState<string>(null);
+  const [userRole, setUserRole] = useState<string>(null);
 
   const component = username ? children : <Login />;
 
