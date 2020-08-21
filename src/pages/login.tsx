@@ -2,7 +2,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
-import { useGoogleLogin } from 'react-google-login';
+import { useGoogleLogin, GoogleLoginResponse } from 'react-google-login';
 import { UserContext } from '@globals/contexts';
 import { googleClientId } from '@globals/constants';
 import { flexCenter, standardButton } from '@globals/styles';
@@ -15,17 +15,17 @@ export default function Login() {
   const [employeeDetail, setEmployeeDetails] = useState(null);
   const { signIn } = useGoogleLogin({
     clientId: googleClientId,
-    onSuccess: (obj) => { onSuccess(obj); },
+    onSuccess: ({tokenId, profileObj: {name, email}} : GoogleLoginResponse) => { 
+      setJwt(tokenId);
+      setUsername(name);
+      setUserEmail(email);
+      getEmployeeDetails(setUserRole, console.log);
+      navigate('/');
+    },
     onFailure: () => console.log("sign in failed"),
     isSignedIn: true
   });
-  const onSuccess = (obj) => {
-    setJwt(obj.tokenId);
-    setUsername(obj.profileObj.name);
-    setUserEmail(obj.profileObj.email);
-    getEmployeeDetails(setUserRole, console.log);
-    navigate('/');
-  };
+
   return (
     <Container>
       <Welcome>Welcome to Callibrity!</Welcome>

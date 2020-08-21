@@ -3,8 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Card from 'react-bootstrap/Card';
 import { Tooltip, OverlayTrigger, Container } from 'react-bootstrap';
+import { OverlayInjectedProps } from 'react-bootstrap/Overlay';
 
-const renderTooltip = (props, updatedAt) => (
+const renderTooltip = (props: OverlayInjectedProps, updatedAt: string) => (
   <Tooltip id="tooltip" {...props}>
     {updatedAt}
   </Tooltip>
@@ -22,7 +23,8 @@ interface GrowthHoursPropTypes {
       hoursUsed: string | number,
       hoursRemaining: string | number,
       totalGrowth: string | number
-    }
+    },
+    updatedAt: string
   }
 
 const growthDefault = {
