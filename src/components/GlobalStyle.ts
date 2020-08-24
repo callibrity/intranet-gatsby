@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default createGlobalStyle`

@@ -4,6 +4,6 @@ const reactGoogleLogin = jest.requireActual('react-google-login');
 
 module.exports = {
   ...reactGoogleLogin,
-  useGoogleLogin: ({ onSuccess }) => ({ signIn: () => onSuccess(mockLoginResponse) }),
+  useGoogleLogin: jest.fn(),
   useGoogleLogout: ({ onLogoutSuccess }) => ({ signOut: () => onLogoutSuccess() }),
 };

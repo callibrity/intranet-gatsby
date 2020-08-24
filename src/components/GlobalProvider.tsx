@@ -1,32 +1,26 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
 import { UserContext } from '@globals/contexts';
 import Login from '@pages/login';
 import Navbar from './navbar/Navbar';
 import GlobalStyle from './GlobalStyle';
+import { reactChildren } from '@globals/types';
 
-type htmlNodeType = React.ReactNode[] | React.ReactElement;
-
-export const Provider = ({ children }: {children: htmlNodeType}) => {
+export const Provider = ({ children }: {children: reactChildren}) => {
   const [username, setUsername] = useState<string>(null);
   const [userEmail, setUserEmail] = useState<string>(null);
   const [userRole, setUserRole] = useState<string>(null);
-
-  const component = username ? children : <Login />;
+  const contextObject = {username, setUsername, userEmail, setUserEmail, userRole, setUserRole};
 
   return (
-    <UserContext.Provider value={{
-      username, setUsername, userEmail, setUserEmail, userRole, setUserRole
-    }}
-    >
+    <UserContext.Provider value={contextObject}>
       <GlobalStyle />
       <Navbar />
-      {component}
+      {username ? children : <Login />}
     </UserContext.Provider>
   );
 };
 
-export default function GlobalProvider({ element }: {element: htmlNodeType}) {
+export default function GlobalProvider({ element }: {element: reactChildren}) {
   return (
     <Provider>
       {element}
