@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import TimeTracker from '@home/TimeTracker';
 import { UserContext } from '@globals/contexts';
+import Loading from '@home/Loading';
 
 export default function Homepage() {
   const { userRole } = useContext(UserContext);
@@ -9,7 +10,7 @@ export default function Homepage() {
   return (
     <Container>
       {userRole 
-        ?  <TimeTracker /> : <h1>...loading</h1>}
+        ?  <TimeTracker /> : <Loading />}
     </Container>
   );
 }

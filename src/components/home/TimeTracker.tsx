@@ -9,24 +9,39 @@ import DebugComponent from '../reusable/DebugComponent';
 import GrowthHoursCard from './GrowthHoursCard';
 import BillableHoursCard from './BillableHoursCard';
 
+interface ITrackerState {
+  billable: {
+    currentHours: string | number,
+    currentTarget: string | number,
+    totalTarget: string | number
+  },
+  growth: {
+    hoursUsed: string | number,
+    hoursRemaining: string | number,
+    totalGrowth: string | number
+  }
+}
+
+type trackerReturnData =  ({ employeeName: string, employeeId: string, updatedAt?: string } & ITrackerState)[];
+
+const initialState : ITrackerState = {
+  billable: {
+    currentHours: 'Loading...',
+    currentTarget: 'Loading...',
+    totalTarget: 'Loading...',
+  },
+  growth: {
+    hoursUsed: 'Loading...',
+    hoursRemaining: 'Loading...',
+    totalGrowth: 'Loading...',
+  },
+};
+
 const TimeTracker = () => {
   const { userRole } = useContext(UserContext);
-  const initialState = {
-    billable: {
-      currentHours: 'Loading...',
-      currentTarget: 'Loading...',
-      totalTarget: 'Loading...',
-    },
-    growth: {
-      hoursUsed: 'Loading...',
-      hoursRemaining: 'Loading...',
-      totalGrowth: 'Loading...',
-    },
-  };
+  const [data, setData] = useState<ITrackerState>(initialState);
   const [searchString, setSearchString] = React.useState('');
   const [loading, setLoading] = React.useState(true);
-  const [data, setData] = React.useState(initialState);
-
   const setDataHandler = (output) => {
     setData(output);
     setLoading(false);
@@ -36,24 +51,24 @@ const TimeTracker = () => {
     userRole === 'Developer' && getEmployeeMetrics(setDataHandler, console.log);
   }, []);
 
-  return userRole === 'Account Manager' ? (
-    <>
-      <Container style={{ marginBottom: 16 }}>
-        <EmployeeSearch text={searchString} setText={setSearchString} />
-      </Container>
-      {
-  (!loading && searchString.length > 1)
-    && data.filter((developer) => developer.employeeName.toLowerCase().includes(searchString.toLowerCase())).map((developerObject) => (
-      <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
-        <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}><Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}><h5>{developerObject.employeeName}</h5></Card.Body></Card>
-        <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
-        <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
-      </CustomContainer>
-    ))
-    }
-    </>
-  )
-    : (
+  return userRole === 'Account Manager' ?
+    (
+      <>
+        <Container style={{ marginBottom: 16 }}>
+          <EmployeeSearch text={searchString} setText={setSearchString} />
+        </Container>
+        {
+      (!loading && searchString.length > 1)
+        && data.filter((developer) => developer.employeeName.toLowerCase().includes(searchString.toLowerCase())).map((developerObject) => (
+          <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
+            <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}><Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}><h5>{developerObject.employeeName}</h5></Card.Body></Card>
+            <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
+            <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
+          </CustomContainer>
+        ))
+        }
+      </>
+    ) : (
       <>
         <CustomContainer id="custom-container-developer-context">
           <BillableHoursCard billable={data.billable} updatedAt={data.updatedAt} />

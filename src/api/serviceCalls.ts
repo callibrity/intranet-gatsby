@@ -1,10 +1,9 @@
 import axios from 'axios';
-import { getEmployeeResource } from '@api/endpoints';
 
 // eslint-disable-next-line
 export const getEmployeeMetrics = async (onSuccess, onError) => {
   await axios
-    .get('/api/employee/hours')
+    .get('http://localhost:5000/Employee/hours')
     .then((res) => {
       onSuccess(res.data);
     })
@@ -15,7 +14,7 @@ export const getEmployeeMetrics = async (onSuccess, onError) => {
 
 export const getEmployeeDetails = async (onSuccess, onError) => {
   await axios
-    .get('/api/employee', {
+    .get('http://localhost:5000/Employee', {
       headers: {
         Authorization: `${axios.defaults.headers.common.Authorization}`,
       },
@@ -30,7 +29,7 @@ export const getEmployeeDetails = async (onSuccess, onError) => {
 
 export const getAllEmployeeMetrics = async (onSuccess, onError) => {
   await axios
-    .get('/api/employee/hours/all', {
+    .get('http://localhost:5000/Employee/hours/all', {
       headers: {
         Authorization: `${axios.defaults.headers.common.Authorization}`,
       },

@@ -10,18 +10,27 @@
 - [Docker](https://docs.docker.com/) for containerization
 - [NGINX](https://docs.nginx.com/) to serve Gatsby's output in the Docker environment
 
+## Environments
+We currently have 3 Google Cloud Platform (GCP) projects associated with this site. 
+- [intranet](https://console.cloud.google.com/run?organizationId=876666147511&project=intranet-277714) is where we store items that are shared among environments (credentials, container images, etc).
+- [intranet-staging](https://console.cloud.google.com/run?organizationId=876666147511&project=intranet-staging-285714) is where images get deployed automaticallty when they are merged into master in this repository. It interacts with staging environments for the backend of the application and is useful for end to end testing before deploying to production
+- [intranet-production](https://console.cloud.google.com/run?project=intranet-production-285714) is meant to be the "live" site in which deployments will only be made manually when it is deemed appropriate.
+
 ## Hosting
-The site is currently hosted on Google Cloud at the following URL's: 
+The site is currently hosted on Google Cloud Run at the following URL's: 
 
 
 - [Staging](https://intranet-app-uxl72aopia-uk.a.run.app)
 - [Production](https://intranet-app-yygv4n2zyq-uk.a.run.app)
 
+To view the Cloud Run instances, go to https://console.cloud.google.com/ -> Cloud Run -> intranet-app within the respective project/environment.
 
-You can access the app in Google Cloud console as well:
-- [The Container Registry](https://console.cloud.google.com/gcr/images/intranet-277714/GLOBAL/intranet-app?project=intranet-277714&gcrImageListsize=30) is in the intranet project. This project acts as a repository for for images that are eventually deployed to staging then production environments.
-- [The Stageing Environment](https://console.cloud.google.com/run?organizationId=876666147511&project=intranet-staging-285714) is where images get deployed automaticallty when they are merged into master in this repository. It interacts with staging environments for the backend of the application and is useful for end to end testing before deploying to production
-- [The Production Environment](https://console.cloud.google.com/run?project=intranet-production-285714) is in yet another project, releases can be tagged in github which pushes a docker built image from the selected commit to be deployed, the image will be tagged in the Container Registry (above) with the commit ID that matches github commit.
+## Deployment
+Staging is automatically deployed upon a push to the master branch.  
+
+To deploy to production, go to the github repository then under Code -> Tags -> Releases, click "Draft a New Release." Once you create a new release, github actions will deploy it to production. 
+
+For both scenarios, github will create an image within the GCP [Container Registry](https://console.cloud.google.com/gcr/images/intranet-277714/GLOBAL/intranet-app?project=intranet-277714&gcrImageListsize=30) which will then be deployed to the appropriate environment.
 
 ## Google login
 We are using the "Login with Google" feature to sign in to the website. Currently, only those within our Callibrity organization are allowed to sign in. 
