@@ -76,10 +76,10 @@ const TimeTracker = () => {
               </CustomContainer>
             ))
           }
-          
+          <SeparateFavorites />
           {
             (!loading && searchString.length > 1)
-              && data.filter((developer) => developer.employeeName.toLowerCase().includes(searchString.toLowerCase())).map((developerObject) => (
+              && data.filter((developer) => (developer.employeeName.toLowerCase().includes(searchString.toLowerCase())) && !favoritesList.includes(developer.employeeId)).map((developerObject) => (
                 <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
                   <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}>
                     <Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}>
@@ -121,4 +121,10 @@ const CustomContainer = styled.div`
       justify-content: space-between;
     }
   }
+`;
+
+const SeparateFavorites = styled.div`
+  display: block;
+  border-top: 3px solid black;
+  margin: 1em 0;
 `;
