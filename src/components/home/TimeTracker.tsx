@@ -8,6 +8,7 @@ import EmployeeSearch from './EmployeeSearch';
 import DebugComponent from '../reusable/DebugComponent';
 import GrowthHoursCard from './GrowthHoursCard';
 import BillableHoursCard from './BillableHoursCard';
+import Button from 'react-bootstrap/Button';
 
 interface ITrackerState {
   billable: {
@@ -41,6 +42,7 @@ const TimeTracker = () => {
   const { userRole } = useContext(UserContext);
   const [data, setData] = useState<ITrackerState>(initialState);
   const [searchString, setSearchString] = React.useState('');
+  const [favoritesList, setFavoritesList] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const setDataHandler = (output) => {
     setData(output);
@@ -58,15 +60,40 @@ const TimeTracker = () => {
           <EmployeeSearch text={searchString} setText={setSearchString} />
         </Container>
         {
-      (!loading && searchString.length > 1)
-        && data.filter((developer) => developer.employeeName.toLowerCase().includes(searchString.toLowerCase())).map((developerObject) => (
-          <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
-            <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}><Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}><h5>{developerObject.employeeName}</h5></Card.Body></Card>
-            <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
-            <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
-          </CustomContainer>
-        ))
-        }
+          (!loading)
+            && data.filter((developer) => favoritesList.includes(developer.employeeId)).map((developerObject) => (
+              <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
+                <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}>
+                  <Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}>
+                    <h5>{developerObject.employeeName}</h5><br />
+                    <Button variant="secondary" block onClick={() => {
+                      if (favoritesList.includes(developerObject.employeeId))
+                      {favoritesList.splice(developerObject.employeeId)}}}>Unlock</Button>
+                  </Card.Body>
+                </Card>
+                <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
+                <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
+              </CustomContainer>
+            ))
+          }
+          
+          {
+            (!loading && searchString.length > 1)
+              && data.filter((developer) => developer.employeeName.toLowerCase().includes(searchString.toLowerCase())).map((developerObject) => (
+                <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
+                  <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}>
+                    <Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}>
+                      <h5>{developerObject.employeeName}</h5><br />
+                      <Button variant="secondary" block onClick={() => {
+                        if (!favoritesList.includes(developerObject.employeeId))
+                        {setFavoritesList([...favoritesList, developerObject.employeeId])}}}>Lock</Button>
+                    </Card.Body>
+                  </Card>
+                  <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
+                  <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
+                </CustomContainer>
+            ))
+          }
       </>
     ) : (
       <>
