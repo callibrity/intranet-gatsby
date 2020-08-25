@@ -40,7 +40,24 @@ const initialState : ITrackerState = {
     totalGrowth: 'Loading...',
   },
 };
+const DeveloperCardRow = (developerObject) => {
 
+  return (<CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
+                  <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}>
+                    <Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}>
+                      <Card.Title>
+                        {developerObject.employeeName}
+                      </Card.Title>
+                    </Card.Body>
+                    <Card.Text className="text-center pb-0">
+                      {' '}
+                      <Button variant="dark" style={{ borderTopLeftRadius: 100, borderTopRightRadius: 100 }} onClick={() => lockButtonOnClickHandler(developerObject.employeeId)}>{isLocked(developerObject.employeeId) ? <MdLock /> : <MdLockOpen />}</Button>
+                    </Card.Text>
+                  </Card>
+                  <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
+                  <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
+                </CustomContainer>)
+}
 const TimeTracker = () => {
   const { userRole } = useContext(UserContext);
   const [data, setData] = useState<ITrackerState>(initialState);
@@ -70,42 +87,14 @@ const TimeTracker = () => {
         {
           (!loading)
             && data.filter((developer) => favoritesList.includes(developer.employeeId)).map((developerObject) => (
-              <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
-                <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}>
-                  <Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}>
-                    <Card.Title>
-                      {developerObject.employeeName}
-                    </Card.Title>
-                  </Card.Body>
-                  <Card.Text className="text-center pb-0">
-                    {' '}
-                    <Button variant="dark" style={{ borderTopLeftRadius: 100, borderTopRightRadius: 100 }} onClick={() => lockButtonOnClickHandler(developerObject.employeeId)}>{isLocked(developerObject.employeeId) ? <MdLock /> : <MdLockOpen />}</Button>
-                  </Card.Text>
-                </Card>
-                <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
-                <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
-              </CustomContainer>
+<DeveloperCardRow developerObject={developerObject}>
             ))
           }
         <SeparateFavorites />
         {
             (!loading && searchString.length > 1)
               && data.filter((developer) => (developer.employeeName.toLowerCase().includes(searchString.toLowerCase())) && !favoritesList.includes(developer.employeeId)).map((developerObject) => (
-                <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
-                  <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}>
-                    <Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}>
-                      <Card.Title>
-                        {developerObject.employeeName}
-                      </Card.Title>
-                    </Card.Body>
-                    <Card.Text className="text-center pb-0">
-                      {' '}
-                      <Button variant="dark" style={{ borderTopLeftRadius: 100, borderTopRightRadius: 100 }} onClick={() => lockButtonOnClickHandler(developerObject.employeeId)}>{isLocked(developerObject.employeeId) ? <MdLock /> : <MdLockOpen />}</Button>
-                    </Card.Text>
-                  </Card>
-                  <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
-                  <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
-                </CustomContainer>
+<DeveloperCardRow developerObject={developerObject}>
               ))
           }
       </>
