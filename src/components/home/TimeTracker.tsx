@@ -4,11 +4,14 @@ import Card from 'react-bootstrap/Card';
 import { getEmployeeMetrics, getAllEmployeeMetrics, getEmployeeDetails } from '@api/serviceCalls';
 import { Tooltip, OverlayTrigger, Container } from 'react-bootstrap';
 import { UserContext } from '@globals/contexts';
+import Button from 'react-bootstrap/Button';
+import { string } from 'prop-types';
+import { IconContext } from 'react-icons';
+import { MdLock, MdLockOpen } from 'react-icons/md';
 import EmployeeSearch from './EmployeeSearch';
 import DebugComponent from '../reusable/DebugComponent';
 import GrowthHoursCard from './GrowthHoursCard';
 import BillableHoursCard from './BillableHoursCard';
-import Button from 'react-bootstrap/Button';
 
 interface ITrackerState {
   billable: {
@@ -23,7 +26,7 @@ interface ITrackerState {
   }
 }
 
-type trackerReturnData =  ({ employeeName: string, employeeId: string, updatedAt?: string } & ITrackerState)[];
+type trackerReturnData = ({ employeeName: string, employeeId: string, updatedAt?: string } & ITrackerState)[];
 
 const initialState : ITrackerState = {
   billable: {
@@ -52,9 +55,14 @@ const TimeTracker = () => {
     userRole === 'Account Manager' && getAllEmployeeMetrics(setDataHandler, console.log);
     userRole === 'Developer' && getEmployeeMetrics(setDataHandler, console.log);
   }, []);
+  const isLocked = (employeeId: string): boolean => favoritesList.includes(employeeId);
 
-  return userRole === 'Account Manager' ?
-    (
+  const lockButtonOnClickHandler = (employeeId: string) => {
+    if (isLocked(employeeId)) { setFavoritesList(favoritesList.filter((favoriteId) => favoriteId !== employeeId)); } else { setFavoritesList([...favoritesList, employeeId]); }
+  };
+
+  return userRole === 'Account Manager'
+    ? (
       <>
         <Container style={{ marginBottom: 16 }}>
           <EmployeeSearch text={searchString} setText={setSearchString} />
@@ -65,34 +73,40 @@ const TimeTracker = () => {
               <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
                 <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}>
                   <Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}>
-                    <h5>{developerObject.employeeName}</h5><br />
-                    <Button variant="secondary" block onClick={() => {
-                      if (favoritesList.includes(developerObject.employeeId))
-                      {setFavoritesList(favoritesList.filter((employeeId) => employeeId !== developerObject.employeeId))}}}>Unlock</Button>
+                    <Card.Title>
+                      {developerObject.employeeName}
+                    </Card.Title>
                   </Card.Body>
+                  <Card.Text className="text-center pb-0">
+                    {' '}
+                    <Button variant="dark" style={{ borderTopLeftRadius: 100, borderTopRightRadius: 100 }} onClick={() => lockButtonOnClickHandler(developerObject.employeeId)}>{isLocked(developerObject.employeeId) ? <MdLock /> : <MdLockOpen />}</Button>
+                  </Card.Text>
                 </Card>
                 <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
                 <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
               </CustomContainer>
             ))
           }
-          <SeparateFavorites />
-          {
+        <SeparateFavorites />
+        {
             (!loading && searchString.length > 1)
               && data.filter((developer) => (developer.employeeName.toLowerCase().includes(searchString.toLowerCase())) && !favoritesList.includes(developer.employeeId)).map((developerObject) => (
                 <CustomContainer key={developerObject.employeeId} style={{ marginBottom: 10 }}>
                   <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}>
                     <Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}>
-                      <h5>{developerObject.employeeName}</h5><br />
-                      <Button variant="secondary" block onClick={() => {
-                        if (!favoritesList.includes(developerObject.employeeId))
-                        {setFavoritesList([...favoritesList, developerObject.employeeId])}}}>Lock</Button>
+                      <Card.Title>
+                        {developerObject.employeeName}
+                      </Card.Title>
                     </Card.Body>
+                    <Card.Text className="text-center pb-0">
+                      {' '}
+                      <Button variant="dark" style={{ borderTopLeftRadius: 100, borderTopRightRadius: 100 }} onClick={() => lockButtonOnClickHandler(developerObject.employeeId)}>{isLocked(developerObject.employeeId) ? <MdLock /> : <MdLockOpen />}</Button>
+                    </Card.Text>
                   </Card>
                   <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
                   <GrowthHoursCard growth={developerObject.growth} updatedAt={developerObject.updatedAt} />
                 </CustomContainer>
-            ))
+              ))
           }
       </>
     ) : (
