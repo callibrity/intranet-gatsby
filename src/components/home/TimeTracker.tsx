@@ -68,7 +68,7 @@ const TimeTracker = () => {
                     <h5>{developerObject.employeeName}</h5><br />
                     <Button variant="secondary" block onClick={() => {
                       if (favoritesList.includes(developerObject.employeeId))
-                      {favoritesList.splice(developerObject.employeeId)}}}>Unlock</Button>
+                      {setFavoritesList(favoritesList.filter((employeeId) => employeeId !== developerObject.employeeId))}}}>Unlock</Button>
                   </Card.Body>
                 </Card>
                 <BillableHoursCard billable={developerObject.billable} updatedAt={developerObject.updatedAt} />
