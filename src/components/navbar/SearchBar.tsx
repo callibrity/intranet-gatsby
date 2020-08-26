@@ -24,7 +24,3 @@ export default function SearchBar() {
   </InputGroup>
   );
 }
-
-const IconButton = styled(InputGroup.Append)`
-  
-`

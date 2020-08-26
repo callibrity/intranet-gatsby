@@ -6,10 +6,9 @@ import Loading from '@home/Loading';
 
 export default function Homepage() {
   const { userRole } = useContext(UserContext);
-
   return (
     <Container>
-      {userRole 
+      {userRole
         ?  <TimeTracker /> : <Loading />}
     </Container>
   );
