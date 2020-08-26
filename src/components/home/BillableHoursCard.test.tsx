@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import BillableHoursCard, { LineItem } from './BillableHoursCard';
+import BillableHoursCard from './BillableHoursCard';
+import LineItem from './LineItem';
 
 
 describe('BillableHoursCard component', () => {

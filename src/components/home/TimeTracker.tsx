@@ -1,75 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
-import Card from 'react-bootstrap/Card';
 import { getEmployeeMetrics, getAllEmployeeMetrics, getEmployeeDetails } from '@api/serviceCalls';
-import { Tooltip, OverlayTrigger, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { UserContext } from '@globals/contexts';
-import Button from 'react-bootstrap/Button';
-import { string } from 'prop-types';
-import { IconContext } from 'react-icons';
-import { MdLock, MdLockOpen } from 'react-icons/md';
 import EmployeeSearch from './EmployeeSearch';
-import DebugComponent from '../reusable/DebugComponent';
 import GrowthHoursCard from './GrowthHoursCard';
 import BillableHoursCard from './BillableHoursCard';
+import { BillableTypes, GrowthTypes } from '@globals/types';
+import { dummyEmployeeData, billableDefault, growthDefault } from '@globals/constants';
+import DeveloperCardRow from './DeveloperCardRow';
 
-interface ITrackerState {
-  employeeName: string,
-  employeeId: string,
-  billable: {
-    currentHours: string | number,
-    currentTarget: string | number,
-    totalTarget: string | number
-  },
-  growth: {
-    hoursUsed: string | number,
-    hoursRemaining: string | number,
-    totalGrowth: string | number
-  },
-  updatedAt: string
-}
+type TrackerState = BillableTypes & GrowthTypes;
 
-// type trackerReturnData = ({ employeeName: string, employeeId: string, updatedAt?: string } & ITrackerState)[];
-
-// const initialState : ITrackerState = {
-//   employeeName: 'Loading...',
-//   employeeName: 'Loading...',
-//   billable: {
-//     currentHours: 'Loading...',
-//     currentTarget: 'Loading...',
-//     totalTarget: 'Loading...',
-//   },
-//   growth: {
-//     hoursUsed: 'Loading...',
-//     hoursRemaining: 'Loading...',
-//     totalGrowth: 'Loading...',
-//   },
-//   updatedAt: 'Loading...',
-// };
-
-const DeveloperCardRow = ({ developerData, isLockedRow, lockToggle }) => {
-
-  const {
-    employeeId, employeeName, updatedAt, billable, growth,
-  } = developerData;
-  return (
-    <CustomContainer key={employeeId} style={{ marginBottom: 10 }}>
-      <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}>
-        <Card.Body style={{ alignSelf: 'center', justifyContent: 'center' }}>
-          <Card.Title>
-            {employeeName}
-          </Card.Title>
-        </Card.Body>
-        <Card.Text className="text-center pb-0">
-          {' '}
-          <Button id={employeeId} variant="dark" style={{ borderTopLeftRadius: 100, borderTopRightRadius: 100 }} onClick={(e) => {lockToggle(employeeId);}}>{isLockedRow === 'true' ? <MdLock /> : <MdLockOpen />}</Button>
-        </Card.Text>
-      </Card>
-      <BillableHoursCard billable={billable} updatedAt={updatedAt} />
-      <GrowthHoursCard growth={growth} updatedAt={updatedAt} />
-    </CustomContainer>
-  );
-};
 const TimeTracker = () => {
   const { userRole } = useContext(UserContext);
   const [data, setData] = useState([]);
@@ -80,6 +22,7 @@ const TimeTracker = () => {
     setData(output);
     setLoading(false);
   };
+
   useEffect(() => {
     userRole === 'Account Manager' && getAllEmployeeMetrics(setDataHandler, console.log);
     userRole === 'Developer' && getEmployeeMetrics(setDataHandler, console.log);
@@ -124,9 +67,14 @@ const TimeTracker = () => {
 
 export default TimeTracker;
 
+const SeparateFavorites = styled.div`
+  display: block;
+  border-top: 3px solid black;
+  margin: 1em 0;
+`;
+
 const CustomContainer = styled.div`
   display: flex;
-  flexDirection: row;
   justify-content: center;
   flex-wrap: wrap;
 
@@ -138,10 +86,4 @@ const CustomContainer = styled.div`
       justify-content: space-between;
     }
   }
-`;
-
-const SeparateFavorites = styled.div`
-  display: block;
-  border-top: 3px solid black;
-  margin: 1em 0;
 `;

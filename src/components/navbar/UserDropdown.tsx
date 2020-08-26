@@ -4,9 +4,10 @@ import { UserContext } from '@globals/contexts';
 import Logout from './Logout';
 import NavDropdown from './NavDropdown';
 
+const { Item } = Dropdown;
+
 export default function UserDropdown() {
   const { username } = useContext(UserContext);
-  const { Item } = Dropdown;
   return (
     <NavDropdown label={username}>
       <Item>
