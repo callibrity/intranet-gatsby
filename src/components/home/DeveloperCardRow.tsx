@@ -4,11 +4,12 @@ import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
 import GrowthHoursCard from './GrowthHoursCard';
 import BillableHoursCard from './BillableHoursCard';
+import Img from 'gatsby-image';
 import { MdLock, MdLockOpen } from 'react-icons/md';
 
 const {Title, Body, Text} = Card;
 
-const DeveloperCardRow = ({ developerData, isLockedRow, lockToggle }) => {
+const DeveloperCardRow = ({ developerData, isLockedRow, lockToggle, img }) => {
   const {
     employeeId, employeeName, updatedAt, billable, growth,
   } = developerData;
@@ -19,6 +20,7 @@ const DeveloperCardRow = ({ developerData, isLockedRow, lockToggle }) => {
           <Title>
             {employeeName}
           </Title>
+          <Img fixed={img} />
         </Body>
         <Text className="text-center pb-0">
           {' '}
@@ -46,4 +48,18 @@ const CustomContainer = styled.div`
       justify-content: space-between;
     }
   }
+`;
+
+const StyledBody = styled(Body)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledImg = styled(Img)`
+  border-radius: 5px;
+`;
+
+const EmployeeName = styled.h5`
+  text-align: center;
 `;
