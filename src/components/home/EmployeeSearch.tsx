@@ -1,25 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import { IconContext } from 'react-icons';
 import { MdSearch } from 'react-icons/md';
 
-const EmployeeSearch = () => {
-  const [text, setText] = useState<string>('');
-  return (
-    <InputGroup>
+interface EmployeeSearchProps {
+  text: string;
+  setText: any;
+}
+
+const EmployeeSearch: React.FC<EmployeeSearchProps> = ({ text, setText }: EmployeeSearchProps) => (
+  <InputGroup>
+    <IconContext.Provider value={{ color: 'grey' }}>
       <FormControl
-        aria-label="Search for an employee"
+        aria-label="Type at least two characters to pull up developers"
         alt="search bar"
         value={text}
-        placeholder="Search employees..."
+        placeholder="Type at least two characters to pull up developers..."
         onChange={(e) => setText(e.target.value)}
-        style={{ height: '100%' }}
+        style={{ height: '100%', borderTopLeftRadius: 100, borderBottomLeftRadius: 100 }}
       />
       <InputGroup.Append>
-        <InputGroup.Text><MdSearch /></InputGroup.Text>
+        <InputGroup.Text style={{ backgroundColor: 'white', borderBottomRightRadius: 100, borderTopRightRadius: 100 }}><MdSearch /></InputGroup.Text>
       </InputGroup.Append>
-    </InputGroup>
-  );
-};
+    </IconContext.Provider>
+  </InputGroup>
+);
 
 export default EmployeeSearch;

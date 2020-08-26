@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
-import Card from 'react-bootstrap/Card';
 import Img from 'gatsby-image';
-import { getEmployeeMetrics } from '@api/serviceCalls';
+import { getEmployeeMetrics, getAllEmployeeMetrics, getEmployeeDetails } from '@api/serviceCalls';
 import { Container } from 'react-bootstrap';
 import { UserContext } from '@globals/contexts';
 import EmployeeSearch from './EmployeeSearch';
@@ -10,54 +9,77 @@ import GrowthHoursCard from './GrowthHoursCard';
 import BillableHoursCard from './BillableHoursCard';
 import { BillableTypes, GrowthTypes, ImageQuery } from '@globals/types';
 import { dummyEmployeeData, billableDefault, growthDefault } from '@globals/constants';
-const { Body } = Card;
+import DeveloperCardRow from './DeveloperCardRow';
 
 type TrackerState = BillableTypes & GrowthTypes;
 
 const TimeTracker = ({data} : ImageQuery) => {
   const { userRole } = useContext(UserContext);
-  const [userData, setUserData] = useState<TrackerState>({billable: billableDefault, growth: growthDefault});
+  const [userData, setUserData] = useState<TrackerState>([]);
+  const [searchString, setSearchString] = React.useState('');
+  const [favoritesList, setFavoritesList] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const setDataHandler = (output) => {
+    setUserData(output);
+    setLoading(false);
+  };
 
   const images = data.mugs.nodes.map((node) => node.childImageSharp.fixed);
 
   useEffect(() => {
-    getEmployeeMetrics(setUserData, console.log);
+    userRole === 'Account Manager' && getAllEmployeeMetrics(setDataHandler, console.log);
+    userRole === 'Developer' && getEmployeeMetrics(setDataHandler, console.log);
   }, []);
+  const isLocked = (employeeId: string): boolean => favoritesList.includes(employeeId);
+  const favoriteListToggleHandler = (employeeId: string) => {
+    if (isLocked(employeeId)) { setFavoritesList(favoritesList.filter((favoriteId) => favoriteId !== employeeId)); } else { setFavoritesList([...favoritesList, employeeId]); }
+  };
 
-  return userRole === 'Account Manager' ? (
-    <>
-      <Container style={{ marginBottom: 16 }}>
-        <EmployeeSearch />
-      </Container>
-      {
-  dummyEmployeeData.map(({employeeId, employeeName, billable, growth, updatedAt }) => {
-    const img = images.find((image) => image.originalName === `${employeeId}.jpg`) || data.mugPlaceholder.childImageSharp.fixed;
-    return (
-    <CustomContainer  key={employeeId} style={{marginBottom: 10}}>
-      <Card className={'mx-2 shadow-sm'}style={{ width: '14rem' }}>
-        <StyledBody>
-          <EmployeeName>{employeeName}</EmployeeName>
-          <StyledImg fixed={img} />
-        </StyledBody>
-      </Card>
-      <BillableHoursCard billable={billable} updatedAt={updatedAt} />
-      <GrowthHoursCard growth={growth} updatedAt={updatedAt} />
-    </CustomContainer>
-  )})
-    }
-    </>
-  )
-    : (
+  return (userRole === 'Account Manager'
+    ? (
+      <>
+        <Container style={{ marginBottom: 16 }}>
+          <EmployeeSearch text={searchString} setText={setSearchString} />
+        </Container>
+
+        {
+          (!loading)
+            && userData.filter((developer) => favoritesList.includes(developer.employeeId)).map((developerObject) => {
+              const img = images.find((image) => image.originalName === `${developerObject.employeeId}.jpg`) || data.mugPlaceholder.childImageSharp.fixed;
+              return <DeveloperCardRow 
+                key={developerObject.employeeId} 
+                developerData={developerObject}  
+                isLockedRow="true" 
+                lockToggle={favoriteListToggleHandler} 
+                img={img}
+              />
+            })
+          }
+        <SeparateFavorites />
+        {
+            (!loading && searchString.length > 1)
+              && userData.filter((developer) => (developer.employeeName.toLowerCase().includes(searchString.toLowerCase())) && !favoritesList.includes(developer.employeeId)).map((developerObject) => (
+                <DeveloperCardRow key={developerObject.employeeId} developerData={developerObject} isLockedRow="false" lockToggle={favoriteListToggleHandler} img={data.mugPlaceholder.childImageSharp.fixed}/>
+              ))
+          }
+      </>
+    ) : (
       <>
         <CustomContainer id="custom-container-developer-context">
           <BillableHoursCard billable={userData.billable} updatedAt={userData.updatedAt} />
           <GrowthHoursCard growth={userData.growth} updatedAt={userData.updatedAt} />
         </CustomContainer>
       </>
-    );
+    ));
 };
 
 export default TimeTracker;
+
+const SeparateFavorites = styled.div`
+  display: block;
+  border-top: 3px solid black;
+  margin: 1em 0;
+`;
 
 
 const CustomContainer = styled.div`
@@ -75,16 +97,3 @@ const CustomContainer = styled.div`
   }
 `;
 
-const StyledBody = styled(Body)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const StyledImg = styled(Img)`
-  border-radius: 5px;
-`;
-
-const EmployeeName = styled.h5`
-  text-align: center;
-`;
