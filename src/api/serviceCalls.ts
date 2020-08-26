@@ -3,7 +3,7 @@ import axios from 'axios';
 // eslint-disable-next-line
 export const getEmployeeMetrics = async (onSuccess, onError) => {
   await axios
-    .get('/api/employee/hours')
+    .get('/api/Employee/hours')
     .then((res) => {
       onSuccess(res.data);
     })
@@ -14,7 +14,7 @@ export const getEmployeeMetrics = async (onSuccess, onError) => {
 
 export const getEmployeeDetails = async (onSuccess, onError) => {
   await axios
-    .get('/api/employee', {
+    .get('/api/Employee', {
       headers: {
         Authorization: `${axios.defaults.headers.common.Authorization}`,
       },
@@ -29,7 +29,7 @@ export const getEmployeeDetails = async (onSuccess, onError) => {
 
 export const getAllEmployeeMetrics = async (onSuccess, onError) => {
   await axios
-    .get('/api/employee/hours/all', {
+    .get('/api/Employee/hours/all', {
       headers: {
         Authorization: `${axios.defaults.headers.common.Authorization}`,
       },
