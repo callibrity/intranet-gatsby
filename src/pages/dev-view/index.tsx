@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { getEmployeeMetrics} from '@api/serviceCalls';
-import DataCard from './DataCard';
+import { getEmployeeMetrics } from '@api/serviceCalls';
+import DataCard from '../../components/home/DataCard';
 import { BillableTypes, GrowthTypes } from '@globals/types';
 import { billableConversion, growthConversion } from '@globals/helperFunctions';
 
-type TrackerState = {billable: BillableTypes, growth: GrowthTypes, updatedAt: string};
+type TrackerState = { billable: BillableTypes, growth: GrowthTypes, updatedAt: string };
 
 const IndividualView = () => {
   const [userData, setUserData] = useState<TrackerState>();
