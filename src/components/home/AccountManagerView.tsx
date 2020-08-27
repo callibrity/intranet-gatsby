@@ -20,6 +20,15 @@ const AccountManagerView = ({data} : ImageQuery) => {
     getAllEmployeeMetrics(setUserData, console.log);
   }, []);
 
+  useEffect(() => {
+    var storedNames = JSON.parse(window.localStorage.getItem("localKeepList"));
+    setFavoritesList(storedNames);
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("localKeepList", JSON.stringify(favoritesList));
+  }, [favoritesList]);
+
   const isLocked = (employeeId: string): boolean => favoritesList.includes(employeeId);
 
   const favoriteListToggleHandler = (employeeId: string) => {
