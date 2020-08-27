@@ -2,10 +2,10 @@ import React from "react";
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
-import GrowthHoursCard from './GrowthHoursCard';
-import BillableHoursCard from './BillableHoursCard';
 import Img from 'gatsby-image';
 import { MdLock, MdLockOpen } from 'react-icons/md';
+import DataCard from './DataCard';
+import { billableConversion, growthConversion } from '@globals/helperFunctions';
 
 const {Title, Body, Text} = Card;
 
@@ -24,11 +24,11 @@ const DeveloperCardRow = ({ developerData, isLockedRow, lockToggle, img }) => {
         </Body>
         <Text className="text-center pb-0">
           {' '}
-          <Button id={employeeId} variant="dark" style={{ borderTopLeftRadius: 100, borderTopRightRadius: 100 }} onClick={(e) => {lockToggle(employeeId);}}>{isLockedRow === 'true' ? <MdLock /> : <MdLockOpen />}</Button>
+          <Button id={employeeId} variant="dark" style={{ borderTopLeftRadius: 100, borderTopRightRadius: 100 }} onClick={(e) => {lockToggle(employeeId);}}>{isLockedRow ? <MdLock /> : <MdLockOpen />}</Button>
         </Text>
       </Card>
-      <BillableHoursCard billable={billable} updatedAt={updatedAt} />
-      <GrowthHoursCard growth={growth} updatedAt={updatedAt} />
+      <DataCard title='Billable Hours' data={billableConversion(billable)} updatedAt={updatedAt} />
+      <DataCard title='Growth Time' data={growthConversion(growth)} updatedAt={updatedAt} />
     </CustomContainer>
   );
 };
