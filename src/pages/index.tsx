@@ -2,16 +2,16 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import TimeTracker from '@home/TimeTracker';
 import { UserContext } from '@globals/contexts';
-import {graphql} from 'gatsby';
+import { graphql } from 'gatsby';
 import { ImageQuery } from '@globals/types';
 import Loading from '@home/Loading';
 
-export default function Homepage({data} : ImageQuery ) {
+export default function Homepage({ data }: ImageQuery) {
   const { userRole } = useContext(UserContext);
   return (
     <Container>
       {userRole
-        ?  <TimeTracker data={data} /> : <Loading />}
+        ? <TimeTracker data={data} /> : <Loading />}
     </Container>
   );
 }

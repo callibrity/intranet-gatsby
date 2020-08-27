@@ -1,27 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { navigate } from 'gatsby';
-import { useGoogleLogin, GoogleLoginResponse } from 'react-google-login';
 import { UserContext } from '@globals/contexts';
-import { googleClientId } from '@globals/constants';
 import { Button } from 'react-bootstrap';
-import { getEmployeeDetails } from '@api/serviceCalls';
-import { setJwt } from '@api/api';
+import { navigate } from 'gatsby';
+
 
 export default function Login() {
-  const { setUsername, setUserEmail, setUserRole } = useContext(UserContext);
-  const { signIn } = useGoogleLogin({
-    clientId: googleClientId,
-    onSuccess: ({tokenId, profileObj: {name, email}} : GoogleLoginResponse) => { 
-      setJwt(tokenId);
-      setUsername(name);
-      setUserEmail(email);
-      getEmployeeDetails(setUserRole, console.log);
+  const { username, signIn } = useContext(UserContext);
+
+  useEffect(() => {
+    if (username) {
       navigate('/');
-    },
-    onFailure: () => console.log("sign in failed"),
-    isSignedIn: true
-  });
+    }
+  }, [username])
 
   return (
     <Container>
