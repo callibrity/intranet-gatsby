@@ -6,6 +6,8 @@ import EmployeeSearch from '../../components/home/EmployeeSearch';
 import { BillableTypes, GrowthTypes, ImageQuery } from '@globals/types';
 import DeveloperCardRow from '../../components/home/DeveloperCardRow';
 import { reactChildren } from '@globals/types';
+import { graphql } from 'gatsby';
+
 
 type EmployeeTypes = (BillableTypes & GrowthTypes & { employeeName: string, employeeId: string })[];
 
@@ -67,6 +69,29 @@ const AccountManagerView = ({ data }: ImageQuery) => {
 };
 
 export default AccountManagerView;
+
+export const query = graphql`
+  {
+    mugs: allFile(filter: {relativeDirectory: {eq: "mug"}}) {
+      nodes {
+        childImageSharp {
+          fixed (width: 133) {
+            ...GatsbyImageSharpFixed
+            originalName
+          }
+        }
+      }
+    }
+    mugPlaceholder: file(base: {eq: "mug-placeholder.png"}) {
+      childImageSharp {
+        fixed (width: 133) {
+          ...GatsbyImageSharpFixed
+          originalName
+        }
+      }
+    }
+  }
+`
 
 const SeparateFavorites = styled.div`
   display: block;
