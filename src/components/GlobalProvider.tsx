@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { UserContext } from '@globals/contexts';
-import Login from '@pages/login';
-import Navbar from './navbar/Navbar';
+import Navbar from '@navbar/Navbar';
 import GlobalStyle from './GlobalStyle';
 import { reactChildren } from '@globals/types';
 import { globalHistory } from '@reach/router';
@@ -10,6 +9,7 @@ import { getEmployeeDetails } from '@api/serviceCalls';
 import { setJwt } from '@api/api';
 import { navigate } from 'gatsby';
 import { useGoogleLogin, GoogleLoginResponse } from 'react-google-login';
+import Loading from '@home/Loading';
 
 export const Provider = ({ children }: { children: reactChildren }) => {
   const [username, setUsername] = useState<string>(null);
@@ -46,7 +46,7 @@ export const Provider = ({ children }: { children: reactChildren }) => {
     <UserContext.Provider value={contextObject}>
       <GlobalStyle />
       <Navbar />
-      {signInLoaded ? children : null}
+      {signInLoaded ? children : <Loading />}
     </UserContext.Provider>
   );
 };

@@ -1,12 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import TimeTracker from '@home/TimeTracker';
 import { UserContext } from '@globals/contexts';
-import { ImageQuery } from '@globals/types';
-import Loading from '@home/Loading';
+import { navigate } from 'gatsby';
 
 export default function Homepage() {
   const { userRole } = useContext(UserContext);
+
+  useEffect(() => {
+    if (userRole === 'Account Manager') {
+      navigate('/am-view');
+    }
+    else {
+      navigate('/dev-view');
+    }
+  }, [userRole])
+
   return (
     <Container>
       Loading
