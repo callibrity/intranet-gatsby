@@ -12,12 +12,12 @@ export default function Login() {
   const { setUsername, setUserEmail, setUserRole } = useContext(UserContext);
   const { signIn } = useGoogleLogin({
     clientId: googleClientId,
-    onSuccess: ({tokenId, profileObj: {name, email}} : GoogleLoginResponse) => { 
+    onSuccess: ({ tokenId, profileObj: { name, email } }: GoogleLoginResponse) => {
       setJwt(tokenId);
       setUsername(name);
       setUserEmail(email);
       getEmployeeDetails(setUserRole, console.log);
-      navigate('/');
+      navigate('/test');
     },
     onFailure: () => console.log("sign in failed"),
     isSignedIn: true

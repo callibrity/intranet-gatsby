@@ -4,16 +4,19 @@ import Login from '@pages/login';
 import Navbar from './navbar/Navbar';
 import GlobalStyle from './GlobalStyle';
 import { reactChildren } from '@globals/types';
+import { globalHistory } from '@reach/router';
 
-export const Provider = ({ children, location }: { children: reactChildren }) => {
+export const Provider = ({ children }: { children: reactChildren }) => {
   const [username, setUsername] = useState<string>(null);
   const [userEmail, setUserEmail] = useState<string>(null);
   const [userRole, setUserRole] = useState<string>(null);
   const contextObject = { username, setUsername, userEmail, setUserEmail, userRole, setUserRole };
 
   useEffect(() => {
-    console.log(location.pathname);
-  }, [location])
+    return globalHistory.listen((result) => {
+      console.log('location:', result.location.pathname);
+    })
+  })
 
   return (
     <UserContext.Provider value={contextObject}>
