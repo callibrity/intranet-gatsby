@@ -20,11 +20,10 @@ const AccountManagerView = ({ data }: ImageQuery) => {
 
   useEffect(() => {
     getAllEmployeeMetrics(setUserData, console.log);
-  }, []);
-
-  useEffect(() => {
-    var storedNames = JSON.parse(window.localStorage.getItem("localKeepList"));
-    setFavoritesList(storedNames);
+    const storedNames = JSON.parse(window.localStorage.getItem("localKeepList"));
+    if (storedNames !== null) {
+      setFavoritesList(storedNames);
+    }
   }, []);
 
   useEffect(() => {
