@@ -2,18 +2,18 @@ import React, { useContext, useEffect } from 'react';
 import { UserContext } from '@globals/contexts';
 import { navigate } from 'gatsby';
 
-const DevFlag = false;
+const DeveloperFlag = false;
 
-const AMFlag = false;
+const AccountManagerFlag = false;
 
 export default function Homepage() {
   const { userRole } = useContext(UserContext);
 
   useEffect(() => {
-    if (AMFlag) {
+    if (AccountManagerFlag) {
       navigate('/am-view')
     }
-    else if (DevFlag) {
+    else if (DeveloperFlag) {
       navigate('/dev-view')
     }
     else if (userRole === 'Account Manager') {
