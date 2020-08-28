@@ -1,11 +1,12 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-const { Title, Body, Text } = Card;
 import Button from 'react-bootstrap/Button';
 import Img from 'gatsby-image';
 import { FixedImage } from '@globals/types';
 import { MdLock, MdLockOpen } from 'react-icons/md';
 import styled from 'styled-components';
+
+const { Title, Body, Text } = Card;
 
 interface PropTypes {
   img: FixedImage,

@@ -6,7 +6,7 @@ const DeveloperFlag = false;
 
 const AccountManagerFlag = false;
 
-export default function Homepage() {
+const Index = () => {
   const { userRole } = useContext(UserContext);
 
   useEffect(() => {
@@ -29,3 +29,4 @@ export default function Homepage() {
   );
 }
 
+export default Index;

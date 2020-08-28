@@ -3,66 +3,63 @@ import styled from 'styled-components';
 import { getAllEmployeeMetrics } from '@api/serviceCalls';
 import { Container } from 'react-bootstrap';
 import EmployeeSearch from '../../components/home/EmployeeSearch';
-import { UserMetricTypes, ImageQuery } from '@globals/types';
+import { EmployeeMetricTypes, ImageQuery } from '@globals/types';
 import EmployeeCardRow from '@home/EmployeeCardRow';
 import { reactChildren } from '@globals/types';
 import { graphql } from 'gatsby';
 
-
-type EmployeeTypes = (UserMetricTypes & { employeeName: string, employeeId: string })[];
+type EmployeeTypes = (EmployeeMetricTypes & { employeeName: string, employeeId: string })[];
 
 const AccountManagerView = ({ data }: ImageQuery) => {
-  const [userData, setUserData] = useState<EmployeeTypes>([]);
-  const [searchString, setSearchString] = useState('');
-  const [favoritesList, setFavoritesList] = useState([]);
-
-  const images = data.mugs.nodes.map((node) => node.childImageSharp.fixed);
+  const [employeeDataList, setEmployeeDataList] = useState<EmployeeTypes>([]);
+  const [searchString, setSearchString] = useState<string>('');
+  const [lockList, setLockList] = useState<string[]>([]);
 
   useEffect(() => {
-    getAllEmployeeMetrics(setUserData, console.log);
-    const storedNames = JSON.parse(window.localStorage.getItem("localKeepList"));
+    getAllEmployeeMetrics(setEmployeeDataList, console.log);
+    const storedNames = JSON.parse(window.localStorage.getItem("localLockList"));
     if (storedNames !== null) {
-      setFavoritesList(storedNames);
+      setLockList(storedNames);
     }
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem("localKeepList", JSON.stringify(favoritesList));
-  }, [favoritesList]);
+    window.localStorage.setItem("localLockList", JSON.stringify(lockList));
+  }, [lockList]);
 
-  const isLocked = (employeeId: string): boolean => favoritesList.includes(employeeId);
-
-  const favoriteListToggleHandler = (employeeId: string) => {
-    if (isLocked(employeeId)) {
-      setFavoritesList(favoritesList.filter((favoriteId) => favoriteId !== employeeId));
+  const lockToggle = (employeeId: string) => {
+    if (lockList.includes(employeeId)) {
+      setLockList(lockList.filter((favoriteId) => favoriteId !== employeeId));
     } else {
-      setFavoritesList([...favoritesList, employeeId]);
+      setLockList([...lockList, employeeId]);
     }
   };
 
-  const favoriteList: reactChildren = [];
-  const notFavoriteList: reactChildren = [];
+  const images = data.mugs.nodes.map((node) => node.childImageSharp.fixed);
 
-  userData.forEach((developer) => {
+  const lockedElements: reactChildren = [];
+  const searchElements: reactChildren = [];
+
+  employeeDataList.forEach((developer) => {
     const { billable, growth, updatedAt, employeeId, employeeName } = developer;
-    const isFavorite = isLocked(employeeId);
-    const show = searchString.length > 1 && employeeName.toLowerCase().includes(searchString.toLowerCase());
-    if (isFavorite || show) {
+    const isLocked = lockList.includes(employeeId);
+    const isSearched = searchString.length > 1 && employeeName.toLowerCase().includes(searchString.toLowerCase());
+    if (isLocked || isSearched) {
       const img = images.find((image) => image.originalName === `${employeeId}.jpg`) || data.mugPlaceholder.childImageSharp.fixed;
-      const UserComponent =
+      const EmployeeElement =
         <EmployeeCardRow
           key={employeeId}
-          userMetrics={{ billable, growth, updatedAt }}
+          employeeMetrics={{ billable, growth, updatedAt }}
           employeeId={employeeId}
           employeeName={employeeName}
-          isLockedRow={isFavorite}
-          lockToggle={favoriteListToggleHandler}
+          isLockedRow={isLocked}
+          lockToggle={lockToggle}
           img={img}
         />
-      if (isFavorite) {
-        favoriteList.push(UserComponent);
+      if (isLocked) {
+        lockedElements.push(EmployeeElement);
       } else {
-        notFavoriteList.push(UserComponent);
+        searchElements.push(EmployeeElement);
       }
     }
   })
@@ -72,9 +69,9 @@ const AccountManagerView = ({ data }: ImageQuery) => {
       <Container style={{ marginBottom: 16 }}>
         <EmployeeSearch text={searchString} setText={setSearchString} />
       </Container>
-      {favoriteList}
+      {lockedElements}
       <SeparateFavorites />
-      {notFavoriteList}
+      {searchElements}
     </>
   );
 };

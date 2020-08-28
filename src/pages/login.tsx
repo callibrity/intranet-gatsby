@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { navigate } from 'gatsby';
 
 
-export default function Login() {
+const Login = () => {
   const { username, signIn } = useContext(UserContext);
 
   useEffect(() => {
@@ -21,6 +21,8 @@ export default function Login() {
     </Container>
   );
 }
+
+export default Login;
 
 const Container = styled.div`
   display: flex;

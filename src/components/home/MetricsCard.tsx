@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { OverlayTrigger } from 'react-bootstrap';
 import LineItem from './LineItem';
 import RenderTooltip from '../reusable/RenderTooltip';
+import styled from 'styled-components';
 
 const { Body, Title } = Card;
 
@@ -12,8 +13,8 @@ interface PropTypes {
   title: string
 }
 
-export const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
-  const metricsList = metrics.map(({ label, value }) => <LineItem label={label} value={value} />)
+const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
+  const metricsElements = metrics.map(({ label, value }) => <LineItem label={label} value={value} />)
   return (
     <Card className="TimeTracker-Hours shadow-sm mx-2" id="tooltip">
       <Body>
@@ -23,8 +24,8 @@ export const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
           overlay={(props) => RenderTooltip(props, updatedAt)}
         >
           <div>
-            <Title style={{ fontSize: '2.2rem' }}>{title}</Title>
-            {metricsList}
+            <StyledTitle>{title}</StyledTitle>
+            {metricsElements}
           </div>
         </OverlayTrigger>
       </Body>
@@ -33,3 +34,7 @@ export const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
 };
 
 export default MetricsCard;
+
+const StyledTitle = styled(Title)`
+  font-size: 2.2rem
+`;
