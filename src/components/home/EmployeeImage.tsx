@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Img from 'gatsby-image';
 import { FixedImage } from '@globals/types';
 import { MdLock, MdLockOpen } from 'react-icons/md';
+import styled from 'styled-components';
 
 interface PropTypes {
   img: FixedImage,
@@ -16,19 +17,39 @@ interface PropTypes {
 
 const EmployeeImage = ({ img, employeeName, employeeId, isLockedRow, lockToggle }: PropTypes) => {
   return (
-    <Card className="mx-2 shadow-sm" style={{ width: '14rem' }}>
-      <Body style={{ alignSelf: 'center', justifyContent: 'center' }}>
+    <Card className="mx-2 shadow-sm">
+      <StyledBody>
         <Title>
           {employeeName}
         </Title>
         <Img fixed={img} />
-      </Body>
+      </StyledBody>
       <Text className="text-center pb-0">
         {' '}
-        <Button id={employeeId} variant="dark" style={{ borderTopLeftRadius: 100, borderTopRightRadius: 100 }} onClick={() => lockToggle(employeeId)}>{isLockedRow ? <MdLock /> : <MdLockOpen />}</Button>
+        <StyledButton
+          id={employeeId}
+          variant="dark"
+          onClick={() => lockToggle(employeeId)}
+        >
+          {isLockedRow ? <MdLock /> : <MdLockOpen />}
+        </StyledButton>
       </Text>
     </Card>
   )
 }
 
 export default EmployeeImage;
+
+const StyledCard = styled(Card)`
+  width: 14rem;
+`
+
+const StyledBody = styled(Body)`
+  align-self: center;
+  justify-content: center;
+`
+
+const StyledButton = styled(Button)`
+  border-top-left-radius: 100;
+  border-top-right-radius: 100;
+`

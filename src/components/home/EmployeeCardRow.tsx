@@ -14,7 +14,6 @@ interface PropTypes {
   img?: FixedImage
 }
 
-
 const EmployeeCardRow = ({ userMetrics, employeeId, employeeName, isLockedRow, lockToggle, img }: PropTypes) => {
   const { billable, growth, updatedAt } = userMetrics;
   const employeeImage = img ? <EmployeeImage img={img} employeeName={employeeName} employeeId={employeeId} isLockedRow={isLockedRow} lockToggle={lockToggle} /> : null;

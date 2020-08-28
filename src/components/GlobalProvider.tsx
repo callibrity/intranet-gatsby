@@ -9,7 +9,7 @@ import { getEmployeeDetails } from '@api/serviceCalls';
 import { setJwt } from '@api/api';
 import { navigate } from 'gatsby';
 import { useGoogleLogin, GoogleLoginResponse } from 'react-google-login';
-import Loading from '@home/Loading';
+import Loading from '@components/reusable/Loading';
 
 export const Provider = ({ children }: { children: reactChildren }) => {
   const [username, setUsername] = useState<string>(null);

@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { OverlayTrigger } from 'react-bootstrap';
 import LineItem from './LineItem';
-import RenderTooltip from './RenderTooltip';
+import RenderTooltip from '../reusable/RenderTooltip';
 
 const { Body, Title } = Card;
 
