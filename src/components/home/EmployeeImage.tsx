@@ -17,7 +17,7 @@ interface PropTypes {
 
 const EmployeeImage = ({ img, employeeName, employeeId, isLockedRow, lockToggle }: PropTypes) => {
   return (
-    <Card className="mx-2 shadow-sm">
+    <StyledCard className="mx-2 shadow-sm">
       <StyledBody>
         <Title>
           {employeeName}
@@ -34,7 +34,7 @@ const EmployeeImage = ({ img, employeeName, employeeId, isLockedRow, lockToggle 
           {isLockedRow ? <MdLock /> : <MdLockOpen />}
         </StyledButton>
       </Text>
-    </Card>
+    </StyledCard>
   )
 }
 
