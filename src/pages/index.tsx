@@ -1,13 +1,22 @@
 import React, { useContext, useEffect } from 'react';
-import styled from 'styled-components';
 import { UserContext } from '@globals/contexts';
 import { navigate } from 'gatsby';
+
+const DevFlag = false;
+
+const AMFlag = false;
 
 export default function Homepage() {
   const { userRole } = useContext(UserContext);
 
   useEffect(() => {
-    if (userRole === 'Account Manager') {
+    if (AMFlag) {
+      navigate('/am-view')
+    }
+    else if (DevFlag) {
+      navigate('/dev-view')
+    }
+    else if (userRole === 'Account Manager') {
       navigate('/am-view');
     }
     else if (userRole === 'Developer') {
@@ -16,14 +25,7 @@ export default function Homepage() {
   }, [userRole])
 
   return (
-    <Container>
-      Loading
-    </Container>
+    <div />
   );
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 50px;
-`;

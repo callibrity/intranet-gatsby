@@ -37,6 +37,7 @@ export const Provider = ({ children }: { children: reactChildren }) => {
   const contextObject = { username, setUsername, userEmail, setUserEmail, userRole, setUserRole, signIn };
 
   useEffect(() => {
+    /*
     return globalHistory.listen(({ location: { pathname } }) => {
       if (pathname.includes('am-view') && userRole !== 'Account Manager') {
         navigate('/');
@@ -45,6 +46,7 @@ export const Provider = ({ children }: { children: reactChildren }) => {
         navigate('/')
       }
     })
+    */
   })
 
   return (
