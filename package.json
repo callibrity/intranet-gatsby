@@ -16,7 +16,7 @@
     "gatsby-plugin-styled-components": "^3.3.3",
     "gatsby-source-filesystem": "^2.3.8",
     "gatsby-transformer-sharp": "^2.5.3",
-    "npm": "^6.14.5",
+    "npm": "^6.14.8",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.1",
     "react": "^16.12.0",
