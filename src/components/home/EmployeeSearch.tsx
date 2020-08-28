@@ -15,12 +15,13 @@ interface EmployeeSearchProps {
 const EmployeeSearch = ({ text, setText }: EmployeeSearchProps) => (
   <InputGroup>
     <IconContext.Provider value={{ color: 'grey' }}>
-      <StyledFormControl
+      <FormControl
         aria-label="Type at least two characters to pull up developers"
         alt="search bar"
         value={text}
         placeholder="Type at least two characters to pull up developers..."
         onChange={(e) => setText(e.target.value)}
+        style={{ height: '100%', borderTopLeftRadius: 100, borderBottomLeftRadius: 100 }}
       />
       <Append>
         <StyledText>
@@ -32,12 +33,6 @@ const EmployeeSearch = ({ text, setText }: EmployeeSearchProps) => (
 );
 
 export default EmployeeSearch;
-
-const StyledFormControl = styled(FormControl)`
-  height: 100%;
-  border-top-left-radius: 100;
-  border-bottom-left-radius: 100;
-`;
 
 const StyledText = styled(Text)`
   background-color: white;

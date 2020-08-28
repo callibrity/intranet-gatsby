@@ -11,16 +11,16 @@ const Index = () => {
 
   useEffect(() => {
     if (AccountManagerFlag) {
-      navigate('/am-view')
+      navigate('/account-manager-view')
     }
     else if (DeveloperFlag) {
-      navigate('/dev-view')
+      navigate('/developer-view')
     }
     else if (userRole === 'Account Manager') {
-      navigate('/am-view');
+      navigate('/account-manager-view');
     }
     else if (userRole === 'Developer') {
-      navigate('/dev-view');
+      navigate('/developer-view');
     }
   }, [userRole])
 
