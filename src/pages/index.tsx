@@ -1,46 +1,31 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import TimeTracker from '@home/TimeTracker';
+import React, { useContext, useEffect } from 'react';
 import { UserContext } from '@globals/contexts';
-import { graphql } from 'gatsby';
-import { ImageQuery } from '@globals/types';
-import Loading from '@home/Loading';
+import { navigate } from 'gatsby';
 
-export default function Homepage({ data }: ImageQuery) {
+const DeveloperFlag = false;
+
+const AccountManagerFlag = false;
+
+export default function Homepage() {
   const { userRole } = useContext(UserContext);
+
+  useEffect(() => {
+    if (AccountManagerFlag) {
+      navigate('/am-view')
+    }
+    else if (DeveloperFlag) {
+      navigate('/dev-view')
+    }
+    else if (userRole === 'Account Manager') {
+      navigate('/am-view');
+    }
+    else if (userRole === 'Developer') {
+      navigate('/dev-view');
+    }
+  }, [userRole])
+
   return (
-    <Container>
-      {userRole
-        ? <TimeTracker data={data} /> : <Loading />}
-    </Container>
+    <div />
   );
 }
 
-export const query = graphql`
-  {
-    mugs: allFile(filter: {relativeDirectory: {eq: "mug"}}) {
-      nodes {
-        childImageSharp {
-          fixed (width: 133) {
-            ...GatsbyImageSharpFixed
-            originalName
-          }
-        }
-      }
-    }
-    mugPlaceholder: file(base: {eq: "mug-placeholder.png"}) {
-      childImageSharp {
-        fixed (width: 133) {
-          ...GatsbyImageSharpFixed
-          originalName
-        }
-      }
-    }
-  }
-`
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 50px;
-`;
