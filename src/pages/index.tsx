@@ -10,7 +10,7 @@ export default function Homepage() {
     if (userRole === 'Account Manager') {
       navigate('/am-view');
     }
-    else {
+    else if (userRole === 'Developer') {
       navigate('/dev-view');
     }
   }, [userRole])

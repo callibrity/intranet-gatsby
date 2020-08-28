@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { getAllEmployeeMetrics } from '@api/serviceCalls';
 import { Container } from 'react-bootstrap';
 import EmployeeSearch from '../../components/home/EmployeeSearch';
-import { BillableTypes, GrowthTypes, ImageQuery } from '@globals/types';
-import DeveloperCardRow from '../../components/home/DeveloperCardRow';
+import { UserMetricTypes, ImageQuery } from '@globals/types';
+import EmployeeCardRow from '@home/EmployeeCardRow';
 import { reactChildren } from '@globals/types';
 import { graphql } from 'gatsby';
 
 
-type EmployeeTypes = (BillableTypes & GrowthTypes & { employeeName: string, employeeId: string })[];
+type EmployeeTypes = (UserMetricTypes & { employeeName: string, employeeId: string })[];
 
 const AccountManagerView = ({ data }: ImageQuery) => {
   const [userData, setUserData] = useState<EmployeeTypes>([]);
@@ -36,18 +36,21 @@ const AccountManagerView = ({ data }: ImageQuery) => {
   const notFavoriteList: reactChildren = [];
 
   userData.forEach((developer) => {
-    const { employeeId, employeeName } = developer;
+    const { billable, growth, updatedAt, employeeId, employeeName } = developer;
     const isFavorite = isLocked(employeeId);
     const show = searchString.length > 1 && employeeName.toLowerCase().includes(searchString.toLowerCase());
     if (isFavorite || show) {
       const img = images.find((image) => image.originalName === `${employeeId}.jpg`) || data.mugPlaceholder.childImageSharp.fixed;
-      const UserComponent = <DeveloperCardRow
-        key={employeeId}
-        developerData={developer}
-        isLockedRow={isFavorite}
-        lockToggle={favoriteListToggleHandler}
-        img={img}
-      />
+      const UserComponent =
+        <EmployeeCardRow
+          key={employeeId}
+          userMetrics={{ billable, growth, updatedAt }}
+          employeeId={employeeId}
+          employeeName={employeeName}
+          isLockedRow={isFavorite}
+          lockToggle={favoriteListToggleHandler}
+          img={img}
+        />
       if (isFavorite) {
         favoriteList.push(UserComponent);
       } else {

@@ -1,5 +1,5 @@
-import React, {Dispatch, SetStateAction} from 'react';
-import {FixedObject} from 'gatsby-image';
+import React, { Dispatch, SetStateAction } from 'react';
+import { FixedObject } from 'gatsby-image';
 
 export type reactChildren = React.ReactNode[] | React.ReactElement;
 
@@ -17,24 +17,22 @@ export interface GrowthTypes {
   totalGrowth: string | number
 }
 
-export interface FixedImage {
-  childImageSharp: {
-    fixed: FixedObject & { originalName: string }
-  }
-}
+export interface UserMetricTypes { billable: BillableTypes, growth: GrowthTypes, updatedAt: string };
+
+export type FixedImage = FixedObject & { originalName: string };
 
 export interface ImageQuery {
   data: {
     mugs: {
       nodes: {
         childImageSharp: {
-          fixed: FixedObject & { originalName: string }
+          fixed: FixedImage
         }
-      } []
+      }[]
     },
     mugPlaceholder: {
       childImageSharp: {
-        fixed: FixedObject & { originalName: string }
+        fixed: FixedImage
       }
     }
   }

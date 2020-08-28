@@ -6,14 +6,14 @@ import RenderTooltip from './RenderTooltip';
 
 const { Body, Title } = Card;
 
-interface PropTypes { 
-  data: {label: string, value: string | number} [],
+interface PropTypes {
+  metrics: { label: string, value: string | number }[],
   updatedAt: string,
   title: string
 }
 
-export const DataCard = ({ data, updatedAt, title } : PropTypes) => {
-  const dataList = data.map(({label, value}) => <LineItem label={label} value={value} />)
+export const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
+  const metricsList = metrics.map(({ label, value }) => <LineItem label={label} value={value} />)
   return (
     <Card className="TimeTracker-Hours shadow-sm mx-2" id="tooltip">
       <Body>
@@ -24,7 +24,7 @@ export const DataCard = ({ data, updatedAt, title } : PropTypes) => {
         >
           <div>
             <Title style={{ fontSize: '2.2rem' }}>{title}</Title>
-            {dataList}
+            {metricsList}
           </div>
         </OverlayTrigger>
       </Body>
@@ -32,4 +32,4 @@ export const DataCard = ({ data, updatedAt, title } : PropTypes) => {
   );
 };
 
-export default DataCard;
+export default MetricsCard;
