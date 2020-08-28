@@ -6,8 +6,6 @@ const DeveloperFlag = false;
 
 const AccountManagerFlag = false;
 
-let test = 1;
-
 export default function Homepage() {
   const { userRole } = useContext(UserContext);
 
