@@ -3,13 +3,16 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import { IconContext } from 'react-icons';
 import { MdSearch } from 'react-icons/md';
+import styled from 'styled-components';
+
+const { Append, Text } = InputGroup;
 
 interface EmployeeSearchProps {
   text: string;
   setText: any;
 }
 
-const EmployeeSearch: React.FC<EmployeeSearchProps> = ({ text, setText }: EmployeeSearchProps) => (
+const EmployeeSearch = ({ text, setText }: EmployeeSearchProps) => (
   <InputGroup>
     <IconContext.Provider value={{ color: 'grey' }}>
       <FormControl
@@ -20,11 +23,19 @@ const EmployeeSearch: React.FC<EmployeeSearchProps> = ({ text, setText }: Employ
         onChange={(e) => setText(e.target.value)}
         style={{ height: '100%', borderTopLeftRadius: 100, borderBottomLeftRadius: 100 }}
       />
-      <InputGroup.Append>
-        <InputGroup.Text style={{ backgroundColor: 'white', borderBottomRightRadius: 100, borderTopRightRadius: 100 }}><MdSearch /></InputGroup.Text>
-      </InputGroup.Append>
+      <Append>
+        <StyledText>
+          <MdSearch />
+        </StyledText>
+      </Append>
     </IconContext.Provider>
   </InputGroup>
 );
 
 export default EmployeeSearch;
+
+const StyledText = styled(Text)`
+  background-color: white;
+  border-bottom-right-radius: 100;
+  border-top-right-radius: 100;
+`;

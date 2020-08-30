@@ -17,7 +17,7 @@ export interface GrowthTypes {
   totalGrowth: string | number
 }
 
-export interface UserMetricTypes { billable: BillableTypes, growth: GrowthTypes, updatedAt: string };
+export interface EmployeeMetricTypes { billable: BillableTypes, growth: GrowthTypes, updatedAt: string };
 
 export type FixedImage = FixedObject & { originalName: string };
 
