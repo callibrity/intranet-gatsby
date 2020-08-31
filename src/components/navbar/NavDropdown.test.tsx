@@ -23,6 +23,4 @@ describe('NavDropdown component', () => {
 
     await waitFor(() => expect(screen.queryByText(mockItemsText[0])).toBeInstanceOf(HTMLElement));
   });
-
-
 });

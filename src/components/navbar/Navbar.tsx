@@ -11,7 +11,7 @@ import NavDropdown from './NavDropdown';
 
 const { Brand } = Navbar;
 
-export default function navBar() {
+export default function NavbarComponent() {
   const { file: { childImageSharp: { fixed: callibrityLogo } } } = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "callibrity-logo.png" }) {
