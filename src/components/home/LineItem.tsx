@@ -1,10 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 
 export const LineItem = ({ label, value } : {label: string, value: string | number}) => (
-  <div className="TimeTracker-Hours-details">
-    <span>{label}:</span>
+  <MetricItemContainer >
     <span>{value}</span>
-  </div>
+    <span>{label}</span>
+
+  </MetricItemContainer>
 );
 
 export default LineItem;
+const MetricItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+`;

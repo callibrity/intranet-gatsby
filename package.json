@@ -25,6 +25,7 @@
     "react-google-login": "^5.1.20",
     "react-icons": "^3.10.0",
     "react-modal": "^3.11.2",
+    "recharts": "^1.8.5",
     "styled-components": "^5.1.1",
     "styled-normalize": "^8.0.7",
     "typeface-roboto": "0.0.75"
