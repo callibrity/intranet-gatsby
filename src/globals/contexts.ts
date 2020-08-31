@@ -8,7 +8,10 @@ interface UserContextInterface {
   setUserEmail: setStateFunction<string>,
   userRole: string,
   setUserRole: setStateFunction<string>,
-  signIn: Function
+  signIn: Function,
+  signOut: Function
 };
+
+export const mockContext = createContext(null);
 
 export const UserContext = createContext<UserContextInterface>(null);

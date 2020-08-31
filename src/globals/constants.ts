@@ -148,3 +148,5 @@ export const openLockTestId = 'open-lock';
 export const billableTitle = 'Billable Hours';
 
 export const growthTitle = 'Growth Time';
+
+export const signOutButtonText = 'Sign Out';

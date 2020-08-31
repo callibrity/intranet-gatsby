@@ -4,14 +4,15 @@ import Img from 'gatsby-image';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { UserContext } from '@globals/contexts';
-import QuickLinks from './QuickLinks';
-import UserDropdown from './UserDropdown';
+import Logout from './Logout';
 import SearchBar from './SearchBar';
+import { quickLinks } from '@globals/constants';
+import NavDropdown from './NavDropdown';
 
 const { Brand } = Navbar;
 
 export default function navBar() {
-  const {file: {childImageSharp: {fixed : callibrityLogo}}} = useStaticQuery(graphql`
+  const { file: { childImageSharp: { fixed: callibrityLogo } } } = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "callibrity-logo.png" }) {
         childImageSharp {
@@ -25,6 +26,8 @@ export default function navBar() {
 
   const { username } = useContext(UserContext);
 
+  const linkList = quickLinks.map(({ title, url }) => <a href={url} target="_blank">{title}</a>)
+
   return (
     <Navbar variant="dark" className="shadow">
       <Brand className="pl-md-5 mt-2">
@@ -33,12 +36,12 @@ export default function navBar() {
         </Link>
       </Brand>
       {
-       username && 
-       <Nav className="ml-auto pr-md-5">
-        <SearchBar />
-        <QuickLinks />
-        <UserDropdown />
-      </Nav>
+        username &&
+        <Nav className="ml-auto pr-md-5">
+          <SearchBar />
+          <NavDropdown label={"Quick Links"} items={linkList} />
+          <NavDropdown label={username} items={[<Logout />]} />
+        </Nav>
       }
     </Navbar>
   );
