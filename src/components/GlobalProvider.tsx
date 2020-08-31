@@ -3,7 +3,7 @@ import { UserContext } from '@globals/contexts';
 import Navbar from '@navbar/Navbar';
 import GlobalStyle from './GlobalStyle';
 import { reactChildren } from '@globals/types';
-import { globalHistory } from '@reach/router';
+import { Location } from '@reach/router';
 import { googleClientId } from '@globals/constants';
 import { getEmployeeDetails } from '@api/serviceCalls';
 import { setJwt } from '@api/api';
@@ -11,7 +11,7 @@ import { navigate } from 'gatsby';
 import { useGoogleLogin, GoogleLoginResponse } from 'react-google-login';
 import Loading from '@components/reusable/Loading';
 
-export const Provider = ({ children }: { children: reactChildren }) => {
+export const Provider = ({ children, pathname }: { children: reactChildren, pathname: string }) => {
   const [username, setUsername] = useState<string>(null);
   const [userEmail, setUserEmail] = useState<string>(null);
   const [userRole, setUserRole] = useState<string>(null);
@@ -37,17 +37,16 @@ export const Provider = ({ children }: { children: reactChildren }) => {
   const contextObject = { username, setUsername, userEmail, setUserEmail, userRole, setUserRole, signIn };
 
   useEffect(() => {
-    /*
-    return globalHistory.listen(({ location: { pathname } }) => {
-      if (pathname.includes('am-view') && userRole !== 'Account Manager') {
+    if (userRole) {
+      if (pathname.includes('account-manager-view') && userRole !== 'Account Manager') {
         navigate('/');
       }
-      else if (pathname.includes('dev-view') && userRole !== 'Developer') {
+      else if (pathname.includes('developer-view') && userRole !== 'Developer') {
         navigate('/')
       }
-    })
-    */
-  })
+    }
+  }, [pathname, userRole])
+
 
   return (
     <UserContext.Provider value={contextObject}>
@@ -58,10 +57,17 @@ export const Provider = ({ children }: { children: reactChildren }) => {
   );
 };
 
-export default function GlobalProvider({ element }: { element: reactChildren }) {
+const GlobalProvider = ({ element }: { element: reactChildren }) => {
   return (
-    <Provider>
-      {element}
-    </Provider>
+    <Location>
+      {({ location }) => (
+        <Provider pathname={location.pathname}>
+          {element}
+        </Provider>
+      )}
+    </Location>
+
   );
 }
+
+export default GlobalProvider;
