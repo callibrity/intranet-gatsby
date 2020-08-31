@@ -100,6 +100,62 @@ export const mockUserContext = {
   setUserRole: jest.fn(),
 };
 
+export const mockLineItemProps = { label: 'testLabel', value: 'testValue' };
+
+export const mockMetricsCardProps = {
+  metrics: [
+    { label: 'testLabel1', value: 'testValue1' },
+    { label: 'testLabel2', value: 'testValue2' },
+    { label: 'testLabel3', value: 'testValue3' }
+  ],
+  updatedAt: 'testUpdatedAt',
+  title: 'testTitle'
+};
+
+export const mockEmployeeImageProps = {
+  img: {
+    originalName: 'testOriginalName',
+    src: 'testSrc',
+    srcSet: 'testSrcSet',
+    base64: 'testBase64',
+    width: 132,
+    height: 33,
+  },
+  employeeName: "testEmployeeName",
+  employeeId: "testEmployeeId",
+  isLockedRow: false,
+  lockToggle: jest.fn()
+}
+
+export interface BillableTypes {
+  currentHours: string | number,
+  currentTarget: string | number,
+  totalTarget: string | number
+}
+
+export interface GrowthTypes {
+  hoursUsed: string | number,
+  hoursRemaining: string | number,
+  totalGrowth: string | number
+}
+
+export const mockEmployeeCardRowProps = {
+  employeeMetrics: {
+    billable: {
+      currentHours: 1,
+      currentTarget: 1,
+      totalTarget: 1
+    },
+    growth: {
+      hoursUsed: 1,
+      hoursRemaining: 1,
+      totalGrowth: 1
+    },
+    updatedAt: 'testUpdatedAt'
+  },
+  ...mockEmployeeImageProps
+}
+
 const testName = 'testName';
 
 export const mockLoginResponse = { profileObj: { name: testName, email: 'test' } };

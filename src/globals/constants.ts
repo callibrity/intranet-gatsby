@@ -1,7 +1,7 @@
 import { BillableTypes, GrowthTypes } from './types';
 export const googleClientId = '1084859424709-tk8745k1d0bnqfvlmsoa0j3uo5bkm9un.apps.googleusercontent.com';
 
-export const quickLinks : {title: string, url: string}[] = [
+export const quickLinks: { title: string, url: string }[] = [
   {
     title: 'Paylocity',
     url: 'https://login.paylocity.com/',
@@ -38,7 +38,7 @@ export const quickLinks : {title: string, url: string}[] = [
   },
 ];
 
-export const dummyEmployeeData : ({ employeeName: string, employeeId: string, updatedAt?: string } & BillableTypes & GrowthTypes)[] = [
+export const dummyEmployeeData: ({ employeeName: string, employeeId: string, updatedAt?: string } & BillableTypes & GrowthTypes)[] = [
   {
     employeeName: 'Collin Johnson',
     employeeId: '99999',
@@ -136,3 +136,15 @@ export const growthDefault = {
   hoursRemaining: 'Loading...',
   totalGrowth: 'Loading...',
 }
+
+export const tooltipShowDelay = 250;
+
+export const tooltipHideDelay = 400;
+
+export const closedLockTestId = 'closed-lock';
+
+export const openLockTestId = 'open-lock';
+
+export const billableTitle = 'Billable Hours';
+
+export const growthTitle = 'Growth Time';
