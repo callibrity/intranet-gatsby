@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Login from './Login';
+import Login from './login';
 import { navigate } from 'gatsby';
 import { UserContext } from '@globals/contexts';
 import { mockContextValue } from '@globals/testConstants';
