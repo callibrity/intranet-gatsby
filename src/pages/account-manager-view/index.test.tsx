@@ -5,12 +5,6 @@ import axios from 'axios';
 import { mockEmployeeMetricsProps } from '@globals/testConstants';
 import { billableTitle } from '@globals/constants';
 
-/*
-things to test
-
-
-*/
-
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 mockedAxios.get.mockImplementation(() => Promise.resolve({ data: 7 }));
