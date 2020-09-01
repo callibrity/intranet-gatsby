@@ -1,16 +1,16 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import NavBar from './NavBar';
+import Navbar from './NavBar';
 import { UserContext } from '@globals/contexts';
 import { mockContextValue } from '@globals/testConstants';
 
-describe('NavBar component', () => {
+describe('Navbar component', () => {
   it('should only display the logo before a user is signed in', () => {
     const initialUsername = mockContextValue.username;
     mockContextValue.username = null;
     render(
       <UserContext.Provider value={mockContextValue}>
-        <NavBar />
+        <Navbar />
       </UserContext.Provider>
     );
 
@@ -23,7 +23,7 @@ describe('NavBar component', () => {
     mockContextValue.username = 'testUsername';
     render(
       <UserContext.Provider value={mockContextValue}>
-        <NavBar />
+        <Navbar />
       </UserContext.Provider>
     );
 
