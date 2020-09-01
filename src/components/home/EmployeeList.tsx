@@ -8,6 +8,7 @@ import EmployeeCardRow from '@home/EmployeeCardRow';
 import { reactChildren, FixedImage } from '@globals/types';
 import useLockList from '@hooks/useLockList';
 import { getAllEmployeeMetrics } from '@api/serviceCalls';
+import { hideLockedCardsButtonText } from '@globals/constants';
 
 type EmployeeTypes = (EmployeeMetricTypes & { employeeName: string, employeeId: string })[];
 
@@ -19,14 +20,14 @@ interface PropTypes {
 const AccountManagerView = ({ searchString, images }: PropTypes) => {
   const [employeeDataList, setEmployeeDataList] = useState<EmployeeTypes>([]);
   const { lockList, lockToggle } = useLockList('employeeLockList');
-  const lockedElements: reactChildren = [];
-  const searchElements: reactChildren = [];
 
   useEffect(() => {
     getAllEmployeeMetrics(setEmployeeDataList, console.log);
   })
 
   const placeholderImage = images.find((image) => image.originalName === 'mug-placeholder.png')
+
+  const { lockedElements, searchElements } = createEmployeeList(employeeDataList, lockList, searchString, images)
 
   employeeDataList.forEach((developer) => {
     const { billable, growth, updatedAt, employeeId, employeeName } = developer;
@@ -58,11 +59,13 @@ const AccountManagerView = ({ searchString, images }: PropTypes) => {
         <Card border="light">
           <Card.Header className="text-right">
             <Accordion.Toggle as={Button} variant="dark" eventKey="0">
-              Hide Locked Cards
+              {hideLockedCardsButtonText}
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="0">
-            <Card.Body>{lockedElements}</Card.Body>
+            <Card.Body>
+              {lockedElements}
+            </Card.Body>
           </Accordion.Collapse>
         </Card>
       </Accordion>

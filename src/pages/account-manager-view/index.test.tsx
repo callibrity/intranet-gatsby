@@ -1,44 +1,20 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import Index from '../developer-view/index';
-import axios from 'axios';
-import { mockEmployeeMetricsProps } from '@globals/testConstants';
-import { billableTitle } from '@globals/constants';
+import Index from './index';
+import { mockImageQuery } from '@globals/testConstants';
+import { searchBarAltText, hideLockedCardsButtonText } from '@globals/constants';
 
-jest.mock('axios');
-const mockedAxios = axios as jest.Mocked<typeof axios>;
-mockedAxios.get.mockImplementation(() => Promise.resolve({ data: 7 }));
+describe('Account manager view component', () => {
+  it('should render the search box', () => {
+    render(<Index data={mockImageQuery} />);
 
-afterEach(() => {
-  jest.clearAllMocks();
-})
-
-describe('Developer view component', () => {
-  it('should send an axios request', async () => {
-    render(<Index />);
-
-    waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
+    expect(screen.getByAltText(searchBarAltText)).toBeInstanceOf(HTMLInputElement);
   });
 
-  it('should not render by default', async () => {
-    render(<Index />);
+  it('should render the employee list', () => {
+    render(<Index data={mockImageQuery} />);
 
-    expect(screen.queryByText(billableTitle)).toBeNull();
-    waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
+    expect(screen.getByText(hideLockedCardsButtonText)).toBeInstanceOf(HTMLButtonElement);
   });
 
-  it('should not render without employeeMetrics', async () => {
-    mockedAxios.get.mockImplementationOnce(() => Promise.resolve({ data: null }));
-    render(<Index />);
-
-    waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
-    expect(screen.queryByText(billableTitle)).toBeNull();
-  });
-
-  it('should render with employeeMetrics', async () => {
-    mockedAxios.get.mockImplementationOnce(() => Promise.resolve({ data: mockEmployeeMetricsProps }));
-    render(<Index />);
-
-    waitFor(() => expect(screen.getByText(billableTitle)).toBeInstanceOf(HTMLElement));
-  });
 });

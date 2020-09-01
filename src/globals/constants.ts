@@ -164,3 +164,7 @@ export const developerString = 'Developer';
 export const accountManagerString = 'Account Manager';
 
 export const loginWelcomeMessage = 'Welcome to Callibrity!';
+
+export const searchBarAltText = 'search bar';
+
+export const hideLockedCardsButtonText = 'Hide Locked Cards';
