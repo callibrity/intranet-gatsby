@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getRequest = async (requestString: string, onSuccess: Function, onError: Function) => {
+export const getRequest = async (requestString: string, onSuccess: Function, onError: Function) => {
   await axios
     .get(`/api/${requestString}`, { headers: { Authorization: `${axios.defaults.headers.common.Authorization}` } })
     .then((res) => {
