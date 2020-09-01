@@ -1,26 +1,27 @@
-import React, { useState, useContext, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 import { MdSearch } from 'react-icons/md';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
-import styled from 'styled-components';
-import { UserContext } from '@globals/contexts';
+const { Append, Text } = InputGroup;
 
 export default function SearchBar() {
   const [text, setText] = useState('');
-  const { username } = useContext(UserContext);
 
-  return !username ? null : (
-  <InputGroup >
-      <FormControl aria-label="General Site Search"
+  return (
+    <InputGroup >
+      <FormControl
+        aria-label="General Site Search"
         alt="search bar"
         value={text}
         placeholder="Search..."
         onChange={(e) => setText(e.target.value)}
-        style={{height: '100%'}}
+        style={{ height: '100%' }}
       />
-    <InputGroup.Append>
-      <InputGroup.Text><MdSearch/></InputGroup.Text>
-    </InputGroup.Append>
-  </InputGroup>
-  );
+      <Append>
+        <Text>
+          <MdSearch />
+        </Text>
+      </Append>
+    </InputGroup>
+  )
 }

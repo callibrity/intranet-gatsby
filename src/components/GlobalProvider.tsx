@@ -6,9 +6,9 @@ import { reactChildren } from '@globals/types';
 import { Location } from '@reach/router';
 import { googleClientId } from '@globals/constants';
 import { getEmployeeDetails } from '@api/serviceCalls';
-import { setJwt } from '@api/api';
+import { setJwt, removeJwt } from '@api/api';
 import { navigate } from 'gatsby';
-import { useGoogleLogin, GoogleLoginResponse } from 'react-google-login';
+import { useGoogleLogin, useGoogleLogout, GoogleLoginResponse } from 'react-google-login';
 import Loading from '@components/reusable/Loading';
 
 export const Provider = ({ children, pathname }: { children: reactChildren, pathname: string }) => {
@@ -34,7 +34,17 @@ export const Provider = ({ children, pathname }: { children: reactChildren, path
     isSignedIn: true
   });
 
-  const contextObject = { username, setUsername, userEmail, setUserEmail, userRole, setUserRole, signIn };
+  const { signOut } = useGoogleLogout({
+    clientId: googleClientId,
+    onLogoutSuccess: () => {
+      removeJwt();
+      setUsername(null);
+      setUserEmail(null);
+      navigate('/login');
+    },
+  });
+
+  const contextObject = { username, setUsername, userEmail, setUserEmail, userRole, setUserRole, signIn, signOut };
 
   useEffect(() => {
     if (userRole) {

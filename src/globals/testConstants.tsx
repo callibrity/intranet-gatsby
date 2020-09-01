@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const mockGraphQLImage = {
   file: {
     childImageSharp: {
@@ -156,6 +158,26 @@ export const mockEmployeeCardRowProps = {
   ...mockEmployeeImageProps
 }
 
+export const mockNavDropdownProps = {
+  label: 'testLabel',
+  items: [
+    <div>testItem1</div>,
+    <div>testItem2</div>,
+    <div>testItem3</div>
+  ]
+}
+
 const testName = 'testName';
+
+export const mockContextValue = {
+  username: 'testUsername',
+  setUsername: jest.fn(),
+  userEmail: 'testUserEmail',
+  setUserEmail: jest.fn(),
+  userRole: 'testUserRole',
+  setUserRole: jest.fn(),
+  signIn: jest.fn(),
+  signOut: jest.fn()
+};
 
 export const mockLoginResponse = { profileObj: { name: testName, email: 'test' } };

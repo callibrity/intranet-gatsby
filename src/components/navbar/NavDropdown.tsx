@@ -2,19 +2,20 @@ import React from 'react';
 import { Dropdown, NavLink } from 'react-bootstrap';
 import { reactChildren } from '@globals/types';
 
-const { Toggle, Menu } = Dropdown;
+const { Toggle, Menu, Item } = Dropdown;
 
 interface PropTypes {
   label: string,
-  children: reactChildren,
+  items: reactChildren[],
 }
 
-export default function UserDropdown({ label, children }: PropTypes) {
+export default function UserDropdown({ label, items }: PropTypes) {
+  const itemElements = items.map((item, i) => <Item key={i}>{item}</Item>)
   return (
-    <Dropdown style={{marginLeft: '20px'}}>
+    <Dropdown style={{ marginLeft: '20px' }}>
       <Toggle as={NavLink}>{label}</Toggle>
       <Menu>
-        {children}
+        {itemElements}
       </Menu>
     </Dropdown>
   );
