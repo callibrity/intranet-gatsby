@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import Navbar from './NavBar';
+import Navbar from './Navbar';
 import { UserContext } from '@globals/contexts';
 import { mockContextValue } from '@globals/testConstants';
 
