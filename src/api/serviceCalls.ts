@@ -1,43 +1,18 @@
 import axios from 'axios';
 
-// eslint-disable-next-line
-export const getEmployeeMetrics = async (onSuccess, onError) => {
+const getRequest = async (requestString: string, onSuccess: Function, onError: Function) => {
   await axios
-    .get('/api/Employee/hours')
+    .get(`/api/${requestString}`, { headers: { Authorization: `${axios.defaults.headers.common.Authorization}` } })
     .then((res) => {
       onSuccess(res.data);
     })
     .catch((err) => {
       onError(err.message);
     });
-};
+}
 
-export const getEmployeeDetails = async (onSuccess, onError) => {
-  await axios
-    .get('/api/Employee', {
-      headers: {
-        Authorization: `${axios.defaults.headers.common.Authorization}`,
-      },
-    })
-    .then((res) => {
-      onSuccess(res.data.role);
-    })
-    .catch((err) => {
-      onError(err.message);
-    });
-};
+export const getEmployeeMetrics = async (onSuccess: Function, onError: Function) => getRequest('employee/hours', onSuccess, onError);
 
-export const getAllEmployeeMetrics = async (onSuccess, onError) => {
-  await axios
-    .get('/api/Employee/hours/all', {
-      headers: {
-        Authorization: `${axios.defaults.headers.common.Authorization}`,
-      },
-    })
-    .then((res) => {
-      onSuccess(res.data);
-    })
-    .catch((err) => {
-      onError(err.message);
-    });
-};
+export const getEmployeeDetails = async (onSuccess: Function, onError: Function) => getRequest('employee', onSuccess, onError);
+
+export const getAllEmployeeMetrics = async (onSuccess: Function, onError: Function) => getRequest('employee/hours/all', onSuccess, onError);

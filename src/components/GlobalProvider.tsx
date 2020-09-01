@@ -10,6 +10,7 @@ import { setJwt, removeJwt } from '@api/api';
 import { navigate } from 'gatsby';
 import { useGoogleLogin, useGoogleLogout, GoogleLoginResponse } from 'react-google-login';
 import Loading from '@components/reusable/Loading';
+import { accountManagerFlag, developerFlag } from '@globals/flags';
 
 export const Provider = ({ children, pathname }: { children: reactChildren, pathname: string }) => {
   const [username, setUsername] = useState<string>(null);
@@ -22,7 +23,7 @@ export const Provider = ({ children, pathname }: { children: reactChildren, path
       setJwt(tokenId);
       setUsername(name);
       setUserEmail(email);
-      getEmployeeDetails(setUserRole, console.log);
+      getEmployeeDetails(({ role }: { role: string }) => setUserRole(role), console.log);
     },
     onFailure: () => console.log("sign in failed"),
     onAutoLoadFinished: (signedIn) => {
@@ -48,10 +49,10 @@ export const Provider = ({ children, pathname }: { children: reactChildren, path
 
   useEffect(() => {
     if (userRole) {
-      if (pathname.includes('account-manager-view') && userRole !== 'Account Manager') {
+      if (pathname.includes('account-manager-view') && userRole !== 'Account Manager' && !accountManagerFlag) {
         navigate('/');
       }
-      else if (pathname.includes('developer-view') && userRole !== 'Developer') {
+      else if (pathname.includes('developer-view') && userRole !== 'Developer' && !developerFlag) {
         navigate('/')
       }
     }
