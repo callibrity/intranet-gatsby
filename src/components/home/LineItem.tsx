@@ -1,18 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ListGroup } from 'react-bootstrap/ListGroup';
 
 export const LineItem = ({ label, value } : {label: string, value: string | number}) => (
-  <MetricItemContainer >
-    <span>{value}</span>
-    <span>{label}</span>
+  <ListGroup.Item >
+    <p className="h6">{value}</p>
+    <p className="h7 bold">{label}</p>
 
-  </MetricItemContainer>
+  </ListGroup.Item>
 );
 
 export default LineItem;
-const MetricItemContainer = styled.div`
+const MetricItemContainer = styled.(ListGroup.Item)`
   display: flex;
   flex-direction: column;
   align-items: center;
-
 `;

@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 import { FixedImage } from '@globals/types';
 import { MdLock, MdLockOpen } from 'react-icons/md';
 import styled from 'styled-components';
-
+import { FaStar, FaRegStar } from 'react-icons/fa';
 const { Title, Body, Text } = Card;
 
 interface PropTypes {
@@ -27,13 +27,12 @@ const EmployeeImage = ({ img, employeeName, employeeId, isLockedRow, lockToggle 
       </StyledBody>
       <Text className="text-center pb-0">
         {' '}
-        <StyledButton
+        <div
           id={employeeId}
-          variant="dark"
           onClick={() => lockToggle(employeeId)}
         >
-          {isLockedRow ? <MdLock /> : <MdLockOpen />}
-        </StyledButton>
+          {isLockedRow ? <FaStar /> : <FaRegStar />}
+        </div>
       </Text>
     </StyledCard>
   )
