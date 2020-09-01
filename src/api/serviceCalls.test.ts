@@ -63,3 +63,25 @@ describe('getEmployeeMetrics function', () => {
   })
 })
 
+describe('getAllEmployeeMetrics function', () => {
+  it('should call getRequest with the correct string', async () => {
+
+    await getAllEmployeeMetrics(mockOnSuccess, mockOnFail);
+
+    expect(axios.get).toHaveBeenCalledTimes(1);
+    expect(axios.get).toHaveBeenCalledWith('/api/employee/hours/all', expect.anything());
+
+  })
+})
+
+describe('getAllEmployeeDetails function', () => {
+  it('should call getRequest with the correct string', async () => {
+
+    await getEmployeeDetails(mockOnSuccess, mockOnFail);
+
+    expect(axios.get).toHaveBeenCalledTimes(1);
+    expect(axios.get).toHaveBeenCalledWith('/api/employee', expect.anything());
+
+  })
+})
+
