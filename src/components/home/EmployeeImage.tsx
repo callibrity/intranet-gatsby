@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import { FixedImage } from '@globals/types';
 import { MdLock, MdLockOpen } from 'react-icons/md';
 import styled from 'styled-components';
+import { openLockTestId, closedLockTestId } from '@globals/constants';
 
 const { Title, Body, Text } = Card;
 
@@ -23,7 +24,7 @@ const EmployeeImage = ({ img, employeeName, employeeId, isLockedRow, lockToggle 
         <Title>
           {employeeName}
         </Title>
-        <Img fixed={img} />
+        <Img fixed={img} alt={`Image of ${employeeName}`} />
       </StyledBody>
       <Text className="text-center pb-0">
         {' '}
@@ -32,7 +33,7 @@ const EmployeeImage = ({ img, employeeName, employeeId, isLockedRow, lockToggle 
           variant="dark"
           onClick={() => lockToggle(employeeId)}
         >
-          {isLockedRow ? <MdLock /> : <MdLockOpen />}
+          {isLockedRow ? <MdLock data-testid={closedLockTestId} /> : <MdLockOpen data-testid={openLockTestId} />}
         </StyledButton>
       </Text>
     </StyledCard>
