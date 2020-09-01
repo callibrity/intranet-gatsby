@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getAllEmployeeMetrics } from '@api/serviceCalls';
 import { Container } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
 import EmployeeSearch from '../../components/home/EmployeeSearch';
 import { EmployeeMetricTypes, ImageQuery } from '@globals/types';
 import EmployeeCardRow from '@home/EmployeeCardRow';
@@ -69,7 +72,18 @@ const AccountManagerView = ({ data }: ImageQuery) => {
       <Container style={{ marginBottom: 16 }}>
         <EmployeeSearch text={searchString} setText={setSearchString} />
       </Container>
-      {lockedElements}
+      <Accordion defaultActiveKey="0">
+        <Card border="light">
+          <Card.Header className="text-right">
+            <Accordion.Toggle as={Button} variant="dark" eventKey="0">
+              Hide Locked Cards
+            </Accordion.Toggle>
+          </Card.Header>
+          <Accordion.Collapse eventKey="0">
+            <Card.Body>{lockedElements}</Card.Body>
+          </Accordion.Collapse>
+        </Card>
+      </Accordion>
       <SeparateFavorites />
       {searchElements}
     </>
