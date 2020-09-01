@@ -1,12 +1,10 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
 import { OverlayTrigger } from 'react-bootstrap';
+import styled from 'styled-components';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import ListGroup from 'react-bootstrap/ListGroup';
 import LineItem from './LineItem';
 import RenderTooltip from '../reusable/RenderTooltip';
-import styled from 'styled-components';
-import { tooltipShowDelay, tooltipHideDelay } from '@globals/constants'
-
-const { Body, Title } = Card;
 
 interface PropTypes {
   metrics: { label: string, value: string | number }[],
@@ -15,27 +13,23 @@ interface PropTypes {
 }
 
 const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
-  const metricsElements = metrics.map(({ label, value }) => <LineItem key={label} label={label} value={value} />)
+  const metricsElements = metrics.map(({ label, value }) => <LineItem label={label} value={value} />);
   return (
-    <Card className="TimeTracker-Hours shadow-sm mx-2" id="tooltip">
-      <Body>
-        <OverlayTrigger
-          placement="bottom"
-          delay={{ show: tooltipShowDelay, hide: tooltipHideDelay }}
-          overlay={(props) => RenderTooltip(props, updatedAt)}
-        >
-          <div>
-            <StyledTitle>{title}</StyledTitle>
-            {metricsElements}
-          </div>
-        </OverlayTrigger>
-      </Body>
-    </Card>
+    <Jumbotron className="jumbotron-fluid shadow-sm mx-2" id="tooltip">
+      <OverlayTrigger
+        placement="bottom"
+        delay={{ show: 250, hide: 400 }}
+        overlay={(props) => RenderTooltip(props, updatedAt)}
+      >
+        <span>
+          <h1 className="display-4">{title}</h1>
+          <ListGroup Horizontal>
+          {metricsElements}
+          </ListGroup>
+        </span>
+      </OverlayTrigger>
+    </Jumbotron>
   );
 };
 
 export default MetricsCard;
-
-const StyledTitle = styled(Title)`
-  font-size: 2.2rem
-`;
