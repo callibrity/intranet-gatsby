@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { getEmployeeMetrics, getAllEmployeeMetrics, getEmployeeDetails, getRequest } from '@api/serviceCalls';
-import { promises } from 'fs';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;

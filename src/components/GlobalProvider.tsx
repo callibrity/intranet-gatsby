@@ -4,7 +4,7 @@ import Navbar from '@navbar/Navbar';
 import GlobalStyle from './GlobalStyle';
 import { reactChildren } from '@globals/types';
 import { Location } from '@reach/router';
-import { googleClientId } from '@globals/constants';
+import { googleClientId, developerRoute, accountManagerRoute, loginRoute, indexRoute, developerString, accountManagerString } from '@globals/constants';
 import { getEmployeeDetails } from '@api/serviceCalls';
 import { setJwt, removeJwt } from '@api/api';
 import { navigate } from 'gatsby';
@@ -29,7 +29,7 @@ export const Provider = ({ children, pathname }: { children: reactChildren, path
     onAutoLoadFinished: (signedIn) => {
       setSignInLoaded(true);
       if (!signedIn) {
-        navigate('/login');
+        navigate(loginRoute);
       }
     },
     isSignedIn: true
@@ -41,7 +41,7 @@ export const Provider = ({ children, pathname }: { children: reactChildren, path
       removeJwt();
       setUsername(null);
       setUserEmail(null);
-      navigate('/login');
+      navigate(loginRoute);
     },
   });
 
@@ -49,11 +49,11 @@ export const Provider = ({ children, pathname }: { children: reactChildren, path
 
   useEffect(() => {
     if (userRole) {
-      if (pathname.includes('account-manager-view') && userRole !== 'Account Manager' && !accountManagerFlag) {
-        navigate('/');
+      if (pathname.includes(accountManagerRoute) && userRole !== accountManagerString && !accountManagerFlag) {
+        navigate(indexRoute);
       }
-      else if (pathname.includes('developer-view') && userRole !== 'Developer' && !developerFlag) {
-        navigate('/')
+      else if (pathname.includes(developerRoute) && userRole !== developerString && !developerFlag) {
+        navigate(indexRoute)
       }
     }
   }, [pathname, userRole])

@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-import EmployeeSearch from '../../components/home/EmployeeSearch';
+import EmployeeSearch from '@home/EmployeeSearch';
 import { EmployeeMetricTypes, ImageQuery } from '@globals/types';
 import EmployeeCardRow from '@home/EmployeeCardRow';
 import { reactChildren } from '@globals/types';
