@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getEmployeeMetrics } from '@api/serviceCalls';
 import { EmployeeMetricTypes } from '@globals/types';
-import EmployeeCardRow from '@home/EmployeeCardRow';
+import EmployeeCardRow from '@components/employeeCardRow/EmployeeCardRow';
 
 const DeveloperView = () => {
   const [employeeMetrics, setEmployeeMetrics] = useState<EmployeeMetricTypes>();

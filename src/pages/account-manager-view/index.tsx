@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
-import EmployeeSearch from '@home/EmployeeSearch';
+import EmployeeSearch from '@components/accountManagerView/EmployeeSearch';
 import { ImageQuery } from '@globals/types';
 
 import { graphql } from 'gatsby';
-import EmployeeList from '@home/EmployeeList';
+import EmployeeList from '@components/accountManagerView/EmployeeList';
 
 const AccountManagerView = ({ data }: ImageQuery) => {
   const [searchString, setSearchString] = useState<string>('');
