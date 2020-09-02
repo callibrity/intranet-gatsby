@@ -29,7 +29,7 @@ export default function NavbarComponent() {
   const linkList = quickLinks.map(({ title, url }) => <a href={url} target="_blank">{title}</a>)
 
   return (
-    <Navbar variant="dark" className="shadow">
+    <Navbar variant="dark" className="shadow mb-4">
       <Brand className="pl-md-5 mt-2">
         <Link to="/">
           <Img fixed={callibrityLogo} alt="Callibrity Logo" />

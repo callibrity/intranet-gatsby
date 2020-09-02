@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getAllEmployeeMetrics } from '@api/serviceCalls';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-import EmployeeSearch from '../../components/home/EmployeeSearch';
-import { EmployeeMetricTypes, ImageQuery } from '@globals/types';
+import { EmployeeMetricTypes, ImageQuery, reactChildren } from '@globals/types';
 import EmployeeCardRow from '@home/EmployeeCardRow';
-import { reactChildren } from '@globals/types';
+
 import { graphql } from 'gatsby';
+import EmployeeSearch from '../../components/home/EmployeeSearch';
 
 type EmployeeTypes = (EmployeeMetricTypes & { employeeName: string, employeeId: string })[];
 
@@ -20,14 +20,14 @@ const AccountManagerView = ({ data }: ImageQuery) => {
 
   useEffect(() => {
     getAllEmployeeMetrics(setEmployeeDataList, console.log);
-    const storedNames = JSON.parse(window.localStorage.getItem("localLockList"));
+    const storedNames = JSON.parse(window.localStorage.getItem('localLockList'));
     if (storedNames !== null) {
       setLockList(storedNames);
     }
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem("localLockList", JSON.stringify(lockList));
+    window.localStorage.setItem('localLockList', JSON.stringify(lockList));
   }, [lockList]);
 
   const lockToggle = (employeeId: string) => {
@@ -44,12 +44,14 @@ const AccountManagerView = ({ data }: ImageQuery) => {
   const searchElements: reactChildren = [];
 
   employeeDataList.forEach((developer) => {
-    const { billable, growth, updatedAt, employeeId, employeeName } = developer;
+    const {
+      billable, growth, updatedAt, employeeId, employeeName,
+    } = developer;
     const isLocked = lockList.includes(employeeId);
     const isSearched = searchString.length > 1 && employeeName.toLowerCase().includes(searchString.toLowerCase());
     if (isLocked || isSearched) {
       const img = images.find((image) => image.originalName === `${employeeId}.jpg`) || data.mugPlaceholder.childImageSharp.fixed;
-      const EmployeeElement =
+      const EmployeeElement = (
         <EmployeeCardRow
           key={employeeId}
           employeeMetrics={{ billable, growth, updatedAt }}
@@ -59,20 +61,21 @@ const AccountManagerView = ({ data }: ImageQuery) => {
           lockToggle={lockToggle}
           img={img}
         />
+      );
       if (isLocked) {
         lockedElements.push(EmployeeElement);
       } else {
         searchElements.push(EmployeeElement);
       }
     }
-  })
+  });
 
   return (
-    <>
-      <Container style={{ marginBottom: 16 }}>
-        <EmployeeSearch text={searchString} setText={setSearchString} />
-      </Container>
+    <Container fluid style={{}}>
+      <Row>
+        <Col>
       <Accordion defaultActiveKey="0">
+        <EmployeeSearch text={searchString} setText={setSearchString} />
         <Card border="light">
           <Card.Header className="text-right">
             <Accordion.Toggle as={Button} variant="dark" eventKey="0">
@@ -84,9 +87,10 @@ const AccountManagerView = ({ data }: ImageQuery) => {
           </Accordion.Collapse>
         </Card>
       </Accordion>
-      <SeparateFavorites />
       {searchElements}
-    </>
+      </Col>
+      </Row>
+    </Container>
   );
 };
 
@@ -113,11 +117,4 @@ export const query = graphql`
       }
     }
   }
-`
-
-const SeparateFavorites = styled.div`
-  display: block;
-  border-top: 3px solid black;
-  margin: 1em 0;
 `;
-

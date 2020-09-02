@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { billableConversion, growthConversion } from '@globals/helperFunctions';
 import { EmployeeMetricTypes, FixedImage } from '@globals/types';
 import { billableTitle, growthTitle } from '@globals/constants';
+import { Row, Container, Col } from 'react-bootstrap';
+import MetricsCard from './MetricsCard';
+import EmployeeImage from './EmployeeImage';
 
 interface PropTypes {
   employeeMetrics: EmployeeMetricTypes,
@@ -21,18 +24,40 @@ const EmployeeCardRow = ({
   const billableElement = billable ? <MetricsCard title={billableTitle} metrics={billableConversion(billable)} updatedAt={updatedAt} /> : null;
   const growthElement = growth ? <MetricsCard title={growthTitle} metrics={growthConversion(growth)} updatedAt={updatedAt} /> : null;
   return (
-    <CustomContainer key={employeeId}>
-      {imageElement}
-      {billableElement}
-      {growthElement}
+    <CustomContainer fluid key={employeeId}>
+      <Row>
+        <ImageColumn>
+          {imageElement}
+        </ImageColumn>
+        <MetricsColumnTwo>
+          {billableElement}
+        </MetricsColumnTwo>
+        <MetricsColumnThree>
+          {growthElement}
+        </MetricsColumnThree>
+      </Row>
     </CustomContainer>
   );
 };
 
 export default EmployeeCardRow;
 
-const CustomContainer = styled.div`
+const CustomContainer = styled(Container)`
   display: flex;
   flex: 1;
   justify-content: center;
+  background-color: red;
+`;
+
+const ImageColumn = styled(Col)`
+  background-color: blue;
+  justify-content: flex-end;
+`;
+
+const MetricsColumnTwo = styled(Col)`
+  background-Color: yellow;
+`;
+
+const MetricsColumnThree = styled(Col)`
+  background-color: green;
 `;
