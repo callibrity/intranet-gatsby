@@ -2,9 +2,8 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Img from 'gatsby-image';
-import { Col } from 'react-bootstrap'
+import { Col } from 'react-bootstrap';
 import { FixedImage } from '@globals/types';
-import { MdLock, MdLockOpen } from 'react-icons/md';
 import styled from 'styled-components';
 import { openLockTestId, closedLockTestId } from '@globals/constants';
 import { FaStar, FaRegStar } from 'react-icons/fa';
