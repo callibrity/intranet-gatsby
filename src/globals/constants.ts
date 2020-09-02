@@ -150,3 +150,21 @@ export const billableTitle = 'Billable Hours';
 export const growthTitle = 'Growth Time';
 
 export const signOutButtonText = 'Sign Out';
+
+export const indexRoute = '/';
+
+export const developerRoute = '/developer-view';
+
+export const accountManagerRoute = '/account-manager-view';
+
+export const loginRoute = '/login';
+
+export const developerString = 'Developer';
+
+export const accountManagerString = 'Account Manager';
+
+export const loginWelcomeMessage = 'Welcome to Callibrity!';
+
+export const searchBarAltText = 'search bar';
+
+export const hideLockedCardsButtonText = 'Hide Locked Cards';

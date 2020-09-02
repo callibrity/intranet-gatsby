@@ -1,5 +1,6 @@
 module.exports = {
-  '@home': 'src/components/home/',
+  '@accountManagerView': 'src/components/accountManagerView/',
+  '@employeeCardRow': 'src/components/employeeCardRow/',
   '@navbar': 'src/components/navbar/',
   '@people': 'src/components/people/',
   '@portfolio': 'src/components/portfolio/',
@@ -8,5 +9,5 @@ module.exports = {
   '@hooks': 'src/hooks/',
   '@images': 'src/images/',
   '@pages': 'src/pages/',
-  '@api': 'src/api/',
+  '@api': 'src/api/'
 };

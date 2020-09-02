@@ -17,7 +17,7 @@ interface PropTypes {
 const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
   const metricsElements = metrics.map(({ label, value }) => <LineItem key={label} label={label} value={value} />)
   return (
-    <Card className="TimeTracker-Hours shadow-sm mx-2" id="tooltip">
+    <StyledCard className="TimeTracker-Hours shadow-sm mx-2" id="tooltip">
       <Body>
         <OverlayTrigger
           placement="bottom"
@@ -30,7 +30,7 @@ const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
           </div>
         </OverlayTrigger>
       </Body>
-    </Card>
+    </StyledCard>
   );
 };
 
@@ -38,4 +38,8 @@ export default MetricsCard;
 
 const StyledTitle = styled(Title)`
   font-size: 2.2rem
+`;
+
+const StyledCard = styled(Card)`
+  width: 26rem;
 `;

@@ -19,6 +19,8 @@ export interface GrowthTypes {
 
 export interface EmployeeMetricTypes { billable: BillableTypes, growth: GrowthTypes, updatedAt: string };
 
+export type EmployeeTypes = (EmployeeMetricTypes & { employeeName: string, employeeId: string })[];
+
 export type FixedImage = FixedObject & { originalName: string };
 
 export interface ImageQuery {

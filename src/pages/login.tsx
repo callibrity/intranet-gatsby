@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { UserContext } from '@globals/contexts';
 import { Button } from 'react-bootstrap';
 import { navigate } from 'gatsby';
+import { indexRoute, loginWelcomeMessage } from '@globals/constants';
 
 
 const Login = () => {
@@ -10,13 +11,13 @@ const Login = () => {
 
   useEffect(() => {
     if (username) {
-      navigate('/');
+      navigate(indexRoute);
     }
   }, [username])
 
   return (
     <Container>
-      <Welcome>Welcome to Callibrity!</Welcome>
+      <Welcome>{loginWelcomeMessage}</Welcome>
       <Button size="lg" onClick={signIn}>Sign In</Button>
     </Container>
   );
