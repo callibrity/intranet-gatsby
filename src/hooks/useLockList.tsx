@@ -14,11 +14,11 @@ const useLockList = (listName: string) => {
     window.localStorage.setItem(listName, JSON.stringify(lockList));
   }, [lockList]);
 
-  const lockToggle = (employeeId: string) => {
-    if (lockList.includes(employeeId)) {
-      setLockList(lockList.filter((favoriteId) => favoriteId !== employeeId));
+  const lockToggle = (item: string) => {
+    if (lockList.includes(item)) {
+      setLockList(lockList.filter((favoriteId) => favoriteId !== item));
     } else {
-      setLockList([...lockList, employeeId]);
+      setLockList([...lockList, item]);
     }
   };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import EmployeeImage from './EmployeeImage';
 import MetricsCard from './MetricsCard';
-import { billableConversion, growthConversion } from '@globals/helperFunctions';
+import { billableConversion, growthConversion } from '@employeeCardRow/helperFunctions';
 import { EmployeeMetricTypes, FixedImage } from '@globals/types';
 import { billableTitle, growthTitle } from '@globals/constants';
 
