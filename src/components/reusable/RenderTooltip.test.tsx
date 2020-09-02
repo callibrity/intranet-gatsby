@@ -13,10 +13,10 @@ describe('RenderTooltip component', () => {
     expect(screen.queryByText(mockUpdatedAt)).toBeNull();
   });
 
-  it('should render when hovered over', async() => {
+  it('should render when hovered over', async () => {
     render(<OverlayTrigger overlay={(props) => RenderTooltip(props, mockUpdatedAt)}><div>{searchForText}</div></OverlayTrigger>);
     fireEvent.mouseOver(screen.getByText("Find text"));
 
-    waitFor(() => expect(screen.getByText(mockUpdatedAt)).toBeInstanceOf(HTMLElement));
+    await waitFor(() => expect(screen.getByText(mockUpdatedAt)).toBeInstanceOf(HTMLElement));
   });
 });

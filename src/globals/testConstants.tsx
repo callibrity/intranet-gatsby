@@ -95,11 +95,8 @@ export const mockImageQuery = {
 
 export const mockUserContext = {
   username: 'test',
-  setUsername: jest.fn(),
   userEmail: 'test',
-  setUserEmail: jest.fn(),
   userRole: 'Developer',
-  setUserRole: jest.fn(),
 };
 
 export const mockLineItemProps = { label: 'testLabel', value: 'testValue' };
@@ -184,4 +181,10 @@ export const mockContextValue = {
   signOut: jest.fn()
 };
 
-export const mockLoginResponse = { profileObj: { name: testName, email: 'test' } };
+export const mockGoogleLoginOnSuccessResponse = {
+  tokenId: 'testTokenId',
+  profileObj: {
+    name: 'testName',
+    email: 'testEmail'
+  }
+}
