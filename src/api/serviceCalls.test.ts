@@ -19,7 +19,7 @@ describe('getRequest function', () => {
     await getRequest('test', mockOnSuccess, mockOnFail)
 
     expect(axios.get).toHaveBeenCalledTimes(1);
-    expect(axios.get).toHaveBeenCalledWith('/api/test', expect.anything());
+    expect(axios.get).toHaveBeenCalledWith('test', expect.anything());
   })
 
   it('should call onSuccess function with data on success', async () => {

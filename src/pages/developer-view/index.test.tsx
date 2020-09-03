@@ -14,31 +14,31 @@ afterEach(() => {
 })
 
 describe('Developer view component', () => {
-  it('should send an axios request', async() => {
+  it('should send an axios request', async () => {
     render(<Index />);
 
-    waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
   });
 
-  it('should not render by default', async() => {
+  it('should not render by default', async () => {
     render(<Index />);
 
     expect(screen.queryByText(billableTitle)).toBeNull();
-    waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
   });
 
-  it('should not render without employeeMetrics', async() => {
+  it('should not render without employeeMetrics', async () => {
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve({ data: null }));
     render(<Index />);
 
-    waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
     expect(screen.queryByText(billableTitle)).toBeNull();
   });
 
-  it('should render with employeeMetrics', async() => {
+  it('should render with employeeMetrics', async () => {
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve({ data: mockEmployeeMetricsProps }));
     render(<Index />);
 
-    waitFor(() => expect(screen.getByText(billableTitle)).toBeInstanceOf(HTMLElement));
+    await waitFor(() => expect(screen.getByText(billableTitle)).toBeInstanceOf(HTMLElement));
   });
 });
