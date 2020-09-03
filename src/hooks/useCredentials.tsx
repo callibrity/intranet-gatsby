@@ -35,6 +35,7 @@ const useCredentials = () => {
       removeJwt();
       setUsername(null);
       setUserEmail(null);
+      setUserRole(null);
       navigate(loginRoute);
     },
   });

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import useCredentials from './useCredentials';
 import { mockGoogleLoginOnSuccessResponse } from '@globals/testConstants';
 import { navigate } from 'gatsby';
@@ -35,26 +35,22 @@ describe('useCredentials hook', () => {
     expect(axios.defaults.headers.common.Authorization).toBeUndefined();
   });
 
-  it('should provide expected sure details on sign in, then clear them and navigate to login on signout', () => {
+  it('should provide expected employee details on sign in, then clear them and navigate to login on signout', async () => {
     const { tokenId, profileObj: { name, email } } = mockGoogleLoginOnSuccessResponse;
     render(<TestComponent />);
-
-    expect(screen.getByTestId('username').innerHTML).toBe('');
-    expect(screen.getByTestId('userEmail').innerHTML).toBe('');
-    expect(screen.getByTestId('userRole').innerHTML).toBe('');
-    expect(screen.getByTestId('loaded').innerHTML).toBe('false');
-    expect(axios.defaults.headers.common.Authorization).toBeUndefined();
 
     fireEvent.click(screen.getByTestId('signIn'));
 
     expect(screen.getByTestId('username').innerHTML).toBe(name);
     expect(screen.getByTestId('userEmail').innerHTML).toBe(email);
+    await waitFor(() => expect(screen.getByTestId('userRole').innerHTML).toBe('testRole'));
     expect(axios.defaults.headers.common.Authorization).toBe(`Bearer ${tokenId}`);
 
     fireEvent.click(screen.getByTestId('signOut'));
 
     expect(screen.getByTestId('username').innerHTML).toBe('');
     expect(screen.getByTestId('userEmail').innerHTML).toBe('');
+    expect(screen.getByTestId('userRole').innerHTML).toBe('')
     expect(axios.defaults.headers.common.Authorization).toBe('');
     expect(navigate).toHaveBeenCalledTimes(1);
     expect(navigate).toHaveBeenCalledWith(loginRoute)

@@ -93,10 +93,10 @@ export const mockImageQuery = {
   }
 }
 
-export const mockUserContext = {
-  username: 'test',
-  userEmail: 'test',
-  userRole: 'Developer',
+export const mockUserDetails = {
+  username: 'testUsername',
+  userEmail: 'testUserEmail',
+  userRole: 'testUserRole',
 };
 
 export const mockLineItemProps = { label: 'testLabel', value: 'testValue' };
@@ -111,6 +111,12 @@ export const mockMetricsCardProps = {
   title: 'testTitle'
 };
 
+export const mockEmployeeDetails = {
+  employeeName: "testEmployeeName",
+  employeeId: "testEmployeeId",
+  role: 'testRole'
+}
+
 export const mockEmployeeImageProps = {
   img: {
     originalName: 'testOriginalName',
@@ -120,8 +126,7 @@ export const mockEmployeeImageProps = {
     width: 132,
     height: 33,
   },
-  employeeName: "testEmployeeName",
-  employeeId: "testEmployeeId",
+  ...mockEmployeeDetails,
   isLockedRow: false,
   lockToggle: jest.fn()
 }
@@ -158,6 +163,17 @@ export const mockEmployeeCardRowProps = {
   },
   ...mockEmployeeImageProps
 }
+
+export const mockAllEmployeeList = [
+  {
+    ...mockEmployeeMetricsProps,
+    ...mockEmployeeDetails
+  },
+  {
+    ...mockEmployeeMetricsProps,
+    ...mockEmployeeDetails
+  }
+]
 
 export const mockNavDropdownProps = {
   label: 'testLabel',
