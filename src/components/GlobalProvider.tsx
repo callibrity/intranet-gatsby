@@ -1,28 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { UserContext } from '@globals/contexts';
 import Navbar from '@navbar/Navbar';
 import GlobalStyle from './GlobalStyle';
 import { reactChildren } from '@globals/types';
 import { Location } from '@reach/router';
-import { developerRoute, accountManagerRoute, indexRoute, developerString, accountManagerString } from '@globals/constants';
-import { navigate } from 'gatsby';
 import Loading from '@components/reusable/Loading';
-import { accountManagerFlag, developerFlag } from '@globals/flags';
 import useCredentials from '@hooks/useCredentials';
+import useNavigationControl from '@hooks/useNavigationControl';
 
 export const Provider = ({ children, pathname }: { children: reactChildren, pathname: string }) => {
   const { username, userEmail, userRole, signIn, signOut, loaded } = useCredentials();
-
-  useEffect(() => {
-    if (userRole) {
-      if (pathname.includes(accountManagerRoute) && userRole !== accountManagerString && !accountManagerFlag) {
-        navigate(indexRoute);
-      }
-      else if (pathname.includes(developerRoute) && userRole !== developerString && !developerFlag) {
-        navigate(indexRoute)
-      }
-    }
-  }, [pathname, userRole])
+  useNavigationControl(pathname, userRole);
 
   return (
     <UserContext.Provider value={{ username, userEmail, userRole, signIn, signOut }}>
