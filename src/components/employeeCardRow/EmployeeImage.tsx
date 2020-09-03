@@ -21,7 +21,9 @@ interface PropTypes {
 const EmployeeImage = ({
   img, employeeName, employeeId, isLockedRow, lockToggle,
 }: PropTypes) => (
-    <StyledCard className="mx-2 shadow-sm" style={{topLeftBorderRadius: 50}}>
+    <StyledCard className="mx-2 shadow-sm" style={{boxShadow:border-radius: 50px;
+19px 19px 38px #d9d9d9, 
+                   -19px -19px 38px #ffffff; maxWidth: '190px', minWidth: '190px', borderRadius: 30, boxShadow: 15}}>
     <StyledBody>
       <Title>
         {employeeName}
@@ -43,7 +45,8 @@ const EmployeeImage = ({
 export default EmployeeImage;
 
 const StyledCard = styled(Card)`
-  width: 14rem;
+border-top-left-radius: 100;
+border-bottom-left-radius: 100;
 `;
 
 const StyledBody = styled(Body)`

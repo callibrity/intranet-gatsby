@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { billableConversion, growthConversion } from '@globals/helperFunctions';
 import { EmployeeMetricTypes, FixedImage } from '@globals/types';
 import { billableTitle, growthTitle } from '@globals/constants';
 import { Row, Container, Col } from 'react-bootstrap';
-import MetricsCard from './MetricsCard';
+import { billableConversion, growthConversion } from './helperFunctions';
 import EmployeeImage from './EmployeeImage';
+import MetricsCard from './MetricsCard';
 
 interface PropTypes {
   employeeMetrics: EmployeeMetricTypes,
@@ -13,7 +13,7 @@ interface PropTypes {
   employeeName?: string,
   isLockedRow?: boolean,
   lockToggle?: Function,
-
+};
 
 const EmployeeCardRow = ({
   employeeMetrics, employeeId, employeeName, isLockedRow, lockToggle, img,
@@ -24,8 +24,8 @@ const EmployeeCardRow = ({
   const growthElement = growth ? <MetricsCard title={growthTitle} metrics={growthConversion(growth)} updatedAt={updatedAt} /> : null;
   return (
     <CustomContainer fluid key={employeeId}>
-      <Row>
-        <ImageColumn>
+      <Row className="w-95">
+        <ImageColumn >
           {imageElement}
         </ImageColumn>
         <MetricsColumnTwo>

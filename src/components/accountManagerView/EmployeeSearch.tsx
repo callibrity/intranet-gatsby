@@ -4,6 +4,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import { IconContext } from 'react-icons';
 import { MdSearch } from 'react-icons/md';
 import styled from 'styled-components';
+import { searchBarAltText } from '@globals/constants';
 
 const { Append, Text } = InputGroup;
 
@@ -17,7 +18,7 @@ const EmployeeSearch = ({ text, setText }: EmployeeSearchProps) => (
     <IconContext.Provider value={{ color: 'grey' }}>
       <FormControl
         aria-label="Type at least two characters to pull up developers"
-        alt="search bar"
+        alt={searchBarAltText}
         value={text}
         placeholder="Type at least two characters to pull up developers..."
         onChange={(e) => setText(e.target.value)}

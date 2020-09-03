@@ -141,19 +141,23 @@ export interface GrowthTypes {
   totalGrowth: string | number
 }
 
+export const mockEmployeeMetricsProps = {
+  billable: {
+    currentHours: 1,
+    currentTarget: 1,
+    totalTarget: 1
+  },
+  growth: {
+    hoursUsed: 1,
+    hoursRemaining: 1,
+    totalGrowth: 1
+  },
+  updatedAt: 'testUpdatedAt'
+}
+
 export const mockEmployeeCardRowProps = {
   employeeMetrics: {
-    billable: {
-      currentHours: 1,
-      currentTarget: 1,
-      totalTarget: 1
-    },
-    growth: {
-      hoursUsed: 1,
-      hoursRemaining: 1,
-      totalGrowth: 1
-    },
-    updatedAt: 'testUpdatedAt'
+    ...mockEmployeeMetricsProps
   },
   ...mockEmployeeImageProps
 }

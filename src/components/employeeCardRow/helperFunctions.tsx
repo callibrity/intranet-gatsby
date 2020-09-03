@@ -1,6 +1,6 @@
 import { BillableTypes, GrowthTypes } from '@globals/types';
 
-export const billableConversion = ({currentHours, currentTarget, totalTarget } : BillableTypes ) => {
+export const billableConversion = ({ currentHours, currentTarget, totalTarget }: BillableTypes) => {
   return [
     {
       label: 'Current Hours',
@@ -17,7 +17,7 @@ export const billableConversion = ({currentHours, currentTarget, totalTarget } :
   ]
 }
 
-export const growthConversion = ({hoursUsed, hoursRemaining, totalGrowth } : GrowthTypes ) => {
+export const growthConversion = ({ hoursUsed, hoursRemaining, totalGrowth }: GrowthTypes) => {
   return [
     {
       label: 'Hours Used',
