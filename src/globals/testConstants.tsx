@@ -99,6 +99,15 @@ export const mockUserDetails = {
   userRole: 'testUserRole',
 };
 
+export const mockCredentials = {
+  username: 'testUsername',
+  userEmail: 'testUserEmail',
+  userRole: 'testUserRole',
+  signIn: jest.fn(),
+  signOut: jest.fn(),
+  loaded: true
+}
+
 export const mockLineItemProps = { label: 'testLabel', value: 'testValue' };
 
 export const mockMetricsCardProps = {
