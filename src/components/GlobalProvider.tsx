@@ -1,51 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { UserContext } from '@globals/contexts';
 import Navbar from '@navbar/Navbar';
 import GlobalStyle from './GlobalStyle';
 import { reactChildren } from '@globals/types';
 import { Location } from '@reach/router';
-import { googleClientId, developerRoute, accountManagerRoute, loginRoute, indexRoute, developerString, accountManagerString } from '@globals/constants';
-import { getEmployeeDetails } from '@api/serviceCalls';
-import { setJwt, removeJwt } from '@api/api';
+import { developerRoute, accountManagerRoute, indexRoute, developerString, accountManagerString } from '@globals/constants';
 import { navigate } from 'gatsby';
-import { useGoogleLogin, useGoogleLogout, GoogleLoginResponse } from 'react-google-login';
 import Loading from '@components/reusable/Loading';
 import { accountManagerFlag, developerFlag } from '@globals/flags';
+import useCredentials from '@hooks/useCredentials';
 
 export const Provider = ({ children, pathname }: { children: reactChildren, pathname: string }) => {
-  const [username, setUsername] = useState<string>(null);
-  const [userEmail, setUserEmail] = useState<string>(null);
-  const [userRole, setUserRole] = useState<string>(null);
-  const [signInLoaded, setSignInLoaded] = useState<boolean>(false);
-  const { signIn } = useGoogleLogin({
-    clientId: googleClientId,
-    onSuccess: ({ tokenId, profileObj: { name, email } }: GoogleLoginResponse) => {
-      setJwt(tokenId);
-      setUsername(name);
-      setUserEmail(email);
-      getEmployeeDetails(({ role }: { role: string }) => setUserRole(role), console.log);
-    },
-    onFailure: () => console.log("sign in failed"),
-    onAutoLoadFinished: (signedIn) => {
-      setSignInLoaded(true);
-      if (!signedIn) {
-        navigate(loginRoute);
-      }
-    },
-    isSignedIn: true
-  });
-
-  const { signOut } = useGoogleLogout({
-    clientId: googleClientId,
-    onLogoutSuccess: () => {
-      removeJwt();
-      setUsername(null);
-      setUserEmail(null);
-      navigate(loginRoute);
-    },
-  });
-
-  const contextObject = { username, setUsername, userEmail, setUserEmail, userRole, setUserRole, signIn, signOut };
+  const { username, userEmail, userRole, signIn, signOut, loaded } = useCredentials();
 
   useEffect(() => {
     if (userRole) {
@@ -58,12 +24,11 @@ export const Provider = ({ children, pathname }: { children: reactChildren, path
     }
   }, [pathname, userRole])
 
-
   return (
-    <UserContext.Provider value={contextObject}>
+    <UserContext.Provider value={{ username, userEmail, userRole, signIn, signOut }}>
       <GlobalStyle />
       <Navbar />
-      {signInLoaded ? children : <Loading />}
+      {loaded ? children : <Loading />}
     </UserContext.Provider>
   );
 };
