@@ -65,8 +65,7 @@ export default EmployeeList;
 
 const SeparateFavorites = styled.div`
   display: block;
-  max-width: 75%;
-  border-top: 3px solid black;
+  max-width: 100%;
+  border-top: 3px solid grey;
   margin: 1em 0;
-  align-self: center;
 `;

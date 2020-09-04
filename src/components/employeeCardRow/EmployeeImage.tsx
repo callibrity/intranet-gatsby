@@ -46,13 +46,9 @@ const EmployeeImage = ({
 export default EmployeeImage;
 
 const StyledCard = styled(Card)`
-
-max-width: 196px;
-min-width: 196px;
 border-radius: 50px;
-background: #ffffff;
-box-shadow:  13px 13px 26px #d9d9d9, 
-             -13px -13px 26px #ffffff;
+padding-left: 4px;
+padding-right: 4px;
 `;
 
 const StyledBody = styled(Body)`

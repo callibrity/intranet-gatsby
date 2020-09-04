@@ -45,6 +45,7 @@ const CustomContainer = styled(Container)`
   display: flex;
   flex: 1;
   justify-content: center;
+  margin-bottom: 16px;
 `;
 
 const ImageColumn = styled(Col)`
