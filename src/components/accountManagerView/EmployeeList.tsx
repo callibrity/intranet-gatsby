@@ -23,7 +23,7 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
 
   useEffect(() => {
     getAllEmployeeMetrics(setEmployeeDataList, console.log);
-  })
+  }, [])
 
   const { lockedElements, searchElements } = createEmployeeElements(employeeDataList, lockList, lockToggle, searchString, images)
 
@@ -36,7 +36,7 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
               {hideLockedCardsButtonText}
             </Toggle>
           </Header>
-          <Collapse eventKey="0">
+          <Collapse eventKey="0" data-testid={'accordion'}>
             <Body>
               {lockedElements}
             </Body>

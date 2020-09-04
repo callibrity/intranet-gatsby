@@ -145,7 +145,8 @@ export const mockAllEmployeeList = [
   {
     ...mockEmployeeMetricsProps,
     ...mockEmployeeDetails,
-    employeeId: "testEmployeeId2"
+    employeeId: "testEmployeeId2",
+    employeeName: "testEmployeeName2"
   }
 ]
 

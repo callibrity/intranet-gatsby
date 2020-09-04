@@ -33,7 +33,9 @@ const EmployeeImage = ({ img, employeeName, employeeId, isLockedRow, lockToggle 
           variant="dark"
           onClick={() => lockToggle(employeeId)}
         >
-          {isLockedRow ? <MdLock data-testid={closedLockTestId} /> : <MdLockOpen data-testid={openLockTestId} />}
+          {isLockedRow ? 
+            <MdLock aria-label={`${employeeName}-locked`} data-testid={closedLockTestId} /> : 
+            <MdLockOpen aria-label={`${employeeName}-unlocked`} data-testid={openLockTestId} />}
         </StyledButton>
       </Text>
     </StyledCard>
