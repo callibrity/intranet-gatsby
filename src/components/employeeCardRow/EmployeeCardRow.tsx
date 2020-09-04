@@ -25,13 +25,13 @@ const EmployeeCardRow = ({
   return (
     <CustomContainer fluid key={employeeId}>
       <Row>
-        <ImageColumn  className="justify-content-end">
+        <ImageColumn xs={12} lg={4}>
           {imageElement}
         </ImageColumn>
-        <MetricsColumnTwo>
+        <MetricsColumnTwo xs={12} lg={4}>
           {billableElement}
         </MetricsColumnTwo>
-        <MetricsColumnThree>
+        <MetricsColumnThree xs={12} lg={4}>
           {growthElement}
         </MetricsColumnThree>
       </Row>

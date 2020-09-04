@@ -25,7 +25,7 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
 
   useEffect(() => {
     getAllEmployeeMetrics(setEmployeeDataList, console.log);
-  });
+  }, []);
 
   const { lockedElements, searchElements } = createEmployeeElements(employeeDataList, lockList, lockToggle, searchString, images);
 
