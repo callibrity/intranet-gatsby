@@ -16,13 +16,13 @@ interface PropTypes {
 const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
   const metricsElements = metrics.map(({ label, value }) => <LineItem label={label} value={value} />);
   return (
-    <StyledCard>
-      <OverlayTrigger
-        placement="bottom"
-        delay={{ show: 250, hide: 400 }}
-        overlay={(props) => RenderTooltip(props, updatedAt)}
-      >
-        <>
+    <OverlayTrigger
+      placement="bottom"
+      delay={{ show: 250, hide: 400 }}
+      overlay={(props) => RenderTooltip(props, updatedAt)}
+    >
+      <StyledCard>
+        <span>
           <Row>
             <Col xs={12} gutters={1}>
               <h2 style={{ marginLeft: '24px', marginTop: '16px' }}>{title}</h2>
@@ -31,9 +31,10 @@ const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
           <Row sm={1} lg={2} className="justify-content-md-center mb-4">
             {metricsElements}
           </Row>
-        </>
-      </OverlayTrigger>
-    </StyledCard>
+        </span>
+
+      </StyledCard>
+    </OverlayTrigger>
   );
 };
 
