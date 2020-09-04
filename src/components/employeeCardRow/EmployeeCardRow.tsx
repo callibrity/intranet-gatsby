@@ -24,8 +24,8 @@ const EmployeeCardRow = ({
   const growthElement = growth ? <MetricsCard title={growthTitle} metrics={growthConversion(growth)} updatedAt={updatedAt} /> : null;
   return (
     <CustomContainer fluid key={employeeId}>
-      <Row className="w-95">
-        <ImageColumn >
+      <Row>
+        <ImageColumn  className="justify-content-end">
           {imageElement}
         </ImageColumn>
         <MetricsColumnTwo>
@@ -45,18 +45,14 @@ const CustomContainer = styled(Container)`
   display: flex;
   flex: 1;
   justify-content: center;
-  background-color: red;
 `;
 
 const ImageColumn = styled(Col)`
-  background-color: blue;
-  justify-content: flex-end;
+  flex-direction: row;
 `;
 
 const MetricsColumnTwo = styled(Col)`
-  background-Color: yellow;
 `;
 
 const MetricsColumnThree = styled(Col)`
-  background-color: green;
 `;

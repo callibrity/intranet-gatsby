@@ -49,8 +49,9 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
           </Collapse>
         </Card>
       </Accordion>
-      <SeparateFavorites />
-      <Container fluid>
+      <Container fluid className="justify-content-md-center">
+      <SeparateFavorites className="align-self-center" />
+
         <Row lg={1} xl={2} className="justify-content-md-center">
 
           {searchElements}
@@ -64,6 +65,8 @@ export default EmployeeList;
 
 const SeparateFavorites = styled.div`
   display: block;
+  max-width: 75%;
   border-top: 3px solid black;
   margin: 1em 0;
+  align-self: center;
 `;
