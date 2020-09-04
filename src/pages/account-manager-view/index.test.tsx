@@ -5,16 +5,16 @@ import { mockImageQuery } from '@globals/testConstants';
 import { searchBarAltText, hideLockedCardsButtonText } from '@globals/constants';
 
 describe('Account manager view component', () => {
-  it('should render the search box', () => {
+  it('should render the search box', async () => {
     render(<Index data={mockImageQuery} />);
 
-    expect(screen.getByAltText(searchBarAltText)).toBeInstanceOf(HTMLInputElement);
+    await waitFor(() => expect(screen.getByAltText(searchBarAltText)).toBeInstanceOf(HTMLInputElement));
   });
 
-  it('should render the employee list', () => {
+  it('should render the employee list', async () => {
     render(<Index data={mockImageQuery} />);
 
-    expect(screen.getByText(hideLockedCardsButtonText)).toBeInstanceOf(HTMLButtonElement);
+    await waitFor(() => expect(screen.getByText(hideLockedCardsButtonText)).toBeInstanceOf(HTMLButtonElement));
   });
 
 });

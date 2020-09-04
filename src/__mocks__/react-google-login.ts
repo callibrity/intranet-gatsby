@@ -1,9 +1,7 @@
-const { mockLoginResponse } = require('@globals/testConstants');
-
-const reactGoogleLogin = jest.requireActual('react-google-login');
+import { mockGoogleLoginOnSuccessResponse } from '@globals/testConstants';
 
 module.exports = {
-  ...reactGoogleLogin,
-  useGoogleLogin: jest.fn(),
-  useGoogleLogout: ({ onLogoutSuccess }) => ({ signOut: () => onLogoutSuccess() }),
+  ...jest.requireActual('react-google-login'),
+  useGoogleLogin: jest.fn(({ onSuccess }: { onSuccess: Function }) => ({ signIn: () => onSuccess(mockGoogleLoginOnSuccessResponse) })),
+  useGoogleLogout: jest.fn(({ onLogoutSuccess }: { onLogoutSuccess: Function }) => ({ signOut: onLogoutSuccess }))
 };
