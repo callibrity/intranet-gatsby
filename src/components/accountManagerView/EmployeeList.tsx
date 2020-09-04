@@ -43,7 +43,7 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
           </Collapse>
         </Card>
       </Accordion>
-      <SeparateFavorites />
+      <SeparateFavorites role="separator" />
       {searchElements}
     </>
   );

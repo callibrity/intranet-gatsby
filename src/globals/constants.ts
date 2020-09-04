@@ -167,6 +167,8 @@ export const loginWelcomeMessage = 'Welcome to Callibrity!';
 
 export const searchBarAltText = 'search bar';
 
+export const searchBarPlaceholder = 'Type at least two characters to pull up developers';
+
 export const hideLockedCardsButtonText = 'Hide Locked Cards';
 
 export const employeeMetricsString = '/api/employee/hours';
