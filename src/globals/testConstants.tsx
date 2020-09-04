@@ -155,12 +155,12 @@ export interface GrowthTypes {
 export const mockEmployeeMetricsProps = {
   billable: {
     currentHours: 1,
-    currentTarget: 1,
-    totalTarget: 1
+    currentTarget: 2,
+    totalTarget: 3
   },
   growth: {
-    hoursUsed: 1,
-    hoursRemaining: 1,
+    hoursUsed: 3,
+    hoursRemaining: 2,
     totalGrowth: 1
   },
   updatedAt: 'testUpdatedAt'
