@@ -21,14 +21,14 @@ const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
       delay={{ show: 250, hide: 400 }}
       overlay={(props) => RenderTooltip(props, updatedAt)}
     >
-      <StyledCard>
+      <StyledCard className="border-0">
         <span>
           <Row>
             <Col xs={12} gutters={1}>
               <h2 style={{ marginLeft: '24px', marginTop: '16px' }}>{title}</h2>
             </Col>
           </Row>
-          <Row sm={1} md={2} lg={2} xl={2} className="justify-content-md-center mb-4">
+          <Row sm={1} md={2} lg={2} xl={2} className="justify-content-md-center mt-2">
             {metricsElements}
           </Row>
         </span>
@@ -41,7 +41,6 @@ const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
 export default MetricsCard;
 
 const StyledCard = styled(Card)`
-border-radius: 10px;
 padding-left: 4px;
 padding-right: 4px;
 height: 100%;

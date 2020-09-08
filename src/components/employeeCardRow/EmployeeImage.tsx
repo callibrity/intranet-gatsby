@@ -22,7 +22,7 @@ const EmployeeImage = ({
   img, employeeName, employeeId, isLockedRow, lockToggle,
 }: PropTypes) => (
   <>
-    <StyledCard>
+    <StyledCard className="border-0">
       <StyledBody>
         <Title>
           <h3>

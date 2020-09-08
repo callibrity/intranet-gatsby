@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { EmployeeMetricTypes, FixedImage } from '@globals/types';
 import { billableTitle, growthTitle } from '@globals/constants';
-import { Row, Container, Col } from 'react-bootstrap';
+import {
+  Row, Container, Col, Card,
+} from 'react-bootstrap';
 import { billableConversion, growthConversion } from './helperFunctions';
 import EmployeeImage from './EmployeeImage';
 import MetricsCard from './MetricsCard';
@@ -13,7 +15,7 @@ interface PropTypes {
   employeeName?: string,
   isLockedRow?: boolean,
   lockToggle?: Function,
-};
+}
 
 const EmployeeCardRow = ({
   employeeMetrics, employeeId, employeeName, isLockedRow, lockToggle, img,
@@ -24,17 +26,19 @@ const EmployeeCardRow = ({
   const growthElement = growth ? <MetricsCard title={growthTitle} metrics={growthConversion(growth)} updatedAt={updatedAt} /> : null;
   return (
     <CustomContainer fluid key={employeeId}>
-      <Row>
-        <ImageColumn xs={12} lg={4}>
-          {imageElement}
-        </ImageColumn>
-        <MetricsColumnTwo xs={12} lg={4}>
-          {billableElement}
-        </MetricsColumnTwo>
-        <MetricsColumnThree xs={12} lg={4}>
-          {growthElement}
-        </MetricsColumnThree>
-      </Row>
+      <Card className="shadow-sm">
+        <Row>
+          <ImageColumn xs={12} lg={4}>
+            {imageElement}
+          </ImageColumn>
+          <MetricsColumnTwo xs={12} lg={4}>
+            {billableElement}
+          </MetricsColumnTwo>
+          <MetricsColumnThree xs={12} lg={4}>
+            {growthElement}
+          </MetricsColumnThree>
+        </Row>
+      </Card>
     </CustomContainer>
   );
 };
