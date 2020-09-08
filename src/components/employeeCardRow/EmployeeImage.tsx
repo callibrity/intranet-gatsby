@@ -55,7 +55,6 @@ const StyledCard = styled(Card)`
 border-radius: 10px;
 padding-left: 2px;
 padding-right: 2px;
-max-width: 276px;
 `;
 
 const StyledBody = styled(Body)`
