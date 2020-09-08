@@ -41,7 +41,7 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
           <Collapse eventKey="0">
             <Body>
               <Container fluid>
-                <Row lg={1} xl={2} className="justify-content-md-center">
+                <Row xs={1} sm={1} md={1} lg={1} xl={2} className="justify-content-md-center">
                   {lockedElements}
                 </Row>
               </Container>

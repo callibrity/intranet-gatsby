@@ -5,7 +5,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { UserContext } from '@globals/contexts';
 import Logout from './Logout';
-import SearchBar from './SearchBar';
 import { quickLinks } from '@globals/constants';
 import NavDropdown from './NavDropdown';
 
@@ -38,7 +37,6 @@ export default function NavbarComponent() {
       {
         username &&
         <Nav className="ml-auto pr-md-5">
-          <SearchBar />
           <NavDropdown label={"Quick Links"} items={linkList} />
           <NavDropdown label={username} items={[<Logout />]} />
         </Nav>

@@ -28,7 +28,7 @@ const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
               <h2 style={{ marginLeft: '24px', marginTop: '16px' }}>{title}</h2>
             </Col>
           </Row>
-          <Row sm={1} lg={2} className="justify-content-md-center mb-4">
+          <Row sm={1} md={2} lg={2} xl={2} className="justify-content-md-center mb-4">
             {metricsElements}
           </Row>
         </span>
@@ -41,7 +41,7 @@ const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
 export default MetricsCard;
 
 const StyledCard = styled(Card)`
-border-radius: 50px;
+border-radius: 10px;
 padding-left: 4px;
 padding-right: 4px;
 height: 100%;
