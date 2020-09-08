@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Img from 'gatsby-image';
-import { Col } from 'react-bootstrap';
+import { Col, Row, Container } from 'react-bootstrap';
 import { FixedImage } from '@globals/types';
 import styled from 'styled-components';
 import { openLockTestId, closedLockTestId } from '@globals/constants';
@@ -25,39 +25,46 @@ const EmployeeImage = ({
     <StyledCard>
       <StyledBody>
         <Title>
-          {employeeName}
+          <h3>
+            {employeeName}
+          </h3>
         </Title>
-        <Img fixed={img} alt={`Image of ${employeeName}`} />
+        <Container>
+          <Row className="justify-content-md-center">
+            <Img fixed={img} alt={`Image of ${employeeName}`} style={{}} />
+          </Row>
+        </Container>
       </StyledBody>
       <Text className="text-center pb-0">
         {' '}
         <StyledButton
-      id={employeeId}
-      variant="dark"
-      onClick={() => lockToggle(employeeId)}
-    >
-      {isLockedRow ? <MdStar data-testid={closedLockTestId} /> : <MdStarBorder data-testid={openLockTestId} />}
-    </StyledButton>
+          id={employeeId}
+          variant="warning"
+          onClick={() => lockToggle(employeeId)}
+        >
+          {isLockedRow ? <MdStar data-testid={closedLockTestId} /> : <MdStarBorder data-testid={openLockTestId} />}
+        </StyledButton>
       </Text>
-          </StyledCard>
+    </StyledCard>
   </>
 );
 
 export default EmployeeImage;
 
 const StyledCard = styled(Card)`
-border-radius: 50px;
-padding-left: 4px;
-padding-right: 4px;
+border-radius: 10px;
+padding-left: 2px;
+padding-right: 2px;
+max-width: 276px;
 `;
 
 const StyledBody = styled(Body)`
   align-self: center;
+  align-content: center;
   justify-content: center;
   padding-bottom: 0;
 `;
 
 const StyledButton = styled(Button)`
-  border-radius: 100;
-
+margin-top: 8px;
 `;
