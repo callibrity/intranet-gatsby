@@ -26,7 +26,7 @@ const EmployeeCardRow = ({
   const growthElement = growth ? <MetricsCard title={growthTitle} metrics={growthConversion(growth)} updatedAt={updatedAt} /> : null;
   return (
     <CustomContainer fluid key={employeeId}>
-      <Card className="shadow-sm">
+      <Card className="shadow px-3">
         <Row>
           <ImageColumn xs={12} lg={4}>
             {imageElement}
