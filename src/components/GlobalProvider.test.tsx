@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import GlobalProvider from './GlobalProvider';
 import { mockCredentials } from '@globals/testConstants';
+import '@testing-library/jest-dom' // needs to be imported somewhere
 
 jest.mock('@hooks/useCredentials', () => (() => mockCredentials));
 

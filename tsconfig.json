@@ -58,7 +58,7 @@
     "allowSyntheticDefaultImports": true,
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*", "temp_test_refactor/temp_test_folder"
   ],
   "typeRoots": ["node_modules/@types"]
 }

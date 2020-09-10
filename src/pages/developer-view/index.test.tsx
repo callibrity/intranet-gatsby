@@ -35,6 +35,14 @@ describe('Developer view component', () => {
     expect(screen.queryByText(billableTitle)).toBeNull();
   });
 
+  it('should render no data when 404 error returned from backend', async () => {
+    mockedAxios.get.mockImplementationOnce(() => Promise.reject({ message: 'data not found', response: {status: 404}}));
+    render(<Index />);
+
+    await waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
+    expect(screen.queryAllByText('No Data')).toHaveLength(6);
+  });
+
   it('should render with employeeMetrics', async () => {
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve({ data: mockEmployeeMetricsProps }));
     render(<Index />);
