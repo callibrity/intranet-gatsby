@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { employeeMetricsString, employeeDetailsString, allEmployeeMetricsString } from '@globals/constants';
+import { navigate } from 'gatsby';
+import { employeeMetricsString, employeeDetailsString, allEmployeeMetricsString, errorRoute } from '@globals/constants';
 
 export const getRequest = async (requestString: string, onSuccess: Function, onError: Function) => {
   await axios
@@ -8,7 +9,11 @@ export const getRequest = async (requestString: string, onSuccess: Function, onE
       onSuccess(res.data);
     })
     .catch((err) => {
+<<<<<<< Updated upstream
       onError(err);
+=======
+      onError(navigate(errorRoute));
+>>>>>>> Stashed changes
     });
 }
 

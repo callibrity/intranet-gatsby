@@ -171,6 +171,8 @@ export const accountManagerRoute = '/account-manager-view';
 
 export const loginRoute = '/login';
 
+export const errorRoute = '/error';
+
 export const developerString = 'Developer';
 
 export const accountManagerString = 'Account Manager';
