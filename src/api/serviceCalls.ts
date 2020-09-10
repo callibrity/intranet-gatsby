@@ -9,11 +9,7 @@ export const getRequest = async (requestString: string, onSuccess: Function, onE
       onSuccess(res.data);
     })
     .catch((err) => {
-<<<<<<< Updated upstream
-      onError(err);
-=======
       onError(navigate(errorRoute));
->>>>>>> Stashed changes
     });
 }
 
