@@ -8,7 +8,7 @@ export const getRequest = async (requestString: string, onSuccess: Function, onE
       onSuccess(res.data);
     })
     .catch((err) => {
-      onError(err.message);
+      onError(err);
     });
 }
 

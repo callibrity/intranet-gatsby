@@ -31,12 +31,13 @@ describe('getRequest function', () => {
   })
 
   it('should call onError function with error message', async () => {
-    mockedAxios.get.mockImplementationOnce(() => Promise.reject(new Error('errorMessage')));
+    const fullError = new Error('errorMessage');
+    mockedAxios.get.mockImplementationOnce(() => Promise.reject(fullError));
 
     await getRequest('test', mockOnSuccess, mockOnFail)
 
     expect(mockOnFail).toHaveBeenCalledTimes(1);
-    expect(mockOnFail).toHaveBeenCalledWith('errorMessage');
+    expect(mockOnFail).toHaveBeenCalledWith(fullError);
   })
 })
 
