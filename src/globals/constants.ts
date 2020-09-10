@@ -137,6 +137,18 @@ export const growthDefault = {
   totalGrowth: 'Loading...',
 }
 
+export const billableMissing = {
+  currentHours: 'No Data',
+  currentTarget: 'No Data',
+  totalTarget: 'No Data',
+};
+
+export const growthMissing = {
+  hoursUsed: 'No Data',
+  hoursRemaining: 'No Data',
+  totalGrowth: 'No Data',
+}
+
 export const tooltipShowDelay = 250;
 
 export const tooltipHideDelay = 400;
