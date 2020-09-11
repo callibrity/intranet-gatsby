@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { EmployeeMetricTypes, FixedImage } from '@globals/types';
 import { billableTitle, growthTitle } from '@globals/constants';
-import {
-  Row, Container, Col, Card,
-} from 'react-bootstrap';
+import { Row, Container, Col, Card } from 'react-bootstrap';
 import { billableConversion, growthConversion } from './helperFunctions';
 import EmployeeImage from './EmployeeImage';
 import MetricsCard from './MetricsCard';
@@ -28,13 +26,13 @@ const EmployeeCardRow = ({
     <CustomContainer fluid key={employeeId}>
       <Card className="shadow px-3">
         <Row>
-          <ImageColumn xs={12} lg={4}>
+          <ImageColumn xs={12} sm={12} md={4} lg={4}>
             {imageElement}
           </ImageColumn>
-          <MetricsColumnTwo xs={12} lg={4}>
+          <MetricsColumnTwo xs={12} sm={12} md={4} lg={4}>
             {billableElement}
           </MetricsColumnTwo>
-          <MetricsColumnThree xs={12} lg={4}>
+          <MetricsColumnThree xs={12} sm={12} md={4} lg={4}>
             {growthElement}
           </MetricsColumnThree>
         </Row>
@@ -57,7 +55,13 @@ const ImageColumn = styled(Col)`
 `;
 
 const MetricsColumnTwo = styled(Col)`
+padding-left: 24px;
+padding-right: 24px;
 `;
 
 const MetricsColumnThree = styled(Col)`
+padding-left: 24px;
+padding-right: 24px;
 `;
+
+

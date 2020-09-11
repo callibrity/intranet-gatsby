@@ -22,11 +22,11 @@ test('Account manager view', async () => {
 
   const searchBar = await screen.findByRole('textbox', { name: searchBarPlaceholder })
   const hideLockedCardsButton = screen.getByRole('button', { name: hideLockedCardsButtonText });
-  const separationBar = screen.getByRole('separator');
+  //const separationBar = screen.getByTestId('dividerline');
 
   expect(searchBar).toBeInstanceOf(HTMLInputElement);
   expect(hideLockedCardsButton).toBeInstanceOf(HTMLButtonElement);
-  expect(separationBar).toBeInstanceOf(HTMLElement);
+  //expect(separationBar).toBeInstanceOf(HTMLElement);
 
   // it should initially not have any employee cards
   expect(queryImageCardList()).toHaveLength(0);

@@ -25,10 +25,10 @@ const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
         <span>
           <Row>
             <Col xs={12} gutters={1}>
-              <h2 style={{ marginLeft: '24px', marginTop: '16px' }}>{title}</h2>
+              <h3 style={{marginLeft: '24px', marginTop: '16px' }}>{title}</h3>
             </Col>
           </Row>
-          <Row sm={1} md={2} lg={1} xl={1} className="justify-content-md-center mt-2">
+          <Row xs={1} sm={1} md={1} lg={1} xl={1} className="justify-content-md-center mt-2">
             {metricsElements}
           </Row>
         </span>

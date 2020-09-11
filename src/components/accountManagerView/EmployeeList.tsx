@@ -5,7 +5,6 @@ import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import { Container, Row, Col } from 'react-bootstrap';
 import { EmployeeTypes, FixedImage } from '@globals/types';
-
 import useLockList from '@hooks/useLockList';
 import { getAllEmployeeMetrics } from '@api/serviceCalls';
 import { hideLockedCardsButtonText } from '@globals/constants';
@@ -50,10 +49,8 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
         </Card>
       </Accordion>
       <Container fluid className="justify-content-md-center">
-      <SeparateFavorites className="align-self-center" />
-
+      <SeparateFavorites data-testid="dividerline" className="align-self-center" />
         <Row lg={1} xl={2} className="justify-content-md-center">
-
           {searchElements}
         </Row>
       </Container>

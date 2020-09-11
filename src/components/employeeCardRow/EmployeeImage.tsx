@@ -7,6 +7,7 @@ import { FixedImage } from '@globals/types';
 import styled from 'styled-components';
 import { openLockTestId, closedLockTestId } from '@globals/constants';
 import { MdStar, MdStarBorder } from 'react-icons/md';
+import { TiPinOutline, TiPin } from "react-icons/ti";
 
 const { Title, Body, Text } = Card;
 
@@ -42,7 +43,7 @@ const EmployeeImage = ({
           variant="warning"
           onClick={() => lockToggle(employeeId)}
         >
-          {isLockedRow ? <MdStar data-testid={closedLockTestId} /> : <MdStarBorder data-testid={openLockTestId} />}
+          {isLockedRow ? <TiPin data-testid={closedLockTestId} /> : <TiPinOutline data-testid={openLockTestId} />}
         </StyledButton>
       </Text>
     </StyledCard>
@@ -65,5 +66,7 @@ const StyledBody = styled(Body)`
 `;
 
 const StyledButton = styled(Button)`
-margin-top: 8px;
+margin-top: 16px;
+margin-bottom: 16px;
+border-radius: 100px;
 `;
