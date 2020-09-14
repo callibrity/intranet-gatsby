@@ -9,12 +9,12 @@ import '@testing-library/jest-dom'
 const queryImageCardList = () => screen.queryAllByRole('img', { name: /Image of/i });
 const queryBillableCardList = () => screen.queryAllByText(billableTitle);
 const queryGrowthCardList = () => screen.queryAllByText(growthTitle);
-const queryCurrentHours = () => screen.getAllByText(/current hours:/i);
-const queryCurrentTarget = () => screen.getAllByText(/current target:/i);
-const queryTotalTarget = () => screen.getAllByText(/total target:/i);
-const queryHoursUsed = () => screen.getAllByText(/hours used:/i);
-const queryHoursRemaining = () => screen.getAllByText(/hours remaining:/i);
-const queryTotalGrowth = () => screen.getAllByText(/total growth:/i);
+const queryCurrentHours = () => screen.getAllByText('Current Hours');
+const queryCurrentTarget = () => screen.getAllByText('Current Target');
+const queryTotalTarget = () => screen.getAllByText('Total Target');
+const queryHoursUsed = () => screen.getAllByText('Hours Used');
+const queryHoursRemaining = () => screen.getAllByText('Hours Left');
+const queryTotalGrowth = () => screen.getAllByText('Total Growth');
 
 test('Account manager view', async () => {
   // it should initially render the search bar, hide locked cards button, and separation bar
@@ -22,11 +22,11 @@ test('Account manager view', async () => {
 
   const searchBar = await screen.findByRole('textbox', { name: searchBarPlaceholder })
   const hideLockedCardsButton = screen.getByRole('button', { name: hideLockedCardsButtonText });
-  //const separationBar = screen.getByTestId('dividerline');
+  const separationBar = screen.getByRole('separator');
 
   expect(searchBar).toBeInstanceOf(HTMLInputElement);
   expect(hideLockedCardsButton).toBeInstanceOf(HTMLButtonElement);
-  //expect(separationBar).toBeInstanceOf(HTMLElement);
+  expect(separationBar).toBeInstanceOf(HTMLElement);
 
   // it should initially not have any employee cards
   expect(queryImageCardList()).toHaveLength(0);
@@ -45,7 +45,7 @@ test('Account manager view', async () => {
   // it should display the image cards with their name and image
   const firstEmployeeName = screen.getByText(mockAllEmployeeList[0].employeeName);
   const firstEmployeeImage = screen.getByRole('img', {name: `Image of ${mockAllEmployeeList[0].employeeName}`})
-  let lockButton = screen.getByTestId("toggle-button")
+  let lockButton = screen.getByRole('button', {name: `${mockAllEmployeeList[0].employeeName}-unlocked`});
 
   expect(firstEmployeeName).toBeInstanceOf(HTMLElement);
   expect(firstEmployeeImage).toBeInstanceOf(HTMLImageElement);
@@ -61,7 +61,7 @@ test('Account manager view', async () => {
 
   // it should toggle the lock button
   userEvent.click(lockButton);
-  lockButton = screen.getByTestId("toggle-button")
+  lockButton = screen.getByRole('button', {name: `${mockAllEmployeeList[0].employeeName}-locked`});
   expect(lockButton).toBeInstanceOf(HTMLButtonElement);
   userEvent.click(lockButton);
 
