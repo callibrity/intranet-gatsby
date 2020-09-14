@@ -8,4 +8,4 @@ const RenderTooltip = (props: OverlayInjectedProps, updatedAt: string) => (
   </Tooltip>
 );
 
-export default RenderTooltip;
+export default RenderTooltip

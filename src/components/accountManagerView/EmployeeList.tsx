@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-import { EmployeeTypes } from '@globals/types';
-import { FixedImage } from '@globals/types';
+import { Container, Row, Col } from 'react-bootstrap';
+import { EmployeeTypes, FixedImage } from '@globals/types';
 import useLockList from '@hooks/useLockList';
 import { getAllEmployeeMetrics } from '@api/serviceCalls';
 import { hideLockedCardsButtonText } from '@globals/constants';
 import { createEmployeeElements } from './createEmployeeElements';
+
 const { Header, Body } = Card;
 const { Toggle, Collapse } = Accordion;
 
@@ -25,26 +26,34 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
     getAllEmployeeMetrics(setEmployeeDataList, console.log);
   }, [])
 
-  const { lockedElements, searchElements } = createEmployeeElements(employeeDataList, lockList, lockToggle, searchString, images)
+  const { lockedElements, searchElements } = createEmployeeElements(employeeDataList, lockList, lockToggle, searchString, images);
 
   return (
     <>
       <Accordion defaultActiveKey="0">
         <Card border="light">
           <Header className="text-right">
-            <Toggle as={Button} variant="dark" eventKey="0">
+            <Toggle as={Button} data-testid="toggle-button" variant="dark" eventKey="0">
               {hideLockedCardsButtonText}
             </Toggle>
           </Header>
           <Collapse eventKey="0" data-testid={'accordion'}>
             <Body>
-              {lockedElements}
+              <Container fluid>
+                <Row xs={1} sm={1} md={1} lg={1} xl={2} className="justify-content-md-center">
+                  {lockedElements}
+                </Row>
+              </Container>
             </Body>
           </Collapse>
         </Card>
       </Accordion>
-      <SeparateFavorites role="separator" />
-      {searchElements}
+      <Container fluid className="justify-content-md-center">
+      <SeparateFavorites role="separator" className="align-self-center" />
+        <Row xs={1} sm={1} md={1} lg={1} xl={2}  className="justify-content-md-center">
+          {searchElements}
+        </Row>
+      </Container>
     </>
   );
 };
@@ -53,7 +62,7 @@ export default EmployeeList;
 
 const SeparateFavorites = styled.div`
   display: block;
-  border-top: 3px solid black;
+  max-width: 100%;
+  border-top: 3px solid grey;
   margin: 1em 0;
 `;
-

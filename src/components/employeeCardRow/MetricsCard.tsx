@@ -1,12 +1,11 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-import { OverlayTrigger } from 'react-bootstrap';
+import styled from 'styled-components';
+import {
+  Col, Row, Card, OverlayTrigger,
+} from 'react-bootstrap';
+import { shadows } from '@material-ui/system';
 import LineItem from './LineItem';
 import RenderTooltip from '../reusable/RenderTooltip';
-import styled from 'styled-components';
-import { tooltipShowDelay, tooltipHideDelay } from '@globals/constants'
-
-const { Body, Title } = Card;
 
 interface PropTypes {
   metrics: { label: string, value: string | number }[],
@@ -15,31 +14,34 @@ interface PropTypes {
 }
 
 const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
-  const metricsElements = metrics.map(({ label, value }) => <LineItem key={label} label={label} value={value} />)
+  const metricsElements = metrics.map(({ label, value }) => <LineItem label={label} value={value} />);
   return (
-    <StyledCard className="TimeTracker-Hours shadow-sm mx-2" id="tooltip">
-      <Body>
-        <OverlayTrigger
-          placement="bottom"
-          delay={{ show: tooltipShowDelay, hide: tooltipHideDelay }}
-          overlay={(props) => RenderTooltip(props, updatedAt)}
-        >
-          <div>
-            <StyledTitle>{title}</StyledTitle>
+    <OverlayTrigger
+      placement="bottom"
+      delay={{ show: 250, hide: 400 }}
+      overlay={(props) => RenderTooltip(props, updatedAt)}
+    >
+      <StyledCard className="border-0">
+        <span>
+          <Row>
+            <Col xs={12} gutters={1}>
+              <h3 style={{marginLeft: '8px', marginTop: '16px' }}>{title}</h3>
+            </Col>
+          </Row>
+          <Row xs={1} sm={1} md={1} lg={1} xl={1} className="justify-content-md-center mt-2">
             {metricsElements}
-          </div>
-        </OverlayTrigger>
-      </Body>
-    </StyledCard>
+          </Row>
+        </span>
+
+      </StyledCard>
+    </OverlayTrigger>
   );
 };
 
 export default MetricsCard;
 
-const StyledTitle = styled(Title)`
-  font-size: 2.2rem
-`;
-
 const StyledCard = styled(Card)`
-  width: 26rem;
+  padding-left: 4px;
+  padding-right: 4px;
+  height: 100%;
 `;

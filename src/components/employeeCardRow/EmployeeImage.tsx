@@ -2,10 +2,12 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Img from 'gatsby-image';
+import { Col, Row, Container } from 'react-bootstrap';
 import { FixedImage } from '@globals/types';
-import { MdLock, MdLockOpen } from 'react-icons/md';
 import styled from 'styled-components';
 import { openLockTestId, closedLockTestId } from '@globals/constants';
+import { MdStar, MdStarBorder } from 'react-icons/md';
+import { TiPinOutline, TiPin } from "react-icons/ti";
 
 const { Title, Body, Text } = Card;
 
@@ -17,43 +19,56 @@ interface PropTypes {
   lockToggle: Function
 }
 
-const EmployeeImage = ({ img, employeeName, employeeId, isLockedRow, lockToggle }: PropTypes) => {
-  return (
-    <StyledCard className="mx-2 shadow-sm">
+const EmployeeImage = ({
+  img, employeeName, employeeId, isLockedRow, lockToggle
+}: PropTypes) => (
+  <>
+    <StyledCard className="border-0">
       <StyledBody>
         <Title>
-          {employeeName}
+          <h3>
+            {employeeName}
+          </h3>
         </Title>
-        <Img fixed={img} alt={`Image of ${employeeName}`} />
+        <Container>
+          <Row className="justify-content-md-center">
+            <Img fixed={img} alt={`Image of ${employeeName}`} style={{}} />
+          </Row>
+        </Container>
       </StyledBody>
       <Text className="text-center pb-0">
         {' '}
         <StyledButton
           id={employeeId}
-          variant="dark"
+          variant="warning"
           onClick={() => lockToggle(employeeId)}
         >
           {isLockedRow ? 
-            <MdLock aria-label={`${employeeName}-locked`} data-testid={closedLockTestId} /> : 
-            <MdLockOpen aria-label={`${employeeName}-unlocked`} data-testid={openLockTestId} />}
+          <TiPin aria-label={`${employeeName}-locked`} data-testid={closedLockTestId}  /> : 
+          <TiPinOutline aria-label={`${employeeName}-unlocked`} data-testid={openLockTestId} />}
         </StyledButton>
       </Text>
     </StyledCard>
-  )
-}
+  </>
+);
 
 export default EmployeeImage;
 
 const StyledCard = styled(Card)`
-  width: 14rem;
-`
+border-radius: 10px;
+padding-left: 2px;
+padding-right: 2px;
+`;
 
 const StyledBody = styled(Body)`
   align-self: center;
+  align-content: center;
   justify-content: center;
-`
+  padding-bottom: 0;
+`;
 
 const StyledButton = styled(Button)`
-  border-top-left-radius: 100;
-  border-top-right-radius: 100;
-`
+margin-top: 16px;
+margin-bottom: 16px;
+border-radius: 100px;
+`;
