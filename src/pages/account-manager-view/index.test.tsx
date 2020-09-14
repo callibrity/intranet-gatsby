@@ -45,7 +45,7 @@ test('Account manager view', async () => {
   // it should display the image cards with their name and image
   const firstEmployeeName = screen.getByText(mockAllEmployeeList[0].employeeName);
   const firstEmployeeImage = screen.getByRole('img', {name: `Image of ${mockAllEmployeeList[0].employeeName}`})
-  let lockButton = screen.getByRole('button', {name: `${mockAllEmployeeList[0].employeeName}-unlocked`});
+  let lockButton = screen.getByTestId("toggle-button")
 
   expect(firstEmployeeName).toBeInstanceOf(HTMLElement);
   expect(firstEmployeeImage).toBeInstanceOf(HTMLImageElement);
@@ -61,7 +61,7 @@ test('Account manager view', async () => {
 
   // it should toggle the lock button
   userEvent.click(lockButton);
-  lockButton = screen.getByRole('button', {name: `${mockAllEmployeeList[0].employeeName}-locked`});
+  lockButton = screen.getByTestId("toggle-button")
   expect(lockButton).toBeInstanceOf(HTMLButtonElement);
   userEvent.click(lockButton);
 

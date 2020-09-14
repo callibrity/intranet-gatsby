@@ -33,7 +33,7 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
       <Accordion defaultActiveKey="0">
         <Card border="light">
           <Header className="text-right">
-            <Toggle as={Button} variant="dark" eventKey="0">
+            <Toggle as={Button} data-testid="toggle-button" variant="dark" eventKey="0">
               {hideLockedCardsButtonText}
             </Toggle>
           </Header>
@@ -50,7 +50,7 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
       </Accordion>
       <Container fluid className="justify-content-md-center">
       <SeparateFavorites data-testid="dividerline" className="align-self-center" />
-        <Row lg={1} xl={2} className="justify-content-md-center">
+        <Row xs={1} sm={1} md={1} lg={1} xl={2}  className="justify-content-md-center">
           {searchElements}
         </Row>
       </Container>

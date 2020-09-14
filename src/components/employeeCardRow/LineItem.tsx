@@ -5,7 +5,7 @@ import {  Col, Card } from 'react-bootstrap';
 export const LineItem = ({ label, value } : {label: string, value: string | number}) => (
   <Col className="text-center px-3 py-3">
     <Card className="border-0 shadow-sm px-1">
-      <div class="d-flex justify-content-between">
+      <div className="d-flex justify-content-between">
         <div>
           <h6>{label}</h6>
         </div>
