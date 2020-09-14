@@ -38,7 +38,7 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
               {hideLockedCardsButtonText}
             </Toggle>
           </Header>
-          <Collapse eventKey="0">
+          <Collapse eventKey="0" data-testid={'accordion'}>
             <Body>
               <Container fluid>
                 <Row xs={1} sm={1} md={1} lg={1} xl={2} className="justify-content-md-center">
@@ -50,10 +50,8 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
         </Card>
       </Accordion>
       <Container fluid className="justify-content-md-center">
-      <SeparateFavorites className="align-self-center" />
-
+        <SeparateFavorites role="separator" className="align-self-center" />
         <Row lg={1} xl={2} className="justify-content-md-center">
-
           {searchElements}
         </Row>
       </Container>

@@ -6,7 +6,7 @@ import { Col, Row, Container } from 'react-bootstrap';
 import { FixedImage } from '@globals/types';
 import styled from 'styled-components';
 import { openLockTestId, closedLockTestId } from '@globals/constants';
-import { MdStar, MdStarBorder } from 'react-icons/md';
+import { MdLock, MdLockOpen } from 'react-icons/md';
 
 const { Title, Body, Text } = Card;
 
@@ -42,7 +42,9 @@ const EmployeeImage = ({
           variant="warning"
           onClick={() => lockToggle(employeeId)}
         >
-          {isLockedRow ? <MdStar data-testid={closedLockTestId} /> : <MdStarBorder data-testid={openLockTestId} />}
+          {isLockedRow ? 
+            <MdLock aria-label={`${employeeName}-locked`} data-testid={closedLockTestId} /> : 
+            <MdLockOpen aria-label={`${employeeName}-unlocked`} data-testid={openLockTestId} />}
         </StyledButton>
       </Text>
     </StyledCard>

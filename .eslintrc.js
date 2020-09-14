@@ -16,12 +16,16 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'testing-library', 'jest-dom'],
   rules: {
-    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', '**/*.test.jsx', './config/setupTests.js'] }],
+    'import/no-extraneous-dependencies': ['error', {
+      devDependencies: ['**/*.test.js', '**/*.test.jsx', './config/setupTests.js']
+    }],
     'linebreak-style': 0,
     'max-len': 0,
-    'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
+    'react/jsx-filename-extension': [2, {
+      'extensions': ['.js', '.jsx', '.ts', '.tsx']
+    }],
     'no-console': 'off'
   },
   settings: {
