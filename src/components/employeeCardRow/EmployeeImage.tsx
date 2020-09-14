@@ -20,7 +20,7 @@ interface PropTypes {
 }
 
 const EmployeeImage = ({
-  img, employeeName, employeeId, isLockedRow, lockToggle,
+  img, employeeName, employeeId, isLockedRow, lockToggle
 }: PropTypes) => (
   <>
     <StyledCard className="border-0">

@@ -13,7 +13,7 @@ export const createEmployeeElements = (
 
   employeeDataList.forEach((developer) => {
     const {
-      billable, growth, updatedAt, employeeId, employeeName,
+      billable, growth, updatedAt, employeeId, employeeName
     } = developer;
     const isLocked = lockList.includes(employeeId);
     const isSearched = searchString.length > 1 && employeeName.toLowerCase().includes(searchString.toLowerCase());
