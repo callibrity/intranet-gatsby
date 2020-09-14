@@ -41,7 +41,7 @@ const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
 export default MetricsCard;
 
 const StyledCard = styled(Card)`
-padding-left: 4px;
-padding-right: 4px;
-height: 100%;
+  padding-left: 4px;
+  padding-right: 4px;
+  height: 100%;
 `;

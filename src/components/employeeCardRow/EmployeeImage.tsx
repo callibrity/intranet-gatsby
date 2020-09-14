@@ -43,7 +43,9 @@ const EmployeeImage = ({
           variant="warning"
           onClick={() => lockToggle(employeeId)}
         >
-          {isLockedRow ? <TiPin aria-label={`${employeeName}-locked`} data-testid={closedLockTestId}  /> : <TiPinOutline aria-label={`${employeeName}-unlocked`} data-testid={openLockTestId} />}
+          {isLockedRow ? 
+          <TiPin aria-label={`${employeeName}-locked`} data-testid={closedLockTestId}  /> : 
+          <TiPinOutline aria-label={`${employeeName}-unlocked`} data-testid={openLockTestId} />}
         </StyledButton>
       </Text>
     </StyledCard>

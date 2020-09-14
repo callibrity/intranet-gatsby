@@ -55,13 +55,13 @@ const ImageColumn = styled(Col)`
 `;
 
 const MetricsColumnTwo = styled(Col)`
-padding-left: 24px;
-padding-right: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 
 const MetricsColumnThree = styled(Col)`
-padding-left: 24px;
-padding-right: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 
 
