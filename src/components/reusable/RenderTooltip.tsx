@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip } from 'react-bootstrap';
+import Tooltip from 'react-bootstrap/Tooltip';
 import { OverlayInjectedProps } from 'react-bootstrap/Overlay';
 
 const RenderTooltip = (props: OverlayInjectedProps, updatedAt: string) => (
