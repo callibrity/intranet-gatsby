@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Img from 'gatsby-image';
-import Row from 'react-bootstrap/row';
+import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container'
 import { FixedImage } from '@globals/types';
 import styled from 'styled-components';
