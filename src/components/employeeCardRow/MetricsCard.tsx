@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  Col, Row, Card, OverlayTrigger,
-} from 'react-bootstrap';
-import { shadows } from '@material-ui/system';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import LineItem from './LineItem';
 import RenderTooltip from '../reusable/RenderTooltip';
 

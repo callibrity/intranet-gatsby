@@ -1,5 +1,6 @@
 import React from 'react';
-import { Dropdown, NavLink } from 'react-bootstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
+import NavLink from 'react-bootstrap/NavLink';
 import { reactChildren } from '@globals/types';
 
 const { Toggle, Menu, Item } = Dropdown;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 import { ImageQuery } from '@globals/types';
 import { graphql } from 'gatsby';
 import EmployeeSearch from '@components/accountManagerView/EmployeeSearch';

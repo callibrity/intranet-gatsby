@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { UserContext } from '@globals/contexts';
-import { Button } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 import { navigate } from 'gatsby';
 import { indexRoute, loginWelcomeMessage } from '@globals/constants';
 

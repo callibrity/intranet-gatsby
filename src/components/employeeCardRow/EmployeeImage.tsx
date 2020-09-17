@@ -2,11 +2,11 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Img from 'gatsby-image';
-import { Col, Row, Container } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container'
 import { FixedImage } from '@globals/types';
 import styled from 'styled-components';
 import { openLockTestId, closedLockTestId } from '@globals/constants';
-import { MdStar, MdStarBorder } from 'react-icons/md';
 import { TiPinOutline, TiPin } from "react-icons/ti";
 
 const { Title, Body, Text } = Card;
