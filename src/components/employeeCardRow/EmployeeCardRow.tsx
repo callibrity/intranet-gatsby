@@ -50,6 +50,7 @@ const CustomContainer = styled(Container)`
   display: flex;
   flex: 1;
   justify-content: center;
+  margin-top: 16px;
   margin-bottom: 16px;
 `;
 

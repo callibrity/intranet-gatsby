@@ -31,27 +31,33 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
 
   return (
     <>
-      <Accordion defaultActiveKey="0">
-        <Card border="light">
-          <Header className="text-right">
-            <Toggle as={Button} data-testid="toggle-button" variant="dark" eventKey="0">
-              {hideLockedCardsButtonText}
-            </Toggle>
-          </Header>
-          <Collapse eventKey="0" data-testid={'accordion'}>
-            <Body>
-              <Container fluid>
-                <Row xs={1} sm={1} md={1} lg={1} xl={2} className="justify-content-md-center">
-                  {lockedElements}
-                </Row>
-              </Container>
-            </Body>
-          </Collapse>
-        </Card>
-      </Accordion>
+      {
+        lockList.length ?
+          <>
+            <Accordion defaultActiveKey="0">
+              <Card border="light">
+                <Header className="text-right">
+                  <Toggle as={Button} data-testid="toggle-button" variant="dark" eventKey="0">
+                    {hideLockedCardsButtonText}
+                  </Toggle>
+                </Header>
+                <Collapse eventKey="0" data-testid={'accordion'}>
+                  <Body>
+                    <Container fluid>
+                      <Row xs={1} sm={1} md={1} lg={1} xl={2} className="justify-content-md-center">
+                        {lockedElements}
+                      </Row>
+                    </Container>
+                  </Body>
+                </Collapse>
+              </Card>
+            </Accordion>
+            <SeparateFavorites role="separator" className="align-self-center" />
+          </>
+          : null
+      }
       <Container fluid className="justify-content-md-center">
-      <SeparateFavorites role="separator" className="align-self-center" />
-        <Row xs={1} sm={1} md={1} lg={1} xl={2}  className="justify-content-md-center">
+        <Row xs={1} sm={1} md={1} lg={1} xl={2} className="justify-content-md-center">
           {searchElements}
         </Row>
       </Container>
