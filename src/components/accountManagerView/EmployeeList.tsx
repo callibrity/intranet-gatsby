@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import { EmployeeTypes, FixedImage } from '@globals/types';
 import useLockList from '@hooks/useLockList';
 import { getAllEmployeeMetrics } from '@api/serviceCalls';
-import { hideLockedCardsButtonText } from '@globals/constants';
+import { hideLockedCardsButtonText, showLockedCardsButtonText } from '@globals/constants';
 import { createEmployeeElements } from './createEmployeeElements';
 
 const { Header, Body } = Card;
@@ -21,13 +21,21 @@ interface PropTypes {
 
 const EmployeeList = ({ searchString, images }: PropTypes) => {
   const [employeeDataList, setEmployeeDataList] = useState<EmployeeTypes>([]);
+  const [buttonText, setButtonText] = useState(hideLockedCardsButtonText);
+
   const { lockList, lockToggle } = useLockList('employeeLockList');
+  const { lockedElements, searchElements } = createEmployeeElements(employeeDataList, lockList, lockToggle, searchString, images);
 
   useEffect(() => {
     getAllEmployeeMetrics(setEmployeeDataList, console.log);
   }, [])
 
-  const { lockedElements, searchElements } = createEmployeeElements(employeeDataList, lockList, lockToggle, searchString, images);
+
+  function toggleAccordion() {
+    setButtonText(
+      buttonText === hideLockedCardsButtonText ? showLockedCardsButtonText : hideLockedCardsButtonText
+    );
+  }
 
   return (
     <>
@@ -37,8 +45,8 @@ const EmployeeList = ({ searchString, images }: PropTypes) => {
             <Accordion defaultActiveKey="0">
               <Card border="light">
                 <Header className="text-right">
-                  <Toggle as={Button} data-testid="toggle-button" variant="dark" eventKey="0">
-                    {hideLockedCardsButtonText}
+                  <Toggle as={Button} onClick={toggleAccordion} data-testid="toggle-button" variant="dark" eventKey="0">
+                    {buttonText}
                   </Toggle>
                 </Header>
                 <Collapse eventKey="0" data-testid={'accordion'}>
