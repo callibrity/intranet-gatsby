@@ -173,6 +173,8 @@ export const loginRoute = '/login';
 
 export const errorRoute = '/error';
 
+export const notFoundRoute = '/404';
+
 export const developerString = 'Developer';
 
 export const accountManagerString = 'Account Manager';

@@ -16,7 +16,7 @@ describe('getRequest function', () => {
   it('should call axios with the request string', async () => {
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve({ data: 7 }));
 
-    await getRequest('test', mockOnSuccess, mockOnFail)
+    await getRequest('test', mockOnSuccess)
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith('test', expect.anything());
@@ -24,7 +24,7 @@ describe('getRequest function', () => {
 
   it('should call onSuccess function with data on success', async () => {
 
-    await getRequest('test', mockOnSuccess, mockOnFail)
+    await getRequest('test', mockOnSuccess)
 
     expect(mockOnSuccess).toHaveBeenCalledTimes(1);
     expect(mockOnSuccess).toHaveBeenCalledWith(7);
@@ -34,7 +34,7 @@ describe('getRequest function', () => {
     const fullError = new Error('errorMessage');
     mockedAxios.get.mockImplementationOnce(() => Promise.reject(fullError));
 
-    await getRequest('test', mockOnSuccess, mockOnFail)
+    await getRequest('test', mockOnSuccess)
 
     expect(mockOnFail).toHaveBeenCalledTimes(1);
     expect(mockOnFail).toHaveBeenCalledWith(fullError);
@@ -44,7 +44,7 @@ describe('getRequest function', () => {
 describe('getEmployeeMetrics function', () => {
   it('should call getRequest with the correct string', async () => {
 
-    await getEmployeeMetrics(mockOnSuccess, mockOnFail);
+    await getEmployeeMetrics(mockOnSuccess);
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith('/api/employee/hours', expect.anything());
@@ -55,7 +55,7 @@ describe('getEmployeeMetrics function', () => {
 describe('getEmployeeMetrics function', () => {
   it('should call getRequest with the correct string', async () => {
 
-    await getEmployeeMetrics(mockOnSuccess, mockOnFail);
+    await getEmployeeMetrics(mockOnSuccess);
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith('/api/employee/hours', expect.anything());
@@ -66,7 +66,7 @@ describe('getEmployeeMetrics function', () => {
 describe('getAllEmployeeMetrics function', () => {
   it('should call getRequest with the correct string', async () => {
 
-    await getAllEmployeeMetrics(mockOnSuccess, mockOnFail);
+    await getAllEmployeeMetrics(mockOnSuccess);
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith('/api/employee/hours/all', expect.anything());
@@ -77,7 +77,7 @@ describe('getAllEmployeeMetrics function', () => {
 describe('getAllEmployeeDetails function', () => {
   it('should call getRequest with the correct string', async () => {
 
-    await getEmployeeDetails(mockOnSuccess, mockOnFail);
+    await getEmployeeDetails(mockOnSuccess);
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith('/api/employee', expect.anything());
