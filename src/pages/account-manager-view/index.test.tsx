@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import Index from './index';
 import { mockImageQuery, mockAllEmployeeList } from '@globals/testConstants';
-import { searchBarPlaceholder, hideLockedCardsButtonText, billableTitle, growthTitle } from '@globals/constants';
+import { searchBarPlaceholder, hideLockedCardsButtonText, showLockedCardsButtonText, billableTitle, growthTitle } from '@globals/constants';
 import '@testing-library/jest-dom'
 
 const queryImageCardList = () => screen.queryAllByRole('img', { name: /Image of/i });
@@ -71,12 +71,14 @@ test('Account manager view', async () => {
   expect(separationBar).toBeInstanceOf(HTMLElement);
 
 
-  // it should collapse the locked accordion on button click
+  // it should collapse the locked accordion on button click and change button text
   const acc = screen.getByTestId('accordion');
   expect(acc).toBeInstanceOf(HTMLElement);
   expect(acc).toHaveClass('collapse show');
 
   userEvent.click(hideLockedCardsButton);
+  const showLockedCardsButton = screen.queryByRole('button', { name: showLockedCardsButtonText });
+  expect(showLockedCardsButton).toBeTruthy;
 
   expect(acc).toHaveClass('collapsing');
 })
