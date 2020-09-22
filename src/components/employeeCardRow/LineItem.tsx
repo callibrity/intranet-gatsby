@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import {  Col, Card } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 
 export const LineItem = ({ label, value } : {label: string, value: string | number}) => (
   <Col className="text-center px-3 py-3">

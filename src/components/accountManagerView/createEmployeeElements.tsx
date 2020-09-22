@@ -1,7 +1,7 @@
 import React from 'react';
 import { FixedImage, EmployeeTypes, reactChildren } from '@globals/types';
 import EmployeeCardRow from '@components/employeeCardRow/EmployeeCardRow';
-import { Col } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
 
 export const createEmployeeElements = (
   employeeDataList: EmployeeTypes, lockList: string[], lockToggle: Function, searchString: string, images: FixedImage[],

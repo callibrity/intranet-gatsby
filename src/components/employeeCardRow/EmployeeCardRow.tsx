@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { EmployeeMetricTypes, FixedImage } from '@globals/types';
+import { EmployeeMetricTypes } from '@globals/types';
 import { billableTitle, growthTitle } from '@globals/constants';
-import { Row, Container, Col, Card } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 import { billableConversion, growthConversion } from './helperFunctions';
 import EmployeeImage from './EmployeeImage';
 import MetricsCard from './MetricsCard';
