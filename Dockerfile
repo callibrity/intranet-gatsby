@@ -1,4 +1,4 @@
-FROM node:14-alpine as build
+FROM node:14 as build
 
 WORKDIR /app
 COPY ["package.json", "package-lock.json", "./"]
@@ -7,7 +7,7 @@ RUN npm ci --only=production
 COPY [".", "./"]
 RUN npm run build
 
-FROM nginx:1.19-alpine
+FROM nginx:1.19
 COPY --from=build /app/public /usr/share/nginx/html
 COPY ["/config/nginx/default.conf.template", "/etc/nginx/templates/default.conf.template"]
 COPY ["/config/nginx/nginx.conf", "/etc/nginx/nginx.conf"]
