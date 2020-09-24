@@ -9,12 +9,12 @@ import '@testing-library/jest-dom'
 const queryImageCardList = () => screen.queryAllByRole('img', { name: /Image of/i });
 const queryBillableCardList = () => screen.queryAllByText(billableTitle);
 const queryGrowthCardList = () => screen.queryAllByText(growthTitle);
-const queryCurrentHours = () => screen.getAllByText(/current hours:/i);
-const queryCurrentTarget = () => screen.getAllByText(/current target:/i);
-const queryTotalTarget = () => screen.getAllByText(/total target:/i);
-const queryHoursUsed = () => screen.getAllByText(/hours used:/i);
-const queryHoursRemaining = () => screen.getAllByText(/hours remaining:/i);
-const queryTotalGrowth = () => screen.getAllByText(/total growth:/i);
+const queryCurrentHours = () => screen.getAllByText('Current Hours');
+const queryCurrentTarget = () => screen.getAllByText('Current Target');
+const queryTotalTarget = () => screen.getAllByText('Total Target');
+const queryHoursUsed = () => screen.getAllByText('Hours Used');
+const queryHoursRemaining = () => screen.getAllByText('Hours Left');
+const queryTotalGrowth = () => screen.getAllByText('Total Growth');
 
 test('Account manager view', async () => {
   // it should initially render the search bar, hide locked cards button, and separation bar
