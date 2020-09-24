@@ -183,6 +183,8 @@ export const searchBarPlaceholder = 'Type at least two characters to pull up dev
 
 export const hideLockedCardsButtonText = 'Hide Locked Cards';
 
+export const showLockedCardsButtonText = 'Show Locked Cards';
+
 export const employeeMetricsString = '/api/employee/hours';
 
 export const employeeDetailsString = '/api/employee';
