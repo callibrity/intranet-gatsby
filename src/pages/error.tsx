@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const NotFoundPage = () => (
-  <ErrorMessage>
-    <h1>404 - Not Found</h1>
-    <hr></hr>
-    <p>Bummer! This doesn't seem to exist right now :(</p>
-  </ErrorMessage>
+const ErrorPage = () => (
+    <ErrorMessage>
+        <h1>Something has gone awry...</h1>
+        <hr></hr>
+        <p>We're fixing the problem now! Check back again soon.</p>
+    </ErrorMessage>
 );
 
-export default NotFoundPage;
+export default ErrorPage;
 
 const ErrorMessage = styled.div`
     display: block;

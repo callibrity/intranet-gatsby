@@ -2,8 +2,9 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import Index from './index';
 import axios from 'axios';
+import { navigate } from 'gatsby';
 import { mockEmployeeMetricsProps } from '@globals/testConstants';
-import { billableTitle } from '@globals/constants';
+import { billableTitle, errorRoute, notFoundRoute } from '@globals/constants';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -35,12 +36,24 @@ describe('Developer view component', () => {
     expect(screen.queryByText(billableTitle)).toBeNull();
   });
 
-  it('should render no data when 404 error returned from backend', async () => {
-    mockedAxios.get.mockImplementationOnce(() => Promise.reject({ message: 'data not found', response: {status: 404}}));
+  it('should redirect to 404 error page when url path does not exist', async () => {
+    mockedAxios.get.mockImplementationOnce(() => Promise.reject({response: {status: 404}}));
     render(<Index />);
 
     await waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
-    expect(screen.queryAllByText('No Data')).toHaveLength(6);
+
+    expect(navigate).toHaveBeenCalledTimes(1);
+    expect(navigate).toHaveBeenCalledWith(notFoundRoute);
+  });
+
+  it('should redirect to "something went wrong" error page when an error is thrown', async () => {
+    mockedAxios.get.mockImplementationOnce(() => Promise.reject({response: {status: 502}}));
+    render(<Index />);
+
+    await waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
+
+    expect(navigate).toHaveBeenCalledTimes(1);
+    expect(navigate).toHaveBeenCalledWith(errorRoute);
   });
 
   it('should render with employeeMetrics', async () => {
