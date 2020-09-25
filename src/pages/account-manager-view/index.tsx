@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
-import EmployeeSearch from '@components/accountManagerView/EmployeeSearch';
+import Container from 'react-bootstrap/Container';
 import { ImageQuery } from '@globals/types';
-
 import { graphql } from 'gatsby';
+import EmployeeSearch from '@components/accountManagerView/EmployeeSearch';
+
 import EmployeeList from '@components/accountManagerView/EmployeeList';
 
 const AccountManagerView = ({ data }: ImageQuery) => {
@@ -12,15 +12,14 @@ const AccountManagerView = ({ data }: ImageQuery) => {
   const images = data.mugs.nodes.map((node) => node.childImageSharp.fixed);
 
   return (
-    <>
-      <Container style={{ marginBottom: 16 }}>
-        <EmployeeSearch text={searchString} setText={setSearchString} />
-      </Container>
+    <Container fluid style={{ marginBottom: 16 }}>
+      <EmployeeSearch text={searchString} setText={setSearchString} />
+
       <EmployeeList
         searchString={searchString}
         images={images}
       />
-    </>
+    </Container>
   );
 };
 
@@ -47,4 +46,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

@@ -15,7 +15,7 @@ describe('MetricsCard component', () => {
   it('should display each of the metrics', () => {
     render(<MetricsCard {...mockMetricsCardProps} />);
 
-    const metricsList = mockMetricsCardProps.metrics.map(({ label }) => screen.queryByText(`${label}:`));
+    const metricsList = mockMetricsCardProps.metrics.map(({ label }) => screen.queryByText(`${label}`));
 
     metricsList.forEach(metric => expect(metric).toBeInstanceOf(HTMLElement));
   })
