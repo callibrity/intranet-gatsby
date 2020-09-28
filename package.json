@@ -58,7 +58,6 @@
     "@types/webpack-env": "^1.15.3",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
-    "babel-jest": "^26.3.0",
     "babel-preset-gatsby": "^0.5.10",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",
@@ -92,7 +91,8 @@
     "clean": "gatsby clean",
     "test": "jest --runInBand",
     "test:coverage": "jest --coverage",
-    "lint": "eslint src/**/*.js*"
+    "lint": "eslint src/**/*.js*",
+    "test:pact": "CI=true react-scripts test pact.spec.js"
   },
   "repository": {
     "type": "git",

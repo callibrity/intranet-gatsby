@@ -3,7 +3,7 @@ import { pactWith, getProviderBaseUrl } from 'jest-pact';
 import { Matchers } from '@pact-foundation/pact';
 import { setJwt } from '@api/api';
 import {
-  getEmployeeMetrics, getAllEmployeeMetrics, getEmployeeDetails, getRequest,
+  getEmployeeMetrics, getAllEmployeeMetrics, getEmployeeDetails, getRequest, getEmployee,
 } from '@api/serviceCalls';
 import { employeeDetailsString } from '@globals/constants';
 
@@ -83,54 +83,59 @@ describe('getAllEmployeeDetails function', () => {
 });
 
 // begin pact testing
-pactWith({ consumer: 'MyConsumer', provider: 'MyProvider' }, (provider) => {
-  describe('Employee data api', () => {
-    // set jwt as it is used in employee call to retrieve employee data
-    // it should be expected as a minimum response from the back end service
-    setJwt('MockJWTTokenForEmployeeCall');
-    const JWT_TOKEN = axios.defaults.headers.common.Authorization;
+// pactWith({ consumer: 'MyConsumer', provider: 'MyProvider' }, (provider) => {
+//   describe('Employee data api', () => {
+//     // set jwt as it is used in employee call to retrieve employee data
+//     // it should be expected as a minimum response from the back end service
+//     setJwt('MockJWTTokenForEmployeeCall');
+//     let client;
+//     beforeEach(() => {
+//       client = getEmployee(provider.mockService.baseUrl)
+//     });
+//     // here is the mock you are anticipating from a successful API call
+//     // the same mock should be used in the component tests that impact rendering
+//     const EMPLOYEE_DATA = {
+//       username: 'testUsername',
+//       userEmail: 'testUserEmail',
+//       userRole: 'testUserRole',
+//     };
 
-    // here is the mock you are anticipating from a successful API call
-    // the same mock should be used in the component tests that impact rendering
-    const EMPLOYEE_DATA = {
-      username: 'testUsername',
-      userEmail: 'testUserEmail',
-      userRole: 'testUserRole',
-    };
+//     const employeeSuccessResponse = {
+//       status: 200,
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: JWT_TOKEN,
+//       },
+//       body: EMPLOYEE_DATA,
+//     };
 
-    const employeeSuccessResponse = {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: JWT_TOKEN,
-      },
-      body: EMPLOYEE_DATA,
-    };
+//     const employeeDataRequest = {
+//       uponReceiving: 'a get request for this employees user information',
+//       withRequest: {
+//         method: 'GET',
+//         path: '/employee',
+//         headers: {
+//           Accept: 'application/json',
+//         },
+//       },
+//     };
+//     beforeEach(() => {
+//       const interaction = {
+//         state: 'I have user data for the requested user',
+//         ...employeeDataRequest,
+//         willRespondWith: employeeSuccessResponse,
+//       };
+//       return provider.addInteraction(interaction);
+//     });
 
-    const employeeDataRequest = {
-      uponReceiving: 'a get request for this employees user information',
-      withRequest: {
-        method: "GET",
-        path: '/employee',
-        headers: {
-          Accept: "application/json",
-        },
-      },
-    };
-    beforeEach(() => {
-      const interaction = {
-        state: 'I have user data for the requested user',
-        ...employeeDataRequest,
-        willRespondWith: employeeSuccessResponse,
-      };
-      return provider.addInteraction(interaction);
-    });
+//     // add expectations
+//     let details;
+//     const expectEmployeeDetails = (data) => details = data;
 
-    // add expectations
-    let details;
-    const expectEmployeeDetails = (data) => details = data;
-    
-    
-    it('returns a successful body', () => getEmployeeDetails(expectEmployeeDetails, console.log).then(expect(details).toEqual(EMPLOYEE_DATA)));
-  });
-});
+//     it('returns a successful body', () => getEmployee(
+//       {url: provider.mockService.baseUrl}
+//     ).then((data) => {
+//       expect(data).toEqual(EMPLOYEE_DATA);
+//     }));
+//   });
+// });
