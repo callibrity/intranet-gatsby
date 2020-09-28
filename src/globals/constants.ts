@@ -43,14 +43,14 @@ export const dummyEmployeeData: ({ employeeName: string, employeeId: string, upd
     employeeName: 'Collin Johnson',
     employeeId: '99999',
     billable: {
-      currentHours: 7,
-      currentTarget: 9,
-      totalTarget: 50,
+      currentHours: 7000,
+      currentTarget: 9000,
+      totalTarget: 5000,
     },
     growth: {
-      hoursUsed: 4,
-      hoursRemaining: -1,
-      totalGrowth: 3,
+      hoursUsed: 4000,
+      hoursRemaining: -1000,
+      totalGrowth: 3000,
     },
   },
   {
@@ -71,14 +71,14 @@ export const dummyEmployeeData: ({ employeeName: string, employeeId: string, upd
     employeeName: 'Allen Hully',
     employeeId: '12346',
     billable: {
-      currentHours: 7,
-      currentTarget: 9,
-      totalTarget: 50,
+      currentHours: 7000,
+      currentTarget: 9000,
+      totalTarget: 5000,
     },
     growth: {
-      hoursUsed: 4,
-      hoursRemaining: -1,
-      totalGrowth: 3,
+      hoursUsed: 4000,
+      hoursRemaining: -1000,
+      totalGrowth: 3000,
     },
   },
   {
@@ -171,6 +171,10 @@ export const accountManagerRoute = '/account-manager-view';
 
 export const loginRoute = '/login';
 
+export const errorRoute = '/error';
+
+export const notFoundRoute = '/404';
+
 export const developerString = 'Developer';
 
 export const accountManagerString = 'Account Manager';
@@ -182,6 +186,8 @@ export const searchBarAltText = 'search bar';
 export const searchBarPlaceholder = 'Type at least two characters to pull up developers';
 
 export const hideLockedCardsButtonText = 'Hide Locked Cards';
+
+export const showLockedCardsButtonText = 'Show Locked Cards';
 
 export const employeeMetricsString = '/api/employee/hours';
 

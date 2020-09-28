@@ -7,15 +7,8 @@ import { billableMissing, growthMissing } from '@globals/constants';
 const DeveloperView = () => {
   const [employeeMetrics, setEmployeeMetrics] = useState<EmployeeMetricTypes>();
 
-  const setNoData = (err: any) => {
-    console.log(err.message);
-    if (err.response.status === 404) {
-      setEmployeeMetrics({billable: billableMissing, growth: growthMissing, updatedAt: 'n/a'});
-    }
-  }
-
   useEffect(() => {
-    getEmployeeMetrics(setEmployeeMetrics, setNoData);
+    getEmployeeMetrics(setEmployeeMetrics);
   }, []);
 
   return (

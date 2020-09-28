@@ -1,9 +1,6 @@
 import axios from 'axios';
 import { navigate } from 'gatsby';
-import {
-  employeeMetricsString, employeeDetailsString, allEmployeeMetricsString, errorRoute, notFoundRoute,
-} from '@globals/constants';
-
+import { employeeMetricsString, employeeDetailsString, allEmployeeMetricsString, errorRoute, notFoundRoute } from '@globals/constants';
 export const getRequest = async (requestString: string, onSuccess: Function) => {
   await axios
     .get(requestString, { headers: { Authorization: `${axios.defaults.headers.common.Authorization}` } })
@@ -13,7 +10,8 @@ export const getRequest = async (requestString: string, onSuccess: Function) => 
     .catch((err) => {
       if (err.response.status === 404) {
         navigate(notFoundRoute);
-      } else {
+      }
+      else {
         navigate(errorRoute);
       }
     });
