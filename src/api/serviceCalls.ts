@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { navigate } from 'gatsby';
-import { employeeMetricsString, employeeDetailsString, allEmployeeMetricsString, errorRoute, notFoundRoute } from '@globals/constants';
+import {
+  employeeMetricsString, employeeDetailsString, allEmployeeMetricsString, errorRoute, notFoundRoute,
+} from '@globals/constants';
+
 export const getRequest = async (requestString: string, onSuccess: Function) => {
   await axios
     .get(requestString, { headers: { Authorization: `${axios.defaults.headers.common.Authorization}` } })
@@ -10,8 +13,7 @@ export const getRequest = async (requestString: string, onSuccess: Function) => 
     .catch((err) => {
       if (err.response.status === 404) {
         navigate(notFoundRoute);
-      }
-      else {
+      } else {
         navigate(errorRoute);
       }
     });
@@ -23,13 +25,15 @@ export const getEmployeeDetails = async (onSuccess: Function) => getRequest(empl
 
 export const getAllEmployeeMetrics = async (onSuccess: Function) => getRequest(allEmployeeMetricsString, onSuccess);
 
-export const getEmployee = async (endpoint) => {
-  const url=endpoint.url
-  await axios
-    .get(
-      endpoint, 
-      { headers: { Authorization: `${axios.defaults.headers.common.Authorization}` } }
-      )
+export const getEmployee = (endpoint) => {
+  console.log('axios default headers ', axios.defaults.headers.common.Authorization);
+  const url = endpoint.url
+  return axios.request({
+    method: 'GET',
+    baseURL: url,
+    url: '/employee',
+    headers: { Authorization: `${axios.defaults.headers.common.Authorization}` },
+  })
     .then((res) => res.data)
     .catch((err) => {
       if (err.response.status === 404) {

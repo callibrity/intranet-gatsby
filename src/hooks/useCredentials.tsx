@@ -17,16 +17,16 @@ const useCredentials = () => {
       setJwt(tokenId);
       setUsername(name);
       setUserEmail(email);
-      getEmployeeDetails(({ role }: { role: string }) => setUserRole(role), console.log);
+      getEmployeeDetails(({ role }: { role: string }) => setUserRole(role));
     },
-    onFailure: () => console.log("sign in failed"),
+    onFailure: () => console.log('sign in failed'),
     onAutoLoadFinished: (signedIn) => {
       setLoaded(true);
       if (!signedIn) {
         navigate(loginRoute);
       }
     },
-    isSignedIn: true
+    isSignedIn: true,
   });
 
   const { signOut } = useGoogleLogout({
@@ -40,7 +40,9 @@ const useCredentials = () => {
     },
   });
 
-  return { username, userEmail, userRole, signIn, signOut, loaded }
-}
+  return {
+    username, userEmail, userRole, signIn, signOut, loaded,
+  };
+};
 
 export default useCredentials;

@@ -4,7 +4,6 @@ import { Matchers } from '@pact-foundation/pact';
 import { setJwt } from '@api/api';
 import {
   getEmployeeMetrics, getAllEmployeeMetrics, getEmployeeDetails, getRequest, getEmployee,
-  getEmployeeMetrics, getAllEmployeeMetrics, getEmployeeDetails, getRequest,
 } from '@api/serviceCalls';
 import { employeeDetailsString, errorRoute, notFoundRoute } from '@globals/constants';
 

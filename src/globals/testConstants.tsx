@@ -179,3 +179,4 @@ export const mockGoogleLoginOnSuccessResponse = {
     email: 'testEmail'
   }
 }
+
