@@ -11,9 +11,11 @@ const { Append, Text } = InputGroup;
 interface EmployeeSearchProps {
   text: string;
   setText: any;
+  showAll: boolean;
+  setShowAll: any;
 }
 
-const EmployeeSearch = ({ text, setText }: EmployeeSearchProps) => (
+const EmployeeSearch = ({ text, setText, showAll, setShowAll }: EmployeeSearchProps) => (
   <InputGroup>
     <IconContext.Provider value={{ color: 'grey' }}>
       <FormControl
@@ -21,7 +23,10 @@ const EmployeeSearch = ({ text, setText }: EmployeeSearchProps) => (
         alt={searchBarAltText}
         value={text}
         placeholder={searchBarPlaceholder}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => {
+          setText(e.target.value);
+          setShowAll(false);
+        }}
         style={{ height: '100%', borderTopLeftRadius: 100, borderBottomLeftRadius: 100 }}
       />
       <Append>
