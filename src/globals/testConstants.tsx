@@ -41,6 +41,18 @@ export const mockImageQuery = {
           }
         }
       },
+      {
+        "childImageSharp": {
+          "fixed": {
+            "originalName": "AnotherId.jpg",
+            "base64": "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUDBAH/xAAXAQEBAQEAAAAAAAAAAAAAAAACAwEE/9oADAMBAAIQAxAAAAHWfS55vpejkPQ6hREV/8QAGRAAAwEBAQAAAAAAAAAAAAAAAAEDAhIy/9oACAEBAAEFAra5Ja32X5RJLMxvoRDx/8QAFhEAAwAAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/Aaj/xAAYEQACAwAAAAAAAAAAAAAAAAAAAQIQMf/aAAgBAgEBPwGkS0//xAAbEAABBAMAAAAAAAAAAAAAAAABAAIQESExQf/aAAgBAQAGPwJxWXWDDrKBPYs7n//EABsQAQACAgMAAAAAAAAAAAAAAAEAERAxIVGh/9oACAEBAAE/Iapl1HjuBhpSBlAIriGoittO5pF7n//aAAwDAQACAAMAAAAQ8Ne9/8QAGBEBAQADAAAAAAAAAAAAAAAAAQAQETH/2gAIAQMBAT8QATeG4v/EABcRAQEBAQAAAAAAAAAAAAAAAAEhABD/2gAIAQIBAT8QCM7N7//EABwQAQACAwEBAQAAAAAAAAAAAAEAESExYUFxgf/aAAgBAQABPxBjRXQfW6I522kdPDyBZBi6il38ihOCz+wWEYtYxa25mRG07ExvAw5P/9k=",
+            "width": 133,
+            "height": 124,
+            "src": "/static/8a08feec982d6f56708e2d62d3bbb018/38306/12349.jpg",
+            "srcSet": "/static/8a08feec982d6f56708e2d62d3bbb018/38306/12349.jpg 1x,\n/static/8a08feec982d6f56708e2d62d3bbb018/f836f/12349.jpg 1.5x,\n/static/8a08feec982d6f56708e2d62d3bbb018/910a9/12349.jpg 2x"
+          }
+        }
+      },
     ]
   },
   "mugPlaceholder": {
@@ -147,6 +159,12 @@ export const mockAllEmployeeList = [
     ...mockEmployeeDetails,
     employeeId: "testEmployeeId2",
     employeeName: "testEmployeeName2"
+  },
+  {
+    ...mockEmployeeMetricsProps,
+    ...mockEmployeeDetails,
+    employeeId: "AnotherId",
+    employeeName: "AnotherName"
   }
 ]
 

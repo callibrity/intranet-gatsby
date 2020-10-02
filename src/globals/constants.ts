@@ -189,6 +189,8 @@ export const hideLockedCardsButtonText = 'Hide Locked Cards';
 
 export const showLockedCardsButtonText = 'Show Locked Cards';
 
+export const showAllButtonText = 'Show All';
+
 export const employeeMetricsString = '/api/employee/hours';
 
 export const employeeDetailsString = '/api/employee';

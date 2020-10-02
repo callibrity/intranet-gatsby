@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { ImageQuery } from '@globals/types';
+import { showAllButtonText } from '@globals/constants';
 import { graphql } from 'gatsby';
 import EmployeeSearch from '@components/accountManagerView/EmployeeSearch';
 
@@ -17,13 +20,18 @@ const AccountManagerView = ({ data }: ImageQuery) => {
 
   return (
     <Container fluid style={{ marginBottom: 16 }}>
-      <EmployeeSearch
-        text={searchString}
-        setText={setSearchString}
-        showAll={showAll}
-        setShowAll={setShowAll} />
-      <Button data-testid="show-all-button" variant="dark" onClick={showAllClick}>Show All</Button>
-
+      <Row>
+        <Col>
+          <EmployeeSearch
+            text={searchString}
+            setText={setSearchString}
+            showAll={showAll}
+            setShowAll={setShowAll} />
+        </Col>
+        <Col md="auto">
+          <Button data-testid="show-all-button" variant="dark" onClick={showAllClick}>{showAllButtonText}</Button>
+        </Col>
+      </Row>
       <EmployeeList
         searchString={searchString}
         images={images}

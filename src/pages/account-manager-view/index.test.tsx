@@ -20,11 +20,13 @@ test('Account manager view', async () => {
   // it should initially render the search bar, do not show the hide locked cards button and separation bar
   render(<Index data={mockImageQuery} />);
 
-  const searchBar = await screen.findByRole('textbox', { name: searchBarPlaceholder })
+  const searchBar = await screen.findByRole('textbox', { name: searchBarPlaceholder });
+  const showAllButton = screen.getByTestId('show-all-button');
   let hideLockedCardsButton = screen.queryByRole('button', { name: hideLockedCardsButtonText });
   let separationBar = screen.queryByRole('separator');
 
   expect(searchBar).toBeInstanceOf(HTMLInputElement);
+  expect(showAllButton).toBeInstanceOf(HTMLButtonElement);
   expect(hideLockedCardsButton).toBeNull;
   expect(separationBar).toBeNull;
 
@@ -36,11 +38,20 @@ test('Account manager view', async () => {
   // it should display the correct number of image cards after two characters are added to the search bar
   userEvent.type(searchBar, 'te');
 
-  const expectedRowNumber = mockAllEmployeeList.length;
+  const expectedResultQuantity = 2;
 
-  expect(queryImageCardList()).toHaveLength(expectedRowNumber);
-  expect(queryBillableCardList()).toHaveLength(expectedRowNumber);
-  expect(queryGrowthCardList()).toHaveLength(expectedRowNumber);
+  expect(queryImageCardList()).toHaveLength(expectedResultQuantity);
+  expect(queryBillableCardList()).toHaveLength(expectedResultQuantity);
+  expect(queryGrowthCardList()).toHaveLength(expectedResultQuantity);
+
+  // it should show all cards after clicking "Show All" button
+  userEvent.click(showAllButton);
+
+  const expectedTotalQuantity = mockAllEmployeeList.length;
+
+  expect(queryImageCardList()).toHaveLength(expectedTotalQuantity);
+  expect(queryBillableCardList()).toHaveLength(expectedTotalQuantity);
+  expect(queryGrowthCardList()).toHaveLength(expectedTotalQuantity);
 
   // it should display the image cards with their name and image
   const firstEmployeeName = screen.getByText(mockAllEmployeeList[0].employeeName);
@@ -52,12 +63,12 @@ test('Account manager view', async () => {
   expect(lockButton).toBeInstanceOf(HTMLButtonElement);
 
   // it should display metric info
-  expect(queryCurrentHours()).toHaveLength(expectedRowNumber);
-  expect(queryCurrentTarget()).toHaveLength(expectedRowNumber);
-  expect(queryTotalTarget()).toHaveLength(expectedRowNumber);
-  expect(queryHoursUsed()).toHaveLength(expectedRowNumber);
-  expect(queryHoursRemaining()).toHaveLength(expectedRowNumber);
-  expect(queryTotalGrowth()).toHaveLength(expectedRowNumber);
+  expect(queryCurrentHours()).toHaveLength(expectedTotalQuantity);
+  expect(queryCurrentTarget()).toHaveLength(expectedTotalQuantity);
+  expect(queryTotalTarget()).toHaveLength(expectedTotalQuantity);
+  expect(queryHoursUsed()).toHaveLength(expectedTotalQuantity);
+  expect(queryHoursRemaining()).toHaveLength(expectedTotalQuantity);
+  expect(queryTotalGrowth()).toHaveLength(expectedTotalQuantity);
 
   // it should toggle the lock button
   userEvent.click(lockButton);
