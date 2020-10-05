@@ -16,6 +16,7 @@ interface PropTypes {
   employeeName?: string,
   isLockedRow?: boolean,
   lockToggle?: Function,
+  img: any,
 }
 
 const EmployeeCardRow = ({

@@ -17,17 +17,18 @@ const { Toggle, Collapse } = Accordion;
 interface PropTypes {
   searchString: string,
   images: FixedImage[],
+  showAll: boolean,
 }
 
-const EmployeeList = ({ searchString, images }: PropTypes) => {
+const EmployeeList = ({ searchString, images, showAll }: PropTypes) => {
   const [employeeDataList, setEmployeeDataList] = useState<EmployeeTypes>([]);
   const [buttonText, setButtonText] = useState(hideLockedCardsButtonText);
 
   const { lockList, lockToggle } = useLockList('employeeLockList');
-  const { lockedElements, searchElements } = createEmployeeElements(employeeDataList, lockList, lockToggle, searchString, images);
+  const { lockedElements, searchElements } = createEmployeeElements(employeeDataList, lockList, lockToggle, searchString, images, showAll);
 
   useEffect(() => {
-    getAllEmployeeMetrics(setEmployeeDataList, console.log);
+    getAllEmployeeMetrics(setEmployeeDataList);
   }, [])
 
 

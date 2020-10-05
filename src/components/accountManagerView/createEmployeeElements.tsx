@@ -4,7 +4,7 @@ import EmployeeCardRow from '@components/employeeCardRow/EmployeeCardRow';
 import Col from 'react-bootstrap/Col';
 
 export const createEmployeeElements = (
-  employeeDataList: EmployeeTypes, lockList: string[], lockToggle: Function, searchString: string, images: FixedImage[],
+  employeeDataList: EmployeeTypes, lockList: string[], lockToggle: Function, searchString: string, images: FixedImage[], showAll: boolean,
 )
   : { lockedElements: reactChildren[], searchElements: reactChildren[] } => {
   const placeholderImage = images.find((image) => image.originalName === 'mug-placeholder.png');
@@ -16,7 +16,10 @@ export const createEmployeeElements = (
       billable, growth, updatedAt, employeeId, employeeName
     } = developer;
     const isLocked = lockList.includes(employeeId);
-    const isSearched = searchString.length > 1 && employeeName.toLowerCase().includes(searchString.toLowerCase());
+    let isSearched = true;
+    if (!showAll) {
+      isSearched = searchString.length > 1 && employeeName.toLowerCase().includes(searchString.toLowerCase());
+    }
     if (isLocked || isSearched) {
       const img = images.find((image) => image.originalName === `${employeeId}.jpg`) || placeholderImage;
       const EmployeeElement = (
