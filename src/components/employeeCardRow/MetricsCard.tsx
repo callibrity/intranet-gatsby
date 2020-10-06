@@ -14,7 +14,7 @@ interface PropTypes {
 }
 
 const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
-  const metricsElements = metrics.map(({ label, value }) => <LineItem label={label} value={value} />);
+  const metricsElements = metrics.map(({ label, value }) => <LineItem label={label} value={value} key={label + value} />);
   return (
     <OverlayTrigger
       placement="bottom"
@@ -25,7 +25,7 @@ const MetricsCard = ({ metrics, updatedAt, title }: PropTypes) => {
         <span>
           <Row>
             <Col xs={12} gutters={1}>
-              <h3 style={{marginLeft: '8px', marginTop: '16px' }}>{title}</h3>
+              <h3 style={{ marginLeft: '8px', marginTop: '16px' }}>{title}</h3>
             </Col>
           </Row>
           <Row xs={1} sm={1} md={1} lg={1} xl={1} className="justify-content-md-center mt-2">

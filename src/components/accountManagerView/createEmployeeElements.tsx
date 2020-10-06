@@ -23,9 +23,8 @@ export const createEmployeeElements = (
     if (isLocked || isSearched) {
       const img = images.find((image) => image.originalName === `${employeeId}.jpg`) || placeholderImage;
       const EmployeeElement = (
-        <Col>
+        <Col key={employeeId}>
           <EmployeeCardRow
-            key={employeeId}
             employeeMetrics={{ billable, growth, updatedAt }}
             employeeId={employeeId}
             employeeName={employeeName}
