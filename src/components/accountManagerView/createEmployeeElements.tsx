@@ -36,7 +36,8 @@ export const createEmployeeElements = (
       );
       if (isLocked) {
         lockedElements.push(EmployeeElement);
-      } else {
+      }
+      if (isSearched) {
         searchElements.push(EmployeeElement);
       }
     }

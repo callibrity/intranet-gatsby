@@ -56,11 +56,11 @@ test('Account manager view', async () => {
   // it should display the image cards with their name and image
   const firstEmployeeName = screen.getByText(mockAllEmployeeList[0].employeeName);
   const firstEmployeeImage = screen.getByRole('img', { name: `Image of ${mockAllEmployeeList[0].employeeName}` })
-  let lockButton = screen.getByRole('button', { name: `${mockAllEmployeeList[0].employeeName}-unlocked` });
+  let lockButton = screen.getAllByRole('button', { name: `${mockAllEmployeeList[0].employeeName}-unlocked` });
 
   expect(firstEmployeeName).toBeInstanceOf(HTMLElement);
   expect(firstEmployeeImage).toBeInstanceOf(HTMLImageElement);
-  expect(lockButton).toBeInstanceOf(HTMLButtonElement);
+  expect(lockButton[0]).toBeInstanceOf(HTMLButtonElement);
 
   // it should display metric info
   expect(queryCurrentHours()).toHaveLength(expectedTotalQuantity);
@@ -71,9 +71,9 @@ test('Account manager view', async () => {
   expect(queryTotalGrowth()).toHaveLength(expectedTotalQuantity);
 
   // it should toggle the lock button
-  userEvent.click(lockButton);
-  lockButton = screen.getByRole('button', { name: `${mockAllEmployeeList[0].employeeName}-locked` });
-  expect(lockButton).toBeInstanceOf(HTMLButtonElement);
+  userEvent.click(lockButton[0]);
+  lockButton = screen.getAllByRole('button', { name: `${mockAllEmployeeList[0].employeeName}-locked` });
+  expect(lockButton[0]).toBeInstanceOf(HTMLButtonElement);
 
   // it should show collapse button and separator when locked cards exist
   hideLockedCardsButton = screen.getByRole('button', { name: hideLockedCardsButtonText });
