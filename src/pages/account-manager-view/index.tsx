@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { ImageQuery } from '@globals/types';
-import { showAllButtonText } from '@globals/constants';
+import { showAllButtonText, consultantSearchText } from '@globals/constants';
 import { graphql } from 'gatsby';
 import EmployeeSearch from '@components/accountManagerView/EmployeeSearch';
 
@@ -20,6 +20,9 @@ const AccountManagerView = ({ data }: ImageQuery) => {
 
   return (
     <Container fluid style={{ marginBottom: 16 }}>
+      <Row>
+        <Col><h3>{consultantSearchText}</h3></Col>
+      </Row>
       <Row>
         <Col>
           <EmployeeSearch
