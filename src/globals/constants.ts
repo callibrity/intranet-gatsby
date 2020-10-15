@@ -1,4 +1,5 @@
 import { BillableTypes, GrowthTypes } from './types';
+
 export const googleClientId = '1084859424709-tk8745k1d0bnqfvlmsoa0j3uo5bkm9un.apps.googleusercontent.com';
 
 export const quickLinks: { title: string, url: string }[] = [
@@ -181,15 +182,17 @@ export const accountManagerString = 'Account Manager';
 
 export const loginWelcomeMessage = 'Welcome to Callibrity!';
 
+export const consultantSearchText = 'Consultant Search';
+
 export const searchBarAltText = 'search bar';
 
 export const searchBarPlaceholder = 'Type at least two characters to pull up developers';
 
-export const hideLockedCardsButtonText = 'Hide Locked Cards';
-
-export const showLockedCardsButtonText = 'Show Locked Cards';
+export const pinnedCardsText = 'Pinned Consultants';
 
 export const showAllButtonText = 'Show All';
+
+export const searchResultsText = 'Search Results'
 
 export const employeeMetricsString = '/api/employee/hours';
 

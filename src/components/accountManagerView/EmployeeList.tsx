@@ -5,10 +5,11 @@ import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import { BsChevronDoubleDown, BsChevronDoubleUp } from 'react-icons/bs';
 import { EmployeeTypes, FixedImage } from '@globals/types';
 import useLockList from '@hooks/useLockList';
 import { getAllEmployeeMetrics } from '@api/serviceCalls';
-import { hideLockedCardsButtonText, showLockedCardsButtonText } from '@globals/constants';
+import { pinnedCardsText, searchResultsText } from '@globals/constants';
 import { createEmployeeElements } from './createEmployeeElements';
 
 const { Header, Body } = Card;
@@ -22,7 +23,7 @@ interface PropTypes {
 
 const EmployeeList = ({ searchString, images, showAll }: PropTypes) => {
   const [employeeDataList, setEmployeeDataList] = useState<EmployeeTypes>([]);
-  const [buttonText, setButtonText] = useState(hideLockedCardsButtonText);
+  const [toggleHide, setToggleHide] = useState(false);
 
   const { lockList, lockToggle } = useLockList('employeeLockList');
   const { lockedElements, searchElements } = createEmployeeElements(employeeDataList, lockList, lockToggle, searchString, images, showAll);
@@ -33,9 +34,7 @@ const EmployeeList = ({ searchString, images, showAll }: PropTypes) => {
 
 
   function toggleAccordion() {
-    setButtonText(
-      buttonText === hideLockedCardsButtonText ? showLockedCardsButtonText : hideLockedCardsButtonText
-    );
+    setToggleHide(!toggleHide);
   }
 
   return (
@@ -45,9 +44,9 @@ const EmployeeList = ({ searchString, images, showAll }: PropTypes) => {
           <>
             <Accordion defaultActiveKey="0">
               <Card border="light">
-                <Header className="text-right">
+                <Header>
                   <Toggle as={Button} onClick={toggleAccordion} data-testid="toggle-button" variant="dark" eventKey="0">
-                    {buttonText}
+                    {pinnedCardsText} &nbsp; {toggleHide == true ? <BsChevronDoubleDown /> : <BsChevronDoubleUp />}
                   </Toggle>
                 </Header>
                 <Collapse eventKey="0" data-testid={'accordion'}>
@@ -66,6 +65,10 @@ const EmployeeList = ({ searchString, images, showAll }: PropTypes) => {
           : null
       }
       <Container fluid className="justify-content-md-center">
+        {searchElements.length ?
+          <Row><h3>{searchResultsText}</h3></Row>
+          : null
+        }
         <Row xs={1} sm={1} md={1} lg={1} xl={2} className="justify-content-md-center">
           {searchElements}
         </Row>

@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import Index from './index';
 import { mockImageQuery, mockAllEmployeeList } from '@globals/testConstants';
-import { searchBarPlaceholder, hideLockedCardsButtonText, showLockedCardsButtonText, billableTitle, growthTitle } from '@globals/constants';
+import { searchBarPlaceholder, pinnedCardsText, billableTitle, growthTitle, consultantSearchText, searchResultsText } from '@globals/constants';
 import '@testing-library/jest-dom'
 
 const queryImageCardList = () => screen.queryAllByRole('img', { name: /Image of/i });
@@ -20,14 +20,16 @@ test('Account manager view', async () => {
   // it should initially render the search bar, do not show the hide locked cards button and separation bar
   render(<Index data={mockImageQuery} />);
 
+  const searchHeader = await screen.findByRole('heading', { name: consultantSearchText });
   const searchBar = await screen.findByRole('textbox', { name: searchBarPlaceholder });
   const showAllButton = screen.getByTestId('show-all-button');
-  let hideLockedCardsButton = screen.queryByRole('button', { name: hideLockedCardsButtonText });
+  let pinnedCardsButton = screen.queryByRole('button', { name: pinnedCardsText });
   let separationBar = screen.queryByRole('separator');
 
+  expect(searchHeader).toBeInstanceOf(HTMLHeadingElement);
   expect(searchBar).toBeInstanceOf(HTMLInputElement);
   expect(showAllButton).toBeInstanceOf(HTMLButtonElement);
-  expect(hideLockedCardsButton).toBeNull;
+  expect(pinnedCardsButton).toBeNull;
   expect(separationBar).toBeNull;
 
   // it should initially not have any employee cards
@@ -39,7 +41,9 @@ test('Account manager view', async () => {
   userEvent.type(searchBar, 'te');
 
   const expectedResultQuantity = 2;
+  const resultsHeader = await screen.findByRole('heading', { name: searchResultsText });
 
+  expect(resultsHeader).toBeInstanceOf(HTMLHeadingElement);
   expect(queryImageCardList()).toHaveLength(expectedResultQuantity);
   expect(queryBillableCardList()).toHaveLength(expectedResultQuantity);
   expect(queryGrowthCardList()).toHaveLength(expectedResultQuantity);
@@ -76,9 +80,9 @@ test('Account manager view', async () => {
   expect(lockButton[0]).toBeInstanceOf(HTMLButtonElement);
 
   // it should show collapse button and separator when locked cards exist
-  hideLockedCardsButton = screen.getByRole('button', { name: hideLockedCardsButtonText });
+  pinnedCardsButton = screen.getByRole('button', { name: pinnedCardsText });
   separationBar = screen.getByRole('separator');
-  expect(hideLockedCardsButton).toBeInstanceOf(HTMLButtonElement);
+  expect(pinnedCardsButton).toBeInstanceOf(HTMLButtonElement);
   expect(separationBar).toBeInstanceOf(HTMLElement);
 
 
@@ -87,9 +91,7 @@ test('Account manager view', async () => {
   expect(acc).toBeInstanceOf(HTMLElement);
   expect(acc).toHaveClass('collapse show');
 
-  userEvent.click(hideLockedCardsButton);
-  const showLockedCardsButton = screen.queryByRole('button', { name: showLockedCardsButtonText });
-  expect(showLockedCardsButton).toBeTruthy;
+  userEvent.click(pinnedCardsButton);
 
   expect(acc).toHaveClass('collapsing');
 })
